@@ -110,7 +110,7 @@ public class Arcproxyinspection {
 						date_p58=getIdDate(broker_p58,id);
 						DateList.add(date_p58); //Contains every dates of web content fetched from the file
 						title_p62=getIdTitle(broker_p62, id,Url);
-						date_p62=getIdDate(broker_p62,id);						
+						date_p62=getIdDate(broker_p62,id);				
 						if (date_p58 !=null && date_p62 !=null && !isPredProd){
 							//If occurs same pages with different titles or dates
 							if (!date_p58.equals(date_p62) && !title_p58.equals(title_p62)){
@@ -177,20 +177,23 @@ public class Arcproxyinspection {
 	private String  getIdDate (String server, String id){
 		WebElement replay_bar_with_date =null;
 		String aux=null;
-		String[] date_aux=null;
+		String date_aux=null;
 		
 		//This could happen when a page is offline, in that case it can not find the replay_bar with the date		
 		try {
-			replay_bar_with_date = driver.findElement(By.xpath("//div[@id='replay_bar']"));
+			replay_bar_with_date =  driver.findElement(By.xpath("//*[@id=\"replay_iframe\"]"));
 		} catch ( org.openqa.selenium.NoSuchElementException e) {
 			// TODO Auto-generated catch block
 			//System.out.print("\nReplay bar not injected. "+id+"\n");
 			return null;
 		}
-		aux =replay_bar_with_date.getText();
-		date_aux = aux.split("Data: ");
+		aux =replay_bar_with_date.getAttribute("src");
+		
+		if (isPredProd)
+			date_aux = aux.replace("http://p41.arquivo.pt/wayback/", "");
+		
 
-		return date_aux[1].replace("[ [esconder] ]", "");
+		return date_aux.split("/")[0];
 	}
 
 
@@ -201,17 +204,8 @@ public class Arcproxyinspection {
 	 * @return
 	 */
 	private boolean  inspectDate (String id, int i){
-		//WebElement replay_bar_with_date =null;
 		String server=null;
-		boolean result = true;
-
 		server = DateList.get(i);
-		String aux=null;
-		String[] date_aux=null;
-		DateFormat format = new SimpleDateFormat("HH:mm:ss dd MMMM, yyyy ", new Locale("pt","PT"));
-		DateFormat format_arquivo = new SimpleDateFormat("yyyyMMddHHmmss", new Locale("pt","PT"));
-		Date date = null;
-		String timestamp_file=null;
 		String[] timestamp_site= null;
 		timestamp_site= id.split("/");
 		if (timestamp_site[0].contains("id")) // This syntax does not contain timestamp
@@ -219,16 +213,15 @@ public class Arcproxyinspection {
 		try
 		{
 			
-			date = format.parse(server);
-			timestamp_file = format_arquivo.format(date).trim();
-			if (!(timestamp_file.compareTo(timestamp_site[0].trim())==0)){ // If the timestamp are equals
-				System.out.print("\nDate problems on:"+id+"\nDate: "+timestamp_site[0]+"\nDate timestamp:"+timestamp_file+"\n");
-				result=false;
+			//date = format.parse(server);
+			//timestamp_file = format_arquivo.format(date).trim();
+			if (!(server.compareTo(timestamp_site[0].trim())==0)){ // If the timestamp are equals
+				System.out.print("\nDate problems on:"+id+"\nDate: "+server+"\nDate timestamp:"+timestamp_site[0]+"\n");
 			}
 		}
 		catch (Exception e)
 		{
-			//System.out.print("\n\nProblems parsing date of the website "+id+"\n"+this.getClass());
+			System.out.print("\n\nProblems parsing date of the website "+id+"\n"+this.getClass());
 			return false;
 
 		}

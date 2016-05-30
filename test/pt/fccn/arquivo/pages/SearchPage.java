@@ -181,13 +181,14 @@ public class SearchPage {
    		
    		//This could happen when a page is offline, for that it can not find the replay_bar with the date		
    		try{
-   			replay_bar = driver.findElement(By.xpath("//div[@id='replay_bar']"));
+   			replay_bar = driver.findElement(By.xpath("//*[@id=\"replay_iframe\"]"));
+        //System.out.print("Replay_bar= "+replay_bar.getAttribute("src"));
    		}catch(NoSuchElementException e){
    			//System.out.print("Replay bar not found. "+this.getClass().getName());
    			return false;
    		}
    			
-   			if (replay_bar.getText() != null)
+   			if (replay_bar.getAttribute("src") != null)
    					return true;
    			
    		return false;
