@@ -27,13 +27,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * @author Simao Fontes
+ * @author nutchwax
  *
  */
 public class AdvancedPage {
     private final WebDriver driver;
     private final String pageURLCheck = "advanced.jsp"; 
     private final String listOfResultsTag = "resultados-lista";
+    private String results_withWWW=null;
+    private String results_withoutWWW=null;
     // Patern to detect if there are results
     
     // Tags for searching
@@ -68,20 +70,22 @@ public class AdvancedPage {
      */
     public boolean existsInResults(boolean isPreProd) {
     	String title=null;
+    	
     	try {
     		
     		driver.findElement(By.id("adv_and")).clear();
     	    driver.findElement(By.id("adv_and")).sendKeys("sapo");
     	    driver.findElement(By.id("site")).clear();
-    	    driver.findElement(By.id("site")).sendKeys("www.sapo.pt");
+    	    driver.findElement(By.id("site")).sendKeys("sapo.pt");
     	    
     	    driver.findElement(By.id("btnSubmitBottom")).click();
     	    WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
         	
     	    title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText();
-    	    
+    	    results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
     	} catch (Exception e) {
 			// TODO Auto-generated catch block
+    		
 			return false;
 		}
         if (!title.contains("SAPO") || title==null)
@@ -89,4 +93,24 @@ public class AdvancedPage {
         return true;
     }
     
+   
+    
+    /**
+     * Check if the advanced search by URL with or without www. returns the same results
+     * For instance, sapo.pt and www.sapo.pt have to return the same number of results
+     * @return
+     */
+    public boolean searchURL(){
+    	
+    	WebElement listOfResults=null;
+    	driver.findElement(By.id("txtSearch")).clear();
+	    driver.findElement(By.id("txtSearch")).sendKeys("sapo site:www.sapo.pt");
+	    driver.findElement(By.id("btnSubmit")).click();
+	    listOfResults = driver.findElement(By.id(listOfResultsTag));
+	    results_withoutWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
+	    
+	    if (results_withoutWWW.equals(results_withWWW))
+	    	return true;
+    return false;
+    }
 }

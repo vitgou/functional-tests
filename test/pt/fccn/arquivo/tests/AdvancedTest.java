@@ -42,6 +42,7 @@ public class AdvancedTest extends WebDriverTestBase{
         AdvancedPage advancedPage = index.goToAdvancedPage();	
         assertTrue("The page displayed has not got the title text being displayed",advancedPage.titleIsCorrect(term));
         assertTrue("The page  is not online",advancedPage.existsInResults(Ispre_prod));
+        assertTrue("Problems searching with url's on advanced search",advancedPage.searchURL());
 
     }
 }
