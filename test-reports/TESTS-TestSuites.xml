@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="p18.arquivo.pt" id="0" name="AllTests" package="pt.fccn.arquivo.tests" tests="8" time="85.098" timestamp="2016-05-30T16:44:16">
+  <testsuite errors="0" failures="0" hostname="p18.arquivo.pt" id="0" name="ReplayTest" package="pt.fccn.arquivo.tests" tests="1" time="69.941" timestamp="2016-05-31T15:18:19">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
@@ -66,13 +66,13 @@
 
           <property name="sun.boot.library.path" value="/usr/java/jdk1.7.0_71/jre/lib/amd64" />
 
-          <property name="env.SSH_CONNECTION" value="193.136.44.27 54368 193.136.192.172 22" />
+          <property name="env.SSH_CONNECTION" value="193.136.44.27 50004 193.136.192.172 22" />
 
           <property name="ant.project.name" value="funcional-tests" />
 
           <property name="java.version" value="1.7.0_71" />
 
-          <property name="env.SSH_CLIENT" value="193.136.44.27 54368 22" />
+          <property name="env.SSH_CLIENT" value="193.136.44.27 50004 22" />
 
           <property name="version" value="SNAPSHOT" />
 
@@ -144,7 +144,7 @@
 
           <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
 
-          <property name="testcase" value="pt.fccn.arquivo.tests.AllTests" />
+          <property name="testcase" value="pt.fccn.arquivo.tests.ReplayTest" />
 
           <property name="env.LC_MEASUREMENT" value="pt_PT.UTF-8" />
 
@@ -162,7 +162,7 @@
 
           <property name="java.vm.vendor" value="Oracle Corporation" />
 
-          <property name="test.url" value="http://p41.arquivo.pt" />
+          <property name="test.url" value="http://p41.arquivo.pt/" />
 
           <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
 
@@ -170,7 +170,7 @@
 
           <property name="java.class.path" value="/usr/share/java/ant.jar:/usr/share/java/ant-launcher.jar:/usr/share/java/jaxp_parser_impl.jar:/usr/share/java/xml-commons-apis.jar:/usr/share/java/ivy.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-nodeps.jar:/usr/share/java/jaxp_transform_impl.jar:/usr/share/java/ant/ant-trax.jar:/usr/share/java/xalan-j2-serializer.jar:/usr/java/jdk1.7.0_71/lib/tools.jar:/usr/java/jdk1.7.0_71/lib/tools.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-nodeps.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant.jar" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.AllTests -Dtest.url=http://p41.arquivo.pt" />
+          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.ReplayTest -Dtest.url=http://p41.arquivo.pt/" />
 
           <property name="seleniumPort" value="4444" />
 
@@ -242,40 +242,17 @@
 
       </properties>
 
-      <testcase classname="pt.fccn.arquivo.tests.TestSearchOneTerm" name="testSearchOneTerm" time="5.449" />
-
-      <testcase classname="pt.fccn.arquivo.tests.HighlightsTest" name="highlightLinkTest" time="20.386" />
-
-      <testcase classname="pt.fccn.arquivo.tests.TermsAndConditionsTest" name="termsAndConditionsTest" time="5.942" />
-
-      <testcase classname="pt.fccn.arquivo.tests.TestSponsorImage" name="test" time="1.235" />
-
-      <testcase classname="pt.fccn.arquivo.tests.TestSearchOneTermOpenSearch" name="testSearchOneTermOpenSearch" time="3.886" />
-
-      <testcase classname="pt.fccn.arquivo.tests.TestArcproxy" name="TestArcproxy" time="5.776" />
-
-      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest" time="2.449" />
-
-      <testcase classname="pt.fccn.arquivo.tests.UrlsearchTest" name="AdvancedTest" time="6.478" />
+      <testcase classname="pt.fccn.arquivo.tests.ReplayTest" name="replayTest" time="64.918" />
 
       <system-out><![CDATA[Run test localy
-
-Testing Pre-Prod Environment
-Running testSearchOneTerm. 
-Run test localy
-Running HighlightsTest. 
-Run test localy
-Running TermsAndConditionsTest. 
-Run test localy
-Running TestSponsorImage. 
-Run test localy
-Running TestSearchOneTermOpenSearch. 
-Run test localy
-Running TestArcproxy. 
-Run test localy
-Running AdvancedTest. 
-Run test localy
-Running UrlsearchTest. 
+Running ReplayTest. 
+Inspecting URLS....
+URL: http://www.sapo.pt/
+Year: 2014
+Month: Novembro
+Day: 23
+Hours: 01
+Minutes: 27
 ]]></system-out>
 
       <system-err />

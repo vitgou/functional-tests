@@ -1,0 +1,10 @@
+Run test localy
+Running ReplayTest. 
+Inspecting URLS....
+URL: http://www.sapo.pt/
+Year: 2014
+Month: Novembro
+Day: 23
+Hours: 01
+Minutes: 27
+
