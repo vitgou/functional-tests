@@ -191,6 +191,8 @@ public class Arcproxyinspection {
 		
 		if (isPredProd)
 			date_aux = aux.replace("http://p41.arquivo.pt/wayback/", "");
+		else 
+			date_aux = aux.replace("http://arquivo.pt/wayback/", "");
 		
 
 		return date_aux.split("/")[0];

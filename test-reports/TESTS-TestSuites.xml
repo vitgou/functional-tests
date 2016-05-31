@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="p18.arquivo.pt" id="0" name="ReplayTest" package="pt.fccn.arquivo.tests" tests="1" time="69.941" timestamp="2016-05-31T15:18:19">
+  <testsuite errors="0" failures="0" hostname="p18.arquivo.pt" id="0" name="HighlightsTest" package="pt.fccn.arquivo.tests" tests="1" time="24.894" timestamp="2016-05-31T16:30:15">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
@@ -34,7 +34,7 @@
 
           <property name="env.HISTSIZE" value="1000" />
 
-          <property name="env.DISPLAY" value="localhost:10.0" />
+          <property name="env.DISPLAY" value="localhost:11.0" />
 
           <property name="local-browser" value="firefox" />
 
@@ -48,7 +48,7 @@
 
           <property name="env.SHELL" value="/bin/bash" />
 
-          <property name="env.SSH_TTY" value="/dev/pts/0" />
+          <property name="env.SSH_TTY" value="/dev/pts/1" />
 
           <property name="env.NLSPATH" value="/usr/dt/lib/nls/msg/%L/%N.cat" />
 
@@ -66,13 +66,13 @@
 
           <property name="sun.boot.library.path" value="/usr/java/jdk1.7.0_71/jre/lib/amd64" />
 
-          <property name="env.SSH_CONNECTION" value="193.136.44.27 50004 193.136.192.172 22" />
+          <property name="env.SSH_CONNECTION" value="193.136.44.27 53919 193.136.192.172 22" />
 
           <property name="ant.project.name" value="funcional-tests" />
 
           <property name="java.version" value="1.7.0_71" />
 
-          <property name="env.SSH_CLIENT" value="193.136.44.27 50004 22" />
+          <property name="env.SSH_CLIENT" value="193.136.44.27 53919 22" />
 
           <property name="version" value="SNAPSHOT" />
 
@@ -144,7 +144,7 @@
 
           <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
 
-          <property name="testcase" value="pt.fccn.arquivo.tests.ReplayTest" />
+          <property name="testcase" value="pt.fccn.arquivo.tests.HighlightsTest" />
 
           <property name="env.LC_MEASUREMENT" value="pt_PT.UTF-8" />
 
@@ -162,7 +162,7 @@
 
           <property name="java.vm.vendor" value="Oracle Corporation" />
 
-          <property name="test.url" value="http://p41.arquivo.pt/" />
+          <property name="test.url" value="http://p41.arquivo.pt" />
 
           <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
 
@@ -170,7 +170,7 @@
 
           <property name="java.class.path" value="/usr/share/java/ant.jar:/usr/share/java/ant-launcher.jar:/usr/share/java/jaxp_parser_impl.jar:/usr/share/java/xml-commons-apis.jar:/usr/share/java/ivy.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-nodeps.jar:/usr/share/java/jaxp_transform_impl.jar:/usr/share/java/ant/ant-trax.jar:/usr/share/java/xalan-j2-serializer.jar:/usr/java/jdk1.7.0_71/lib/tools.jar:/usr/java/jdk1.7.0_71/lib/tools.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-nodeps.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant.jar" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.ReplayTest -Dtest.url=http://p41.arquivo.pt/" />
+          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.HighlightsTest -Dtest.url=http://p41.arquivo.pt" />
 
           <property name="seleniumPort" value="4444" />
 
@@ -242,18 +242,12 @@
 
       </properties>
 
-      <testcase classname="pt.fccn.arquivo.tests.ReplayTest" name="replayTest" time="64.918" />
+      <testcase classname="pt.fccn.arquivo.tests.HighlightsTest" name="highlightLinkTest" time="19.935" />
 
       <system-out><![CDATA[Run test localy
-Running ReplayTest. 
-Inspecting URLS....
-URL: http://www.sapo.pt/
-Year: 2014
-Month: Novembro
-Day: 23
-Hours: 01
-Minutes: 27
-]]></system-out>
+Running HighlightsTest. 
+
+URL: http://sobre.arquivo.pt/about-the-archive/example-pages-in-the-portuguese-web-archive]]></system-out>
 
       <system-err />
 

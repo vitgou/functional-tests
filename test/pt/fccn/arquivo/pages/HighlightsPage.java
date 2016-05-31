@@ -77,7 +77,6 @@ public class HighlightsPage {
      */
     public boolean isPageCorrect() {
         return (h1Title.compareTo(driver.findElement(By.xpath("//a[contains(.,'First Portuguese web page (1996)')]")).getText()) == 0);
-        
     }
     
     /**
@@ -96,6 +95,8 @@ public class HighlightsPage {
     
     
     /**
+     * 
+     * Navigates across each URL at http://sobre.arquivo.pt/about-the-archive/example-pages-in-the-portuguese-web-archive
      * @return true if all of links are not broken in the main page
      */
     public boolean checkLinkHighligths(){
@@ -148,7 +149,7 @@ public class HighlightsPage {
     	
     }
     /**
-	 * @param Url - every highlights url
+	 * @param Url - each highlights url
 	 * @return Title of the webpage
 	 */
 	private String  getIdTitle (String Url){
