@@ -158,6 +158,7 @@ public class IndexPage {
     	String date="26 Nov"; // historical link selected
     	String title = getTitlesearchbyURL(query,date);
     	String title_cap=getTitlesearchbyURL(queryPT,date);
+    	System.out.print("SearchbyURL: "+title +"\nSc: "+title_cap);
     	if (title==null)
     		return false;
     	if (!title.equals(title_cap))
@@ -184,6 +185,7 @@ public String getTitlesearchbyURL(String query,String date){
 			title= driver.getTitle();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			System.out.print(e);
 			return title;
 		}
 		 

@@ -80,12 +80,12 @@ public class AdvancedPage {
     	    
     	    driver.findElement(By.id("btnSubmitBottom")).click();
     	    WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
-        	
+    	    
     	    title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText();
+    	    
     	    results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
     	} catch (Exception e) {
 			// TODO Auto-generated catch block
-    		
 			return false;
 		}
         if (!title.contains("SAPO") || title==null)
