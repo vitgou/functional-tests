@@ -48,6 +48,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.io.BufferedInputStream;  
+import java.io.File;  
+import java.io.FileOutputStream;  
+import java.io.IOException;  
+import java.net.MalformedURLException;  
+import java.net.URL;  
+import java.nio.channels.Channels;  
+import java.nio.channels.ReadableByteChannel;  
 
 
 
@@ -94,8 +102,10 @@ public class ReplayPage {
         baseScreenshotURL = serverName + "screenshot/?url=";
         logoURLPTExpected = searchURL+"/?l=pt";
         prop = new Properties();
-        
+    
         try {
+          
+
             inputPt = new BufferedReader(new InputStreamReader(new FileInputStream("pt.properties"), "UTF8"));
             inputEn = new BufferedReader(new InputStreamReader(new FileInputStream("en.properties"), "UTF8"));
             prop.load(inputPt);
@@ -136,21 +146,22 @@ public class ReplayPage {
     /**
      * Do the Replay Tests for our set of URLS 
      */
-    public boolean inspectURLs(){
-      System.out.println("Inspecting URLS....");
+    public boolean inspectURLs(String language){
+      System.out.println("Inspecting URLS language: " + language);
+      if(language.equals("EN")){
+        //switch properties to english
+        try{
+          prop.load(inputEn);
+        }catch(IOException e){
+          System.out.println("Error Loading English Properties");
+          return false;
+        }  
+      }
+
       for(String currentURL:testURLs){
         goToCurrentURL(currentURL);
-        switchLanguage("PT"); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
-        /*if(!replayBarURLsOk(currentURL) || 
-           !dateURLsOk(currentURL) || 
-           !isScreenshotServiceOk(currentURL) ||
-           !isMementoURLOk(currentURL) ||
-           !helpURLOk(currentURL) ||
-           !emailOk(currentURL) ||
-           !isTopTableOfVersionsOk(currentURL) ||
-           !isArquivoLogoURLOk() ||
-           !checkLeftMenu(currentURL))
-         */  
+        switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
+
         if(!replayBarURLsOk(currentURL) || !helpURLOk(currentURL) || 
            !screenshotOk(currentURL) || !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
@@ -237,6 +248,8 @@ public class ReplayPage {
     /**
      * Check if the screenshot URL and title are correct
      */
+
+
     public boolean screenshotOk(String currentURL){
       try{
         String screenshotURL = driver.findElement(By.xpath("//a[@id=\"a_screenshot\"]")).getAttribute("href");
@@ -247,7 +260,10 @@ public class ReplayPage {
 
         if(screenshotURL.equals(expectedscreenshotURL) && 
            screenshotTitle.equals(expectedscreenshotTitle)){
-          return true;
+          //if URL and Title are ok lets download the screenshot
+            downloadFileFromURLUsingNIO(  "./screenshot.png",  screenshotURL);  
+            if(checkFileSize("./screenshot.png")) return true;
+              return false;
         }
         else{
           System.out.println("Found this Screenshot URL: " + screenshotURL);
@@ -261,7 +277,7 @@ public class ReplayPage {
           System.out.println("Could not find the screenshot element");
           return false;
       }catch (Exception e){
-        System.out.println("Should not have reached here");
+        System.out.println("Some problem downloading the screenshot");
         return false;
       } 
     }   
@@ -620,6 +636,42 @@ public class ReplayPage {
         }  
       } //else You are already in the desired language
     }
+
+
+ private static void downloadFileFromURLUsingNIO(String fileName,String fileUrl) throws IOException {  
+    System.out.println("Download Starting");
+    URL url = new URL(fileUrl);  
+    ReadableByteChannel rbc = Channels.newChannel(url.openStream());  
+    FileOutputStream fOutStream = new FileOutputStream(fileName);  
+    fOutStream.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);  
+    fOutStream.close();  
+    rbc.close(); 
+    System.out.println("Download Successful");
+ }
+
+ private static boolean checkFileSize(String pathToFile){
+
+    File file =new File(pathToFile);
+    
+    if(file.exists()){
+      
+      double bytes = file.length();
+      double kilobytes = (bytes / 1024);
+      
+      System.out.println("kilobytes : " + kilobytes);
+      if(kilobytes > 200) return true;
+      else{
+        System.out.println("File too small to Be Ok Less or Equal to 200Kb");
+        return false;
+      }  
+
+    }else{
+       System.out.println("File does not exist!");
+       return false;
+    }
+
+ }  
+
 
 
   /**
