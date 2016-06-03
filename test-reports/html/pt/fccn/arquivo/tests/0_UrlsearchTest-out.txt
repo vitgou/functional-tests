@@ -1,4 +1,0 @@
-Run test localy
-Running UrlsearchTest. 
-SearchbyURL: FCCN - preservado pelo Arquivo.pt
-Sc: FCCN - preservado pelo Arquivo.pt
