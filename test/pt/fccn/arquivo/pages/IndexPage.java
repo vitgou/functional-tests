@@ -22,6 +22,8 @@ package pt.fccn.arquivo.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Simao Fontes
@@ -155,15 +157,10 @@ public class IndexPage {
     public boolean searchbyURL(String query,String queryPT){
         
         this.url = driver.getCurrentUrl();
-        try {
-            Thread.sleep(5000);                 //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }         
+        
         String date="26 Nov"; // historical link selected
         String title = getTitlesearchbyURL(query,date);
         String title_cap=getTitlesearchbyURL(queryPT,date);
-        System.out.print("SearchbyURL: "+title +"\nSc: "+title_cap);
         if (title==null)
             return false;
         if (!title.equals(title_cap))
@@ -180,37 +177,25 @@ public class IndexPage {
  */
 public String getTitlesearchbyURL(String query,String date){
         driver.get(this.url);
-
-        try {
-            Thread.sleep(5000);                 //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        } 
-
-        
         driver.findElement(By.id("txtSearch")).clear();
         driver.findElement(By.id("txtSearch")).sendKeys(query);
         driver.findElement(By.id("btnSubmit")).click();
 
-        try {
-            Thread.sleep(5000);                 //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        } 
 
 
         String title=null;
         try {
+        	
             driver.findElement(By.linkText(date)).click();
             try {
                 Thread.sleep(5000);                 //wait for page to load
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
-            }             
+            } 
             title= driver.getTitle();
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            System.out.print(e);
+            //System.out.print(e);
             return title;
         }
          

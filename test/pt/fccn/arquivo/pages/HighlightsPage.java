@@ -38,7 +38,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HighlightsPage {
     private final WebDriver driver;
     
-    private static final String titleTextEN = "Examples of pages preserved by Arquivo.pt — Portuguese Web Archive";
+    private static final String titleTextEN = "Examples of pages preserved by Arquivo.pt — Sobre o Arquivo.pt";
     
     
     private static final String titleTextPT = "Exemplos de páginas preservadas no Arquivo.pt &mdash; Sobre o Arquivo.pt";
@@ -104,6 +104,7 @@ public class HighlightsPage {
    	 int statuscode=0;
        for(int i=0 ; i<linkList.size() ; i++)
        {
+    	   System.out.print("\n"+linkList.get(i).getAttribute("href"));
        	if(linkList.get(i).getAttribute("href") != null)
        	  {
        		if (linkList.get(i).getAttribute("href").contains("/wayback")){
@@ -158,6 +159,12 @@ public class HighlightsPage {
 		
 		driver.get(Url);
 		//wait until title was loaded
+		
+        try {
+            Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        } 
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
 		return driver.getTitle();
 	}
