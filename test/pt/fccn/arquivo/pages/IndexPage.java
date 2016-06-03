@@ -155,6 +155,11 @@ public class IndexPage {
     public boolean searchbyURL(String query,String queryPT){
         
         this.url = driver.getCurrentUrl();
+        try {
+            Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }         
         String date="26 Nov"; // historical link selected
         String title = getTitlesearchbyURL(query,date);
         String title_cap=getTitlesearchbyURL(queryPT,date);
@@ -175,13 +180,33 @@ public class IndexPage {
  */
 public String getTitlesearchbyURL(String query,String date){
         driver.get(this.url);
+
+        try {
+            Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        } 
+
         
         driver.findElement(By.id("txtSearch")).clear();
         driver.findElement(By.id("txtSearch")).sendKeys(query);
         driver.findElement(By.id("btnSubmit")).click();
+
+        try {
+            Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        } 
+
+
         String title=null;
         try {
             driver.findElement(By.linkText(date)).click();
+            try {
+                Thread.sleep(5000);                 //wait for page to load
+            } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }             
             title= driver.getTitle();
         } catch (Exception e) {
             // TODO Auto-generated catch block
