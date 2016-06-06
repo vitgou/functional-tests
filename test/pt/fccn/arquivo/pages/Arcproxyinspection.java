@@ -159,10 +159,13 @@ public class Arcproxyinspection {
 	 */
 	private String  getIdTitle (String server, String id,String[] Url){
 		WebDriverWait wait = new WebDriverWait(driver, 15);
-		if (!this.isPredProd)
+		if (!this.isPredProd){
 			driver.get(server+Url[0].substring(7)+"wayback/"+id);
-		else
+		}
+		else{
 			driver.get(Url[0].substring(7)+"wayback/"+id);
+			
+		}
 		
 		//wait until title was loaded
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
@@ -176,26 +179,24 @@ public class Arcproxyinspection {
 	 */
 	private String  getIdDate (String server, String id){
 		WebElement replay_bar_with_date =null;
-		String aux=null;
-		String date_aux=null;
+		String date=null;
+		
 		
 		//This could happen when a page is offline, in that case it can not find the replay_bar with the date		
 		try {
 			replay_bar_with_date =  driver.findElement(By.xpath("//*[@id=\"replay_iframe\"]"));
+			
 		} catch ( org.openqa.selenium.NoSuchElementException e) {
 			// TODO Auto-generated catch block
 			//System.out.print("\nReplay bar not injected. "+id+"\n");
 			return null;
 		}
-		aux =replay_bar_with_date.getAttribute("src");
+		date =replay_bar_with_date.getAttribute("src");
 		
-		if (isPredProd)
-			date_aux = aux.replace("http://p41.arquivo.pt/wayback/", "");
-		else 
-			date_aux = aux.replace("http://arquivo.pt/wayback/", "");
 		
 
-		return date_aux.split("/")[0];
+
+		return date.split("/")[4]; //Get the date form the entire URL
 	}
 
 
@@ -217,7 +218,7 @@ public class Arcproxyinspection {
 			
 			//date = format.parse(server);
 			//timestamp_file = format_arquivo.format(date).trim();
-			if (!(server.compareTo(timestamp_site[0].trim())==0)){ // If the timestamp are equals
+			if (!(server.compareTo(timestamp_site[0].trim())==0)){ // testing timespan equality
 				System.out.print("\nDate problems on:"+id+"\nDate: "+server+"\nDate timestamp:"+timestamp_site[0]+"\n");
 			}
 		}

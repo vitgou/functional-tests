@@ -1,0 +1,91 @@
+Run test localy
+Running testSearchOneTerm. 
+Run test localy
+Running HighlightsTest. 
+
+URL: http://arquivo.pt/wayback/19961013145852/http://s700.uminho.pt/homepage-pt.html
+URL: http://arquivo.pt/wayback/19961013204418/http://www.si.edu/
+URL: http://arquivo.pt/wayback/19961013182712/http://www.publico.pt/
+URL: http://arquivo.pt/wayback/19961013210816/http://www.consiste.pt/hidronet/links1.htm
+URL: http://arquivo.pt/wayback/20000302083512/http://www.cgd.pt/euro/index.htm
+URL: http://arquivo.pt/wayback/20020209034120/http://infordesporto.sapo.pt/Futebol/Internacional/Noticias/2001/Dezembro/17/figo01.asp
+URL: http://arquivo.pt/wayback/19961013163010/http://www.eng.uminho.pt/bib/eloy.html
+URL: http://arquivo.pt/wayback/20010203213800/http://xldb.fc.ul.pt/references.htm
+URL: http://arquivo.pt/wayback/19991018232643/http://www.beachcam.pt/praia_guincho.html
+URL: http://arquivo.pt/wayback/20040807072746/http://infordesporto.sapo.pt/Especiais/Euro%202004/Por/euro2004_mais_noticias.asp
+URL: http://arquivo.pt/wayback/19961226203716/http://www.telecom.pt/
+URL: http://arquivo.pt/wayback/19961013170110/http://www.men.lu/index.html
+URL: http://arquivo.pt/wayback/20051231070133/http://sic.sapo.pt/online/noticias/pais/20051229_Cavaco+Silva+em+Braganca.htm
+URL: http://arquivo.pt/wayback/20050506050332/http://www.mediatico.com.pt/luanda/cruz.html
+URL: http://arquivo.pt/wayback/19981226183836/http://www.terravista.pt/bilene/1803/bosnia/home.html
+URL: http://arquivo.pt/wayback/19980929011713/http://www.mediatico.com.pt/nimas/index.htmlRun test localy
+Running TermsAndConditionsTest. 
+Run test localy
+Running TestSponsorImage. 
+Run test localy
+Running TestSearchOneTermOpenSearch. 
+Run test localy
+Running TestArcproxy. 
+Run test localy
+Running AdvancedTest. 
+Run test localy
+Running ReplayTest. 
+Inspecting URLS language: PT
+URL: http://www.sapo.pt/
+Download Starting
+Download Successful
+kilobytes : 1040.7998046875
+Year: 2014
+Month: Novembro
+Day: 23
+Hours: 01
+Minutes: 27
+URL: http://www.abola.pt/
+Download Starting
+Download Successful
+kilobytes : 6082.3095703125
+Year: 2014
+Month: Dezembro
+Day: 4
+Hours: 20
+Minutes: 04
+URL: http://infociencia.blogs.sapo.pt/
+Download Starting
+Download Successful
+kilobytes : 563.9384765625
+Year: 2008
+Month: Março
+Day: 20
+Hours: 07
+Minutes: 35
+Inspecting URLS language: EN
+URL: http://www.sapo.pt/
+Download Starting
+Download Successful
+kilobytes : 526.5185546875
+Year: 2014
+Month: November
+Day: 23
+Hours: 01
+Minutes: 27
+URL: http://www.abola.pt/
+Download Starting
+Download Successful
+kilobytes : 6192.5751953125
+Year: 2014
+Month: December
+Day: 4
+Hours: 20
+Minutes: 04
+URL: http://infociencia.blogs.sapo.pt/
+Download Starting
+Download Successful
+kilobytes : 564.029296875
+Year: 2008
+Month: March
+Day: 20
+Hours: 07
+Minutes: 35
+Run test localy
+Running UrlsearchTest. 
+

@@ -42,25 +42,28 @@ public class HighlightsPage {
     
     
     private static final String titleTextPT = "Exemplos de páginas preservadas no Arquivo.pt &mdash; Sobre o Arquivo.pt";
-    private static final String titleFirstPortuguesePage = "Home Page de Portugal / Portugal Home Page";
-    private static final String titleSmithsonian ="The Smithsonian Institution Home Page";
-    private static final String titleClix = "UEFA Euro 2004";
-    private static final String titleExpo = "EURO - O que é o euro ?";
-    private static final String titlePublico = "PUBLICO";
-    private static final String titleSapo = "Projecto HidroNet - Links 1";
-    private static final String titleTim = "Tim Berners-Lee";
-    private static final String titlePresidenciais ="portuguese presidentials of 2001";
-    private static final String h1Title= "First Portuguese web page (1996)";
-    private static final String titleEuro ="Futebol Internacional - Notícias do dia";
-    private static final String titleEloy ="Eloy Rodrigues - HOME PAGE";
-    private static final String titlePortugalTelecom ="P O R T U G A L T E L E C O M";
-    private static final String titleMinistre ="Ministère de l'Education Nationale";
-    private static final String titleSic ="SIC Online - Cavaco Silva em Bragança";
-    private static final String titleCimiterio ="Visita ao Cemitério";
-    private static final String titleSapoDesporto ="Sapo Infordesporto";
-    private static final String titleNimas ="NIMAS - FITAS EM CARTAZ";
-    private static final String titleXLDB ="Referencias";
+    private static final String titleFirstPortuguesePage = "Home Page de Portugal / Portugal Home Page - preserved by Arquivo.pt"; 
+    private static final String titleSmithsonian ="The Smithsonian Institution Home Page - preserved by Arquivo.pt";
+    private static final String titleClix = "UEFA Euro 2004  - preserved by Arquivo.pt";
+    private static final String titleExpo = "EURO - O que é o euro ? - preserved by Arquivo.pt";
+    private static final String titlePublico = "PUBLICO - preserved by Arquivo.pt";
+    private static final String titleSapo = "Projecto HidroNet - Links 1 - preserved by Arquivo.pt";
+    private static final String titleTim = "Tim Berners-Lee - preserved by Arquivo.pt";
+    private static final String titlePresidenciais ="portuguese presidentials of 2001 - preserved by Arquivo.pt";
+    private static final String titleEuro ="Futebol Internacional - Notícias do dia - preserved by Arquivo.pt";
+    private static final String titleEloy ="Eloy Rodrigues - HOME PAGE - preserved by Arquivo.pt";
+    private static final String titlePortugalTelecom ="P O R T U G A L T E L E C O M - preserved by Arquivo.pt";
+    private static final String titleMinistre ="Ministère de l'Education Nationale - preserved by Arquivo.pt";
+    private static final String titleSic ="SIC Online - Cavaco Silva em Bragança - preserved by Arquivo.pt";
+    private static final String titleCimiterio ="Visita ao Cemitério - preserved by Arquivo.pt";
+    private static final String titleSapoDesporto ="Sapo Infordesporto - preserved by Arquivo.pt";
+    private static final String titleNimas ="NIMAS - FITAS EM CARTAZ - preserved by Arquivo.pt";
+    private static final String titleXLDB ="Referencias - preserved by Arquivo.pt";
+    private static final String titleBosnia ="BOSNIA NOW - preserved by Arquivo.pt";
+    private static final String titleFitas ="NIMAS - FITAS EM CARTAZ - preserved by Arquivo.pt";
+    private static final String titleBeachcam = "BeachCam - Praia do Guincho - preserved by Arquivo.pt";
     
+    private static final String h1Title= "First Portuguese web page (1996)";
     
     public HighlightsPage(WebDriver driver) {
         this.driver = driver;
@@ -76,9 +79,8 @@ public class HighlightsPage {
      * @return true if page contains the expected text
      */
     public boolean isPageCorrect() {
-        return (h1Title.compareTo(driver.findElement(By.xpath("//a[contains(.,'First Portuguese web page (1996)')]")).getText()) == 0);
+        return (h1Title.compareTo(driver.findElement(By.xpath("//*[@id=\"parent-fieldname-text\"]/ul/li[1]/a")).getText()) == 0);
     }
-    
     /**
      * Run through the links of highlights
      * @return true if all links from 
@@ -104,7 +106,6 @@ public class HighlightsPage {
    	 int statuscode=0;
        for(int i=0 ; i<linkList.size() ; i++)
        {
-    	   System.out.print("\n"+linkList.get(i).getAttribute("href"));
        	if(linkList.get(i).getAttribute("href") != null)
        	  {
        		if (linkList.get(i).getAttribute("href").contains("/wayback")){
@@ -126,6 +127,7 @@ public class HighlightsPage {
     	String title=null;	
     	int i =0;
     	List<String> aux = getHiglightsUrl();
+    	
        for(i=0 ; i<aux.size() ; i++)
        {
     	   title = getIdTitle(aux.get(i));
@@ -159,13 +161,14 @@ public class HighlightsPage {
 		
 		driver.get(Url);
 		//wait until title was loaded
-		
-        try {
+		try {
             Thread.sleep(5000);                 //wait for page to load
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         } 
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
+		System.out.print("\nURL: "+Url);
+		wait.until(ExpectedConditions.urlContains(Url));
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
 		return driver.getTitle();
 	}
 
@@ -232,7 +235,16 @@ public class HighlightsPage {
 		if (titleSic.equals(titlepage)){
 			return true;
 		}
+		if (titleBosnia.equals(titlepage)){
+			return true;
+		}
 		
+		if (titleFitas.equals(titlepage)){
+			return true;
+		}
+		if (titleBeachcam.equals(titlepage)){
+			return true;
+		}
 		else{
 			System.out.print("\n\n"+titlepage);
 			return false;
