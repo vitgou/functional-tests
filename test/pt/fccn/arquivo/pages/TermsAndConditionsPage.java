@@ -28,8 +28,8 @@ import org.openqa.selenium.WebDriver;
 public class TermsAndConditionsPage {
     private final WebDriver driver;
 //    private static final String urlName = "terms-conditions.jsp";
-    private static final String titleTextPT = "Termos e Condições — Sobre o Arquivo.pt";
-    private static final String titleTextEN = "Terms and Conditions — Sobre o Arquivo.pt";
+    private static final String titleTextPT = "Termos e Condições";
+    private static final String titleTextEN = "Terms and Conditions";
     private static final String linkTextPT = "Português";
     private static final String linkTextEN = "English";
     private static final String contentID = "conteudo-termos";

@@ -1,6 +1,6 @@
 #!/bin/bash
 export DISPLAY=:99
-cd /root/pwa-technologies/functional-tests
+cd /root/functional-tests
 
 plataResult=`grep "TESTS OK" /root/plata_result`
 
