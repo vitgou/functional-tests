@@ -162,7 +162,7 @@ public class ReplayPage {
         goToCurrentURL(currentURL);
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
 
-        if(!replayBarURLsOk(currentURL) || !helpURLOk(currentURL) || 
+        if(!replayBarURLsOk(currentURL) ||  
            !screenshotOk(currentURL) || !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
            !emailOk(currentURL) || !newSearchOk(currentURL)||
@@ -207,43 +207,6 @@ public class ReplayPage {
       }
     }
 
-
-    /**
-     * Check if the help URL, title and label are correct
-     */
-    public boolean helpURLOk(String currentURL){
-      try{
-        String helpURL = driver.findElement(By.xpath("//a[@id=\"help\"]")).getAttribute("href");
-        String helpLabel = driver.findElement(By.xpath("//a[@id=\"help\"]")).getText();
-        String helpTitle = driver.findElement(By.xpath("//a[@id=\"help\"]")).getAttribute("title");
-
-        String expectedhelpURL=prop.getProperty("helpHref");
-        String expectedhelpLabel=prop.getProperty("help").toUpperCase();
-        String expectedhelpTitle=prop.getProperty("help");
-
-        if(helpURL.equals(expectedhelpURL) && 
-           helpLabel.equals(expectedhelpLabel) && 
-           helpTitle.equals(expectedhelpTitle)){
-          return true;
-        }
-        else{
-          System.out.println("Found this Help URL: " + helpURL);
-          System.out.println("Expected this URL: " + expectedhelpURL );
-          System.out.println("Found this Help Label: " + helpLabel);
-          System.out.println("Expected this Help Label: "+ expectedhelpLabel);
-          System.out.println("Found this Help Title: " + helpTitle);
-          System.out.println("Expected this Help Title: " + expectedhelpTitle);
-          return false;
-        }     
-
-      }catch(NoSuchElementException e){
-          System.out.println("Could not find the help element");
-          return false;
-      }catch (Exception e){
-        System.out.println("Should not have reached here");
-        return false;
-      } 
-    }   
 
     /**
      * Check if the screenshot URL and title are correct
@@ -618,9 +581,7 @@ public class ReplayPage {
       if(url.startsWith("https://")){
           url = url.substring(8,url.length());
         }else if (url.startsWith("http://")){
-          System.out.println("removing http://");
           url = url.substring(7,url.length());
-          System.out.println(url);
         }             
       if (url.length() > 40){
         return url.substring(0,26) + "..." + url.substring((url.length() - 11),url.length()) ;
