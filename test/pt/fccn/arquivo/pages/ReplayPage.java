@@ -618,7 +618,9 @@ public class ReplayPage {
       if(url.startsWith("https://")){
           url = url.substring(8,url.length());
         }else if (url.startsWith("http://")){
+          System.out.println("removing http://");
           url = url.substring(7,url.length());
+          System.out.println(url);
         }             
       if (url.length() > 40){
         return url.substring(0,26) + "..." + url.substring((url.length() - 11),url.length()) ;
