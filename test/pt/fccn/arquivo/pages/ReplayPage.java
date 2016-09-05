@@ -163,7 +163,7 @@ public class ReplayPage {
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
 
         if(!replayBarURLsOk(currentURL) ||  
-           !screenshotOk(currentURL) || !printOk(currentURL) ||
+           /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
            !emailOk(currentURL) || !newSearchOk(currentURL)||
            !tableOfVersionsOk(currentURL) || !logoOk(currentURL) ||
@@ -210,6 +210,7 @@ public class ReplayPage {
 
     /**
      * Check if the screenshot URL and title are correct
+     * TODO:: Update this new version popup
      */
 
 
