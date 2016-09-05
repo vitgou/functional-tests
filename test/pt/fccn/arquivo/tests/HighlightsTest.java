@@ -46,7 +46,7 @@ public class HighlightsTest extends WebDriverTestBase{
         
         assertTrue("The page link is broken ",
                 highlightPage.checkLinkHighligths());
-        assertTrue("The page link is broken ",
+        assertTrue("The title of the page is not correct ",
                 highlightPage.checkHighligthsPageLinks());
     }
 }
