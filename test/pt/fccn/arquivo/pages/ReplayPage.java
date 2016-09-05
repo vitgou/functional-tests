@@ -165,7 +165,7 @@ public class ReplayPage {
         if(!replayBarURLsOk(currentURL) ||  
            /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
-           !emailOk(currentURL) || !newSearchOk(currentURL)||
+           !emailOk(currentURL) ||
            !tableOfVersionsOk(currentURL) || !logoOk(currentURL) ||
            !checkLeftMenu(currentURL))
         {
@@ -457,40 +457,6 @@ public class ReplayPage {
       } 
     }   
 
-
-    /**
-     * Check if the NewSearch title and href are correct
-     */
-    public boolean newSearchOk(String currentURL){
-      try{
-        String newSearchHref = driver.findElement(By.xpath("//a[@id=\"newSearch\"]")).getAttribute("href");
-        String newSearchTitle = driver.findElement(By.xpath("//a[@id=\"newSearch\"]")).getAttribute("title");
-
-        //String servernamewithoutLastSlash = serverName.substring(0, serverName.length()-1);
-
-        String expectednewSearchHref = serverName+"?l="+ prop.getProperty("lang");
-        String expectednewSearchTitle = prop.getProperty("newSearch");
-
-
-        if(newSearchHref.equals(expectednewSearchHref) && newSearchTitle.equals(expectednewSearchTitle)) {
-          return true;
-        }
-        else{
-          System.out.println("Found this New Search href: " + newSearchHref);
-          System.out.println("Expected this New Search href: " + expectednewSearchHref );
-          System.out.println("Found this New Search title: " + newSearchTitle);
-          System.out.println("Expected this Email title: " + expectednewSearchTitle );          
-          return false;
-        }     
-
-      }catch(NoSuchElementException e){
-          System.out.println("Could not find new Search anchor");
-          return false;
-      }catch (Exception e){
-        System.out.println("Should not have reached here");
-        return false;
-      } 
-    } 
 
     /**
      * Check if the Table of Versions title and href are correct
