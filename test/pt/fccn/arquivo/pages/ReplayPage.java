@@ -615,8 +615,13 @@ public class ReplayPage {
     }
 
     public String truncateURL(String url){
+      if(url.startsWith("https://")){
+          url = url.substring(8,url.length());
+        }else if (url.startsWith("http://")){
+          url = url.substring(7,url.length());
+        }             
       if (url.length() > 40){
-        return url.substring(0,20) + "..." + url.substring((url.length() - 17),url.length()) ;
+        return url.substring(0,26) + "..." + url.substring((url.length() - 11),url.length()) ;
       }
       else
         return url;
