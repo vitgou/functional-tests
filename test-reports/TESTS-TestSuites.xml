@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="p19.arquivo.pt" id="0" name="AllTests" package="pt.fccn.arquivo.tests" tests="9" time="392.291" timestamp="2016-06-15T11:26:15">
+  <testsuite errors="0" failures="1" hostname="p27.arquivo.pt" id="0" name="AllTests" package="pt.fccn.arquivo.tests" tests="9" time="607.421" timestamp="2016-09-05T16:56:59">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
+          <property name="env.SELINUX_USE_CURRENT_RANGE" value="" />
+
           <property name="env.LESSOPEN" value="||/usr/bin/lesspipe.sh %s" />
 
-          <property name="lib.dir" value="/root/functional-tests/lib" />
+          <property name="lib.dir" value="/github/functional-tests/lib" />
 
-          <property name="ant.file.funcional-tests" value="/root/functional-tests/build.xml" />
+          <property name="ant.file.funcional-tests" value="/github/functional-tests/build.xml" />
 
           <property name="sun.java.launcher" value="SUN_STANDARD" />
 
@@ -16,11 +18,11 @@
 
           <property name="os.name" value="Linux" />
 
-          <property name="sun.boot.class.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/rhino.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/classes" />
+          <property name="sun.boot.class.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/rhino.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/classes" />
 
-          <property name="test.reports.dir" value="/root/functional-tests/test-reports" />
+          <property name="test.reports.dir" value="/github/functional-tests/test-reports" />
 
-          <property name="env.PWD" value="/root/functional-tests" />
+          <property name="env.PWD" value="/github/functional-tests" />
 
           <property name="env.LANG" value="en_US.UTF-8" />
 
@@ -28,11 +30,11 @@
 
           <property name="ant.home" value="/usr/share/ant" />
 
-          <property name="java.runtime.version" value="1.7.0_79-mockbuild_2015_05_14_07_23-b00" />
+          <property name="java.runtime.version" value="1.7.0_91-mockbuild_2015_10_21_19_56-b00" />
 
           <property name="env.HISTSIZE" value="1000" />
 
-          <property name="env.DISPLAY" value=":99" />
+          <property name="env.DISPLAY" value="localhost:10.0" />
 
           <property name="local-browser" value="firefox" />
 
@@ -48,7 +50,7 @@
 
           <property name="env.QTLIB" value="/usr/lib64/qt-3.3/lib" />
 
-          <property name="env.SSH_TTY" value="/dev/pts/2" />
+          <property name="env.SSH_TTY" value="/dev/pts/0" />
 
           <property name="env.NLSPATH" value="/usr/dt/lib/nls/msg/%L/%N.cat" />
 
@@ -56,7 +58,7 @@
 
           <property name="test-website" value="http://p2.arquivo.pt" />
 
-          <property name="build.dir" value="/root/functional-tests/build" />
+          <property name="build.dir" value="/github/functional-tests/build" />
 
           <property name="env.PATH" value="/usr/lib64/qt-3.3/bin:/usr/local/maven/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin" />
 
@@ -64,15 +66,17 @@
 
           <property name="env.LC_MONETARY" value="pt_PT.UTF-8" />
 
-          <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/amd64" />
+          <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/amd64" />
 
-          <property name="env.SSH_CONNECTION" value="193.136.44.27 32835 193.136.192.173 22" />
+          <property name="env.SSH_CONNECTION" value="193.136.44.31 59228 193.136.192.181 22" />
+
+          <property name="remote.saucelabs.user" value="ArquivoPT" />
 
           <property name="ant.project.name" value="funcional-tests" />
 
-          <property name="java.version" value="1.7.0_79" />
+          <property name="java.version" value="1.7.0_91" />
 
-          <property name="env.SSH_CLIENT" value="193.136.44.27 32835 22" />
+          <property name="env.SSH_CLIENT" value="193.136.44.31 59228 22" />
 
           <property name="version" value="SNAPSHOT" />
 
@@ -86,11 +90,15 @@
 
           <property name="sun.arch.data.model" value="64" />
 
-          <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/endorsed" />
+          <property name="env.SELINUX_ROLE_REQUESTED" value="" />
+
+          <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/endorsed" />
 
           <property name="sun.cpu.isalist" value="" />
 
           <property name="env.LC_PAPER" value="pt_PT.UTF-8" />
+
+          <property name="test.os" value="Windows 2003" />
 
           <property name="sun.jnu.encoding" value="UTF-8" />
 
@@ -98,9 +106,9 @@
 
           <property name="env.SHLVL" value="1" />
 
-          <property name="file.separator" value="/" />
+          <property name="env.HOSTNAME" value="p27.arquivo.pt" />
 
-          <property name="env.HOSTNAME" value="p19.arquivo.pt" />
+          <property name="file.separator" value="/" />
 
           <property name="java.specification.name" value="Java Platform API Specification" />
 
@@ -110,27 +118,31 @@
 
           <property name="user.country" value="US" />
 
-          <property name="java.home" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre" />
+          <property name="java.home" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre" />
 
-          <property name="dist.dir" value="/root/functional-tests/dist" />
+          <property name="dist.dir" value="/github/functional-tests/dist" />
 
           <property name="java.vm.info" value="mixed mode" />
 
           <property name="env.LOGNAME" value="root" />
 
-          <property name="ant.file" value="/root/functional-tests/build.xml" />
+          <property name="ant.file" value="/github/functional-tests/build.xml" />
 
-          <property name="os.version" value="2.6.32-504.3.3.el6.x86_64" />
+          <property name="os.version" value="2.6.32-573.7.1.el6.x86_64" />
 
           <property name="env.G_BROKEN_FILENAMES" value="1" />
 
           <property name="path.separator" value=":" />
 
-          <property name="java.vm.version" value="24.79-b02" />
+          <property name="java.vm.version" value="24.91-b01" />
 
           <property name="env.QTINC" value="/usr/lib64/qt-3.3/include" />
 
+          <property name="test.remote.access.key" value="663108d4-2412-436a-89d0-f8856bd33377" />
+
           <property name="ant.library.dir" value="/usr/share/ant/lib" />
+
+          <property name="remote.saucelabs.key" value="663108d4-2412-436a-89d0-f8856bd33377" />
 
           <property name="env.LC_TELEPHONE" value="pt_PT.UTF-8" />
 
@@ -152,7 +164,7 @@
 
           <property name="env.M2_HOME" value="/usr/local/maven" />
 
-          <property name="test.dir" value="/root/functional-tests/test" />
+          <property name="test.dir" value="/github/functional-tests/test" />
 
           <property name="java.vendor.url" value="http://java.oracle.com/" />
 
@@ -164,11 +176,11 @@
 
           <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
 
+          <property name="java.class.path" value="/usr/share/java/ant.jar:/usr/share/java/ant-launcher.jar:/usr/share/java/jaxp_parser_impl.jar:/usr/share/java/xml-commons-apis.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-nodeps.jar:/usr/share/java/jaxp_transform_impl.jar:/usr/share/java/ant/ant-trax.jar:/usr/share/java/xalan-j2-serializer.jar:/usr/lib/jvm/java/lib/tools.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant-nodeps.jar" />
+
           <property name="ant.version" value="Apache Ant version 1.7.1 compiled on August 24 2010" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.AllTests -Dtest.url=http://arquivo.pt" />
-
-          <property name="java.class.path" value="/usr/share/java/ant.jar:/usr/share/java/ant-launcher.jar:/usr/share/java/jaxp_parser_impl.jar:/usr/share/java/xml-commons-apis.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-nodeps.jar:/usr/share/java/jaxp_transform_impl.jar:/usr/share/java/ant/ant-trax.jar:/usr/share/java/xalan-j2-serializer.jar:/usr/lib/jvm/java/lib/tools.jar:/usr/share/ant/lib/ant-nodeps.jar:/usr/share/ant/lib/ant-apache-resolver.jar:/usr/share/ant/lib/ant-javamail.jar:/usr/share/ant/lib/ant-apache-bcel.jar:/usr/share/ant/lib/ant-apache-regexp.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant-swing.jar:/usr/share/ant/lib/ant-commons-logging.jar:/usr/share/ant/lib/ant-commons-net.jar:/usr/share/ant/lib/ant-apache-bsf.jar:/usr/share/ant/lib/ant-apache-oro.jar:/usr/share/ant/lib/ant-jsch.jar:/usr/share/ant/lib/ant-jdepend.jar:/usr/share/ant/lib/ant-apache-log4j.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-antlr.jar:/usr/share/ant/lib/ant-junit.jar" />
+          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.AllTests -Dtest.url=http://arquivo.pt -Dtest.remote.access.user=ArquivoPT -Dtest.remote.access.key=663108d4-2412-436a-89d0-f8856bd33377 -Dremote.saucelabs.user=ArquivoPT -Dremote.saucelabs.key=663108d4-2412-436a-89d0-f8856bd33377" />
 
           <property name="seleniumPort" value="4444" />
 
@@ -180,11 +192,11 @@
 
           <property name="java.vm.specification.version" value="1.7" />
 
+          <property name="test-OS" value="Windows 2003" />
+
           <property name="sun.os.patch.level" value="unknown" />
 
           <property name="sun.cpu.endian" value="little" />
-
-          <property name="test-OS" value="Windows 2003" />
 
           <property name="env.HOME" value="/root" />
 
@@ -198,9 +210,9 @@
 
           <property name="os.arch" value="amd64" />
 
-          <property name="java.ext.dirs" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79.x86_64/jre/lib/ext:/usr/java/packages/lib/ext" />
+          <property name="java.ext.dirs" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/ext:/usr/java/packages/lib/ext" />
 
-          <property name="user.dir" value="/root/functional-tests" />
+          <property name="user.dir" value="/github/functional-tests" />
 
           <property name="line.separator" value=" " />
 
@@ -210,13 +222,19 @@
 
           <property name="env.LC_NUMERIC" value="pt_PT.UTF-8" />
 
-          <property name="basedir" value="/root/functional-tests" />
+          <property name="test.remote.access.user" value="ArquivoPT" />
+
+          <property name="basedir" value="/github/functional-tests" />
 
           <property name="ant.java.version" value="1.6" />
 
+          <property name="env.SELINUX_LEVEL_REQUESTED" value="" />
+
           <property name="ant.core.lib" value="/usr/share/java/ant-1.7.1.jar" />
 
-          <property name="serverlib.path" value="/root/functional-tests/server/selenium-server-standalone-2.48.2.jar" />
+          <property name="env.M2" value="/usr/local/maven/bin" />
+
+          <property name="serverlib.path" value="/github/functional-tests/server/selenium-server-standalone-2.48.2.jar" />
 
           <property name="env.LC_TIME" value="pt_PT.UTF-8" />
 
@@ -226,107 +244,60 @@
 
           <property name="env.LC_IDENTIFICATION" value="pt_PT.UTF-8" />
 
+          <property name="test.browser.version" value="38" />
+
           <property name="java.specification.version" value="1.7" />
 
-          <property name="src.dir" value="/root/functional-tests/src" />
-
-          <property name="bool.test-locally" value="true" />
+          <property name="src.dir" value="/github/functional-tests/src" />
 
           <property name="env.LC_NAME" value="pt_PT.UTF-8" />
 
       </properties>
 
-      <testcase classname="pt.fccn.arquivo.tests.TestSearchOneTerm" name="testSearchOneTerm" time="10.178" />
+      <testcase classname="pt.fccn.arquivo.tests.TestSearchOneTerm" name="testSearchOneTerm" time="26.878" />
 
-      <testcase classname="pt.fccn.arquivo.tests.HighlightsTest" name="highlightLinkTest" time="99.328" />
+      <testcase classname="pt.fccn.arquivo.tests.HighlightsTest" name="highlightLinkTest" time="153.475" />
 
-      <testcase classname="pt.fccn.arquivo.tests.TermsAndConditionsTest" name="termsAndConditionsTest" time="6.349" />
+      <testcase classname="pt.fccn.arquivo.tests.TermsAndConditionsTest" name="termsAndConditionsTest" time="11.715" />
 
-      <testcase classname="pt.fccn.arquivo.tests.TestSponsorImage" name="test" time="0.981" />
+      <testcase classname="pt.fccn.arquivo.tests.TestSponsorImage" name="test" time="2.986" />
 
-      <testcase classname="pt.fccn.arquivo.tests.TestSearchOneTermOpenSearch" name="testSearchOneTermOpenSearch" time="3.274" />
+      <testcase classname="pt.fccn.arquivo.tests.TestSearchOneTermOpenSearch" name="testSearchOneTermOpenSearch" time="10.241" />
 
-      <testcase classname="pt.fccn.arquivo.tests.TestArcproxy" name="TestArcproxy" time="126.185" />
+      <testcase classname="pt.fccn.arquivo.tests.TestArcproxy" name="TestArcproxy" time="274.657" />
 
-      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest" time="2.446" />
+      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest" time="14.925" />
 
-      <testcase classname="pt.fccn.arquivo.tests.ReplayTest" name="replayTest" time="109.431" />
+      <testcase classname="pt.fccn.arquivo.tests.ReplayTest" name="replayTest" time="15.857">
+          <failure message="Failed The Replay Tests in Portuguese" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Failed The Replay Tests in Portuguese
+	at pt.fccn.arquivo.tests.ReplayTest.replayTest(ReplayTest.java:44)
+</failure>
 
-      <testcase classname="pt.fccn.arquivo.tests.UrlsearchTest" name="AdvancedTest" time="15.715" />
+      </testcase>
 
-      <system-out><![CDATA[Run test localy
+      <testcase classname="pt.fccn.arquivo.tests.UrlsearchTest" name="AdvancedTest" time="27.221" />
+
+      <system-out><![CDATA[Run test in saucelabs
 Running testSearchOneTerm. 
-Run test localy
+Run test in saucelabs
 Running HighlightsTest. 
-Run test localy
+Run test in saucelabs
 Running TermsAndConditionsTest. 
-Run test localy
+Run test in saucelabs
 Running TestSponsorImage. 
-Run test localy
+Run test in saucelabs
 Running TestSearchOneTermOpenSearch. 
-Run test localy
+Run test in saucelabs
 Running TestArcproxy. 
-Run test localy
+Run test in saucelabs
 Running AdvancedTest. 
-Run test localy
+Run test in saucelabs
 Running ReplayTest. 
 Inspecting URLS language: PT
 URL: http://www.sapo.pt/
-Download Starting
-Download Successful
-kilobytes : 1071.908203125
-Year: 2014
-Month: Novembro
-Day: 23
-Hours: 01
-Minutes: 27
-URL: http://www.abola.pt/
-Download Starting
-Download Successful
-kilobytes : 6454.787109375
-Year: 2014
-Month: Dezembro
-Day: 4
-Hours: 20
-Minutes: 04
-URL: http://infociencia.blogs.sapo.pt/
-Download Starting
-Download Successful
-kilobytes : 717.8818359375
-Year: 2008
-Month: Março
-Day: 20
-Hours: 07
-Minutes: 35
-Inspecting URLS language: EN
-URL: http://www.sapo.pt/
-Download Starting
-Download Successful
-kilobytes : 1071.908203125
-Year: 2014
-Month: November
-Day: 23
-Hours: 01
-Minutes: 27
-URL: http://www.abola.pt/
-Download Starting
-Download Successful
-kilobytes : 6431.04296875
-Year: 2014
-Month: December
-Day: 4
-Hours: 20
-Minutes: 04
-URL: http://infociencia.blogs.sapo.pt/
-Download Starting
-Download Successful
-kilobytes : 717.6728515625
-Year: 2008
-Month: March
-Day: 20
-Hours: 07
-Minutes: 35
-Run test localy
+Expected URL: www.sapo.pt/
+Found URL: http://www.sapo.pt/
+Run test in saucelabs
 Running UrlsearchTest. 
 ]]></system-out>
 
