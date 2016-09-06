@@ -34,7 +34,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.Namespace;
+import org.openqa.selenium.remote.*;
 
 
 
@@ -93,7 +93,6 @@ public class WebDriverTestBase{
             capabillities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
             capabillities.setVersion(System.getenv("SELENIUM_VERSION"));
             capabillities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
-
             driver = new RemoteWebDriver(
                     new URL("http://"+ username +":"+ apiKey +"@ondemand.saucelabs.com:80/wd/hub"),
                     capabillities);
