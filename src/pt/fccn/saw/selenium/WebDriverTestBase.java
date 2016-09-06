@@ -87,9 +87,9 @@ public class WebDriverTestBase{
             parameterCleanupForRemote(browser, browserVersion);
 
             DesiredCapabilities capabillities = new DesiredCapabilities();
-            capabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-            capabilities.setVersion(System.getenv("SELENIUM_VERSION"));
-            capabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+            capabillities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+            capabillities.setVersion(System.getenv("SELENIUM_VERSION"));
+            capabillities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
 
             driver = new RemoteWebDriver(
                     new URL("http://"+ username +":"+ apiKey +"@ondemand.saucelabs.com:80/wd/hub"),
