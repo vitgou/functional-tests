@@ -88,6 +88,9 @@ public class WebDriverTestBase{
         } else {
             System.out.println("Run test in saucelabs");
             parameterCleanupForRemote(browser, browserVersion);
+            
+            String browSersToTesJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
+            System.out.println("browsers " + browSersToTesJSON);
 
             DesiredCapabilities capabillities = new DesiredCapabilities();
             capabillities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
