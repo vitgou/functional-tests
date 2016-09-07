@@ -74,7 +74,7 @@ public class WebDriverTestBase{
         // Read system properties.
         String username    = System.getProperty("test.remote.access.user");
         String apiKey      = System.getProperty("test.remote.access.key");
-        String browser     = System.getProperty("test.browser", "*firefox");
+        String browser     = System.getProperty("test.browser", "");
         String os          = System.getProperty("test.os", "windows");
         browserVersion     = System.getProperty("test.browser.version", "16");
         String projectName = System.getProperty("test.project.name");
@@ -86,16 +86,26 @@ public class WebDriverTestBase{
             System.out.println("Run test localy");
             driver = selectLocalBrowser(browser);
         } else {
-            System.out.println("Run test in saucelabs NOW");
-            //parameterCleanupForRemote(browser, browserVersion);
-            
-            String browSersToTesJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
-            System.out.println("browsers " + browSersToTesJSON);
-
+            System.out.println("Running test in Saucelabs");
             DesiredCapabilities capabillities = new DesiredCapabilities();
-            capabillities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-            capabillities.setVersion(System.getenv("SELENIUM_VERSION"));
-            capabillities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+            browser = System.getenv("SELENIUM_BROWSER");
+            if(browser){ //means that there is only one browser to Test
+                System.out.println("Running in SauceLabs - only one browser to Test")
+                capabillities.setBrowserName(browser);
+                capabillities.setVersion(System.getenv("SELENIUM_VERSION"));
+                capabillities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));                
+            } 
+            else{
+                String browSersToTesJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
+                if(browSersToTesJSON){
+                    System.out.println("Running in SauceLabs - multiple browsers to Test");
+                    System.out.println("Browsers " + browSersToTesJSON);
+                    JSONObject obj = new JSONObject(browSersToTesJSON);
+                      if (obj.getString("status").equals("OK"))
+                        System.out.println("I was able to import json browsers!");
+                      }
+            }
+
             driver = new RemoteWebDriver(
                     new URL("http://"+ username +":"+ apiKey +"@ondemand.saucelabs.com:80/wd/hub"),
                     capabillities);
