@@ -25,6 +25,8 @@ import pt.fccn.arquivo.pages.HighlightsPage;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.WebDriverTestBase;
 
+import java.util.ArrayList;
+
 /**
  * @author Simao Fontes
  *
@@ -35,18 +37,21 @@ public class HighlightsTest extends WebDriverTestBase{
      */
     @Test
     public void highlightLinkTest() {
-    	System.out.print("Running HighlightsTest. \n");
-        IndexPage index = new IndexPage(driver);
-       index.langToEnglish();
-        HighlightsPage highlightPage = index.goToHighlightsPage();	
-        assertTrue("The page displayed has not got the correct text being displayed",
-                highlightPage.isPageCorrect());
-        assertTrue("The page  is not online",
-                highlightPage.goThroughHighlights());
-        
-        assertTrue("The page link is broken ",
-                highlightPage.checkLinkHighligths());
-        assertTrue("The title of the page is not correct ",
-                highlightPage.checkHighligthsPageLinks());
+        protected static ArrayList<WebDriver> drivers = new ArrayList<WebDriver>();
+        for(WebDriver dr: drivers){
+        	System.out.print("Running HighlightsTest. \n");
+            IndexPage index = new IndexPage(dr);
+           index.langToEnglish();
+            HighlightsPage highlightPage = index.goToHighlightsPage();	
+            assertTrue("The page displayed has not got the correct text being displayed",
+                    highlightPage.isPageCorrect());
+            assertTrue("The page  is not online",
+                    highlightPage.goThroughHighlights());
+            
+            assertTrue("The page link is broken ",
+                    highlightPage.checkLinkHighligths());
+            assertTrue("The title of the page is not correct ",
+                    highlightPage.checkHighligthsPageLinks());
+        }
     }
 }

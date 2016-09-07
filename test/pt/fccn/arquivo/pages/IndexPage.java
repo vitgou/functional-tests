@@ -100,9 +100,7 @@ public class IndexPage {
          langElem.click();
          String pageTitle = driver.getTitle();
          if (!titleTextEN.contentEquals(pageTitle))
-             throw new IllegalStateException("Could not click the link for " +
-                     "English, The title was not correct after click.\nTitle: " + 
-                     pageTitle);
+             throw new IllegalStateException("Expected Title: "+ titleTextEN + "\nFound Title: " + pageTitle);
     }
     /**
      * Click the Highlights page
