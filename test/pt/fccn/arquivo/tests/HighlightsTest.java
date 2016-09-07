@@ -24,6 +24,7 @@ import org.junit.Test;
 import pt.fccn.arquivo.pages.HighlightsPage;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.WebDriverTestBase;
+import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 
