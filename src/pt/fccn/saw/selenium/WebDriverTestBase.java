@@ -104,10 +104,17 @@ public class WebDriverTestBase{
                     JSONObject obj = new JSONObject("{\"configs\":"+browSersToTesJSON+"}");
                     JSONArray browsers = obj.getJSONArray("configs");
                     String browsername ="";
+                    String versionNumber="";
+                    String platformOS = "";
                     for (int i = 0; i < browsers.length(); i++)
                     {
                         browsername = browsers.getJSONObject(i).getString("browser");
+                        versionNumber = browsers.getJSONObject(i).getString("browser-version");
+                        platformOS = browsers.getJSONObject(i).getString("os");
+                        System.out.println("Platform: " + platformOS);
                         System.out.println("Browser: "+ browsername);
+                        System.out.println("Version: " + versionNumber);
+
 
                     }
                         
