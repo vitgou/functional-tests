@@ -90,6 +90,7 @@ public class WebDriverTestBase{
             DesiredCapabilities capabillities = new DesiredCapabilities();
             browser = System.getenv("SELENIUM_BROWSER");
             if(browser!= ""){ //means that there is only one browser to Test
+                System.our.println("BROWSER: " + browser);
                 System.out.println("Running in SauceLabs - only one browser to Test");
                 capabillities.setBrowserName(browser);
                 capabillities.setVersion(System.getenv("SELENIUM_VERSION"));
