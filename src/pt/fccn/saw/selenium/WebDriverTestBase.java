@@ -122,6 +122,10 @@ public class WebDriverTestBase{
                         System.out.println("Platform: " + platformOS);
                         System.out.println("Browser: "+ browsername);
                         System.out.println("Version: " + versionNumber);
+                        capabillities = new DesiredCapabilities();
+                        capabillities.setBrowserName(browsername);
+                        capabillities.setVersion(versionNumber);
+                        capabillities.setCapability(CapabilityType.PLATFORM, platformOS);                          
                         driver = new RemoteWebDriver(new URL("http://"+ username +":"+ apiKey +"@ondemand.saucelabs.com:80/wd/hub"),
                                                      capabillities);
                         // Set the default time to wait for an element to appear in a webpage.
