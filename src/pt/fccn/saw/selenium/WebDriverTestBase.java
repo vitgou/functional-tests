@@ -53,6 +53,9 @@ import org.junit.BeforeClass;
  */
 public class WebDriverTestBase{
     protected static WebDriver driver;
+    protected static ArrayList<WebDriver> drivers = new ArrayList<WebDriver>();
+
+
     protected static String testURL;
     protected static String browserVersion;
     protected static String titleOfFirstResult;
@@ -94,7 +97,12 @@ public class WebDriverTestBase{
                 System.out.println("BROWSER: " + browser);
                 capabillities.setBrowserName(browser);
                 capabillities.setVersion(System.getenv("SELENIUM_VERSION"));
-                capabillities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));                
+                capabillities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));  
+                driver = new RemoteWebDriver(new URL("http://"+ username +":"+ apiKey +"@ondemand.saucelabs.com:80/wd/hub"),
+                                             capabillities);          
+                // Set the default time to wait for an element to appear in a webpage.
+                driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+                drivers.add(driver);                                                 
             } 
             else{
                 String browSersToTesJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
@@ -114,19 +122,19 @@ public class WebDriverTestBase{
                         System.out.println("Platform: " + platformOS);
                         System.out.println("Browser: "+ browsername);
                         System.out.println("Version: " + versionNumber);
-
-
+                        driver = new RemoteWebDriver(new URL("http://"+ username +":"+ apiKey +"@ondemand.saucelabs.com:80/wd/hub"),
+                                                     capabillities);
+                        // Set the default time to wait for an element to appear in a webpage.
+                        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+                        drivers.add(driver);
                     }
                         
                 }
             }
 
-            driver = new RemoteWebDriver(
-                    new URL("http://"+ username +":"+ apiKey +"@ondemand.saucelabs.com:80/wd/hub"),
-                    capabillities);
+
         }
-        // Set the default time to wait for an element to appear in a webpage.
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
         
     }
 
