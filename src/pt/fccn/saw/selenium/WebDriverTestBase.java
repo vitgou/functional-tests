@@ -103,6 +103,13 @@ public class WebDriverTestBase{
                     System.out.println("Browsers " + browSersToTesJSON);
                     JSONObject obj = new JSONObject("{\"configs\":"+browSersToTesJSON+"}");
                     JSONArray browsers = obj.getJSONArray("configs");
+                    String browsername =""
+                    for (int i = 0; i < browsers.length(); i++)
+                    {
+                        browsername = browsers.getJSONObject(i).getString("browser");
+                        System.out.println("Browser: "+ browsername);
+
+                    }
                         
                 }
             }
