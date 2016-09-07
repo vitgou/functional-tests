@@ -102,7 +102,7 @@ public class WebDriverTestBase{
                     System.out.println("Running in SauceLabs - multiple browsers to Test");
                     System.out.println("Browsers " + browSersToTesJSON);
                     JSONObject obj = new JSONObject("{\"configs\":"+browSersToTesJSON+"}");
-                    JSONArray browsers = obj.getJSONArray("configs"));
+                    JSONArray browsers = obj.getJSONArray("configs");
                         
                 }
             }
