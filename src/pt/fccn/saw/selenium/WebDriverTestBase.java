@@ -89,7 +89,7 @@ public class WebDriverTestBase{
             System.out.println("Running test in Saucelabs");
             DesiredCapabilities capabillities = new DesiredCapabilities();
             browser = System.getenv("SELENIUM_BROWSER");
-            if(browser){ //means that there is only one browser to Test
+            if(browser!= ""){ //means that there is only one browser to Test
                 System.out.println("Running in SauceLabs - only one browser to Test");
                 capabillities.setBrowserName(browser);
                 capabillities.setVersion(System.getenv("SELENIUM_VERSION"));
@@ -97,7 +97,7 @@ public class WebDriverTestBase{
             } 
             else{
                 String browSersToTesJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
-                if(browSersToTesJSON){
+                if(browSersToTesJSON !=""){
                     System.out.println("Running in SauceLabs - multiple browsers to Test");
                     System.out.println("Browsers " + browSersToTesJSON);
                     JSONObject obj = new JSONObject(browSersToTesJSON);
