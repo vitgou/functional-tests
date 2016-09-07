@@ -101,7 +101,7 @@ public class WebDriverTestBase{
                 if(browSersToTesJSON !=null){
                     System.out.println("Running in SauceLabs - multiple browsers to Test");
                     System.out.println("Browsers " + browSersToTesJSON);
-                    JSONObject obj = new JSONObject(browSersToTesJSON);
+                    JSONObject obj = new JSONObject("{\"configs\":"+browSersToTesJSON+"}");
                       if (obj.getString("status").equals("OK"))
                         System.out.println("I was able to import json browsers!");
                       }
