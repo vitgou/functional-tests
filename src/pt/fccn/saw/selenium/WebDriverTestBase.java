@@ -86,8 +86,8 @@ public class WebDriverTestBase{
             System.out.println("Run test localy");
             driver = selectLocalBrowser(browser);
         } else {
-            System.out.println("Run test in saucelabs");
-            parameterCleanupForRemote(browser, browserVersion);
+            System.out.println("Run test in saucelabs NOW");
+            //parameterCleanupForRemote(browser, browserVersion);
             
             String browSersToTesJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
             System.out.println("browsers " + browSersToTesJSON);
