@@ -37,7 +37,6 @@ public class HighlightsTest extends WebDriverTestBase{
      */
     @Test
     public void highlightLinkTest() {
-        protected static ArrayList<WebDriver> drivers = new ArrayList<WebDriver>();
         for(WebDriver dr: drivers){
         	System.out.print("Running HighlightsTest. \n");
             IndexPage index = new IndexPage(dr);
