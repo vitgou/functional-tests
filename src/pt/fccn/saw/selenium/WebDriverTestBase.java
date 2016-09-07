@@ -53,7 +53,7 @@ import org.junit.BeforeClass;
  */
 public class WebDriverTestBase{
     protected static WebDriver driver;
-    protected static ArrayList<WebDriver> drivers = new ArrayList<WebDriver>();
+    protected static ArrayList<WebDriver> drivers;
 
 
     protected static String testURL;
@@ -82,7 +82,7 @@ public class WebDriverTestBase{
         browserVersion     = System.getProperty("test.browser.version", "16");
         String projectName = System.getProperty("test.project.name");
         testURL            = System.getProperty("test.url");
-        
+        drivers  = new ArrayList<WebDriver>();
         //Decide which environment to choose
         // Decide if tests are to be run locally or remotely
         if(username == null || apiKey == null) {
