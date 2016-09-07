@@ -49,7 +49,11 @@ public class IndexPage {
      */
     public IndexPage(WebDriver driver){
         this.driver = driver;
-        
+              try {
+          Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+          Thread.currentThread().interrupt();
+        }  
         // Check that we're on the right page.
         String pageTitle= driver.getTitle();
         if (!(pageTitle.contentEquals(titleTextEN) || (pageTitle.contentEquals(titleTextPT)))){

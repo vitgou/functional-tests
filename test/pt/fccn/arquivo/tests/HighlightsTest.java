@@ -41,7 +41,7 @@ public class HighlightsTest extends WebDriverTestBase{
         for(WebDriver dr: drivers){
         	System.out.print("Running HighlightsTest. \n");
             IndexPage index = new IndexPage(dr);
-           index.langToEnglish();
+            index.langToEnglish();
             HighlightsPage highlightPage = index.goToHighlightsPage();	
             assertTrue("The page displayed has not got the correct text being displayed",
                     highlightPage.isPageCorrect());
