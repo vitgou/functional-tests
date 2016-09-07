@@ -148,7 +148,8 @@ public class WebDriverTestBase{
      */
     @Before
     public void preTest() {
-        driver.get( testURL );
+        for(WebDriver d: drivers)
+            d.get(testURL);
     }
 
     /**
