@@ -210,8 +210,8 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
      */
     @Before
     public void preTest() {
-        for(WebDriver d: drivers)
-            d.get(testURL);
+        //for(WebDriver d: drivers)
+        driver.get(testURL);
     }
 
     /**
