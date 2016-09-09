@@ -97,8 +97,8 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
     /**
      * Test decorated with @Retry will be run 3 times in case they fail using this rule.
      */
-    @Rule
-    public RetryRule rule = new RetryRule(3);
+    //@Rule
+    //public RetryRule rule = new RetryRule(3);
 
     /**
      * Represents the browser to be used as part of the test run.
@@ -306,6 +306,15 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
             return getClassContext()[1].getName();
         }
     }
+
+    /**
+     *
+     * @return the value of the Sauce Job id.
+     */
+    @Override
+    public String getSessionId() {
+        return sessionId;
+    }    
     
     /**
      * Checks if an element is present in the page
