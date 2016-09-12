@@ -232,6 +232,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         this.driver = new RemoteWebDriver(
                 new URL("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:4445" +"/wd/hub"),
                 capabilities);
+        System.out.println("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:4445" +"/wd/hub");
         this.driver.get(testURL);
 
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
