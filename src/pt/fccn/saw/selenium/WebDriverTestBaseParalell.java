@@ -209,8 +209,6 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
      */
     @Before
     public void setUp() throws Exception {
-        System.out.println("USER: " + username);
-        System.out.println("PASS: " + accesskey);
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         if (browser != null) capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
@@ -230,7 +228,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         }
         SauceHelpers.addSauceConnectTunnelId(capabilities);
         this.driver = new RemoteWebDriver(
-                new URL("https://" + username+ ":" + accesskey + seleniumURI +"/wd/hub"),
+                new URL("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@localhost:4445" +"/wd/hub"),
                 capabilities);
         this.driver.get(testURL);
 
