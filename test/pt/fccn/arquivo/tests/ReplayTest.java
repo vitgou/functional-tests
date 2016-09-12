@@ -23,13 +23,13 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.ReplayPage;
 import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 /**
  * @author Fernando Melo
  *
  */
-public class ReplayTest extends WebDriverTestBase{
+public class ReplayTest extends WebDriverTestBaseParalell{
     /**
      * PRE-PROD TESTS
      * Tests the Replay for a given SET of URLS

@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.HighlightsPage;
 import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * @author Simao Fontes
  *
  */
-public class HighlightsTest extends WebDriverTestBase{
+public class HighlightsTest extends WebDriverTestBaseParalell{
     /**
      * Test the link for more highlights
      */

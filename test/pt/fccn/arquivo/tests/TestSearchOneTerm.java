@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import org.apache.jasper.tagplugins.jstl.core.If;
 import org.junit.Test;
 import pt.fccn.arquivo.pages.*;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
-public class TestSearchOneTerm extends WebDriverTestBase {
+public class TestSearchOneTerm extends WebDriverTestBaseParalell {
     /**
      * Test the search of one term in the index interface.
      */

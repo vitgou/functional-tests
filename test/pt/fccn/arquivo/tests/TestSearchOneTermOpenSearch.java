@@ -7,11 +7,11 @@ import org.junit.Test;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.pages.OpenSearchPage;
 import pt.fccn.arquivo.pages.SearchPage;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 
 
-public class TestSearchOneTermOpenSearch extends WebDriverTestBase{
+public class TestSearchOneTermOpenSearch extends WebDriverTestBaseParalell{
     public TestSearchOneTermOpenSearch(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
     }     	

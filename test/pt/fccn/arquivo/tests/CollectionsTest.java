@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Locale;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.*;
@@ -43,7 +43,7 @@ import static org.junit.Assert.*;
  * @author David Cruz <david.cruz @ fccn.pt>
  * @version 1.5
  */
-public class CollectionsTest extends WebDriverTestBase{
+public class CollectionsTest extends WebDriverTestBaseParalell{
     public CollectionsTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
     }        

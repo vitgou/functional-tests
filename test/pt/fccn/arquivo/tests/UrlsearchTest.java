@@ -23,13 +23,13 @@ import org.junit.Test;
 
 
 import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 /**
  * @author Hugo Viana
  *
  */
-public class UrlsearchTest extends WebDriverTestBase{
+public class UrlsearchTest extends WebDriverTestBaseParalell{
     /**
      * Tests an Url search
      */

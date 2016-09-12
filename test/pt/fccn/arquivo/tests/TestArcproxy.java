@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.Arcproxyinspection;
 import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 
 
@@ -17,7 +17,7 @@ import pt.fccn.saw.selenium.WebDriverTestBase;
  * @author nutchwax
  *
  */
-public class TestArcproxy extends WebDriverTestBase{
+public class TestArcproxy extends WebDriverTestBaseParalell{
     public TestArcproxy(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
     } 	

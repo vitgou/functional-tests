@@ -18,7 +18,7 @@
 
 package pt.fccn.arquivo.tests;
 
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import static org.junit.Assert.*;
@@ -34,7 +34,7 @@ import static org.junit.Assert.*;
  * @author David Cruz <david.cruz @ fccn.pt>
  * @version 1.5
  */
-public class CollectionsTestSample extends WebDriverTestBase {
+public class CollectionsTestSample extends WebDriverTestBaseParalell {
     public CollectionsTestSample(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
     } 		

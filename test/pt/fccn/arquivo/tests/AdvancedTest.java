@@ -23,13 +23,13 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.AdvancedPage;
 import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 /**
  * @author Hugo Viana
  *
  */
-public class AdvancedTest extends WebDriverTestBase{
+public class AdvancedTest extends WebDriverTestBaseParalell{
     public AdvancedTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
     }     
@@ -40,7 +40,6 @@ public class AdvancedTest extends WebDriverTestBase{
     @Test
     public void AdvancedTest() {
     	System.out.print("Running AdvancedTest. \n");
-        driver.get("http://arquivo.pt");
         IndexPage index = new IndexPage(driver);
         Ispre_prod=index.setPreProd(pre_prod);
         AdvancedPage advancedPage = index.goToAdvancedPage();	

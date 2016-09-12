@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="p27.arquivo.pt" id="0" name="AdvancedTest" package="pt.fccn.arquivo.tests" tests="2" time="30.046" timestamp="2016-09-12T14:07:32">
+  <testsuite errors="0" failures="0" hostname="p27.arquivo.pt" id="0" name="AdvancedTest" package="pt.fccn.arquivo.tests" tests="2" time="29.42" timestamp="2016-09-12T14:24:09">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
@@ -256,9 +256,9 @@
 
       </properties>
 
-      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest[0]" time="28.115" />
+      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest[0]" time="27.22" />
 
-      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest[1]" time="29.842" />
+      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest[1]" time="29.248" />
 
       <system-out><![CDATA[JSON: null
 You did not specify browsers, testing with firefox and chrome...
@@ -268,20 +268,20 @@ Browser: chrome
 OS: Windows 8.1
 Device: null
 Version: 46
-Orientation: null
 Browser: firefox
 Device: null
 Orientation: null
+Orientation: null
 USER: ArquivoPT
 USER: ArquivoPT
 PASS: 663108d4-2412-436a-89d0-f8856bd33377
 PASS: 663108d4-2412-436a-89d0-f8856bd33377
-SauceOnDemandSessionID=d5fda0c2479642e7ab9a5cfeb99ee406 job-name=AdvancedTest[0] chrome 41
+SauceOnDemandSessionID=42ff0122e8004903b49520554bd6194f job-name=AdvancedTest[0] chrome 41
 Running AdvancedTest. 
-SauceOnDemandSessionID=c720871ae8804a83b267503ac12efa82 job-name=AdvancedTest[1] firefox 46
+SauceOnDemandSessionID=7bd270af40084ae4a02ef8a04e8bd84a job-name=AdvancedTest[1] firefox 46
 Running AdvancedTest. 
-SauceOnDemandSessionID=d5fda0c2479642e7ab9a5cfeb99ee406 job-name=pt.fccn.arquivo.tests.AdvancedTest.AdvancedTest[0]
-SauceOnDemandSessionID=c720871ae8804a83b267503ac12efa82 job-name=pt.fccn.arquivo.tests.AdvancedTest.AdvancedTest[1]
+SauceOnDemandSessionID=42ff0122e8004903b49520554bd6194f job-name=pt.fccn.arquivo.tests.AdvancedTest.AdvancedTest[0]
+SauceOnDemandSessionID=7bd270af40084ae4a02ef8a04e8bd84a job-name=pt.fccn.arquivo.tests.AdvancedTest.AdvancedTest[1]
 ]]></system-out>
 
       <system-err />

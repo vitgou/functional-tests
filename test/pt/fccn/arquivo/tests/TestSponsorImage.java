@@ -22,13 +22,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 /**
  * @author Simao Fontes
  *
  */
-public class TestSponsorImage extends WebDriverTestBase {
+public class TestSponsorImage extends WebDriverTestBaseParalell {
     public TestSponsorImage(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
     } 

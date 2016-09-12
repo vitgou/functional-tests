@@ -20,7 +20,7 @@ package pt.fccn.arquivo.tests.older;
 
 import java.util.ArrayList;
 import pt.fccn.arquivo.tests.util.QueryResultPair;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -35,7 +35,7 @@ import static org.junit.Assert.*;
  * @author David Cruz <david.cruz @ fccn.pt>
  * @version 1.5
  */
-public class AdvancedSearchTest extends WebDriverTestBase {
+public class AdvancedSearchTest extends WebDriverTestBaseParalell {
 
     public AdvancedSearchTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);

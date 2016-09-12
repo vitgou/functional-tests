@@ -23,16 +23,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.pages.TermsAndConditionsPage;
-import pt.fccn.saw.selenium.WebDriverTestBase;
-
-import pt.fccn.saw.selenium.WebDriverTestBase;
+import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 
 /**
  * @author Simao Fontes
  *
  */
-public class TermsAndConditionsTest extends WebDriverTestBase{
+public class TermsAndConditionsTest extends WebDriverTestBaseParalell{
     /**
      * Test the terms and conditions is in the correct language.
      */

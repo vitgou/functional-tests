@@ -1,17 +1,14 @@
 /*
     Copyright (C) 2011 David Cruz <david.cruz@fccn.pt>
     Copyright (C) 2011 SAW Group - FCCN <saw@asa.fccn.pt>
-
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -23,9 +20,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.NoSuchElementException;
 
 
-import pt.fccn.saw.selenium.RetryRule;
 
-import java.util.ArrayList;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -36,28 +31,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.*;
 
-import com.saucelabs.common.SauceOnDemandAuthentication;
-
-
-import pt.fccn.saw.selenium.SauceHelpers;
-
-import org.junit.*;
-import org.junit.rules.TestName;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.remote.CapabilityType;
-
-import com.saucelabs.junit.ConcurrentParameterized;
-import com.saucelabs.junit.SauceOnDemandTestWatcher;
-
-import java.net.URL;
-import java.util.LinkedList;
-
-import com.saucelabs.common.SauceOnDemandSessionIdProvider;
-
-
-//import org.json.*;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  * The base class for tests using WebDriver to test specific browsers.
@@ -68,160 +45,58 @@ import com.saucelabs.common.SauceOnDemandSessionIdProvider;
  * The WebDriver tests provide the more precise results without the
  * restrictions present in selenium due to browers' security models.
  */
-@Ignore
-@RunWith(ConcurrentParameterized.class)
-public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
-    public String username = System.getenv("SAUCE_USERNAME");
-    public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
-
-
-    public static String seleniumURI;
-
-    public static String buildTag;
-    /**
-     * Constructs a {@link SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
-     * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
-     */
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(username, accesskey);
-
-    /**
-     * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
-     */
-    @Rule
-    public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
-
-    @Rule
-    public TestName name = new TestName() {
-        public String getMethodName() {
-                return String.format("%s", super.getMethodName());
-        }
-    };
-
-    /**
-     * Test decorated with @Retry will be run 3 times in case they fail using this rule.
-     */
-    @Rule
-    public RetryRule rule = new RetryRule(3);
-
-    /**
-     * Represents the browser to be used as part of the test run.
-     */
-    protected String browser;
-    /**
-     * Represents the operating system to be used as part of the test run.
-     */
-    protected String os;
-    /**
-     * Represents the version of the browser to be used as part of the test run.
-     */
-    protected String version;
-    /**
-     * Represents the deviceName of mobile device
-     */
-    protected String deviceName;
-    /**
-     * Represents the device-orientation of mobile device
-     */
-    protected String deviceOrientation;
-    /**
-     * Instance variable which contains the Sauce Job Id.
-     */
-    protected String sessionId;
-
-    protected WebDriver driver;
-    //protected static ArrayList<WebDriver> drivers;
-
-
+public class WebDriverTestBase{
+    protected static WebDriver driver;
     protected static String testURL;
     protected static String browserVersion;
     protected static String titleOfFirstResult;
-    protected static  String pre_prod="preprod";
+    protected static  String pre_prod="p41";
    //protected static  String pre_prod="p24";
     protected static boolean Ispre_prod=false;
 
-
-    public WebDriverTestBase(String os, String version, String browser, String deviceName, String deviceOrientation) {
-        super();
-        this.os = os;
-        this.version = version;
-        this.browser = browser;
-        this.deviceName = deviceName;
-        this.deviceOrientation = deviceOrientation;
-        testURL = System.getProperty("test.url");
-        System.out.println("OS: " + os);
-        System.out.println("Version: " + version);
-        System.out.println("Browser: " + browser);
-        System.out.println("Device: " +deviceName);
-        System.out.println("Orientation: " + deviceOrientation);
-    }
     /**
-     * @return a LinkedList containing String arrays representing the browser combinations the test should be run against. The values
-     * in the String array are used as part of the invocation of the test constructor
-     */
-    @ConcurrentParameterized.Parameters
-    public static LinkedList browsersStrings() {
-        String  browsersJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
-        LinkedList browsers = new LinkedList();
-
-        System.out.println("JSON: " + browsersJSON);
-
-        if(browsersJSON == null){
-            System.out.println("You did not specify browsers, testing with firefox and chrome...");
-            browsers.add(new String[]{"Windows 7", "41", "chrome", null, null});
-            browsers.add(new String[]{"Windows 8.1", "46", "firefox", null, null});
-        }
-
-
-        // windows xp, IE 8
-        //browsers.add(new String[]{"Windows XP", "8", "internet explorer", null, null});
-
-        // OS X 10.8, Safari 6
-      //  browsers.add(new String[]{"OSX 10.8", "6", "safari", null, null});
-
-        return browsers;
-    }    
-
-
-    /**
-     * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the {@link #browser},
-     * {@link #version} and {@link #os} instance variables, and which is configured to run against ondemand.saucelabs.com, using
-     * the username and access key populated by the {@link #authentication} instance.
+     * Start and setup a WebDriver.
+     * This method first check if we want a local or remote WebDriver.
+     * If a local WebDriver is desired, it initialize the correct one.
+     * If a remote WebDriver is desired, it configures and initialize it.
      *
-     * @throws Exception if an error occurs during the creation of the {@link RemoteWebDriver} instance.
+     * This method is run only once per test class so we prevent the
+     * overhead of initialization for each test.
      */
-    @Before
-    public void setUp() throws Exception {
-        System.out.println("USER: " + username);
-        System.out.println("PASS: " + accesskey);
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+    @BeforeClass
+    public static void setUp() throws Exception {
+        // Read system properties.
+        String username    = System.getProperty("test.remote.access.user");
+        String apiKey      = System.getProperty("test.remote.access.key");
+        String browser     = System.getProperty("test.browser", "*firefox");
+        String os          = System.getProperty("test.os", "windows");
+        browserVersion     = System.getProperty("test.browser.version", "16");
+        String projectName = System.getProperty("test.project.name");
+        testURL            = System.getProperty("test.url");
+        
+        //Decide which environment to choose
+        // Decide if tests are to be run locally or remotely
+        if(username == null || apiKey == null) {
+            System.out.println("Run test localy");
+            driver = selectLocalBrowser(browser);
+        } else {
+            System.out.println("Run test in saucelabs");
+            parameterCleanupForRemote(browser, browserVersion);
 
-        if (browser != null) capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
-        if (version != null) capabilities.setCapability(CapabilityType.VERSION, version);
-        if (deviceName != null) capabilities.setCapability("deviceName", deviceName);
-        if (deviceOrientation != null) capabilities.setCapability("device-orientation", deviceOrientation);
+            DesiredCapabilities capabillities = new DesiredCapabilities(
+                    browser, browserVersion, selectPlatform(os));
+            capabillities.setCapability("name", projectName +" - "+ new CurrentClassGetter().getClassName());
+            capabillities.setCapability("record-screenshots", true);
+            capabillities.setCapability("sauce-advisor", false);
 
-        capabilities.setCapability(CapabilityType.PLATFORM, os);
-
-        String methodName = name.getMethodName() + " " + browser + " " + version;
-        capabilities.setCapability("name", methodName);
-
-        //Getting the build name.
-        //Using the Jenkins ENV var. You can use your own. If it is not set test will run without a build id.
-        if (buildTag != null) {
-            capabilities.setCapability("build", buildTag);
+            driver = new RemoteWebDriver(
+                    new URL("http://"+ username +":"+ apiKey +"@ondemand.saucelabs.com:80/wd/hub"),
+                    capabillities);
         }
-        SauceHelpers.addSauceConnectTunnelId(capabilities);
-        this.driver = new RemoteWebDriver(
-                new URL("https://" + username+ ":" + accesskey + seleniumURI +"/wd/hub"),
-                capabilities);
-        this.driver.get(testURL);
-
-        this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
-
-        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", this.sessionId, methodName);
-        System.out.println(message);
+        // Set the default time to wait for an element to appear in a webpage.
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        
     }
-
 
     /**
      * This method is run before each test.
@@ -229,16 +104,15 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
      */
     @Before
     public void preTest() {
-        //for(WebDriver d: drivers)
-        driver.get(testURL);
+        driver.get( testURL );
     }
 
     /**
      * Releases the resources used for the tests, i.e.,
      * It closes the WebDriver.
      */
-    @After
-    public void tearDown() throws Exception {
+    @AfterClass
+    public static void tearDown() throws Exception {
         driver.quit();
         
     }
@@ -272,7 +146,7 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
         } else {
             // OH NOEZ! I DOAN HAZ DAT BROWSR!
             System.err.println("Cannot find suitable browser driver for ["+ browser +"]");
-        }		
+        }       
         return driver;
     }
 
@@ -325,22 +199,6 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
             return getClassContext()[1].getName();
         }
     }
-    @BeforeClass
-    public static void setupClass(){
-        //get the uri to send the commands to.
-        seleniumURI = SauceHelpers.buildSauceUri();
-        //If available add build tag. When running under Jenkins BUILD_TAG is automatically set.
-        //You can set this manually on manual runs.
-        buildTag = System.getenv("BUILD_TAG");
-    }
-    /**
-     *
-     * @return the value of the Sauce Job id.
-     */
-    @Override
-    public String getSessionId() {
-        return sessionId;
-    }    
     
     /**
      * Checks if an element is present in the page
