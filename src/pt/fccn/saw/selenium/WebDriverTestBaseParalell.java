@@ -227,10 +227,10 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
             capabilities.setCapability("build", buildTag);
         }*/
         capabilities.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
-        
+
         SauceHelpers.addSauceConnectTunnelId(capabilities);
         this.driver = new RemoteWebDriver(
-                new URL("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@localhost:4445" +"/wd/hub"),
+                new URL("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:4445" +"/wd/hub"),
                 capabilities);
         this.driver.get(testURL);
 
