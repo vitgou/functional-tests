@@ -221,6 +221,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         String methodName = name.getMethodName() + " " + browser + " " + version;
         capabilities.setCapability("name", methodName);
 
+        capabilities.setCapability("screenResolution","1280x1024"); // TODO maybe try different resolutions.
+
         //Getting the build name.
         //Using the Jenkins ENV var. You can use your own. If it is not set test will run without a build id.
         /*if (buildTag != null) {
