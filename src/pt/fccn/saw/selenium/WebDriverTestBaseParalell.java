@@ -223,9 +223,11 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
         //Getting the build name.
         //Using the Jenkins ENV var. You can use your own. If it is not set test will run without a build id.
-        if (buildTag != null) {
+        /*if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
-        }
+        }*/
+        capabilities.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
+        
         SauceHelpers.addSauceConnectTunnelId(capabilities);
         this.driver = new RemoteWebDriver(
                 new URL("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@localhost:4445" +"/wd/hub"),
