@@ -181,10 +181,10 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
             for (int i = 0; i < browsersJSONArray.length(); i++) {
               //TODO:: find names of extra properties for mobile Devices such as orientation and device name  
               JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);  
-              String browserOS = browserConfigs.get("os");
-              String browserPlatform= browserConfigs.get("platform");
-              String browserName= browserConfigs.get("browser");
-              String browserVersion = browserConfigs.get("browser-version");
+              String browserOS = browserConfigs.getString("os");
+              String browserPlatform= browserConfigs.getString("platform");
+              String browserName= browserConfigs.getString("browser");
+              String browserVersion = browserConfigs.getString("browser-version");
               browsers.add(new String[]{browserOS, browserVersion, browserName, null, null});
             }
         }
