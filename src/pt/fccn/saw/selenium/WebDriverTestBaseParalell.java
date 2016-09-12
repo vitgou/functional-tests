@@ -232,7 +232,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
         SauceHelpers.addSauceConnectTunnelId(capabilities);
         this.driver = new RemoteWebDriver(
-                new URL("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:4445" +"/wd/hub"),
+                new URL("http://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:4445" +"/wd/hub"),
                 capabilities);
         this.driver.get(testURL);
 
