@@ -54,6 +54,8 @@ import com.saucelabs.junit.SauceOnDemandTestWatcher;
 import java.net.URL;
 import java.util.LinkedList;
 
+import org.json.*;
+
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
 
@@ -164,6 +166,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         LinkedList browsers = new LinkedList();
 
         System.out.println("JSON: " + browsersJSON);
+
+        JSONObject browsersJSONObject = new JSONObject("{browsers:"+browsersJSON+"}");
 
         if(browsersJSON == null){
             System.out.println("You did not specify browsers, testing with firefox and chrome...");
