@@ -33,6 +33,9 @@ public class UrlsearchTest extends WebDriverTestBase{
     /**
      * Tests an Url search
      */
+    public UrlsearchTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }
 	String term = "fccn.pt";
 	String termPT = "fccn.PT";
     @Test

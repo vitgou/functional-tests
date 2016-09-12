@@ -24,6 +24,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.NoSuchElementException;
 
 /**
  * @author Simao Fontes
@@ -137,8 +138,14 @@ public class IndexPage {
      * Click the Highlights page
      */
     public AdvancedPage goToAdvancedPage(){
-        WebElement advancedLink = driver.findElement(By.id("pesquisa-avancada"));
-        advancedLink.click();
+        try{
+            WebElement advancedLink = driver.findElement(By.id("pesquisa-avancada"));
+            advancedLink.click();
+        }
+        catch(NoSuchElementException e){
+                  System.out.println("Could not find the pesquisa-avancada element");
+                  throw e;
+        }                  
         return new AdvancedPage(driver);
     }
     
@@ -182,9 +189,6 @@ public String getTitlesearchbyURL(String query,String date){
         driver.findElement(By.id("txtSearch")).clear();
         driver.findElement(By.id("txtSearch")).sendKeys(query);
         driver.findElement(By.id("btnSubmit")).click();
-
-
-
         String title=null;
         try {
         	

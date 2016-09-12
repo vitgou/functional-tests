@@ -23,6 +23,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.NoSuchElementException;
 
 
+import pt.fccn.saw.selenium.RetryRule;
+
 import java.util.ArrayList;
 
 import org.openqa.selenium.Platform;
@@ -55,7 +57,7 @@ import java.util.LinkedList;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
 
-import org.json.*;
+//import org.json.*;
 
 /**
  * The base class for tests using WebDriver to test specific browsers.
@@ -71,6 +73,7 @@ import org.json.*;
 public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
     public String username = System.getenv("SAUCE_USERNAME");
     public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
+
 
     public static String seleniumURI;
 
@@ -97,8 +100,8 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
     /**
      * Test decorated with @Retry will be run 3 times in case they fail using this rule.
      */
-    //@Rule
-    //public RetryRule rule = new RetryRule(3);
+    @Rule
+    public RetryRule rule = new RetryRule(3);
 
     /**
      * Represents the browser to be used as part of the test run.
@@ -125,7 +128,7 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
      */
     protected String sessionId;
 
-    protected static WebDriver driver;
+    protected WebDriver driver;
     //protected static ArrayList<WebDriver> drivers;
 
 
@@ -144,6 +147,12 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
         this.browser = browser;
         this.deviceName = deviceName;
         this.deviceOrientation = deviceOrientation;
+        testURL = System.getProperty("test.url");
+        System.out.println("OS: " + os);
+        System.out.println("Version: " + version);
+        System.out.println("Browser: " + browser);
+        System.out.println("Device: " +deviceName);
+        System.out.println("Orientation: " + deviceOrientation);
     }
     /**
      * @return a LinkedList containing String arrays representing the browser combinations the test should be run against. The values
@@ -151,16 +160,23 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
      */
     @ConcurrentParameterized.Parameters
     public static LinkedList browsersStrings() {
+        String  browsersJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
         LinkedList browsers = new LinkedList();
 
-        // windows 7, Chrome 41
-        browsers.add(new String[]{"Windows 7", "41", "chrome", null, null});
+        System.out.println("JSON: " + browsersJSON);
+
+        if(browsersJSON == null){
+            System.out.println("You did not specify browsers, testing with firefox and chrome...");
+            browsers.add(new String[]{"Windows 7", "41", "chrome", null, null});
+            browsers.add(new String[]{"Windows 8.1", "46", "firefox", null, null});
+        }
+
 
         // windows xp, IE 8
-        browsers.add(new String[]{"Windows XP", "8", "internet explorer", null, null});
+        //browsers.add(new String[]{"Windows XP", "8", "internet explorer", null, null});
 
         // OS X 10.8, Safari 6
-        browsers.add(new String[]{"OSX 10.8", "6", "safari", null, null});
+      //  browsers.add(new String[]{"OSX 10.8", "6", "safari", null, null});
 
         return browsers;
     }    
@@ -175,6 +191,8 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
      */
     @Before
     public void setUp() throws Exception {
+        System.out.println("USER: " + username);
+        System.out.println("PASS: " + accesskey);
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         if (browser != null) capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
@@ -184,7 +202,7 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
 
         capabilities.setCapability(CapabilityType.PLATFORM, os);
 
-        String methodName = name.getMethodName();
+        String methodName = name.getMethodName() + " " + browser + " " + version;
         capabilities.setCapability("name", methodName);
 
         //Getting the build name.
@@ -196,6 +214,7 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
         this.driver = new RemoteWebDriver(
                 new URL("https://" + username+ ":" + accesskey + seleniumURI +"/wd/hub"),
                 capabilities);
+        this.driver.get(testURL);
 
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
@@ -218,8 +237,8 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
      * Releases the resources used for the tests, i.e.,
      * It closes the WebDriver.
      */
-    @AfterClass
-    public static void tearDown() throws Exception {
+    @After
+    public void tearDown() throws Exception {
         driver.quit();
         
     }
@@ -306,7 +325,14 @@ public class WebDriverTestBase implements SauceOnDemandSessionIdProvider{
             return getClassContext()[1].getName();
         }
     }
-
+    @BeforeClass
+    public static void setupClass(){
+        //get the uri to send the commands to.
+        seleniumURI = SauceHelpers.buildSauceUri();
+        //If available add build tag. When running under Jenkins BUILD_TAG is automatically set.
+        //You can set this manually on manual runs.
+        buildTag = System.getenv("BUILD_TAG");
+    }
     /**
      *
      * @return the value of the Sauce Job id.

@@ -30,6 +30,9 @@ import pt.fccn.saw.selenium.WebDriverTestBase;
  *
  */
 public class AdvancedTest extends WebDriverTestBase{
+    public AdvancedTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }     
     /**
      * Tests Advanced search page
      */
@@ -37,6 +40,7 @@ public class AdvancedTest extends WebDriverTestBase{
     @Test
     public void AdvancedTest() {
     	System.out.print("Running AdvancedTest. \n");
+        driver.get("http://arquivo.pt");
         IndexPage index = new IndexPage(driver);
         Ispre_prod=index.setPreProd(pre_prod);
         AdvancedPage advancedPage = index.goToAdvancedPage();	

@@ -38,6 +38,10 @@ import static org.junit.Assert.*;
  */
 public class UtilitiesTest extends WebDriverTestBase {
 
+    public UtilitiesTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }    
+
 	/**
 	 * Test the "Help" link to confirm that help pages are correctly linked
 	 * Before each test, the browser is set to the starting test url.

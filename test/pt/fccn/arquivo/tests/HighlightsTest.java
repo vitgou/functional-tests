@@ -36,22 +36,26 @@ public class HighlightsTest extends WebDriverTestBase{
     /**
      * Test the link for more highlights
      */
+
+    public HighlightsTest(String os,
+                                    String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }
+
     @Test
     public void highlightLinkTest() {
-        for(WebDriver dr: drivers){
-        	System.out.print("Running HighlightsTest. \n");
-            IndexPage index = new IndexPage(dr);
-            index.langToEnglish();
-            HighlightsPage highlightPage = index.goToHighlightsPage();	
-            assertTrue("The page displayed has not got the correct text being displayed",
-                    highlightPage.isPageCorrect());
-            assertTrue("The page  is not online",
-                    highlightPage.goThroughHighlights());
-            
-            assertTrue("The page link is broken ",
-                    highlightPage.checkLinkHighligths());
-            assertTrue("The title of the page is not correct ",
-                    highlightPage.checkHighligthsPageLinks());
-        }
+    	System.out.print("Running HighlightsTest. \n");
+        IndexPage index = new IndexPage(driver);
+        index.langToEnglish();
+        HighlightsPage highlightPage = index.goToHighlightsPage();	
+        assertTrue("The page displayed has not got the correct text being displayed",
+                highlightPage.isPageCorrect());
+        assertTrue("The page  is not online",
+                highlightPage.goThroughHighlights());
+        
+        assertTrue("The page link is broken ",
+                highlightPage.checkLinkHighligths());
+        assertTrue("The title of the page is not correct ",
+                highlightPage.checkHighligthsPageLinks());
     }
 }

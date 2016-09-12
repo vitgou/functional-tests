@@ -44,6 +44,9 @@ import static org.junit.Assert.*;
  * @version 1.5
  */
 public class CollectionsTest extends WebDriverTestBase{
+    public CollectionsTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }        
     public static final int OLDEST_YEAR_IN_ARCHIVE = 1996;
     public static final String QUERY = "fccn";
     public static final String QUERY_FAWP = "publico";

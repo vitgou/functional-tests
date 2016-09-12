@@ -11,6 +11,9 @@ public class TestSearchOneTerm extends WebDriverTestBase {
     /**
      * Test the search of one term in the index interface.
      */
+    public TestSearchOneTerm(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }    
     @Test
     public void testSearchOneTerm() {
     	

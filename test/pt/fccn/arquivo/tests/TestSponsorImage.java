@@ -29,7 +29,9 @@ import pt.fccn.saw.selenium.WebDriverTestBase;
  *
  */
 public class TestSponsorImage extends WebDriverTestBase {
-
+    public TestSponsorImage(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    } 
     @Test
     public void test() {
     	System.out.print("Running TestSponsorImage. \n");

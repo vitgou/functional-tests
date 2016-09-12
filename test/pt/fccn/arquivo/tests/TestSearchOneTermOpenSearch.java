@@ -12,6 +12,9 @@ import pt.fccn.saw.selenium.WebDriverTestBase;
 
 
 public class TestSearchOneTermOpenSearch extends WebDriverTestBase{
+    public TestSearchOneTermOpenSearch(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }     	
 	@Test
 	 public void testSearchOneTermOpenSearch() {
 	 System.out.print("Running TestSearchOneTermOpenSearch. \n");

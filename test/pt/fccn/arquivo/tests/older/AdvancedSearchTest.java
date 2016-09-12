@@ -37,6 +37,9 @@ import static org.junit.Assert.*;
  */
 public class AdvancedSearchTest extends WebDriverTestBase {
 
+    public AdvancedSearchTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }  
 	/**
 	 * Tests the negation text field from the Advanced Search form.
 	 * Several queries are tested to confirm that they are correctly parsed

@@ -36,6 +36,12 @@ public class ReplayTest extends WebDriverTestBase{
      * TODO:: ENGLISH AND PT
      * TODO:: Add Production tests comparing the output on both Brokers
      */
+    public ReplayTest(String os,
+                                    String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }
+
+
     boolean isPreProd = true;
     @Test
     public void replayTest() {

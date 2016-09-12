@@ -18,6 +18,9 @@ import pt.fccn.saw.selenium.WebDriverTestBase;
  *
  */
 public class TestArcproxy extends WebDriverTestBase{
+    public TestArcproxy(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    } 	
 	@Test
 	public void TestArcproxy() {
 		System.out.print("Running TestArcproxy. \n");

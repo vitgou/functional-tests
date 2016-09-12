@@ -120,10 +120,6 @@
     <echo>| Running Selenium testcases locally.</echo>
     <echo>| Please make sure that:</echo>
     <echo>|	  1) The Selenium Server is runing (use "ant launch-server")</echo>
-    <echo>|</echo>
-    <echo>| Variables:</echo>
-    <echo>|   * URL: ${test.url}</echo>
-    <echo>|   * Browser: ${test.browser}</echo>
     <echo>-------------------------------------------------------------------------------------</echo>
     <echo>| To run individual testcases by running:</echo>
     <echo>| &gt; ant test -Dtestcase=&lt;fully-qualified-classname&gt;</echo>
@@ -150,14 +146,6 @@
       unless="bool.test-locally">
     <echo>-------------------------------------------------------------------------------------</echo>
     <echo>| Running Selenium testcases remotely on SauceLabs.</echo>
-    <echo>|</echo>
-    <echo>| SauceLabs username: ${remote.saucelabs.user}</echo>
-    <echo>|</echo>
-    <echo>| Variables:</echo>
-    <echo>|   * URL: ${test.url}</echo>
-    <echo>|   * Browser: ${test.browser}</echo>
-    <echo>|   * Browser Version: ${test.browser.version}</echo>
-    <echo>|   * OS: ${test.os}</echo>
     <echo>-------------------------------------------------------------------------------------</echo>
     <echo>| To run individual testcases by running:</echo>
     <echo>| &gt; ant test -Dtestcase=&lt;fully-qualified-classname&gt;</echo>

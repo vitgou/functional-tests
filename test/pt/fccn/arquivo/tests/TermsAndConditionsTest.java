@@ -36,6 +36,9 @@ public class TermsAndConditionsTest extends WebDriverTestBase{
     /**
      * Test the terms and conditions is in the correct language.
      */
+    public TermsAndConditionsTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+            super(os, version, browser, deviceName, deviceOrientation);
+    }        
     @Test
     public void termsAndConditionsTest() {
     	System.out.print("Running TermsAndConditionsTest. \n");
