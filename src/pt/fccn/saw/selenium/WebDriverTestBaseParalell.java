@@ -55,6 +55,8 @@ import java.net.URL;
 import java.util.LinkedList;
 
 import org.json.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
