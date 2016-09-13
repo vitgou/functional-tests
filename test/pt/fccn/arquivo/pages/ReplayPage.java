@@ -286,10 +286,10 @@ public class ReplayPage {
         String faceClass = driver.findElement(By.xpath("//li[@class=\"facebook\"]/a")).getAttribute("class");
         String faceTitle = driver.findElement(By.xpath("//li[@class=\"facebook\"]/a")).getAttribute("title");
         
-        String expectedfaceClass= "addthis_button_facebook at300b";
+        String expectedfaceClass= "addthis_button_facebook";
         String expectedfaceTitle=prop.getProperty("faceTitle");
 
-        if(faceClass.equals(expectedfaceClass) && 
+        if(faceClass.startsWith(expectedfaceClass) && 
            faceTitle.equals(expectedfaceTitle)){
           return true;
         }
