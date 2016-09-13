@@ -105,7 +105,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
      * Test decorated with @Retry will be run 3 times in case they fail using this rule.
      */
     @Rule
-    public RetryRule rule = new RetryRule(3);
+    public RetryRule rule = new RetryRule(1);
 
     /**
      * Represents the browser to be used as part of the test run.
