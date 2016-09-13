@@ -318,10 +318,10 @@ public class ReplayPage {
         String twitterClass = driver.findElement(By.xpath("//li[@class=\"twitter\"]/a")).getAttribute("class");
         String twitterTitle = driver.findElement(By.xpath("//li[@class=\"twitter\"]/a")).getAttribute("title");
         
-        String expectedtwitterClass= "addthis_button_twitter at300b";
+        String expectedtwitterClass= "addthis_button_twitter";
         String expectedtwitterTitle=prop.getProperty("twitterTitle");
 
-        if(twitterClass.equals(expectedtwitterClass) && 
+        if(twitterClass.startsWith(expectedtwitterClass) && 
            twitterTitle.equals(expectedtwitterTitle)){
           return true;
         }
