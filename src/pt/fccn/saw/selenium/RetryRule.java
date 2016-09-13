@@ -1,6 +1,5 @@
 package pt.fccn.saw.selenium;
 
-import pt.fccn.saw.selenium.Retry;
 import org.junit.rules.MethodRule;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
@@ -28,6 +27,7 @@ public class RetryRule implements TestRule {
         return new Statement() {
             @Override
             public void evaluate() throws Throwable {
+                System.out.println("Evaluating retry ...");
                 Throwable caughtThrowable = null;
 
                 // implement retry logic here
