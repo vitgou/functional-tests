@@ -6,6 +6,7 @@ import org.apache.jasper.tagplugins.jstl.core.If;
 import org.junit.Test;
 import pt.fccn.arquivo.pages.*;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+import pt.fccn.saw.selenium.Retry;
 
 public class TestSearchOneTerm extends WebDriverTestBaseParalell {
     /**
@@ -15,6 +16,7 @@ public class TestSearchOneTerm extends WebDriverTestBaseParalell {
             super(os, version, browser, deviceName, deviceOrientation);
     }    
     @Test
+    @Retry
     public void testSearchOneTerm() {
     	
         String term = "fccn";

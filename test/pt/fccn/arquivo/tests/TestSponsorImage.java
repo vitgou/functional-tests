@@ -23,6 +23,7 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+import pt.fccn.saw.selenium.Retry;
 
 /**
  * @author Simao Fontes
@@ -33,6 +34,7 @@ public class TestSponsorImage extends WebDriverTestBaseParalell {
             super(os, version, browser, deviceName, deviceOrientation);
     } 
     @Test
+    @Retry
     public void test() {
     	System.out.print("Running TestSponsorImage. \n");
         IndexPage index = new IndexPage(driver);

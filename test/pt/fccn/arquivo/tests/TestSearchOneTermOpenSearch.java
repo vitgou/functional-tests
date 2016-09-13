@@ -8,7 +8,7 @@ import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.pages.OpenSearchPage;
 import pt.fccn.arquivo.pages.SearchPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
-
+import pt.fccn.saw.selenium.Retry;
 
 
 public class TestSearchOneTermOpenSearch extends WebDriverTestBaseParalell{
@@ -16,6 +16,7 @@ public class TestSearchOneTermOpenSearch extends WebDriverTestBaseParalell{
             super(os, version, browser, deviceName, deviceOrientation);
     }     	
 	@Test
+	@Retry
 	 public void testSearchOneTermOpenSearch() {
 	 System.out.print("Running TestSearchOneTermOpenSearch. \n");
 	 String term = "fccn";

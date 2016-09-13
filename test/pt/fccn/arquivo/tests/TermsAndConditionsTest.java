@@ -1,5 +1,5 @@
 /**
-[ * Copyright (C) 2011 Simao Fontes <simao.fontes@fccn.pt>
+ * Copyright (C) 2011 Simao Fontes <simao.fontes@fccn.pt>
  * Copyright (C) 2011 SAW Group - FCCN <saw@asa.fccn.pt>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,6 +24,7 @@ import org.openqa.selenium.WebElement;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.pages.TermsAndConditionsPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+import pt.fccn.saw.selenium.Retry;
 
 
 /**
@@ -38,6 +39,7 @@ public class TermsAndConditionsTest extends WebDriverTestBaseParalell{
             super(os, version, browser, deviceName, deviceOrientation);
     }        
     @Test
+    @Retry
     public void termsAndConditionsTest() {
     	System.out.print("Running TermsAndConditionsTest. \n");
         IndexPage indexPage = new IndexPage(driver);

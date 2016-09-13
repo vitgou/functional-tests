@@ -31,7 +31,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import static org.junit.Assert.*;
-
+import pt.fccn.saw.selenium.Retry;
 /**
  * A class for testing Archived Collections.
  * This class has tests that are applied to each archived collection to
@@ -65,6 +65,7 @@ public class CollectionsTest extends WebDriverTestBaseParalell{
      * Test the document collection of the AWP6 crawl
      */
     @Test
+    @Retry
     public void testAWP6() throws Exception {
         verifyCollection(QUERY, "01/12/2009", "31/12/2009");
     }
@@ -73,6 +74,7 @@ public class CollectionsTest extends WebDriverTestBaseParalell{
      * Test the document collection of the AWP7 crawl
      */
     @Test
+    @Retry
     public void testAWP7() throws Exception {
         verifyCollection(QUERY_EXTENDED, "01/05/2010", "31/05/2010");
     }
@@ -81,6 +83,7 @@ public class CollectionsTest extends WebDriverTestBaseParalell{
      * Test the document collection of the AWP8 crawl
      */
     @Test
+    @Retry
     public void testAWP8() throws Exception {
         verifyCollection(QUERY, "01/08/2010", "31/08/2010");
     }

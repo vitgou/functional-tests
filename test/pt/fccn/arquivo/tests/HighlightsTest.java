@@ -24,6 +24,7 @@ import org.junit.Test;
 import pt.fccn.arquivo.pages.HighlightsPage;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+import pt.fccn.saw.selenium.Retry;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class HighlightsTest extends WebDriverTestBaseParalell{
     }
 
     @Test
+    @Retry
     public void highlightLinkTest() {
     	System.out.print("Running HighlightsTest. \n");
         IndexPage index = new IndexPage(driver);

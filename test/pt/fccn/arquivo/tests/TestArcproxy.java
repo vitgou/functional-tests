@@ -10,6 +10,7 @@ import org.junit.Test;
 import pt.fccn.arquivo.pages.Arcproxyinspection;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+import pt.fccn.saw.selenium.Retry;
 
 
 
@@ -22,6 +23,7 @@ public class TestArcproxy extends WebDriverTestBaseParalell{
             super(os, version, browser, deviceName, deviceOrientation);
     } 	
 	@Test
+	@Retry
 	public void TestArcproxy() {
 		System.out.print("Running TestArcproxy. \n");
 		IndexPage index = new IndexPage(driver);

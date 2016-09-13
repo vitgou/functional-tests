@@ -24,6 +24,7 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+import pt.fccn.saw.selenium.Retry;
 
 /**
  * @author Hugo Viana
@@ -39,6 +40,7 @@ public class UrlsearchTest extends WebDriverTestBaseParalell{
 	String term = "fccn.pt";
 	String termPT = "fccn.PT";
     @Test
+    @Retry
     public void AdvancedTest() {
     	System.out.print("Running UrlsearchTest. \n");
         IndexPage index = new IndexPage(driver);

@@ -22,6 +22,7 @@ import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import static org.junit.Assert.*;
+import pt.fccn.saw.selenium.Retry;
 
 /**
  * A class for testing Archived Collections.
@@ -45,6 +46,7 @@ public class CollectionsTestSample extends WebDriverTestBaseParalell {
 	 * Test the document collection of the "Roteiro da Internet"
 	 */
 	@Test
+	@Retry
 	public void testRoteiro() throws Exception {
 		verifyCollection(QUERY, "13/10/1996", "13/10/1996");
 	}
