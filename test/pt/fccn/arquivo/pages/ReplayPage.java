@@ -381,6 +381,7 @@ public class ReplayPage {
         String dayText = driver.findElement(By.xpath("//a[@id=\""+year+"_"+monthstr+"_"+day+"\"]")).getText();
          //Check the time of the day Text and if the link is correct
         String hoursMinutesURL = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("href");
+        hoursMinutesURL = hoursMinutesURL.replaceAll(",%20", ", ");
         String hoursClass = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("class");
         String hoursMinutesText = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getText(); 
         String expectedURL = "javascript:jumpToVersion('"+urlNoDate+"', '"+timestamp+"')";       
