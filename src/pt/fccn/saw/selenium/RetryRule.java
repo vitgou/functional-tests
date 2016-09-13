@@ -1,6 +1,6 @@
 package pt.fccn.saw.selenium;
 
-
+import pt.fccn.saw.selenium.Retry;
 import org.junit.rules.MethodRule;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
