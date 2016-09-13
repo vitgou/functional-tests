@@ -1,3 +1,4 @@
+[![Build Status](https://saucelabs.com/browser-matrix/ArquivoPT.svg)](https://saucelabs.com/beta/builds/c25e444f9a6d4f819edb221b63afb720)
 Recursive tests developed with selenium framework for Arquivo.pt
 ---------------
 
@@ -41,3 +42,4 @@ Test in saucelabs:
 ```
   SAUCE_ONDEMAND_USERNAME="sawfccn" SAUCE_ONDEMAND_ACCESS_KEY="f4090c57-6ef7-4b83-9951-e30475d2a518" ant test -Dtestcase=pt.fccn.arquivo.tests.CollectionsTest
 ```
+
