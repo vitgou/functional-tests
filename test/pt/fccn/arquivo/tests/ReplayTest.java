@@ -44,6 +44,7 @@ public class ReplayTest extends WebDriverTestBaseParalell{
 
     boolean isPreProd = true;
     @Test
+    @Retry
     public void replayTest() {
     	System.out.print("Running ReplayTest. \n");
         ReplayPage replay = new ReplayPage(driver, isPreProd);      
