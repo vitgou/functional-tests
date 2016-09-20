@@ -191,7 +191,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
               String browserVersion = browserConfigs.getString("browser-version");
               String device = browserConfigs.getString("device");
               String deviceOrientation = browserConfigs.getString("device-orientation");
-              browsers.add(new String[]{browserOS, browserVersion, browserName, device, device-orientation});
+              browsers.add(new String[]{browserOS, browserVersion, browserName, device, deviceOrientation});
             }
         }
 
