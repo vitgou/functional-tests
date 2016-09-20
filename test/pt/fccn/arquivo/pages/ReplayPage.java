@@ -94,7 +94,7 @@ public class ReplayPage {
 
     public ReplayPage(WebDriver driver, boolean isPreProd) {
         this.driver = driver;
-        driver.manage().window().setSize(new Dimension(1280, 768));
+        //driver.manage().window().setSize(new Dimension(1280, 768)); 
         br = null;
         pageUrl = driver.getCurrentUrl();
         tokens = pageUrl.split("/");

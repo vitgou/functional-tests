@@ -135,6 +135,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
     protected WebDriver driver;
     //protected static ArrayList<WebDriver> drivers;
 
+    private String screenResolution;
+
 
     protected static String testURL;
     protected static String browserVersion;
@@ -152,6 +154,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         this.deviceName = deviceName;
         this.deviceOrientation = deviceOrientation;
         testURL = System.getProperty("test.url");
+        screenResolution = System.getProperty("test.resolution");
+
         System.out.println("OS: " + os);
         System.out.println("Version: " + version);
         System.out.println("Browser: " + browser);
@@ -185,7 +189,9 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
               String browserPlatform= browserConfigs.getString("platform");
               String browserName= browserConfigs.getString("browser");
               String browserVersion = browserConfigs.getString("browser-version");
-              browsers.add(new String[]{browserOS, browserVersion, browserName, null, null});
+              String device = browserConfigs.getString("device");
+              String deviceOrientation = browserConfigs.getString("device-orientation");
+              browsers.add(new String[]{browserOS, browserVersion, browserName, device, device-orientation});
             }
         }
 
@@ -221,7 +227,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         String methodName = name.getMethodName() + " " + browser + " " + version;
         capabilities.setCapability("name", methodName);
 
-        capabilities.setCapability("screenResolution","1280x1024"); // TODO maybe try different resolutions.
+        System.out.println("Screen Resolution: " + screenResolution);
+        capabilities.setCapability("screenResolution", screenResolution); // TODO maybe try different resolutions.
 
         //Getting the build name.
         //Using the Jenkins ENV var. You can use your own. If it is not set test will run without a build id.
