@@ -1,23 +1,2 @@
 JSON: null
-You did not specify browsers, testing with firefox and chrome...
-OS: Windows 7
-Version: 41
-Browser: chrome
-OS: Windows 8.1
-Device: null
-Version: 46
-Browser: firefox
-Device: null
-Orientation: null
-Orientation: null
-USER: ArquivoPT
-USER: ArquivoPT
-PASS: 663108d4-2412-436a-89d0-f8856bd33377
-PASS: 663108d4-2412-436a-89d0-f8856bd33377
-SauceOnDemandSessionID=42ff0122e8004903b49520554bd6194f job-name=AdvancedTest[0] chrome 41
-Running AdvancedTest. 
-SauceOnDemandSessionID=7bd270af40084ae4a02ef8a04e8bd84a job-name=AdvancedTest[1] firefox 46
-Running AdvancedTest. 
-SauceOnDemandSessionID=42ff0122e8004903b49520554bd6194f job-name=pt.fccn.arquivo.tests.AdvancedTest.AdvancedTest[0]
-SauceOnDemandSessionID=7bd270af40084ae4a02ef8a04e8bd84a job-name=pt.fccn.arquivo.tests.AdvancedTest.AdvancedTest[1]
 

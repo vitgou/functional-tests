@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="p27.arquivo.pt" id="0" name="AdvancedTest" package="pt.fccn.arquivo.tests" tests="2" time="29.42" timestamp="2016-09-12T14:24:09">
+  <testsuite errors="1" failures="0" hostname="p27.arquivo.pt" id="0" name="AdvancedTest" package="pt.fccn.arquivo.tests" tests="1" time="0.185" timestamp="2016-09-21T14:28:18">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
@@ -23,8 +23,6 @@
           <property name="test.reports.dir" value="/github/functional-tests/test-reports" />
 
           <property name="env.PWD" value="/github/functional-tests" />
-
-          <property name="env.SAUCE_ACCESS_KEY" value="663108d4-2412-436a-89d0-f8856bd33377" />
 
           <property name="env.LANG" value="en_US.UTF-8" />
 
@@ -68,7 +66,7 @@
 
           <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/amd64" />
 
-          <property name="env.SSH_CONNECTION" value="193.136.44.31 41762 193.136.192.181 22" />
+          <property name="env.SSH_CONNECTION" value="193.136.44.31 40154 193.136.192.181 22" />
 
           <property name="remote.saucelabs.user" value="ArquivoPT" />
 
@@ -76,7 +74,9 @@
 
           <property name="java.version" value="1.7.0_91" />
 
-          <property name="env.SSH_CLIENT" value="193.136.44.31 41762 22" />
+          <property name="test.resolution" value="1280x1024" />
+
+          <property name="env.SSH_CLIENT" value="193.136.44.31 40154 22" />
 
           <property name="version" value="SNAPSHOT" />
 
@@ -106,9 +106,9 @@
 
           <property name="env.SHLVL" value="1" />
 
-          <property name="file.separator" value="/" />
-
           <property name="env.HOSTNAME" value="p27.arquivo.pt" />
+
+          <property name="file.separator" value="/" />
 
           <property name="java.specification.name" value="Java Platform API Specification" />
 
@@ -123,8 +123,6 @@
           <property name="dist.dir" value="/github/functional-tests/dist" />
 
           <property name="java.vm.info" value="mixed mode" />
-
-          <property name="env.SAUCE_USERNAME" value="ArquivoPT" />
 
           <property name="env.LOGNAME" value="root" />
 
@@ -168,21 +166,21 @@
 
           <property name="test.dir" value="/github/functional-tests/test" />
 
-          <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
-
           <property name="java.vendor.url" value="http://java.oracle.com/" />
+
+          <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
 
           <property name="java.vm.vendor" value="Oracle Corporation" />
 
-          <property name="test.url" value="http://arquivo.pt" />
+          <property name="test.url" value="http://preprod.arquivo.pt" />
 
           <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
 
-          <property name="ant.version" value="Apache Ant version 1.7.1 compiled on August 24 2010" />
-
           <property name="java.class.path" value="/usr/share/java/ant.jar:/usr/share/java/ant-launcher.jar:/usr/share/java/jaxp_parser_impl.jar:/usr/share/java/xml-commons-apis.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-nodeps.jar:/usr/share/java/jaxp_transform_impl.jar:/usr/share/java/ant/ant-trax.jar:/usr/share/java/xalan-j2-serializer.jar:/usr/lib/jvm/java/lib/tools.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant-nodeps.jar" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.AdvancedTest -Dtest.url=http://arquivo.pt -Dtest.remote.access.user=ArquivoPT -Dtest.remote.access.key=663108d4-2412-436a-89d0-f8856bd33377 -Dremote.saucelabs.user=ArquivoPT -Dremote.saucelabs.key=663108d4-2412-436a-89d0-f8856bd33377" />
+          <property name="ant.version" value="Apache Ant version 1.7.1 compiled on August 24 2010" />
+
+          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.AdvancedTest -Dtest.url=http://preprod.arquivo.pt -Dtest.resolution=1280x1024 -Dtest.remote.access.user=ArquivoPT -Dtest.remote.access.key=663108d4-2412-436a-89d0-f8856bd33377 -Dremote.saucelabs.user=ArquivoPT -Dremote.saucelabs.key=663108d4-2412-436a-89d0-f8856bd33377" />
 
           <property name="seleniumPort" value="4444" />
 
@@ -208,9 +206,9 @@
 
           <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
 
-          <property name="os.arch" value="amd64" />
-
           <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+
+          <property name="os.arch" value="amd64" />
 
           <property name="java.ext.dirs" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.91.x86_64/jre/lib/ext:/usr/java/packages/lib/ext" />
 
@@ -232,17 +230,17 @@
 
           <property name="env.SELINUX_LEVEL_REQUESTED" value="" />
 
-          <property name="env.M2" value="/usr/local/maven/bin" />
-
           <property name="ant.core.lib" value="/usr/share/java/ant-1.7.1.jar" />
+
+          <property name="env.M2" value="/usr/local/maven/bin" />
 
           <property name="serverlib.path" value="/github/functional-tests/server/selenium-server-standalone-2.48.2.jar" />
 
           <property name="env.LC_TIME" value="pt_PT.UTF-8" />
 
-          <property name="env.MAIL" value="/var/spool/mail/root" />
-
           <property name="file.encoding" value="UTF-8" />
+
+          <property name="env.MAIL" value="/var/spool/mail/root" />
 
           <property name="env.LC_IDENTIFICATION" value="pt_PT.UTF-8" />
 
@@ -256,32 +254,19 @@
 
       </properties>
 
-      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest[0]" time="27.22" />
+      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="initializationError" time="0.005">
+          <error message="JSONObject[&quot;browsers&quot;] is not a JSONArray." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;browsers&quot;] is not a JSONArray.
+	at org.json.JSONObject.getJSONArray(JSONObject.java:559)
+	at pt.fccn.saw.selenium.WebDriverTestBaseParalell.browsersStrings(Unknown Source)
+	at com.saucelabs.junit.ConcurrentParameterized.allParameters(ConcurrentParameterized.java:104)
+	at com.saucelabs.junit.ConcurrentParameterized.&lt;init&gt;(ConcurrentParameterized.java:93)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+</error>
 
-      <testcase classname="pt.fccn.arquivo.tests.AdvancedTest" name="AdvancedTest[1]" time="29.248" />
+      </testcase>
 
       <system-out><![CDATA[JSON: null
-You did not specify browsers, testing with firefox and chrome...
-OS: Windows 7
-Version: 41
-Browser: chrome
-OS: Windows 8.1
-Device: null
-Version: 46
-Browser: firefox
-Device: null
-Orientation: null
-Orientation: null
-USER: ArquivoPT
-USER: ArquivoPT
-PASS: 663108d4-2412-436a-89d0-f8856bd33377
-PASS: 663108d4-2412-436a-89d0-f8856bd33377
-SauceOnDemandSessionID=42ff0122e8004903b49520554bd6194f job-name=AdvancedTest[0] chrome 41
-Running AdvancedTest. 
-SauceOnDemandSessionID=7bd270af40084ae4a02ef8a04e8bd84a job-name=AdvancedTest[1] firefox 46
-Running AdvancedTest. 
-SauceOnDemandSessionID=42ff0122e8004903b49520554bd6194f job-name=pt.fccn.arquivo.tests.AdvancedTest.AdvancedTest[0]
-SauceOnDemandSessionID=7bd270af40084ae4a02ef8a04e8bd84a job-name=pt.fccn.arquivo.tests.AdvancedTest.AdvancedTest[1]
 ]]></system-out>
 
       <system-err />
