@@ -55,6 +55,7 @@ import java.net.URL;
 import java.util.LinkedList;
 
 import org.json.*;
+import org.json.JSONException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -189,8 +190,12 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
               String browserPlatform= browserConfigs.getString("platform");
               String browserName= browserConfigs.getString("browser");
               String browserVersion = browserConfigs.getString("browser-version");
-              String device = browserConfigs.getString("device");
-              String deviceOrientation = browserConfigs.getString("device-orientation");
+              String device = null;
+              String deviceOrientation = null; 
+              try{
+                device = browserConfigs.getString("device");
+                deviceOrientation = browserConfigs.getString("device-orientation");
+              }catch(JSONException e){/* Intentionally empty */}  
               browsers.add(new String[]{browserOS, browserVersion, browserName, device, deviceOrientation});
             }
         }
