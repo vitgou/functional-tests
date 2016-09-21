@@ -135,9 +135,9 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
     protected WebDriver driver;
     //protected static ArrayList<WebDriver> drivers;
 
-    private String screenResolution;
 
 
+    protected static String screenResolution;
     protected static String testURL;
     protected static String browserVersion;
     protected static String titleOfFirstResult;
