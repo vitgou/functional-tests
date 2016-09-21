@@ -157,6 +157,7 @@
       <classpath refid="test.classpath"/>
       <sysproperty key="test.project.name" value="${ant.project.name} ${testcase}" />
       <sysproperty key="test.url" value="${test.url}"/>
+      <sysproperty name="test.resolution" value="${test.resolution}" />
       <sysproperty key="test.os" value="${test.os}"/>
       <sysproperty key="test.browser" value="${test.browser}"/>
       <sysproperty key="test.browser.version" value="${test.browser.version}"/>
