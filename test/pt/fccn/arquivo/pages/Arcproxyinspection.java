@@ -58,7 +58,7 @@ public class Arcproxyinspection {
 	private String filename_pre_prod= "monitored_indexes_pre_prod"; //files which contains webepage to be fetch for pre-prodution
 	private String broker_p58 ="p58.";
 	private String broker_p62 ="p62.";
-	private List<String> DateList = new ArrayList<String>();
+	private static List<String> DateList = new ArrayList<String>();
 	private boolean isPredProd=false;
 
 	/**
@@ -218,7 +218,6 @@ public class Arcproxyinspection {
 			return true;
 		try
 		{
-			
 			//date = format.parse(server);
 			//timestamp_file = format_arquivo.format(date).trim();
 			if (!(server.compareTo(timestamp_site[0].trim())==0)){ // testing timespan equality
