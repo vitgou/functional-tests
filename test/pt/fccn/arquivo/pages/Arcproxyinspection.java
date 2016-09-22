@@ -225,6 +225,7 @@ public class Arcproxyinspection {
 		catch (Exception e)
 		{
 			System.out.print("\n\nProblems parsing date of the website "+id+"\n"+this.getClass());
+			e.printStackTrace();
 			return false;
 
 		}
