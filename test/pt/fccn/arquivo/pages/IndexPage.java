@@ -82,6 +82,11 @@ public class IndexPage {
         driver.findElement(By.id(searchBox)).clear();
         driver.findElement(By.id(searchBox)).sendKeys(searchTerms);
         driver.findElement(By.id(searchButton)).submit();
+        try {
+          Thread.sleep(5000); //wait 5 seconds for page to load
+        } catch(InterruptedException ex) {
+          Thread.currentThread().interrupt();
+        }
         return new SearchPage(driver,isPreProd);
     }
     /**
