@@ -29,7 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.NoSuchElementException;
-import java.lang.RuntimeException
+import java.lang.RuntimeException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
