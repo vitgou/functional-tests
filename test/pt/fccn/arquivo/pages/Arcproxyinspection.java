@@ -29,6 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.NoSuchElementException;
+import java.lang.RuntimeException
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -158,22 +159,19 @@ public class Arcproxyinspection {
 	 * @return
 	 */
 	private String  getIdTitle (String server, String id,String[] Url){
-		//WebDriverWait wait = new WebDriverWait(driver, 15);
-        try {
-          Thread.sleep(5000); //wait 5 seconds for page to load
-        } catch(InterruptedException ex) {
-          Thread.currentThread().interrupt();
-        }		
-		if (!this.isPredProd){
-			driver.get(server+Url[0].substring(7)+"wayback/"+id);
-		}
-		else{
-			driver.get(Url[0].substring(7)+"wayback/"+id);
+		try{
+			WebDriverWait wait = new WebDriverWait(driver, 25);
+			if (!this.isPredProd){
+				driver.get(server+Url[0].substring(7)+"wayback/"+id);
+			}
+			else{
+				driver.get(Url[0].substring(7)+"wayback/"+id);
+				
+			}
 			
-		}
-		
-		//wait until title was loaded
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
+			//wait until title was loaded
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
+		}catch(RuntimeException e){System.out.println("Could not find the title.")}
 		return driver.getTitle();
 	}
 
