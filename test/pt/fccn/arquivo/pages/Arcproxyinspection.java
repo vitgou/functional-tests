@@ -210,6 +210,7 @@ public class Arcproxyinspection {
 	 * @return
 	 */
 	private boolean  inspectDate (String id, int i){
+		System.out.println("ID: " + id);
 		String server=null;
 		server = DateList.get(i);
 		String[] timestamp_site= null;
