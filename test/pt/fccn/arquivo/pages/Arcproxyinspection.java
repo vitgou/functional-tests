@@ -171,7 +171,7 @@ public class Arcproxyinspection {
 			
 			//wait until title was loaded
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
-		}catch(RuntimeException e){System.out.println("Could not find the title.")}
+		}catch(RuntimeException e){System.out.println("Could not find the title.");}
 		return driver.getTitle();
 	}
 
