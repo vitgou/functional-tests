@@ -28,7 +28,8 @@ import org.openqa.selenium.NoSuchElementException;
 
 import java.net.URL;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
+import javax.xml.parsers.*;
+import org.w3c.dom.*;
 
 
 /**
