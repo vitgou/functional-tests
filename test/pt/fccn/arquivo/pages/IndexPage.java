@@ -27,9 +27,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.NoSuchElementException;
 
 import java.net.URL;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
 
 
 /**
@@ -108,7 +113,7 @@ public class IndexPage {
      * @param searchTerms String of terms to search for
      * @return result page for query
      */
-    public OpenSearchPage opensarch(String searchTerms,boolean isPredprod){
+    public OpenSearchPage opensearch(String searchTerms,boolean isPredprod){
         String[] Url = driver.getCurrentUrl().split(".pt");
         try
         {
@@ -117,9 +122,16 @@ public class IndexPage {
             DocumentBuilder b = f.newDocumentBuilder();
             Document doc = b.parse(Url[0]+".pt/opensearch?query="+searchTerms);
             doc.getDocumentElement().normalize();
-            System.out.println("ROOT: " + doc.getDocumentElement().getNodeName());
-            
-            
+            NodeList nList = doc.getElementsByTagName("item");
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+                Node nNode = nList.item(temp);
+                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    System.out.println("URL: " + eElement.getAttribute("link"));
+                    System.out.println("Arcname: " + eElement.getAttribute("pwa:arcname"));
+                }
+            }
         }catch(Exception e){    System.out.println("Error loading XML: " + e);}
         System.out.println("URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
         driver.get(Url[0]+".pt/opensearch?query="+searchTerms);

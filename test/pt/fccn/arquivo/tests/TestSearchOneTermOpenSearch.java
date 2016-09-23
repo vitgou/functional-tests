@@ -23,7 +23,7 @@ public class TestSearchOneTermOpenSearch extends WebDriverTestBaseParalell{
 	 
      IndexPage index = new IndexPage(driver);
      Ispre_prod=index.setPreProd(pre_prod);
-     OpenSearchPage searchResults = index.opensarch(term,Ispre_prod);
+     OpenSearchPage searchResults = index.opensearch(term,Ispre_prod);
      
      
      if (titleOfFirstResult==null){
