@@ -113,7 +113,7 @@ public class IndexPage {
         try{
             Document doc = loadTestDocument(Url[0]+".pt/opensearch?query="+searchTerms);
             System.out.println(doc);
-        }catch(Exception e){System.out.println("Error loading XML: " + e.printStackTrace());}
+        }catch(Exception e){    System.out.println("Error loading XML: " + e);}
         System.out.println("URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
         driver.get(Url[0]+".pt/opensearch?query="+searchTerms);
         try {
