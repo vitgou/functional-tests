@@ -27,10 +27,11 @@ public class TestSearchOneTermOpenSearch extends WebDriverTestBaseParalell{
      
      
      if (titleOfFirstResult==null){
+     		System.out.println("title was null");
 			titleOfFirstResult=searchResults.setFirstResult(term);
 			System.out.print("\n\nFirstResult: "+titleOfFirstResult);
 			
-     }
+     }else{System.out.println("First Result: " + titleOfFirstResult);}
 //     System.out.print("\n\nFirst Result: "+titleOfFirstResult);
 //     
 //     
