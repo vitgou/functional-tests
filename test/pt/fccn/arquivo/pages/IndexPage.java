@@ -97,6 +97,11 @@ public class IndexPage {
     public OpenSearchPage opensarch(String searchTerms,boolean isPredprod){
         String[] Url = driver.getCurrentUrl().split(".pt");
         driver.get(Url[0]+".pt/opensearch?query="+searchTerms);
+        try {
+          Thread.sleep(5000); //wait 5 seconds for page to load
+        } catch(InterruptedException ex) {
+          Thread.currentThread().interrupt();
+        }        
         return new OpenSearchPage(driver,isPredprod);
     }
     
