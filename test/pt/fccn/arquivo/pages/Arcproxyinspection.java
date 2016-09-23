@@ -160,21 +160,16 @@ public class Arcproxyinspection {
 	 * @param Url - Driver URL
 	 * @return
 	 */
-	private String  getIdTitle (String server, String id,String[] Url){
-        try {
-          Thread.sleep(10000); //wait 10 seconds for page to load
-        } catch(InterruptedException ex) {
-          Thread.currentThread().interrupt();
-        }		
+	private String  getIdTitle (String server, String id,String[] Url){		
 		try{
 			WebDriverWait wait = new WebDriverWait(driver, 25);
 			if (!this.isPredProd){
 				System.out.println("URL: " + server+Url[0].substring(7)+"wayback/"+id );
-				driver.get(server+Url[0].substring(7)+"wayback/"+id);
+				driver.get("http://"+server+Url[0].substring(7)+"wayback/"+id);
 			}
 			else{
 				System.out.println("URL: " + Url[0].substring(7)+"wayback/"+id);
-				driver.get(Url[0].substring(7)+"wayback/"+id);
+				driver.get("http://"+Url[0].substring(7)+"wayback/"+id);
 				
 			}
 			
