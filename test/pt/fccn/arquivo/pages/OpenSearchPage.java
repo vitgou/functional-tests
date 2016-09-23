@@ -82,6 +82,7 @@ public class OpenSearchPage {
      * @return true if the term exists in the first result title or in the snippet text
      */
     public boolean existsResults() throws Exception{
+        System.out.println("Checking if results are presented!");
         String resultsTags = driver.findElement(By.id(numberOfResultsTag)).getText();
         WebElement listOfTitles = driver.findElement(By.xpath("//*[@id='feedContent']"));
         
