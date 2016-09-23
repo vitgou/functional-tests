@@ -164,9 +164,11 @@ public class Arcproxyinspection {
 		try{
 			WebDriverWait wait = new WebDriverWait(driver, 25);
 			if (!this.isPredProd){
+				System.out.println("URL: " + server+Url[0].substring(7)+"wayback/"+id );
 				driver.get(server+Url[0].substring(7)+"wayback/"+id);
 			}
 			else{
+				System.out.println("URL: " + Url[0].substring(7)+"wayback/"+id);
 				driver.get(Url[0].substring(7)+"wayback/"+id);
 				
 			}
