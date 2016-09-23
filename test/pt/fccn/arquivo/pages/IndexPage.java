@@ -122,6 +122,7 @@ public class IndexPage {
             DocumentBuilder b = f.newDocumentBuilder();
             Document doc = b.parse(Url[0]+".pt/opensearch?query="+searchTerms);
             doc.getDocumentElement().normalize();
+            /*
             NodeList nList = doc.getElementsByTagName("item");
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
@@ -132,15 +133,11 @@ public class IndexPage {
                     System.out.println("Arcname: " + eElement.getElementsByTagName("pwa:arcname").item(0).getTextContent());
                 }
             }
-        }catch(Exception e){    System.out.println("Error loading XML: " + e);}
+            */
+        }catch(Exception e){System.out.println("Error loading XML: " + e);}
         System.out.println("URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
-        driver.get(Url[0]+".pt/opensearch?query="+searchTerms);
-        try {
-          Thread.sleep(1000); //wait 1 seconds for page to load
-        } catch(InterruptedException ex) {
-          Thread.currentThread().interrupt();
-        }        
-        return new OpenSearchPage(driver,isPredprod);
+        /*driver.get(Url[0]+".pt/opensearch?query="+searchTerms);*/      
+        return new OpenSearchPage(driver,isPredprod,doc);
     }
     
     

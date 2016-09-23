@@ -75,6 +75,19 @@ public class OpenSearchPage {
             throw new IllegalStateException("This is not the results opensearch page\n URL of current page: " + driver.getCurrentUrl());
         }
     }
+
+    /**
+     * Create a new OpenSearchPage from navigation Document contains the XML From Opensearch
+     * @param driver
+     */
+    public OpenSearchPage(WebDriver driver,boolean isPreProd, Document doc){  
+        this.isPredProd=isPreProd;
+        this.driver= driver;
+        // Check that we're on the right page.
+        if (!(driver.getCurrentUrl().contains(pageURLCheck))) {
+            throw new IllegalStateException("This is not the results opensearch page\n URL of current page: " + driver.getCurrentUrl());
+        }
+    }
     
     /**
      * Gather search for a term
@@ -115,14 +128,13 @@ public class OpenSearchPage {
         System.out.println("Current URL: " + driver.getCurrentUrl());
         String openSearchUrl = driver.getCurrentUrl();
 
-        driver.get(openSearchUrl.split("opensearch")[0]);
+        //driver.get(openSearchUrl.split("opensearch")[0]);
     	driver.findElement(By.id(searchBox)).clear();
     	driver.findElement(By.id(searchBox)).sendKeys(searchTerms);
     	driver.findElement(By.id(searchButton)).submit();
     	WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
     	String result = listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText(); 
-        driver.get(openSearchUrl);
-
+        //driver.get(openSearchUrl);
         return result;
     }
     

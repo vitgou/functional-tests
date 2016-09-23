@@ -25,16 +25,10 @@ public class TestSearchOneTermOpenSearch extends WebDriverTestBaseParalell{
      Ispre_prod=index.setPreProd(pre_prod);
      OpenSearchPage searchResults = index.opensearch(term,Ispre_prod);
      
-     
-     if (titleOfFirstResult==null){
-     		System.out.println("title was null");
-			titleOfFirstResult=searchResults.setFirstResult(term);
-			System.out.print("\n\nFirstResult: "+titleOfFirstResult);
-			
-     }else{System.out.println("First Result: " + titleOfFirstResult);}
-//     System.out.print("\n\nFirst Result: "+titleOfFirstResult);
-//     
-//     
+	 System.out.println("Getting title of first result");
+	 titleOfFirstResult = searchResults.setFirstResult(term);
+	 System.out.print("\n\nFirstResult: "+ titleOfFirstResult);
+	
      try {
 		assertTrue("The search did not return results",searchResults.existsResults());
 		
