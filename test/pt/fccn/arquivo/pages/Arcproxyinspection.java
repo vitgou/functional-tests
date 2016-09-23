@@ -213,7 +213,7 @@ public class Arcproxyinspection {
 		System.out.println("ID: " + id);
 		String server=null;
 		server = DateList.get(i);
-		System.out.pritln("Server: " + server);
+		System.out.println("Server: " + server);
 		String[] timestamp_site= null;
 		timestamp_site= id.split("/");
 		if (timestamp_site[0].contains("id")) // This syntax does not contain timestamp
