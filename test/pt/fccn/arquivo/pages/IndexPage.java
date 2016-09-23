@@ -118,7 +118,6 @@ public class IndexPage {
         try
         {
             String[] Url = driver.getCurrentUrl().split(".pt");
-            doc = new Document();
             DocumentBuilderFactory f = 
                     DocumentBuilderFactory.newInstance();
             DocumentBuilder b = f.newDocumentBuilder();
