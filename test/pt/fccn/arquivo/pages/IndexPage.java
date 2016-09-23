@@ -115,7 +115,7 @@ public class IndexPage {
      */
     public OpenSearchPage opensearch(String searchTerms,boolean isPredprod){
         String[] Url = driver.getCurrentUrl().split(".pt");
-        Document doc;
+        Document doc = new Document();
         try
         {
             DocumentBuilderFactory f = 
