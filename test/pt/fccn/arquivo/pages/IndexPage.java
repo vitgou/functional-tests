@@ -26,6 +26,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.NoSuchElementException;
 
+import java.net.URL;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+
+
 /**
  * @author Simao Fontes
  *
@@ -89,6 +94,15 @@ public class IndexPage {
         }
         return new SearchPage(driver,isPreProd);
     }
+    
+
+    private static Document loadTestDocument(String url) throws Exception {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        return factory.newDocumentBuilder().parse(new URL(url).openStream());
+    }
+
+
     /**
      * Searches for a string in the interface
      * @param searchTerms String of terms to search for
@@ -96,10 +110,13 @@ public class IndexPage {
      */
     public OpenSearchPage opensarch(String searchTerms,boolean isPredprod){
         String[] Url = driver.getCurrentUrl().split(".pt");
+        Document doc = loadTestDocument(Url[0]+".pt/opensearch?query="+searchTerms);
+        System.out.println(doc);
+
         System.out.println("URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
         driver.get(Url[0]+".pt/opensearch?query="+searchTerms);
         try {
-          Thread.sleep(5000); //wait 5 seconds for page to load
+          Thread.sleep(1000); //wait 1 seconds for page to load
         } catch(InterruptedException ex) {
           Thread.currentThread().interrupt();
         }        
