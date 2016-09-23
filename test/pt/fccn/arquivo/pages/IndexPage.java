@@ -110,9 +110,10 @@ public class IndexPage {
      */
     public OpenSearchPage opensarch(String searchTerms,boolean isPredprod){
         String[] Url = driver.getCurrentUrl().split(".pt");
-        Document doc = loadTestDocument(Url[0]+".pt/opensearch?query="+searchTerms);
-        System.out.println(doc);
-
+        try{
+            Document doc = loadTestDocument(Url[0]+".pt/opensearch?query="+searchTerms);
+            System.out.println(doc);
+        }catch(Exception e){System.out.println("Error loading XML: " + e.printStackTrace());}
         System.out.println("URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
         driver.get(Url[0]+".pt/opensearch?query="+searchTerms);
         try {
