@@ -128,8 +128,8 @@ public class IndexPage {
                 System.out.println("\nCurrent Element :" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    System.out.println("URL: " + eElement.getAttribute("link"));
-                    System.out.println("Arcname: " + eElement.getAttribute("pwa:arcname"));
+                    System.out.println("URL: " + eElement.getElementsByTagName("link").item(0).getTextContent());
+                    System.out.println("Arcname: " + eElement.getElementsByTagName("pwa:arcname").item(0).getTextContent());
                 }
             }
         }catch(Exception e){    System.out.println("Error loading XML: " + e);}
