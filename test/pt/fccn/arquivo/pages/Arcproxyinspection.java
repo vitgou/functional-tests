@@ -161,6 +161,11 @@ public class Arcproxyinspection {
 	 * @return
 	 */
 	private String  getIdTitle (String server, String id,String[] Url){
+        try {
+          Thread.sleep(10000); //wait 10 seconds for page to load
+        } catch(InterruptedException ex) {
+          Thread.currentThread().interrupt();
+        }		
 		try{
 			WebDriverWait wait = new WebDriverWait(driver, 25);
 			if (!this.isPredProd){
