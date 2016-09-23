@@ -63,18 +63,6 @@ public class OpenSearchPage {
  // Patern to detect if there are results
     private Pattern noResultsPattern = Pattern.compile("\\d Resultados");
    private boolean isPredProd=false;
-    /**
-     * Create a new OpenSearchPage from navigation
-     * @param driver
-     */
-    public OpenSearchPage(WebDriver driver,boolean isPreProd){	
-    	this.isPredProd=isPreProd;
-        this.driver= driver;
-        // Check that we're on the right page.
-        if (!(driver.getCurrentUrl().contains(pageURLCheck))) {
-            throw new IllegalStateException("This is not the results opensearch page\n URL of current page: " + driver.getCurrentUrl());
-        }
-    }
 
     /**
      * Create a new OpenSearchPage from navigation Document contains the XML From Opensearch
@@ -82,6 +70,18 @@ public class OpenSearchPage {
      */
     public OpenSearchPage(WebDriver driver,boolean isPreProd, Document doc){  
         this.isPredProd=isPreProd;
+        this.driver= driver;
+        // Check that we're on the right page.
+        if (!(driver.getCurrentUrl().contains(pageURLCheck))) {
+            throw new IllegalStateException("This is not the results opensearch page\n URL of current page: " + driver.getCurrentUrl());
+        }
+    }
+    /**
+     * Create a new OpenSearchPage from navigation
+     * @param driver
+     */
+    public OpenSearchPage(WebDriver driver,boolean isPreProd){	
+    	this.isPredProd=isPreProd;
         this.driver= driver;
         // Check that we're on the right page.
         if (!(driver.getCurrentUrl().contains(pageURLCheck))) {
