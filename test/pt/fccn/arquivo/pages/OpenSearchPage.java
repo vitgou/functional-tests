@@ -113,7 +113,7 @@ public class OpenSearchPage {
     	//Create a new firefox driver
     	
         System.out.println("Current URL: " + driver.getCurrentUrl());
-        System.out.println(driver.getCurrentUrl().split("opensearch")[0])
+        System.out.println(driver.getCurrentUrl().split("opensearch")[0]);
 
         WebDriver searchDriver = new FirefoxDriver();
         searchDriver.get(driver.getCurrentUrl().split("opensearch")[0]);
