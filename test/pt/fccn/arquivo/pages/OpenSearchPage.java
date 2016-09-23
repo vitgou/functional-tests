@@ -113,16 +113,17 @@ public class OpenSearchPage {
     	//Create a new firefox driver
     	
         System.out.println("Current URL: " + driver.getCurrentUrl());
-        System.out.println(driver.getCurrentUrl().split("opensearch")[0]);
+        String openSearchUrl = driver.getCurrentUrl();
 
-        WebDriver searchDriver = new FirefoxDriver();
-        searchDriver.get(driver.getCurrentUrl().split("opensearch")[0]);
-    	searchDriver.findElement(By.id(searchBox)).clear();
-    	searchDriver.findElement(By.id(searchBox)).sendKeys(searchTerms);
-    	searchDriver.findElement(By.id(searchButton)).submit();
-    	WebElement listOfResults = searchDriver.findElement(By.id(listOfResultsTag));
-    	searchDriver.close();
-    	return listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText();
+        driver.get(openSearchUrl.split("opensearch")[0]);
+    	driver.findElement(By.id(searchBox)).clear();
+    	driver.findElement(By.id(searchBox)).sendKeys(searchTerms);
+    	driver.findElement(By.id(searchButton)).submit();
+    	WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
+    	String result = listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText(); 
+        driver.get(openSearchUrl);
+
+        return result;
     }
     
     
