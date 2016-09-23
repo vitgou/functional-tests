@@ -103,21 +103,6 @@ public class IndexPage {
         return factory.newDocumentBuilder().parse(new URL(url).openStream());
     }
 
-
-public static void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
-    TransformerFactory tf = TransformerFactory.newInstance();
-    Transformer transformer = tf.newTransformer();
-    transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-    transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-    transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-    transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-    transformer.transform(new DOMSource(doc), 
-         new StreamResult(new OutputStreamWriter(out, "UTF-8")));
-}
-
-
     /**
      * Searches for a string in the interface
      * @param searchTerms String of terms to search for
@@ -132,7 +117,7 @@ public static void printDocument(Document doc, OutputStream out) throws IOExcept
             DocumentBuilder b = f.newDocumentBuilder();
             Document doc = b.parse(Url[0]+".pt/opensearch?query="+searchTerms);
             doc.getDocumentElement().normalize();
-            printDocument(doc, System.out);
+            System.out.println("ROOT: " + doc.getDocumentElement().getNodeName());
             
             
         }catch(Exception e){    System.out.println("Error loading XML: " + e);}
