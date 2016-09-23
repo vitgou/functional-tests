@@ -114,10 +114,11 @@ public class IndexPage {
      * @return result page for query
      */
     public OpenSearchPage opensearch(String searchTerms,boolean isPredprod){
-        String[] Url = driver.getCurrentUrl().split(".pt");
-        Document doc = new Document();
+        Document doc = null;
         try
         {
+            String[] Url = driver.getCurrentUrl().split(".pt");
+            doc = new Document();
             DocumentBuilderFactory f = 
                     DocumentBuilderFactory.newInstance();
             DocumentBuilder b = f.newDocumentBuilder();
