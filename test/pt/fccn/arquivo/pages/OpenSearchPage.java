@@ -111,7 +111,10 @@ public class OpenSearchPage {
     public String setFirstResult(String searchTerms) {
     	
     	//Create a new firefox driver
-    	WebDriver searchDriver = new FirefoxDriver();
+    	
+        System.out.println("Current URL: " + driver.getCurrentUrl());
+
+        WebDriver searchDriver = new FirefoxDriver();
     	searchDriver.get(driver.getCurrentUrl().split("opensearch")[0]);
     	searchDriver.findElement(By.id(searchBox)).clear();
     	searchDriver.findElement(By.id(searchBox)).sendKeys(searchTerms);
