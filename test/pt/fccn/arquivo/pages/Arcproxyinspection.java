@@ -109,6 +109,8 @@ public class Arcproxyinspection {
 					if(!inspectDate ){
 						title_p58=getIdTitle(broker_p58, id,Url);
 						date_p58=getIdDate(broker_p58,id);
+						System.out.println("Title p58: "+title_p58);
+						System.out.println("Date p58: " + date_p58);
 						DateList.add(date_p58); //Contains every dates of web content fetched from the file
 						title_p62=getIdTitle(broker_p62, id,Url);
 						date_p62=getIdDate(broker_p62,id);				
