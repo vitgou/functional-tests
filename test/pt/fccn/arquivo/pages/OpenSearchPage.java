@@ -71,6 +71,9 @@ public class OpenSearchPage {
     public OpenSearchPage(WebDriver driver,boolean isPreProd, Document doc){  
         this.isPredProd=isPreProd;
         this.driver= driver;
+
+        System.out.println("New OpenSearchPage, CurrentURL: " + driver.getCurrentUrl());
+
         // Check that we're on the right page.
         if (!(driver.getCurrentUrl().contains(pageURLCheck))) {
             throw new IllegalStateException("This is not the results opensearch page\n URL of current page: " + driver.getCurrentUrl());
