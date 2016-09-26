@@ -147,12 +147,17 @@ public class IndexPage {
      * Change language of the page to english
      */
     public void langToEnglish(){
-        
-         WebElement langElem = driver.findElement(By.linkText(linkTextEN));
-         langElem.click();
-         String pageTitle = driver.getTitle();
-         if (!titleTextEN.contentEquals(pageTitle))
-             throw new IllegalStateException("Expected Title: "+ titleTextEN + "\nFound Title: " + pageTitle);
+        try{
+             WebElement langElem = driver.findElement(By.linkText(linkTextEN));
+             langElem.click();
+             String pageTitle = driver.getTitle();
+             if (!titleTextEN.contentEquals(pageTitle))
+                 throw new IllegalStateException("Expected Title: "+ titleTextEN + "\nFound Title: " + pageTitle);
+        }catch (Exception e ){
+            System.out.println("Problems changing language to English");
+            e.printStackTrace();
+            throw e;
+        }     
     }
     /**
      * Click the Highlights page
