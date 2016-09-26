@@ -133,6 +133,14 @@ public class OpenSearchPage {
         System.out.println("was able to sendKeys");
     	driver.findElement(By.id(searchButton)).submit();
         System.out.println("was able to submit search");
+
+        try {
+          Thread.sleep(5000); //wait 5 seconds for page to load
+        } catch(InterruptedException ex) {
+          Thread.currentThread().interrupt();
+        }
+
+        
     	WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
     	String result = listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText(); 
         //driver.get(openSearchUrl);
