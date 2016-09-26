@@ -148,8 +148,18 @@ public class IndexPage {
      */
     public void langToEnglish(){
         try{
-             WebElement langElem = driver.findElement(By.linkText(linkTextEN));
+             try {
+                Thread.sleep(5000);                 //wait for page to load
+             } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+             }            
+             WebElement langElem = driver.findElement(By.linkText(linkTextEN));             
              langElem.click();
+             try {
+                Thread.sleep(5000);                 //wait for page to load
+             } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+             }              
              String pageTitle = driver.getTitle();
              if (!titleTextEN.contentEquals(pageTitle))
                  throw new IllegalStateException("Expected Title: "+ titleTextEN + "\nFound Title: " + pageTitle);
