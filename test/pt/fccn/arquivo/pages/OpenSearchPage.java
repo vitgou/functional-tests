@@ -114,9 +114,20 @@ public class OpenSearchPage {
      * @return true if the first result are coherent with opensearch result, false otherwises
      */
     public boolean inspectCoherence(String firstTitleOfResultList) {
-        WebElement listOfTitles = driver.findElement(By.xpath("//*[@id='feedContent']"));
-        String resultTitle = listOfTitles.getText().split("\n")[0];
-        return resultTitle.contains(firstTitleOfResultList);	
+            try{
+                NodeList nList = doc.getElementsByTagName("item");            
+                Node nNode = nList.item(0);
+                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    String firstTitleOpenSearch = eElement.getElementsByTagName("title").item(0).getTextContent();
+                    System.out.println("Found Title: " + firstTitleOpenSearch );                   
+                }
+                return firstTitleOpenSearch.contains(firstTitleOfResultList);
+            }catch (Exception e) {
+                e.printStackTrace(); 
+                return false;
+            }	
     }
 
     /**
