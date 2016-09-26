@@ -98,6 +98,7 @@ public class OpenSearchPage {
         try{
             System.out.println("Checking if results are presented!");
             NodeList nList = doc.getElementsByTagName("item");
+            System.out.println("Number of Results: " + nlist.getLength());
             if (nList.getLength()<=0)
             	return false;
             return true;
