@@ -94,15 +94,20 @@ public class OpenSearchPage {
      * @param query Term that was searched
      * @return true if the term exists in the first result title or in the snippet text
      */
-    public boolean existsResults() throws Exception{
-        System.out.println("Checking if results are presented!");
-        String resultsTags = driver.findElement(By.id(numberOfResultsTag)).getText();
-        WebElement listOfTitles = driver.findElement(By.xpath("//*[@id='feedContent']"));
-        
-        if (resultsTags.length()<=0)
-        	return false;
-//                throw new Exception("No results for term");
-        return true;
+    public boolean existsResults(){
+        try{
+            System.out.println("Checking if results are presented!");
+            String resultsTags = driver.findElement(By.id(numberOfResultsTag)).getText();
+            WebElement listOfTitles = driver.findElement(By.xpath("//*[@id='feedContent']"));
+            
+            if (resultsTags.length()<=0)
+            	return false;
+    //                throw new Exception("No results for term");
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
     /**
      * Verify coherence in result between opensarch api and search on arquivo.pt
