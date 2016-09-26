@@ -128,8 +128,11 @@ public class OpenSearchPage {
 
         //driver.get(openSearchUrl.split("opensearch")[0]);
     	driver.findElement(By.id(searchBox)).clear();
+        System.out.println("was able to clear");
     	driver.findElement(By.id(searchBox)).sendKeys(searchTerms);
+        System.out.println("was able to sendKeys");
     	driver.findElement(By.id(searchButton)).submit();
+        System.out.println("was able to submit search");
     	WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
     	String result = listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText(); 
         //driver.get(openSearchUrl);
