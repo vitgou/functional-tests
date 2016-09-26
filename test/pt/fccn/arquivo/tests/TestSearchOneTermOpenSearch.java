@@ -29,14 +29,9 @@ public class TestSearchOneTermOpenSearch extends WebDriverTestBaseParalell{
 	 titleOfFirstResult = searchResults.setFirstResult(term);
 	 System.out.print("\n\nFirstResult: "+ titleOfFirstResult);
 	
-     try {
 		assertTrue("The search did not return results",searchResults.existsResults());
-		
+		System.out.println("Passed: Results exist...");
 		assertTrue("The search result from opensearch and search are not coherent",searchResults.inspectCoherence(titleOfFirstResult));
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
 	 }
 }
 
