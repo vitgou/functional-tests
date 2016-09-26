@@ -60,10 +60,12 @@ public class OpenSearchPage {
     private static final String searchBox = "txtSearch";
     private static final String searchButton = "btnSubmit";
     private final String pageURLCheck = "opensearch";
+
  // Patern to detect if there are results
     private Pattern noResultsPattern = Pattern.compile("\\d Resultados");
-   private boolean isPredProd=false;
+    private boolean isPredProd=false;
 
+    private Document doc;
     /**
      * Create a new OpenSearchPage from navigation Document contains the XML From Opensearch
      * @param driver
@@ -71,13 +73,8 @@ public class OpenSearchPage {
     public OpenSearchPage(WebDriver driver,boolean isPreProd, Document doc){  
         this.isPredProd=isPreProd;
         this.driver= driver;
-
+        this.doc = doc;
         System.out.println("New OpenSearchPage, CurrentURL: " + driver.getCurrentUrl());
-
-        // Check that we're on the right page.
-        if (!(driver.getCurrentUrl().contains(pageURLCheck))) {
-            throw new IllegalStateException("This is not the results opensearch page\n URL of current page: " + driver.getCurrentUrl());
-        }
     }
     /**
      * Create a new OpenSearchPage from navigation
@@ -126,9 +123,7 @@ public class OpenSearchPage {
      */
     public String setFirstResult(String searchTerms) {
     	
-    	//Create a new firefox driver
-    	
-        System.out.println("Current URL: " + driver.getCurrentUrl());
+        System.out.println("The URL: " + driver.getCurrentUrl());
         String openSearchUrl = driver.getCurrentUrl();
 
         //driver.get(openSearchUrl.split("opensearch")[0]);
