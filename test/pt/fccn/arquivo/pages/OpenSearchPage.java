@@ -117,10 +117,11 @@ public class OpenSearchPage {
             try{
                 NodeList nList = doc.getElementsByTagName("item");            
                 Node nNode = nList.item(0);
+                String firstTitleOpenSearch ="";
                 System.out.println("\nCurrent Element :" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    String firstTitleOpenSearch = eElement.getElementsByTagName("title").item(0).getTextContent();
+                    firstTitleOpenSearch = eElement.getElementsByTagName("title").item(0).getTextContent();
                     System.out.println("Found Title: " + firstTitleOpenSearch );                   
                 }
                 return firstTitleOpenSearch.contains(firstTitleOfResultList);
