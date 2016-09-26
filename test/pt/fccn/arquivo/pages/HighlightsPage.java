@@ -100,7 +100,9 @@ public class HighlightsPage {
      */
     public boolean isPageCorrect() {
     	try{
-    		return (h1Title.compareTo(driver.findElement(By.xpath("//*[@id=\"parent-fieldname-text\"]/ul/li[1]/a")).getText()) == 0);
+    		System.out.println("Current Page: " + driver.getCurrentUrl());
+    		String foundH1Title = driver.findElement(By.xpath("//*[@id=\"parent-fieldname-text\"]/ul/li[1]/a")).getText();
+    		return (h1Title.compareTo() == 0);
     	}catch(Exception e){
     		System.out.println("Error comparing h1 title");
     		e.printStackTrace();
