@@ -49,15 +49,19 @@ public class HighlightsTest extends WebDriverTestBaseParalell{
     	System.out.print("Running HighlightsTest. \n");
         IndexPage index = new IndexPage(driver);
         index.langToEnglish();
-        HighlightsPage highlightPage = index.goToHighlightsPage();	
+        HighlightsPage highlightPage = index.goToHighlightsPage();
+        System.out.println("Starting Assertions!");	
         assertTrue("The page displayed has not got the correct text being displayed",
                 highlightPage.isPageCorrect());
+        System.out.println("Passed 1st Assertion!");
         assertTrue("The page  is not online",
                 highlightPage.goThroughHighlights());
-        
+        System.out.println("Passed 2nd Assertion!");
         assertTrue("The page link is broken ",
                 highlightPage.checkLinkHighligths());
+        System.out.println("Passed 3rd Assertion!");
         assertTrue("The title of the page is not correct ",
                 highlightPage.checkHighligthsPageLinks());
+        System.out.println("Passed 4th Assertion!");
     }
 }
