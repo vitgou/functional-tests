@@ -97,14 +97,12 @@ public class OpenSearchPage {
     public boolean existsResults(){
         try{
             System.out.println("Checking if results are presented!");
-            String resultsTags = driver.findElement(By.id(numberOfResultsTag)).getText();
-            WebElement listOfTitles = driver.findElement(By.xpath("//*[@id='feedContent']"));
-            
-            if (resultsTags.length()<=0)
+            NodeList nList = doc.getElementsByTagName("item");
+            if (nList.getLength()<=0)
             	return false;
-    //                throw new Exception("No results for term");
             return true;
         }catch(Exception e){
+            //some error getting the item tag in openSearch
             e.printStackTrace();
             return false;
         }
