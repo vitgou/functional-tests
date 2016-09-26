@@ -74,7 +74,6 @@ public class OpenSearchPage {
         this.isPredProd=isPreProd;
         this.driver= driver;
         this.doc = doc;
-        System.out.println("New OpenSearchPage, CurrentURL: " + driver.getCurrentUrl());
     }
     /**
      * Create a new OpenSearchPage from navigation
@@ -118,7 +117,6 @@ public class OpenSearchPage {
                 NodeList nList = doc.getElementsByTagName("item");            
                 Node nNode = nList.item(0);
                 String firstTitleOpenSearch ="";
-                System.out.println("\nCurrent Element :" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     firstTitleOpenSearch = eElement.getElementsByTagName("title").item(0).getTextContent();
@@ -139,30 +137,21 @@ public class OpenSearchPage {
      */
     public String setFirstResult(String searchTerms) {
     	
-        System.out.println("The URL: " + driver.getCurrentUrl());
         String openSearchUrl = driver.getCurrentUrl();
 
         //driver.get(openSearchUrl.split("opensearch")[0]);
     	driver.findElement(By.id(searchBox)).clear();
-        System.out.println("was able to clear");
-    	driver.findElement(By.id(searchBox)).sendKeys(searchTerms);
-        System.out.println("was able to sendKeys");
-    	driver.findElement(By.id(searchButton)).submit();
-        System.out.println("was able to submit search");
-
+        driver.findElement(By.id(searchBox)).sendKeys(searchTerms);
+        driver.findElement(By.id(searchButton)).submit();
+        
         try {
           Thread.sleep(5000); //wait 5 seconds for page to load
         } catch(InterruptedException ex) {
           Thread.currentThread().interrupt();
         }
 
-
     	WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
-        System.out.println("was able to find list of results");
     	String result = listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText(); 
-        //driver.get(openSearchUrl);
-
-        System.out.println("Result: " + result);
         return result;
     }
     

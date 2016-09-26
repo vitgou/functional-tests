@@ -18,19 +18,18 @@ public class TestSearchOneTermOpenSearch extends WebDriverTestBaseParalell{
 	@Test
 	@Retry
 	 public void testSearchOneTermOpenSearch() {
-	 System.out.print("Running TestSearchOneTermOpenSearch. \n");
-	 String term = "fccn";
-	 
-     IndexPage index = new IndexPage(driver);
-     Ispre_prod=index.setPreProd(pre_prod);
-     OpenSearchPage searchResults = index.opensearch(term,Ispre_prod);
-     
-	 System.out.println("Getting title of first result");
-	 titleOfFirstResult = searchResults.setFirstResult(term);
-	 System.out.print("\n\nFirstResult: "+ titleOfFirstResult);
-	
+		System.out.print("Running TestSearchOneTermOpenSearch. \n");
+		String term = "fccn";
+		 
+	    IndexPage index = new IndexPage(driver);
+	    Ispre_prod=index.setPreProd(pre_prod);
+	    OpenSearchPage searchResults = index.opensearch(term,Ispre_prod);
+	     
+		System.out.println("Getting the Title of the first result");
+		titleOfFirstResult = searchResults.setFirstResult(term);
+		System.out.print("\n\nFirstResult: "+ titleOfFirstResult);
+		
 		assertTrue("The search did not return results",searchResults.existsResults());
-		System.out.println("Passed: Results exist...");
 		assertTrue("The search result from opensearch and search are not coherent",searchResults.inspectCoherence(titleOfFirstResult));
 	 }
 }
