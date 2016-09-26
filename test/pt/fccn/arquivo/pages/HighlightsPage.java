@@ -102,7 +102,8 @@ public class HighlightsPage {
     	try{
     		System.out.println("Current Page: " + driver.getCurrentUrl());
     		String foundH1Title = driver.findElement(By.xpath("//*[@id=\"parent-fieldname-text\"]/ul/li[1]/a")).getText();
-    		return (h1Title.compareTo() == 0);
+    		System.out.println("Found Title: " + foundH1Title);
+    		return (h1Title.compareTo(foundH1Title) == 0);
     	}catch(Exception e){
     		System.out.println("Error comparing h1 title");
     		e.printStackTrace();
