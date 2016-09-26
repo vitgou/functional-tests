@@ -140,8 +140,9 @@ public class OpenSearchPage {
           Thread.currentThread().interrupt();
         }
 
-        
+
     	WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
+        System.out.println("was able to find list of results");
     	String result = listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText(); 
         //driver.get(openSearchUrl);
 
