@@ -133,6 +133,8 @@ public class OpenSearchPage {
     	WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
     	String result = listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText(); 
         //driver.get(openSearchUrl);
+
+        System.out.println("Result: " + result);
         return result;
     }
     
