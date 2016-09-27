@@ -116,13 +116,21 @@ public class HighlightsPage {
      * @return true if all links from 
      */
     public boolean goThroughHighlights()  {
-    	
-        List <WebElement> listOfHighlights = driver.findElements(By.id("boxes"));
-        for (WebElement element : listOfHighlights) {
-        	element.click();
-        	
-        }
-        return true;
+    	try{
+			try {
+	            Thread.sleep(2000);                 //wait for page to load
+	        } catch(InterruptedException ex) {
+	            Thread.currentThread().interrupt();
+	        }    		
+	        List <WebElement> listOfHighlights = driver.findElements(By.id("boxes"));
+	        for (WebElement element : listOfHighlights) {
+	        	element.click();
+	        }
+	        return true;
+	    }catch(Exception e){
+	    	System.out.println("Some Error navigating through the Highlights");
+	    	return false;
+	    }
     }
     
     
@@ -132,8 +140,8 @@ public class HighlightsPage {
      * @return true if all of links are not broken in the main page
      */
     public boolean checkLinkHighligths(){
-    	List<WebElement> linkList= driver.findElements(By.tagName("a"));
-   	 int statuscode=0;
+       List<WebElement> linkList= driver.findElements(By.tagName("a"));
+   	   int statuscode=0;
        for(int i=0 ; i<linkList.size() ; i++)
        {
        	if(linkList.get(i).getAttribute("href") != null)
