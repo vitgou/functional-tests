@@ -77,8 +77,12 @@ public class AdvancedPage {
             driver.findElement(By.id("adv_and")).sendKeys("sapo");
             driver.findElement(By.id("site")).clear();
             driver.findElement(By.id("site")).sendKeys("sapo.pt");
-            
             driver.findElement(By.id("btnSubmitBottom")).click();
+            try {
+                Thread.sleep(5000);                 //wait for page to load
+            } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
             WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
             
             title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText();
