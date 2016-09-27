@@ -83,13 +83,16 @@ public class AdvancedPage {
             
             title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText();
             results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
+            if (!title.contains("SAPO") || title==null){
+                System.out.println("Unexpected Title, missing SAPO");
+                return false;            
+            }
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            
+            System.out.println("Some Error Finding Elements in existsInResults");
+            e.printStackTrace();
             return false;
         }
-        if (!title.contains("SAPO") || title==null)
-            return false;
         return true;
     }
     
