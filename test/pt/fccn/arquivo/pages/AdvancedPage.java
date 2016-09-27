@@ -108,16 +108,26 @@ public class AdvancedPage {
      * @return
      */
     public boolean searchURL(){
+        try{
+            WebElement listOfResults=null;
+            driver.findElement(By.id("txtSearch")).clear();
+            driver.findElement(By.id("txtSearch")).sendKeys("sapo site:www.sapo.pt");
+            driver.findElement(By.id("btnSubmit")).click();
+            try {
+                Thread.sleep(5000);                 //wait for page to load
+            } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }        
+            listOfResults = driver.findElement(By.id(listOfResultsTag));
+            results_withoutWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
         
-        WebElement listOfResults=null;
-        driver.findElement(By.id("txtSearch")).clear();
-        driver.findElement(By.id("txtSearch")).sendKeys("sapo site:www.sapo.pt");
-        driver.findElement(By.id("btnSubmit")).click();
-        listOfResults = driver.findElement(By.id(listOfResultsTag));
-        results_withoutWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
-        
-        if (results_withoutWWW.equals(results_withWWW))
-            return true;
-    return false;
+            if (results_withoutWWW.equals(results_withWWW))
+                return true;
+            return false;
+        }catch (Exception e ){
+            System.out.println("Error searching URL");
+            e.printStackTrace();
+            return false;
+        }
     }
 }
