@@ -100,6 +100,11 @@ public class HighlightsPage {
      */
     public boolean isPageCorrect() {
     	try{
+			try {
+	            Thread.sleep(5000);                 //wait for page to load
+	        } catch(InterruptedException ex) {
+	            Thread.currentThread().interrupt();
+	        }      		
     		System.out.println("Current Page: " + driver.getCurrentUrl());
     		String foundH1Title = driver.findElement(By.xpath("//*[@id=\"parent-fieldname-text\"]/ul/li[1]/a")).getText();
     		System.out.println("Found Title: " + foundH1Title);
