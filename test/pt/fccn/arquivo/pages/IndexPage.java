@@ -207,6 +207,9 @@ public class IndexPage {
         catch(NoSuchElementException e){
                   System.out.println("Could not find the pesquisa-avancada element");
                   throw e;
+        } catch (Exception e){
+            System.out.println("Unexpected Error. Unable to go to AdvancedPage");
+            throw e;
         }                  
         return new AdvancedPage(driver);
     }
