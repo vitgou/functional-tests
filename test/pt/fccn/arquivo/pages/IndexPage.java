@@ -61,7 +61,7 @@ public class IndexPage {
      */
     public IndexPage(WebDriver driver){
         this.driver = driver;
-              try {
+        try {
           Thread.sleep(5000);                 //wait for page to load
         } catch(InterruptedException ex) {
           Thread.currentThread().interrupt();
@@ -147,12 +147,7 @@ public class IndexPage {
      * Change language of the page to english
      */
     public void langToEnglish(){
-        try{
-             try {
-                Thread.sleep(5000);                 //wait for page to load
-             } catch(InterruptedException ex) {
-                Thread.currentThread().interrupt();
-             }            
+        try{         
              WebElement langElem = driver.findElement(By.linkText(linkTextEN));             
              langElem.click();
              try {
