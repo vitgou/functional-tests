@@ -40,9 +40,11 @@ public class TermsAndConditionsPage {
      */
     public TermsAndConditionsPage(WebDriver driver) {
         this.driver = driver;
+        String foundTitle = driver.getTitle();
         // Check that we're on the right page.
-        if (!(driver.getTitle().contains(titleTextPT))) {
+        if (!(foundTitle.contains(titleTextPT))) {
             // Alternatively, we could navigate to the login page, perhaps logging out first
+            System.out.println("Obtained title: " + foundTitle);
             throw new IllegalStateException("This is not the terms and conditions page\n"+driver.getCurrentUrl()+""+this.getClass().getName());
         }
     }
