@@ -184,6 +184,11 @@ public class IndexPage {
      */
     public TermsAndConditionsPage getTermsAndConditionsPage(){
         driver.findElement(By.linkText(termsandconditionstitleTextPT)).click();
+        try {
+            Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }          
         return new TermsAndConditionsPage(driver);
     }
     
