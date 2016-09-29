@@ -153,9 +153,10 @@ public class ReplayTabletPage {
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
         System.out.println("Switched the language!");
         if( /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
-           !facebookOk(currentURL) || !twitterOk(currentURL) ||
+           !facebookOk(currentURL) || 
+           !twitterOk(currentURL) ||
            !emailOk(currentURL) ||
-           !tableOfVersionsOk(currentURL) || !logoOk(currentURL))
+           !logoOk(currentURL))
         {
           return false;
         }
@@ -262,6 +263,7 @@ public class ReplayTabletPage {
           return false;
       }catch (Exception e){
         System.out.println("Should not have reached here");
+        System.out.println("Error Testing Facebook");
         return false;
       } 
     }  
@@ -294,6 +296,7 @@ public class ReplayTabletPage {
           return false;
       }catch (Exception e){
         System.out.println("Should not have reached here");
+        System.out.println("Error Testing Twitter");
         return false;
       } 
     } 
@@ -330,45 +333,10 @@ public class ReplayTabletPage {
           return false;
       }catch (Exception e){
         System.out.println("Should not have reached here");
+        System.out.println("Error testing email");
         return false;
       } 
     }   
-
-
-    /**
-     * Check if the Table of Versions title and href are correct
-     */
-    public boolean tableOfVersionsOk(String currentURL){
-      try{
-        String tableOfVersionsHref = driver.findElement(By.xpath("//a[@id=\"versionsTable\"]")).getAttribute("href");
-        String tableOfVersionsTitle = driver.findElement(By.xpath("//a[@id=\"versionsTable\"]")).getAttribute("title");
-        
-        String urlNoDate = currentURL.substring(15);
-
-        String expectedtableOfVersionsHref = serverName+"search.jsp?l="+ prop.getProperty("lang")+"&query="+ urlNoDate+"&btnSubmit=Pesquisar";
-        String expectedtableOfVersionsTitle = prop.getProperty("versionsStoredTable");
-
-
-        if(expectedtableOfVersionsHref.equals(tableOfVersionsHref) && expectedtableOfVersionsTitle.equals(tableOfVersionsTitle)) {
-          return true;
-        }
-        else{
-          System.out.println("Found this Table of Versions href: " + tableOfVersionsHref);
-          System.out.println("Expected this Table of Versions href: " + expectedtableOfVersionsHref );
-          System.out.println("Found this Table of Versions title: " + tableOfVersionsTitle);
-          System.out.println("Expected this Table of Versions title: " + expectedtableOfVersionsTitle );          
-          return false;
-        }     
-
-      }catch(NoSuchElementException e){
-          System.out.println("Could not find the Table of Versions Anchor");
-          return false;
-      }catch (Exception e){
-        System.out.println("Should not have reached here");
-        return false;
-      } 
-    } 
-
 
     /**
      * Check if the Logo exists and href is correct
