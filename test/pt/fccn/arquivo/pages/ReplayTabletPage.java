@@ -65,7 +65,7 @@ import java.nio.channels.ReadableByteChannel;
  */
 
 
-public class ReplayPage {
+public class ReplayTabletPage {
     private final WebDriver driver;
     private List<String> testURLs = new ArrayList<String>();
     private boolean isPreProd;
@@ -92,7 +92,7 @@ public class ReplayPage {
     private BufferedReader inputEn = null;
     private String baseScreenshotURL;
 
-    public ReplayPage(WebDriver driver, boolean isPreProd) {
+    public ReplayTabletPage(WebDriver driver, boolean isPreProd) {
         this.driver = driver;
         //driver.manage().window().setSize(new Dimension(1280, 768)); 
         br = null;
@@ -150,49 +150,15 @@ public class ReplayPage {
         goToCurrentURL(currentURL);
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
 
-        if(!replayBarURLsOk(currentURL) ||  
-           /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
+        if( /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
            !emailOk(currentURL) ||
-           !tableOfVersionsOk(currentURL) || !logoOk(currentURL) ||
-           !checkLeftMenu(currentURL))
+           !tableOfVersionsOk(currentURL) || !logoOk(currentURL) ||)
         {
           return false;
         }
       }
       return true;
-    }
-
-    /**
-     * Check if both the expanded URL that appears on the replayBar is correct
-     */
-    public boolean replayBarURLsOk(String currentURL){
-      String maximzedURL ="";
-      String urlWithoutDate = "";
-      try{        
-        urlWithoutDate = currentURL.substring(15);
-        urlWithoutDate =truncateURL(urlWithoutDate);
-        maximzedURL = driver.findElement(By.xpath("//p[@id=\"update1\"]")).getText();
-        System.out.println("URL: "+ maximzedURL);
-
-        if(maximzedURL.equals(urlWithoutDate)){
-          return true;
-        }
-        else{
-          System.out.println("Expected URL: "+ urlWithoutDate);
-          System.out.println("Found URL: "+ maximzedURL);
-          return false;
-        }
-      }catch(NoSuchElementException e){
-          System.out.println("Expected URL: "+ urlWithoutDate);
-          System.out.println("Found maximized URL: "+ maximzedURL);
-          // Could not find a Version in the specified date
-          return false;
-      }catch (Exception e){
-        //should never enter here print stack trace if so
-        e.printStackTrace();
-        return false;
-      }
     }
 
 
@@ -329,86 +295,6 @@ public class ReplayPage {
         return false;
       } 
     } 
-
-
-
-
-
-
-    /**
-     * Check Left Menu that contains the list of versions for the URL
-     */
-    public boolean checkLeftMenu(String currentURL){
-      try{ 
-        String urlNoDate = currentURL.substring(15);    
-        String timestamp = currentURL.substring(0,14); //complete timestamp in the 14 digit format 
-        String year = currentURL.substring(0,4);
-        String monthstr = currentURL.substring(4,6);
-        int monthInt = Integer.parseInt(monthstr);
-        String [] months = prop.getProperty("months").split("#");
-        String monthStr = months[(monthInt-1)];
-        String daystr = currentURL.substring(6,8);
-        int day = Integer.parseInt(daystr);
-        String hours = currentURL.substring(8,10);
-        String minutes = currentURL.substring(10,12);  
-
-        System.out.println("Year: " + year);
-        System.out.println("Month: " + monthStr);
-        System.out.println("Day: " + day);
-        System.out.println("Hours: " + hours);
-        System.out.println("Minutes: " + minutes);     
-        
-        // Check the year in the left menu and check if it is open
-        String yearClass = driver.findElement(By.xpath("//a[@id=\""+year+"\"]")).getAttribute("class");
-        String yearText = driver.findElement(By.xpath("//a[@id=\""+year+"\"]")).getText();
-        // Check the month in the left menu and check if it is open
-        String monthClass = driver.findElement(By.xpath("//a[@id=\""+year+"_"+monthstr+"\"]")).getAttribute("class");
-        String monthText = driver.findElement(By.xpath("//a[@id=\""+year+"_"+monthstr+"\"]")).getText();
-       // Check the day in the left menu and check if it is open
-        String dayClass = driver.findElement(By.xpath("//a[@id=\""+year+"_"+monthstr+"_"+day+"\"]")).getAttribute("class");
-        String dayText = driver.findElement(By.xpath("//a[@id=\""+year+"_"+monthstr+"_"+day+"\"]")).getText();
-         //Check the time of the day Text and if the link is correct
-        String hoursMinutesURL = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("href");
-        hoursMinutesURL = hoursMinutesURL.replaceAll(",%20", ", ");
-        String hoursClass = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("class");
-        String hoursMinutesText = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getText(); 
-        String expectedURL = "javascript:jumpToVersion('"+urlNoDate+"', '"+timestamp+"')";       
-
-       if(yearText.equals(year) && yearClass.equals(activeItem) &&
-           monthText.equals(monthStr) && monthClass.equals(activeItem) &&
-           dayText.equals(""+day) && dayClass.equals(activeItem) &&
-           hoursMinutesText.equals(hours+":"+minutes) && 
-           hoursClass.equals(activeDay)&&
-           hoursMinutesURL.equals(expectedURL)){
-          return true;
-        }
-        else{
-          System.out.println("Found this Year text: " + yearText);
-          System.out.println("Expected this Year text: " + year);
-          System.out.println("The year has the class " +yearClass);
-          System.out.println("Expected year class="+activeItem);
-          System.out.println("Found this Month text: "+ monthText);
-          System.out.println("Expected this Month text: "+ monthStr);
-          System.out.println("Found this Month class: " + monthClass);
-          System.out.println("Expected Month class: "+activeItem);
-          System.out.println("Found this day Text: "+ dayText);
-          System.out.println("Expected this day Text: "+day);
-          System.out.println("Found this hours and minutes Text: "+ hoursMinutesText);
-          System.out.println("Expected this hours and minutes Text: "+ hours +":"+minutes);
-          System.out.println("Found this versionURL: "+ hoursMinutesURL);
-          System.out.println("Expected this versionURL: "+ expectedURL);
-
-          return false;
-        }     
-
-      }catch(NoSuchElementException e){
-          System.out.println("Could not find at least one of the following elements: year, year_monthstr, year_monthstr_daystr, or a_timestamp");
-          return false;
-      }catch (Exception e){
-        System.out.println("Should not have reached here");
-        return false;
-      } 
-    }   
 
     /**
      * Check if the Email title, onclick and href are correct
@@ -630,5 +516,4 @@ public class ReplayPage {
     return result;
   }  
     
-
 }
