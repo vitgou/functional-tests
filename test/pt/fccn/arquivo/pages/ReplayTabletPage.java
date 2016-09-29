@@ -412,15 +412,20 @@ public class ReplayTabletPage {
     * Changes the Language of the Page, to the value given in lang string (PT or EN)
     */
     public void switchLanguage(String lang){
-
-      if(driver.findElement(By.xpath("//a[@id=\"changeLanguage\"]")).getText().equals(lang)){
-        driver.findElement(By.id("changeLanguage")).click(); //change the language
-        try {
-          Thread.sleep(waitingPeriod);  //wait for page to load
-        } catch(InterruptedException ex) {
-          Thread.currentThread().interrupt();
-        }  
-      } //else You are already in the desired language
+      try{
+        if(driver.findElement(By.xpath("//a[@id=\"changeLanguage\"]")).getText().equals(lang)){
+          driver.findElement(By.id("changeLanguage")).click(); //change the language
+          try {
+            Thread.sleep(waitingPeriod);  //wait for page to load
+          } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+          }  
+        } //else You are already in the desired language
+      }catch (Exception e){
+        System.out.println("Error switching language to: " + lang);
+        e.printStackTrace;
+        throw e;
+      }
     }
 
 
