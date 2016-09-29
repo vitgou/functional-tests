@@ -172,27 +172,32 @@ public class HighlightsPage {
      * @return true if all of the links are correct
      */
     public boolean checkHighligthsPageLinks(){
-    	
-    	String title=null;	
-    	int i =0;
-    	List<String> aux = new ArrayList<String>();
     	try{
-    		aux = getHiglightsUrl();
-    	}catch (Exception e){
-    		System.out.println("Some Error getting List of Highlight URls");
-    		e.printStackTrace();
-    	}
-    	
-       for(i=0 ; i<aux.size() ; i++)
-       {
-    	   title = getIdTitle(aux.get(i));
-    	   
-       	 	if (!inspectTitlesMatches(title)){
-       	 		System.out.print("\n\nunexpected title: "+title);
-       	 		return false;
-       	 	}
-       }
-       return true;
+	    	String title=null;	
+	    	int i =0;
+	    	List<String> aux = new ArrayList<String>();
+	    	try{
+	    		aux = getHiglightsUrl();
+	    	}catch (Exception e){
+	    		System.out.println("Some Error getting List of Highlight URls");
+	    		e.printStackTrace();
+	    	}
+	    	
+	       for(i=0 ; i<aux.size() ; i++)
+	       {
+	    	   title = getIdTitle(aux.get(i));
+	    	   
+	       	 	if (!inspectTitlesMatches(title)){
+	       	 		System.out.print("\n\nunexpected title: "+title);
+	       	 		return false;
+	       	 	}
+	       }
+	       return true;
+	   }catch(Exception e){
+	   		System.out.println("Error Checking Highlights Page Links");
+	   		e.printStackTrace();
+	   		return false;
+	   }
     }
     
     /**
@@ -210,19 +215,23 @@ public class HighlightsPage {
 	 * @return Title of the webpage
 	 */
 	private String  getIdTitle (String Url){
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-
-
-		driver.get(Url);
-		//wait until title was loaded
-		try {
-            Thread.sleep(5000);                 //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-		wait.until(ExpectedConditions.urlContains(Url));
-		//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
-		return driver.getTitle();
+		try{
+			WebDriverWait wait = new WebDriverWait(driver, 20);
+			driver.get(Url);
+			//wait until title was loaded
+			try {
+	            Thread.sleep(5000);                 //wait for page to load
+	        } catch(InterruptedException ex) {
+	            Thread.currentThread().interrupt();
+	        }
+			wait.until(ExpectedConditions.urlContains(Url));
+			//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
+			return driver.getTitle();
+		}catch(Exception e){
+			System.out.println("Error Getting Id Title");
+			e.printStackTrace();
+			return "";
+		}	
 	}
 
     /**
