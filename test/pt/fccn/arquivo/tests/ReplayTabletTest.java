@@ -44,7 +44,7 @@ public class ReplayTabletTest extends WebDriverTestBaseParalell{
     boolean isPreProd = true;
     @Test
     @Retry
-    public void replayTest() {
+    public void replayTabletTest() {
     	System.out.print("Running ReplayTest. \n");
         ReplayTabletPage replay = new ReplayTabletPage(driver, isPreProd);      
         assertTrue("Failed The Replay Tests in Portuguese", replay.inspectURLs("PT"));
