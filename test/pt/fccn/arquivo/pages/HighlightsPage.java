@@ -180,8 +180,7 @@ public class HighlightsPage {
     		aux = getHiglightsUrl();
     	}catch (Exception e){
     		System.out.println("Some Error getting List of Highlight URls");
-    		e.printStackTrace();
-    		return false;
+    		e.printStackTrace()
     	}
     	
        for(i=0 ; i<aux.size() ; i++)
@@ -199,12 +198,7 @@ public class HighlightsPage {
     /**
      * @return a list with all of the current url's 
      */
-    private List<String> getHiglightsUrl() throws Exception{
-		try {
-            Thread.sleep(5000);                 //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }    	    	
+    private List<String> getHiglightsUrl() throws Exception{	
     	List<WebElement> linkList= driver.findElements(By.className("external-link"));
     	List<String> highlights = new ArrayList<String>();
     	for( int i =0; i< linkList.size();i++)
@@ -218,7 +212,7 @@ public class HighlightsPage {
 	private String  getIdTitle (String Url){
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 
-		System.out.println("Going to URL: " + Url);
+
 		driver.get(Url);
 		//wait until title was loaded
 		try {
