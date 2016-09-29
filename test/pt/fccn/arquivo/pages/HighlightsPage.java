@@ -220,7 +220,7 @@ public class HighlightsPage {
 			driver.get(Url);
 			//wait until title was loaded
 			try {
-	            Thread.sleep(5000);                 //wait for page to load
+	            Thread.sleep(10000);                 //wait for page to load
 	        } catch(InterruptedException ex) {
 	            Thread.currentThread().interrupt();
 	        }
