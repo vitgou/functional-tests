@@ -230,6 +230,7 @@ public class ReplayTabletPage {
           System.out.println("Could not find the print element");
           return false;
       }catch (Exception e){
+        System.out.println("Error in the PrintOk");
         System.out.println("Should not have reached here");
         return false;
       } 
@@ -262,8 +263,9 @@ public class ReplayTabletPage {
           System.out.println("Could not find the facebook element");
           return false;
       }catch (Exception e){
-        System.out.println("Should not have reached here");
         System.out.println("Error Testing Facebook");
+        System.out.println("Should not have reached here");
+
         return false;
       } 
     }  
@@ -295,8 +297,8 @@ public class ReplayTabletPage {
           System.out.println("Could not find the twitter element");
           return false;
       }catch (Exception e){
-        System.out.println("Should not have reached here");
         System.out.println("Error Testing Twitter");
+        System.out.println("Should not have reached here");
         return false;
       } 
     } 
@@ -332,8 +334,9 @@ public class ReplayTabletPage {
           System.out.println("Could not find email anchor");
           return false;
       }catch (Exception e){
+        System.out.println("Error testing email");        
         System.out.println("Should not have reached here");
-        System.out.println("Error testing email");
+
         return false;
       } 
     }   
@@ -369,6 +372,7 @@ public class ReplayTabletPage {
           System.out.println("Could not find the Logo Anchor or the Logo Image");
           return false;
       }catch (Exception e){
+        System.out.println("Error Checking Logo");
         System.out.println("Should not have reached here");
         return false;
       } 
