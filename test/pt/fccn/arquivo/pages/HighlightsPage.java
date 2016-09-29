@@ -175,7 +175,14 @@ public class HighlightsPage {
     	
     	String title=null;	
     	int i =0;
-    	List<String> aux = getHiglightsUrl();
+    	List<String> aux = new ArrayList<String>();
+    	try{
+    		aux = getHiglightsUrl();
+    	}catch (Exception e){
+    		System.out.println("Some Error getting List of Highlight URls");
+    		e.printStackTrace();
+    		return false;
+    	}
     	
        for(i=0 ; i<aux.size() ; i++)
        {
@@ -192,13 +199,17 @@ public class HighlightsPage {
     /**
      * @return a list with all of the current url's 
      */
-    private List<String> getHiglightsUrl(){
+    private List<String> getHiglightsUrl() throws Exception{
+		try {
+            Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }    	    	
     	List<WebElement> linkList= driver.findElements(By.className("external-link"));
     	List<String> highlights = new ArrayList<String>();
     	for( int i =0; i< linkList.size();i++)
     		highlights.add(linkList.get(i).getAttribute("href"));
-    	return highlights;
-    	
+		return highlights;    	
     }
     /**
 	 * @param Url - each highlights url
