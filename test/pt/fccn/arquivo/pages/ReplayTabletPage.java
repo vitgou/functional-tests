@@ -423,7 +423,7 @@ public class ReplayTabletPage {
         } //else You are already in the desired language
       }catch (Exception e){
         System.out.println("Error switching language to: " + lang);
-        e.printStackTrace;
+        e.printStackTrace();
         throw e;
       }
     }
