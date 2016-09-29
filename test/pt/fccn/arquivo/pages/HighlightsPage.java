@@ -218,7 +218,7 @@ public class HighlightsPage {
 	private String  getIdTitle (String Url){
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 
-
+		System.out.println("Going to URL: " + Url);
 		driver.get(Url);
 		//wait until title was loaded
 		try {
