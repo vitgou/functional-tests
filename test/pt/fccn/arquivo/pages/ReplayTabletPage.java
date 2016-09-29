@@ -153,7 +153,7 @@ public class ReplayTabletPage {
         if( /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
            !emailOk(currentURL) ||
-           !tableOfVersionsOk(currentURL) || !logoOk(currentURL) ||)
+           !tableOfVersionsOk(currentURL) || !logoOk(currentURL))
         {
           return false;
         }

@@ -37,8 +37,7 @@ public class ReplayTabletTest extends WebDriverTestBaseParalell{
      * TODO:: ENGLISH AND PT
      * TODO:: Add Production tests comparing the output on both Brokers
      */
-    public ReplayTest(String os,
-                                    String version, String browser, String deviceName, String deviceOrientation) {
+    public ReplayTabletTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
     }
 
