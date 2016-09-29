@@ -76,7 +76,7 @@ public class ReplayTabletPage {
     private String searchURL;
     private static final String filenamePreProd = "pre_production_URL_testlist.txt";
     private static final String filenameProd = "production_URL_testlist.txt";
-    private static final int waitingPeriod = 10000; //Time to load the Web page in miliseconds
+    private static final int waitingPeriod = 15000; //Time to load the Web page in miliseconds
     private static final String helpURLPTExpected = "http://sobre.arquivo.pt/ajuda";
     private static final String emailHrefPTExpected = "mailto:?subject=Arquivo.pt%20pesquise%20p%C3%A1ginas%20do%20passado%20&body=Ol%C3%A1,%0AEncontrei%20este%20website%20que%20poder%C3%A1%20achar%20interessante:%20[sub]";
     private static final String emailOnClickExpected = "this.href = this.href.replace('[sub]',window.location)";
@@ -411,11 +411,17 @@ public class ReplayTabletPage {
      * wait some time to load the Webpage
      */
     public void goToCurrentURL(String currentURL){
-      driver.get(serverName+"wayback/"+currentURL);
-      try {
-          Thread.sleep(waitingPeriod);                 //wait for page to load
-      } catch(InterruptedException ex) {
-          Thread.currentThread().interrupt();
+      try{
+        driver.get(serverName+"wayback/"+currentURL);
+        try {
+            Thread.sleep(waitingPeriod);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+      }catch(Exception e ){
+        System.out.println("Some error going to the current URL");
+        e.printStackTrace();
+        throw e;
       }      
     }
 
