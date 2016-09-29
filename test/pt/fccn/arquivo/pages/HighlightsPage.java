@@ -216,7 +216,7 @@ public class HighlightsPage {
 	 */
 	private String  getIdTitle (String Url){
 		try{
-			WebDriverWait wait = new WebDriverWait(driver, 20);
+			//WebDriverWait wait = new WebDriverWait(driver, 20);
 			driver.get(Url);
 			//wait until title was loaded
 			try {
@@ -224,9 +224,11 @@ public class HighlightsPage {
 	        } catch(InterruptedException ex) {
 	            Thread.currentThread().interrupt();
 	        }
-			wait.until(ExpectedConditions.urlContains(Url));
+			//wait.until(ExpectedConditions.urlContains(Url));
+			String title = driver.getTitle();
+			System.out.println("Title: " + title);
 			//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
-			return driver.getTitle();
+			return title;
 		}catch(Exception e){
 			System.out.println("Error Getting Id Title");
 			e.printStackTrace();
