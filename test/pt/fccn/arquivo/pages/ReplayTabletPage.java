@@ -418,7 +418,7 @@ public class ReplayTabletPage {
     public void switchLanguage(String lang){
       try{
           try {
-            Thread.sleep(2000);  //wait for page to load
+            Thread.sleep(10000);  //wait for page to load
           } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
           }          
