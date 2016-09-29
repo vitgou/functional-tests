@@ -417,6 +417,11 @@ public class ReplayTabletPage {
     */
     public void switchLanguage(String lang){
       try{
+          try {
+            Thread.sleep(2000);  //wait for page to load
+          } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+          }          
         System.out.println("SwitchingLang: " + driver.getCurrentUrl());        
         if(driver.findElement(By.xpath("//a[@id=\"changeLanguage\"]")).getText().equals(lang)){
           System.out.println("Going to change the language.");
