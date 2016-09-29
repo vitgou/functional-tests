@@ -180,7 +180,7 @@ public class HighlightsPage {
     		aux = getHiglightsUrl();
     	}catch (Exception e){
     		System.out.println("Some Error getting List of Highlight URls");
-    		e.printStackTrace()
+    		e.printStackTrace();
     	}
     	
        for(i=0 ; i<aux.size() ; i++)
