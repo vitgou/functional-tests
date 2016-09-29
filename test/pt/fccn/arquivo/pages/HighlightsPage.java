@@ -123,7 +123,7 @@ public class HighlightsPage {
     public boolean goThroughHighlights()  {
     	try{
 			try {
-	            Thread.sleep(2000);                 //wait for page to load
+	            Thread.sleep(5000);                 //wait for page to load
 	        } catch(InterruptedException ex) {
 	            Thread.currentThread().interrupt();
 	        }    		
@@ -145,21 +145,27 @@ public class HighlightsPage {
      * @return true if all of links are not broken in the main page
      */
     public boolean checkLinkHighligths(){
-       List<WebElement> linkList= driver.findElements(By.tagName("a"));
-   	   int statuscode=0;
-       for(int i=0 ; i<linkList.size() ; i++)
-       {
-       	if(linkList.get(i).getAttribute("href") != null)
-       	  {
-       		if (linkList.get(i).getAttribute("href").contains("/wayback")){
-				statuscode=getResponseCode(linkList.get(i).getAttribute("href"));
-				if (statuscode!= 200){
-					return false;
-				}
-       		}
-       	  }	
-       }
-       return true;
+       try{	
+	       List<WebElement> linkList= driver.findElements(By.tagName("a"));
+	   	   int statuscode=0;
+	       for(int i=0 ; i<linkList.size() ; i++)
+	       {
+	       	if(linkList.get(i).getAttribute("href") != null)
+	       	  {
+	       		if (linkList.get(i).getAttribute("href").contains("/wayback")){
+					statuscode=getResponseCode(linkList.get(i).getAttribute("href"));
+					if (statuscode!= 200){
+						return false;
+					}
+	       		}
+	       	  }	
+	       }
+	       return true;
+	    }catch (Exception e){ 
+	    	System.out.println("Error finding one of Highlights!");
+	    	e.printStackTrace();
+	    	return false;
+	    }   
     }
     
     /**
