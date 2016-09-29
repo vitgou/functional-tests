@@ -149,8 +149,9 @@ public class ReplayTabletPage {
       for(String currentURL:testURLs){
         System.out.println("Current URL: " + currentURL);
         goToCurrentURL(currentURL);
+        System.out.println("Went to the URL");
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
-
+        System.out.println("Switched the language!");
         if( /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
            !emailOk(currentURL) ||
