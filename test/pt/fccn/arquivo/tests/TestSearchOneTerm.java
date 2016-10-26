@@ -35,6 +35,7 @@ public class TestSearchOneTerm extends WebDriverTestBaseParalell {
         assertTrue("The search did not return results", searchResults.existsInResults(term));
         System.out.println("testSearchOneTerm 3");
         assertTrue("The spellchecker is not working",searchResults.spellcheckerOK(testerSpellChecker));
+        System.out.println("testSearchOneTerm Finished");
         /*assertTrue("The replay bar is not working",searchResults.testReplayBar()); Commented this test. Only Works For Desktops, should be in a different test*/
     }
 }
