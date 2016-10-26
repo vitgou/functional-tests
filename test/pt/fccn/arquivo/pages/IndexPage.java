@@ -25,6 +25,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import javax.xml.parsers.*;
@@ -90,14 +92,14 @@ public class IndexPage {
      * @return result page for query
      */
     public SearchPage search(String searchTerms){
-        driver.findElement(By.id(searchBox)).clear();
-        driver.findElement(By.id(searchBox)).sendKeys(searchTerms);
-        driver.findElement(By.id(searchButton)).submit();
-        try {
-          Thread.sleep(5000); //wait 5 seconds for page to load
-        } catch(InterruptedException ex) {
-          Thread.currentThread().interrupt();
-        }
+        WebElement searchBoxElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.id(searchBox)));        
+        searchBoxElement.clear();
+        searchBoxElement.sendKeys(searchTerms);
+        WebElement searchButtonElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.id(searchButton)));    
+        searchButtonElement.submit();
+
         return new SearchPage(driver,isPreProd);
     }
     
