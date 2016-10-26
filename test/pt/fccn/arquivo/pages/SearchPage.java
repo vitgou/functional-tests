@@ -148,8 +148,6 @@ public class SearchPage {
      * @return true if the term exists in the first result title or in the snippet text
      */
     public String getFirstResult() {
-
-      driver.get("http://somedomain/url_that_delays_loading");
       WebElement listOfResults = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
         .until(ExpectedConditions.presenceOfElementLocated(By.id(listOfResultsTag)));
 
