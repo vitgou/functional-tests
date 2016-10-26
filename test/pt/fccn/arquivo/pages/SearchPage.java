@@ -64,8 +64,8 @@ public class SearchPage {
         this.driver= driver;
         // Check that we're on the right page.
         this.ispre_prod=Ispre_prod;
-        
-        if (!(driver.getCurrentUrl().contains(pageURLCheck))) {
+      
+        if (!((new WebDriverWait(driver, 25)).until(ExpectedConditions.urlContains(pageURLCheck)))) {
             throw new IllegalStateException("This is not the results search page\n URL of current page: " + driver.getCurrentUrl());
         }
         if (ispre_prod){
