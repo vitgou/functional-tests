@@ -95,18 +95,22 @@ public class SearchPage {
      * @return true if it suggest the term "teste"
      */
     public boolean spellcheckerOK(String query) {
-    	  driver.findElement(By.id("txtSearch")).clear();
-    	  driver.findElement(By.id("txtSearch")).sendKeys(query);
-    	  driver.findElement(By.id("btnSubmit")).click();
+        WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));    
+
+        txtSearchElement.clear();
+        txtSearchElement.sendKeys(query);
+
+        WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));    
+
+    	  btnSubmitElement.click();
     	  
-    	  String spellCheckerTest = null;
-    	  try {
-			spellCheckerTest = driver.findElement(By.xpath("//*[@id=\"second-column\"]/div[2]/span/a")).getText();
-		} catch (org.openqa.selenium.NoSuchElementException e) {
-			// TODO Auto-generated catch block
-			System.out.print("No query suggestion");
-			return false;
-		}
+        WebElement spellCheckerElement = (new WebDriverWait(driver, 25))
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"second-column\"]/div[2]/span/a")));  
+
+    	  String spellCheckerTest = spellCheckerElement.getText();
+
     	  if(!spellCheckerTest.equals("teste")){
     		  System.out.print("Spellchecker is not working on properly");
     		  return false;	
