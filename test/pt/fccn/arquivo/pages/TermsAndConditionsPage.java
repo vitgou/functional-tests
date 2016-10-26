@@ -55,6 +55,11 @@ public class TermsAndConditionsPage {
     public boolean toEnglishVersion(){
         driver.findElement(By.linkText(linkTextEN)).click();
         // Check that we're on the right page.
+        try {
+            Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }  
         String titleFound = driver.getTitle();
         if (!(titleFound).contains(titleTextEN)) {
             System.out.println("Expected: " + titleTextEN);
@@ -71,6 +76,11 @@ public class TermsAndConditionsPage {
      */
     public boolean toPortugueseVersion(){
         driver.findElement(By.linkText(linkTextPT)).click();
+        try {
+            Thread.sleep(5000);                 //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }          
         String titleFound = driver.getTitle();
         // Check that we're on the right page.
         if (!titleFound.contains(titleTextPT)) {
