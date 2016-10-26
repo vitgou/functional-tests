@@ -55,9 +55,12 @@ public class TermsAndConditionsPage {
     public boolean toEnglishVersion(){
         driver.findElement(By.linkText(linkTextEN)).click();
         // Check that we're on the right page.
-        if (!(driver.getTitle()).contains(titleTextEN)) {
+        String titleFound = driver.getTitle();
+        if (!(titleFound).contains(titleTextEN)) {
+            System.out.println("Expected: " + titleTextEN);
+            System.out.println("Found: " + titleFound);
             // Alternatively, we could navigate to the login page, perhaps logging out first
-            throw new IllegalStateException("This is not the terms and conditions page, in English\nTitle received is " + driver.getTitle()+" "+this.getClass().getName());
+            throw new IllegalStateException("This is not the terms and conditions page, in English\nTitle received is " + titleFound+" "+this.getClass().getName());
         	//return false;
         }
         return true;
@@ -68,8 +71,11 @@ public class TermsAndConditionsPage {
      */
     public boolean toPortugueseVersion(){
         driver.findElement(By.linkText(linkTextPT)).click();
+        String titleFound = driver.getTitle();
         // Check that we're on the right page.
-        if (!driver.getTitle().contains(titleTextPT)) {
+        if (!titleFound.contains(titleTextPT)) {
+            System.out.println("Expected: " + titleTextPT);
+            System.out.println("Found: " + titleFound);            
             // Alternatively, we could navigate to the login page, perhaps logging out first
             //throw new IllegalStateException("This is not the terms and conditions page, in Portuguese\nTitle in page is " + driver.getTitle());
         	return false;
