@@ -152,7 +152,7 @@ public class SearchPage {
         .until(ExpectedConditions.presenceOfElementLocated(By.id(listOfResultsTag)));
 
     	WebElement firstResult = (new WebDriverWait(driver, 25))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2"))));  
+        .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")));  
 
     	return firstResult.getText();
     }
