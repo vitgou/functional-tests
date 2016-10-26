@@ -148,14 +148,15 @@ public class SearchPage {
      * @return true if the term exists in the first result title or in the snippet text
      */
     public String getFirstResult() {
-        try {
-            Thread.sleep(5000);                 //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
 
-    	WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
-    	return listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText();
+      driver.get("http://somedomain/url_that_delays_loading");
+      WebElement listOfResults = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+        .until(ExpectedConditions.presenceOfElementLocated(By.id(listOfResultsTag)));
+
+    	WebElement firstResult = (new WebDriverWait(driver, 25))
+        .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2"))));  
+
+    	return firstResult.getText();
     }
     
     /**
