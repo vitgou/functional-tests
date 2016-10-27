@@ -41,7 +41,7 @@ public class UrlsearchTest extends WebDriverTestBaseParalell{
 	String termPT = "fccn.PT";
     @Test
     @Retry
-    public void AdvancedTest() {
+    public void UrlsearchTest() {
     	System.out.print("Running UrlsearchTest. \n");
         IndexPage index = new IndexPage(driver);
         
