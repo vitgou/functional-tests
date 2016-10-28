@@ -43,13 +43,11 @@ public class TermsAndConditionsPage {
      */
     public TermsAndConditionsPage(WebDriver driver) {
         this.driver = driver;
-        String foundTitle = driver.getTitle();
-        // Check that we're on the right page.
-        if (!(foundTitle.contains(titleTextPT))) {
-            // Alternatively, we could navigate to the login page, perhaps logging out first
-            System.out.println("Obtained title: " + foundTitle);
-            throw new IllegalStateException("This is not the terms and conditions page\n"+driver.getCurrentUrl()+""+this.getClass().getName());
-        }
+        if(! (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.titleContains(titleTextPT))){   
+                System.out.println("Obtained title: " + foundTitle);
+                throw new IllegalStateException("This is not the terms and conditions page\n"+driver.getCurrentUrl()+""+this.getClass().getName());
+            }
     }
 
     /**
