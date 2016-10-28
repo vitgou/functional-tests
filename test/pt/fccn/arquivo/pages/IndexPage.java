@@ -243,6 +243,8 @@ public class IndexPage {
             System.out.println("Title with caps: " + title_cap);
             return false;
         }
+        System.out.println("Passed Title no caps: " + title);
+        System.out.println("Passed Title with caps: " + title_cap);
         return true;
     
 }
