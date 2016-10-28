@@ -25,8 +25,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import javax.xml.parsers.*;
@@ -253,25 +251,24 @@ public class IndexPage {
  */
 public String getTitlesearchbyURL(String query,String date){
         driver.get(this.url);
-        driver.findElement(By.id("txtSearch")).clear();
-        driver.findElement(By.id("txtSearch")).sendKeys(query);
-        driver.findElement(By.id("btnSubmit")).click();
-        String title=null;
-        try {
-        	
-            driver.findElement(By.linkText(date)).click();
-            try {
-                Thread.sleep(5000);                 //wait for page to load
-            } catch(InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            } 
-            title= driver.getTitle();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            //System.out.print(e);
-            return title;
+        WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));           
+        txtSearchElement.clear();
+        txtSearchElement.sendKeys(query);
+        WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
+        btnSubmitElement.click();
+        WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.linkText(date)));   
+        dateAnchorElement.click();             
+        if((new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.titleContains("Arquivo.pt"))){
+            return driver.getTitle();
         }
-         
-        return title;
-    }
+        else{
+            System.out.println("Unexpected title: " + driver.getTitle());
+            throw new IllegalStateException("Unexpected title: " + driver.getTitle());
+        }
+}
+
 }
