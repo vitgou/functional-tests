@@ -54,18 +54,15 @@ public class TermsAndConditionsPage {
      * Change to the English version of the page
      */
     public boolean toEnglishVersion(){
-        driver.findElement(By.linkText(linkTextEN)).click();
         // Check that we're on the right page.
-        try {
-            Thread.sleep(5000);                 //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }  
-        String titleFound = driver.getTitle();
-        if (!(titleFound).contains(titleTextEN)) {
+        WebElement linkTextENElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.linkText(linkTextEN))); 
+        linkTextENElement.click();
+
+        if(! (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.titleContains(titleTextEN))){
             System.out.println("Expected: " + titleTextEN);
-            System.out.println("Found: " + titleFound);
-            // Alternatively, we could navigate to the login page, perhaps logging out first
+            System.out.println("Found: " + driver.getTitle());
             throw new IllegalStateException("This is not the terms and conditions page, in English\nTitle received is " + titleFound+" "+this.getClass().getName());
         	//return false;
         }
