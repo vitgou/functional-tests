@@ -265,7 +265,7 @@ public String getTitlesearchbyURL(String query,String date){
             .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
         btnSubmitElement.click();
         WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.linkText(date)));   
+            .until(ExpectedConditions.presenceOfElementLocated(By.Xpath("//*[@id="8"]/td[7]/a[@title=\"26 Novembro 2002\"]")));   
         dateAnchorElement.click();             
         if((new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.titleContains("FCCN"))){
