@@ -55,6 +55,7 @@ public class TermsAndConditionsPage {
      */
     public boolean toEnglishVersion(){
         // Check that we're on the right page.
+        System.out.println("TO ENGLISH");
         WebElement linkTextENElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.presenceOfElementLocated(By.linkText(linkTextEN))); 
         linkTextENElement.click();
