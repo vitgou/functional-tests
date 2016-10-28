@@ -178,12 +178,9 @@ public class IndexPage {
      * @return terms and conditions page
      */
     public TermsAndConditionsPage getTermsAndConditionsPage(){
-        driver.findElement(By.linkText(termsandconditionstitleTextPT)).click();
-        try {
-            Thread.sleep(5000);                 //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }          
+        WebElement termsandconditionstitleTextPTElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.linkText(termsandconditionstitleTextPT)));  
+        termsandconditionstitleTextPTElement.click();
         return new TermsAndConditionsPage(driver);
     }
     
