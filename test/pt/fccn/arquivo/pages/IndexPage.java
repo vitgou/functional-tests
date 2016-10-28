@@ -178,9 +178,14 @@ public class IndexPage {
      * @return terms and conditions page
      */
     public TermsAndConditionsPage getTermsAndConditionsPage(){
+        System.out.println("TEXTO: " + driver.findElement(By.xpath("//*[@id='links']/div/div[1]/ul/li[6]/a")).getText());
+
         WebElement termsandconditionstitleTextPTElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.presenceOfElementLocated(By.linkText(termsandconditionstitleTextPT)));  
         termsandconditionstitleTextPTElement.click();
+
+        
+
         return new TermsAndConditionsPage(driver);
     }
     
