@@ -45,7 +45,7 @@ public class TermsAndConditionsPage {
         this.driver = driver;
         if(! (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.titleContains(titleTextPT))){   
-                System.out.println("Obtained title: " + foundTitle);
+                System.out.println("Obtained title: " + driver.getTitle());
                 throw new IllegalStateException("This is not the terms and conditions page\n"+driver.getCurrentUrl()+""+this.getClass().getName());
             }
     }
