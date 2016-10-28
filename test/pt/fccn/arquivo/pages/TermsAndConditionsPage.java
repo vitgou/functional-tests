@@ -63,7 +63,7 @@ public class TermsAndConditionsPage {
             .until(ExpectedConditions.titleContains(titleTextEN))){
             System.out.println("Expected: " + titleTextEN);
             System.out.println("Found: " + driver.getTitle());
-            throw new IllegalStateException("This is not the terms and conditions page, in English\nTitle received is " + titleFound+" "+this.getClass().getName());
+            throw new IllegalStateException("This is not the terms and conditions page, in English\nTitle received is " + driver.getTitle()+" "+this.getClass().getName());
         	//return false;
         }
         return true;
