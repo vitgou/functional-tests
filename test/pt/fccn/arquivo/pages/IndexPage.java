@@ -268,7 +268,7 @@ public String getTitlesearchbyURL(String query,String date){
             .until(ExpectedConditions.presenceOfElementLocated(By.linkText(date)));   
         dateAnchorElement.click();             
         if((new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.titleContains("Arquivo.pt"))){
+            .until(ExpectedConditions.titleContains("FCCN"))){
             return driver.getTitle();
         }
         else{
