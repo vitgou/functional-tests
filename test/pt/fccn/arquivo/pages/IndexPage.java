@@ -235,10 +235,14 @@ public class IndexPage {
         String date="26 Nov"; // historical link selected
         String title = getTitlesearchbyURL(query,date);
         String title_cap=getTitlesearchbyURL(queryPT,date);
-        if (title==null)
+        if (title==null){
+            throw new IllegalStateException("Title is null");
+        }
+        else if (!title.equals(title_cap)){
+            System.out.println("Title no caps: " + title);
+            System.out.println("Title with caps: " + title_cap);
             return false;
-        if (!title.equals(title_cap))
-            return false;
+        }
         return true;
     
 }
