@@ -232,9 +232,9 @@ public class IndexPage {
         
         this.url = driver.getCurrentUrl();
         
-        String date="26 Nov"; // historical link selected
-        String title = getTitlesearchbyURL(query,date);
-        String title_cap=getTitlesearchbyURL(queryPT,date);
+        String xpath="//*[@id='8']/td[7]/a[@title='26 Novembro 2002']"; // historical link selected
+        String title = getTitlesearchbyURL(query,xpath);
+        String title_cap=getTitlesearchbyURL(queryPT,xpath);
         if (title==null){
             throw new IllegalStateException("Title is null");
         }
@@ -255,7 +255,7 @@ public class IndexPage {
  * date on format "10 Dez"
  * @return title of the webapge on 10 Dez
  */
-public String getTitlesearchbyURL(String query,String date){
+public String getTitlesearchbyURL(String query,String xpath){
         driver.get(this.url);
         WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));           
@@ -265,7 +265,7 @@ public String getTitlesearchbyURL(String query,String date){
             .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
         btnSubmitElement.click();
         WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='8']/td[7]/a[@title='26 Novembro 2002']")));   
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));   
         dateAnchorElement.click();             
         if((new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.titleContains("FCCN"))){
