@@ -532,7 +532,7 @@ public class ReplayPage {
      * Jump to the current URL
      * wait some time to load the Webpage
      */
-    public void goToCurrentURL(String currentURL, String expectedTitle){
+    public void goToCurrentURL(String currentURL, String expectedTitle) throws Exception{
       driver.get(serverName+"wayback/"+currentURL);
       if(!(new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds for page to load*/
           .until(ExpectedConditions.titleContains(expectedTitle))){
