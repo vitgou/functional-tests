@@ -382,7 +382,7 @@ public class ReplayPage {
         String dayClass = driver.findElement(By.xpath("//a[@id=\""+year+"_"+monthstr+"_"+day+"\"]")).getAttribute("class");
         String dayText = driver.findElement(By.xpath("//a[@id=\""+year+"_"+monthstr+"_"+day+"\"]")).getText();
          //Check the time of the day Text and if the link is correct
-        String hoursMinutesURL = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("href");
+        String hoursMinutesURL = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("onclick");
         hoursMinutesURL = hoursMinutesURL.replaceAll(",%20", ", ");
         String hoursClass = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("class");
         String hoursMinutesText = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getText(); 
@@ -393,7 +393,7 @@ public class ReplayPage {
            dayText.equals(""+day) && dayClass.equals(activeItem) &&
            hoursMinutesText.equals(hours+":"+minutes) && 
            hoursClass.equals(activeDay)&&
-           hoursMinutesURL.equals(expectedURL)){
+           hoursMinutesURL.contains(expectedURL)){
           return true;
         }
         else{
