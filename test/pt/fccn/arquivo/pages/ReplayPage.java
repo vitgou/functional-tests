@@ -155,7 +155,13 @@ public class ReplayPage {
       
       Set<String> keys = testURLs.keySet();    
       for(String currentURL:keys){
-        goToCurrentURL(currentURL, testURLs.get(currentURL));
+        try{
+          goToCurrentURL(currentURL, testURLs.get(currentURL));
+        } catch(Exception e){
+          e.printStackTrace();
+          System.out.println("Error jumping to url: " + currentURL);
+          return false;
+        }  
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
 
         if(!replayBarURLsOk(currentURL) ||  
