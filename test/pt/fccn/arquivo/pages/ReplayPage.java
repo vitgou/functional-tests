@@ -386,7 +386,7 @@ public class ReplayPage {
         hoursMinutesURL = hoursMinutesURL.replaceAll(",%20", ", ");
         String hoursClass = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("class");
         String hoursMinutesText = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getText(); 
-        String expectedURL = "javascript:jumpToVersion('"+urlNoDate+"', '"+timestamp+"')";       
+        String expectedURL = "jumpToVersion('"+urlNoDate+"', '"+timestamp+"')";       
 
        if(yearText.equals(year) && yearClass.equals(activeItem) &&
            monthText.equals(monthStr) && monthClass.equals(activeItem) &&
