@@ -435,7 +435,8 @@ public class ReplayPage {
 
 
         String expectedemailHref = "mailto:?subject="+prop.getProperty("emailMessage")+"[sub]";
-        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A'+ getDatets() +'%0D%0A %0D%0A\' + window.location )"; 
+        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A"+ driver.getTitle() +"'%0D%0A %0D%0A\' + window.location )"; 
+
         String expectedemailTitle = prop.getProperty("mailTitle");
 
         if(emailHref.equals(expectedemailHref.replaceAll("" , "%20"))  && 
