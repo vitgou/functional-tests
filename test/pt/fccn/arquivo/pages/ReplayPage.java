@@ -30,6 +30,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -57,6 +59,8 @@ import java.net.URL;
 import java.nio.channels.Channels;  
 import java.nio.channels.ReadableByteChannel;  
 import java.util.TreeMap;
+import java.util.Set;
+
 
 
 /**
@@ -120,7 +124,7 @@ public class ReplayPage {
             String[] parts = currentLine.split("\t");
             /*parts[0] is the timestamp/url */
             /*parts[1] is the expected title for the parts[0] url*/
-            testURLs.add(parts[0], parts[1]);
+            testURLs.put(parts[0], parts[1]);
           }
 
         } catch (IOException e) {
