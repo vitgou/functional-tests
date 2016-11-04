@@ -155,7 +155,7 @@ public class ReplayPage {
       
       Set<String> keys = testURLs.keySet();    
       for(String currentURL:keys){
-        goToCurrentURL(currentURL, testURLS.get(currentURL));
+        goToCurrentURL(currentURL, testURLs.get(currentURL));
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
 
         if(!replayBarURLsOk(currentURL) ||  
