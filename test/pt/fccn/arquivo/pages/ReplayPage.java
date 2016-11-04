@@ -438,7 +438,7 @@ public class ReplayPage {
         String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A'+ getDatets() +'%0D%0A %0D%0A\' + window.location )"; 
         String expectedemailTitle = prop.getProperty("mailTitle");
 
-        if(emailHref.equals(expectedemailHref)  && 
+        if(emailHref.equals(expectedemailHref.replace(' ', '%20'))  && 
            emailonClick.startsWith(expectedemailonClick) &&
            emailTitle.equals(expectedemailTitle)){
           return true;
