@@ -511,7 +511,7 @@ public class ReplayPage {
         String expectedlogoAlt = "logo";
         String expectedlogoSrc = serverName+"wayback/static/resources/img/arquivo100v.png";
 
-        if(expectedanchorHref.equals(anchorHref) || optionalExpectedanchorHref.equals(anchorHref)) && expectedlogoAlt.equals(logoAlt) && expectedlogoSrc.equals(logoSrc)) {
+        if((expectedanchorHref.equals(anchorHref) || optionalExpectedanchorHref.equals(anchorHref)) && expectedlogoAlt.equals(logoAlt) && expectedlogoSrc.equals(logoSrc)) {
           return true;
         }
         else{
