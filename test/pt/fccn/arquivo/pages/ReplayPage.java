@@ -167,7 +167,7 @@ public class ReplayPage {
         if(!replayBarURLsOk(currentURL) ||  
            /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
-           /*!emailOk(currentURL) ||*/
+           !emailOk(currentURL) ||
            !tableOfVersionsOk(currentURL) || !logoOk(currentURL) ||
            !checkLeftMenu(currentURL))
         {
@@ -433,8 +433,9 @@ public class ReplayPage {
         String emailonClick = driver.findElement(By.xpath("//li[@id=\"liEmail\"]/a")).getAttribute("onclick");
         String emailTitle = driver.findElement(By.xpath("//li[@id=\"liEmail\"]/a")).getAttribute("title");
 
+
         String expectedemailHref = "mailto:?subject="+prop.getProperty("emailMessage")+"[sub]";
-        String expectedemailonClick = "this.href = this.href.replace('[sub]',window.location)";
+        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A'+ getDatets() +'%0D%0A %0D%0A\' + window.location )"; 
         String expectedemailTitle = prop.getProperty("mailTitle");
 
         if(emailHref.equals(expectedemailHref)  && 
