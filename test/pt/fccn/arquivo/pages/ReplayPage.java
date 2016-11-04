@@ -186,7 +186,7 @@ public class ReplayPage {
       try{        
         urlWithoutDate = currentURL.substring(15);
         urlWithoutDate =truncateURL(urlWithoutDate);
-        maximzedURL = driver.findElement(By.xpath("//p[@id=\"update1\"]")).getText();
+        maximzedURL = driver.findElement(By.xpath("//a[@id=\"update1\"]")).getText();
         System.out.println("URL: "+ maximzedURL);
 
         if(maximzedURL.equals(urlWithoutDate)){
