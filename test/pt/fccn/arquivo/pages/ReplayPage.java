@@ -323,7 +323,7 @@ public class ReplayPage {
         String expectedtwitterClass= "addthis_button_twitter";
         String expectedtwitterTitle=prop.getProperty("twitterTitle");
 
-        if(twitterClass.startsWith(expectedtwitterClass) && 
+        if(twitterClass.contains(expectedtwitterClass) && 
            twitterTitle.equals(expectedtwitterTitle)){
           return true;
         }
