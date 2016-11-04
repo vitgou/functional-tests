@@ -507,10 +507,11 @@ public class ReplayPage {
         String logoSrc = driver.findElement(By.xpath("//div[@id=\"logodiv\"]/a[2]/img")).getAttribute("src");
 
         String expectedanchorHref = serverName+"?l="+ prop.getProperty("lang") ;
+        String optionalExpectedanchorHref = serverName.substring(0,serverName.length()-1)+"?l="+ prop.getProperty("lang") ;
         String expectedlogoAlt = "logo";
         String expectedlogoSrc = serverName+"wayback/static/resources/img/arquivo100v.png";
 
-        if(expectedanchorHref.equals(anchorHref) && expectedlogoAlt.equals(logoAlt) && expectedlogoSrc.equals(logoSrc)) {
+        if(expectedanchorHref.equals(anchorHref) || optionalExpectedanchorHref.equals(anchorHref)) && expectedlogoAlt.equals(logoAlt) && expectedlogoSrc.equals(logoSrc)) {
           return true;
         }
         else{
