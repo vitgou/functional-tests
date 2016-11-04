@@ -56,7 +56,7 @@ import java.net.MalformedURLException;
 import java.net.URL;  
 import java.nio.channels.Channels;  
 import java.nio.channels.ReadableByteChannel;  
-
+import java.util.TreeMap;
 
 
 /**
@@ -67,7 +67,7 @@ import java.nio.channels.ReadableByteChannel;
 
 public class ReplayPage {
     private final WebDriver driver;
-    private List<String> testURLs = new ArrayList<String>();
+    private TreeMap<String,String> testURLs = new TreeMap<String,String>();
     private boolean isPreProd;
     private String baseURL;
     private String cgi_path;
@@ -110,14 +110,17 @@ public class ReplayPage {
             inputEn = new BufferedReader(new InputStreamReader(new FileInputStream("en.properties"), "UTF8"));
             prop.load(inputPt);
             // start with properties in PT
-          String currentURL;
+          String currentLine;
           if(isPreProd)
             br = new BufferedReader(new FileReader(filenamePreProd));
           else
             br = new BufferedReader(new FileReader(filenameProd)); 
 
-          while ((currentURL = br.readLine()) != null) {
-            testURLs.add(currentURL);
+          while ((currentLine = br.readLine()) != null) {
+            String[] parts = currentLine.split("\t");
+            /*parts[0] is the timestamp/url */
+            /*parts[1] is the expected title for the parts[0] url*/
+            testURLs.add(parts[0], parts[1]);
           }
 
         } catch (IOException e) {
@@ -145,8 +148,10 @@ public class ReplayPage {
           return false;
         }  
       }
-      for(String currentURL:testURLs){
-        goToCurrentURL(currentURL);
+      
+      Set<String> keys = testURLs.keySet();    
+      for(String currentURL:keys){
+        goToCurrentURL(currentURL, testURLS.get(currentURL));
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
 
         if(!replayBarURLsOk(currentURL) ||  
@@ -523,13 +528,12 @@ public class ReplayPage {
      * Jump to the current URL
      * wait some time to load the Webpage
      */
-    public void goToCurrentURL(String currentURL){
+    public void goToCurrentURL(String currentURL, String expectedTitle){
       driver.get(serverName+"wayback/"+currentURL);
-      try {
-          Thread.sleep(waitingPeriod);                 //wait for page to load
-      } catch(InterruptedException ex) {
-          Thread.currentThread().interrupt();
-      }      
+      if(!(new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds for page to load*/
+          .until(ExpectedConditions.titleContains(expectedTitle))){
+        throw new Exception("Failed loading current URL: " + currentURL);
+      }          
     }
 
     public String truncateURL(String url){
