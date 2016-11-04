@@ -167,7 +167,7 @@ public class ReplayPage {
         if(!replayBarURLsOk(currentURL) ||  
            /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
-           !emailOk(currentURL) ||
+           /*!emailOk(currentURL) ||*/
            !tableOfVersionsOk(currentURL) || !logoOk(currentURL) ||
            !checkLeftMenu(currentURL))
         {
