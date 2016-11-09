@@ -448,6 +448,7 @@ public class ReplayPage {
           System.out.println("Found this Email href: " + emailHref);
           System.out.println("Expected this Email href: " + expectedemailHref );
           System.out.println("Found this Email onclick: " + emailonClick );
+          System.out.println("Expected containing this Email onclick: " + expectedemailonClick);
           System.out.println("Found this Email title: " + emailTitle);
           System.out.println("Expected this Email title: " + expectedemailTitle );          
           return false;
