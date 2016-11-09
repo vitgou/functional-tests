@@ -182,14 +182,19 @@ public class ReplayPage {
      */
     public boolean replayBarURLsOk(String currentURL){
       String maximzedURL ="";
+      String minimizedURL ="";
       String urlWithoutDate = "";
       try{        
         urlWithoutDate = currentURL.substring(15);
         urlWithoutDate =truncateURL(urlWithoutDate);
         maximzedURL = driver.findElement(By.xpath("//a[@id=\"update1\"]")).getText();
-        System.out.println("URL: "+ maximzedURL);
+        driver.findElement(By.id("minimizeOrMaximize").click()); //minimized the bar
+        minimizedURL = driver.findElement(By.xpath("//a[@id=\"update2\"]")).getText();
 
-        if(maximzedURL.equals(urlWithoutDate)){
+        System.out.println("URL: "+ maximzedURL);
+        System.out.println("URL minimized: "+ minimizedURL);
+
+        if(maximzedURL.equals(urlWithoutDate) && minimizedURL.equals(urlWithoutDate)){
           return true;
         }
         else{
