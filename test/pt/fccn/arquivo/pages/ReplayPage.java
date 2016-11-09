@@ -26,6 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Interactions.Actions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.NoSuchElementException;
@@ -190,8 +191,10 @@ public class ReplayPage {
         maximzedURL = driver.findElement(By.xpath("//a[@id=\"update1\"]")).getText();
 
         WebElement minimizeMaximizeElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.elementToBeClickable(By.id("minimizeOrMaximize")));                    
-        minimizeMaximizeElement.click();
+            .until(ExpectedConditions.elementToBeClickable(By.id("minimizeOrMaximize"))); 
+        Actions actions = new Actions(driver);
+        actions.moveToElement(minimizeMaximizeElement).click()                   
+        //minimizeMaximizeElement.click();
         minimizedURL = driver.findElement(By.xpath("//a[@id=\"update2\"]")).getText();
 
         System.out.println("URL: "+ maximzedURL);
