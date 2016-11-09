@@ -188,9 +188,11 @@ public class ReplayPage {
         urlWithoutDate = currentURL.substring(15);
         urlWithoutDate =truncateURL(urlWithoutDate);
         maximzedURL = driver.findElement(By.xpath("//a[@id=\"update1\"]")).getText();
-        driver.findElement(By.id("minimizeOrMaximize")).click(); //minimized the bar
+
+        WebElement minimizeMaximizeElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("minimizeOrMaximize")));           
+        minimizeMaximizeElement.click();
         minimizedURL = driver.findElement(By.xpath("//a[@id=\"update2\"]")).getText();
-        driver.findElement(By.id("minimizeOrMaximize")).click(); //maximized the bar
 
         System.out.println("URL: "+ maximzedURL);
         System.out.println("URL minimized: "+ minimizedURL);
