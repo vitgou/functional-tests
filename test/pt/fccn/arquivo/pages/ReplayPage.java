@@ -442,7 +442,7 @@ public class ReplayPage {
         String currentTimestamp = currentURL.substring(0,14);
         String dateFormatted = getDateFormatted(currentTimestamp);
         System.out.println("Expected Date: " + dateFormatted);
-        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A"+ dateFormatted +"'%0D%0A %0D%0A + window.location )"; 
+        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A"+ dateFormatted +"%0D%0A %0D%0A' + window.location )"; 
 
         String expectedemailTitle = prop.getProperty("mailTitle");
 
