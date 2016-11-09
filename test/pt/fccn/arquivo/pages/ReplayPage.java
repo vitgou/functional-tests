@@ -447,7 +447,7 @@ public class ReplayPage {
         String expectedemailTitle = prop.getProperty("mailTitle");
 
         if(emailHref.equals(expectedemailHref.replaceAll("" , "%20"))  && 
-           emailonClick.startsWith(expectedemailonClick) &&
+           emailonClick.contains(expectedemailonClick) &&
            emailTitle.equals(expectedemailTitle)){
           return true;
         }
