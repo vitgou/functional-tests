@@ -193,14 +193,14 @@ public class ReplayPage {
 
         WebElement minimizeMaximizeElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id=\"minimizeOrMaximize\"]"))); 
-        Actions actions = new Actions(driver);
-        actions.moveToElement(minimizeMaximizeElement).click();                   
+        minimizeMaximizeElement.click();                   
         //minimizeMaximizeElement.click();
         minimizedURL = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                           .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id=\"update2\"]"))).getText(); 
 
         System.out.println("URL: "+ maximzedURL);
         System.out.println("URL minimized: "+ minimizedURL);
+
 
         if(maximzedURL.equals(urlWithoutDate) && minimizedURL.equals(urlWithoutDate)){
           return true;
