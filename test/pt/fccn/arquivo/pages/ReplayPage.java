@@ -435,7 +435,9 @@ public class ReplayPage {
 
 
         String expectedemailHref = "mailto:?subject="+prop.getProperty("emailMessage")+"[sub]";
-        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A"+ driver.getTitle() +"'%0D%0A %0D%0A\' + window.location )"; 
+        String currentTimestamp = currentURL.substring(15);
+        String dateFormatted = getDateFormatted(currentTimestamp);
+        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A"+ dateFormatted +"'%0D%0A %0D%0A\' + window.location )"; 
 
         String expectedemailTitle = prop.getProperty("mailTitle");
 
@@ -462,7 +464,24 @@ public class ReplayPage {
         return false;
       } 
     }   
+    /**
+     * input: timestamp in the 14 digit format such as 20000823154833
+     * output: 23 Agosto, 2000
+    */
+    public String getDateFormatted(String timestamp){
+      String [] months = prop.getProperty("months").split("#");   
+           
+      String year = timestamp.substring(0,4);
+      String month = timestamp.substring(4,6);
+      int monthInt = Integer.parseInt(month);
+      String monthStr = months[(monthInt-1)];
 
+      String day = timestamp.substring(6,8);
+      if(day[0].equals('0')){
+        day = day[1];
+      }
+      return day + " " + monthStr +", "+year;
+    }
 
     /**
      * Check if the Table of Versions title and href are correct
