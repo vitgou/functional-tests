@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.net.URLDecoder;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
@@ -442,6 +443,8 @@ public class ReplayPage {
     public boolean emailOk(String currentURL){
       try{
         String emailHref = driver.findElement(By.xpath("//li[@id=\"liEmail\"]/a")).getAttribute("href");
+        emailHref = URLDecoder.decode(emailHref, "UTF-8");
+
         String emailonClick = driver.findElement(By.xpath("//li[@id=\"liEmail\"]/a")).getAttribute("onclick");
         String emailTitle = driver.findElement(By.xpath("//li[@id=\"liEmail\"]/a")).getAttribute("title");
 
