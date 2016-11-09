@@ -477,8 +477,8 @@ public class ReplayPage {
       String monthStr = months[(monthInt-1)];
 
       String day = timestamp.substring(6,8);
-      if(day[0].equals('0')){
-        day = day[1];
+      if(day.charAt(0) == '0'){
+        day = day.charAt(1);
       }
       return day + " " + monthStr +", "+year;
     }
