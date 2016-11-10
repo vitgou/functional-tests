@@ -124,11 +124,14 @@ public class HighlightsPage {
     public boolean goThroughHighlights()  {
     	try{
         	int currentNumberOfHighlights = 53;
-
+        	List<WebElement> linksToVisit = new List<WebElement>();
 	        for (int i = 0; i < currentNumberOfHighlights; i++) {
         		WebElement currentHighLightAnchor = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
         		    .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/ul/li["+(i+1)+"]/a[@class=\"external-link\"]")));     
-	        	currentHighLightAnchor.click(); // Don't know what's the point of clicking without checking anything!
+        		linksToVisit.add(currentHighLightAnchor);
+	        }
+	        for(WebElement current: linksToVisit){
+	        	current.click();
 	        }
 	        return true;
 	    }catch(Exception e){
