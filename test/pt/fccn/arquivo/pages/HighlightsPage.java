@@ -132,6 +132,7 @@ public class HighlightsPage {
 	        }
 	        return true;
 	    }catch(Exception e){
+	    	e.printStackTrace();
 	    	System.out.println("Some Error navigating through the Highlights");
 	    	return false;
 	    }
