@@ -83,7 +83,7 @@ public class AdvancedPage {
             siteElement.clear();
             siteElement.sendKeys("sapo.pt");
             WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitBottom")));
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitTop")));
             btnSubmitElement.click();
 
             WebElement listOfResults = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
