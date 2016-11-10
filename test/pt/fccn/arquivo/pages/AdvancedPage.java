@@ -87,7 +87,7 @@ public class AdvancedPage {
             btnSubmitElement.click();
 
             WebElement listOfResults = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                .until(ExpectedConditions.presenceOfElementLocated(By.id(listOfResultsTag))); 
+                .until(ExpectedConditions.elementToBeClickable(By.id(listOfResultsTag))); 
             
             title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText();
             results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
