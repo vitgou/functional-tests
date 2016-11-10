@@ -125,7 +125,7 @@ public class HighlightsPage {
     	try{
         	int currentNumberOfHighlights = 53;
 
-	        for (int i = 0; i++; i<currentNumberOfHighlights) {
+	        for (int i = 0; i++; i < currentNumberOfHighlights) {
         		WebElement currentHighLightAnchor = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
         		    .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@id=\"parent-fieldname-text\"]/ul/li["+(i+1)+"]/a")));     
 	        	currentHighLightAnchor.click(); // Don't know what's the point of clicking without checking anything!
