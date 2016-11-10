@@ -125,8 +125,8 @@ public class HighlightsPage {
     	try{
         
         	List <WebElement> listOfHighlights = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.numberOfElementsToBe(By.id("boxes"), 53));   
-		
+            .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("boxes")));  
+
 	        for (WebElement element : listOfHighlights) {
 	        	element.click();
 	        }
