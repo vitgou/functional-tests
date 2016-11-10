@@ -74,12 +74,17 @@ public class AdvancedPage {
         String title=null;
         
         try {
-            
-            driver.findElement(By.id("adv_and")).clear();
-            driver.findElement(By.id("adv_and")).sendKeys("sapo");
-            driver.findElement(By.id("site")).clear();
-            driver.findElement(By.id("site")).sendKeys("sapo.pt");
-            driver.findElement(By.id("btnSubmitBottom")).click();
+            WebElement advAnd = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("adv_and")));             
+            advAnd.clear();
+            advAnd.sendKeys("sapo");
+            WebElement siteElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("site")));
+            siteElement.clear();
+            siteElement.sendKeys("sapo.pt");
+            WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitBottom")));
+            btnSubmitElement.click();
 
             WebElement listOfResults = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.presenceOfElementLocated(By.id(listOfResultsTag))); 
