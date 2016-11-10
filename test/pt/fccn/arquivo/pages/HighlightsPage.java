@@ -123,12 +123,12 @@ public class HighlightsPage {
      */
     public boolean goThroughHighlights()  {
     	try{
-        
-        	List <WebElement> listOfHighlights = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("boxes")));  
+        	int currentNumberOfHighlights = 53;
 
-	        for (WebElement element : listOfHighlights) {
-	        	element.click();
+	        for (int i = 0; i++; i<currentNumberOfHighlights) {
+        		WebElement currentHighLightAnchor = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+        		    .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@id=\"parent-fieldname-text\"]/ul/li["+(i+1)+"]/a")));     
+	        	currentHighLightAnchor.click(); // Don't know what's the point of clicking without checking anything!
 	        }
 	        return true;
 	    }catch(Exception e){
