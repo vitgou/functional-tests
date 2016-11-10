@@ -31,6 +31,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 /**
  * @author Nutchwax 
  *
@@ -122,12 +123,10 @@ public class HighlightsPage {
      */
     public boolean goThroughHighlights()  {
     	try{
-			try {
-	            Thread.sleep(5000);                 //wait for page to load
-	        } catch(InterruptedException ex) {
-	            Thread.currentThread().interrupt();
-	        }    		
-	        List <WebElement> listOfHighlights = driver.findElements(By.id("boxes"));
+        
+        	List <WebElement> listOfHighlights = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.numberOfElementsToBe(By.id("boxes"), 53));   
+		
 	        for (WebElement element : listOfHighlights) {
 	        	element.click();
 	        }
@@ -216,7 +215,7 @@ public class HighlightsPage {
 	 */
 	private String  getIdTitle (String Url){
 		try{
-			//WebDriverWait wait = new WebDriverWait(driver, 20);
+
 			driver.get(Url);
 			//wait until title was loaded
 			try {
