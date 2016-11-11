@@ -123,7 +123,7 @@ public class HighlightsPage {
      */
     public boolean goThroughHighlights()  {
     	try{
-        	int currentNumberOfHighlights = 53;
+        	int currentNumberOfHighlights = 15;
         	List<WebElement> linksToVisit = new ArrayList<WebElement>();
 	        for (int i = 0; i < currentNumberOfHighlights; i++) {
         		WebElement currentHighLightAnchor = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
