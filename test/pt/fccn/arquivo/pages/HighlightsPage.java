@@ -117,31 +117,7 @@ public class HighlightsPage {
     	}
         
     }
-    /**
-     * Run through the links of highlights
-     * @return true if all links from 
-     */
-    public boolean goThroughHighlights()  {
-    	try{
-        	int currentNumberOfHighlights = 15;
-        	List<WebElement> linksToVisit = new ArrayList<WebElement>();
-	        for (int i = 0; i < currentNumberOfHighlights; i++) {
-        		WebElement currentHighLightAnchor = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-        		    .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"parent-fieldname-text\"]/ul/li["+(i+1)+"]/a")));     
-        		linksToVisit.add(currentHighLightAnchor);
-	        }
-	        for(WebElement current: linksToVisit){
-	        	current.click();
-	        }
-	        return true;
-	    }catch(Exception e){
-	    	e.printStackTrace();
-	    	System.out.println("Some Error navigating through the Highlights");
-	    	return false;
-	    }
-    }
-    
-    
+
     /**
      * 
      * Navigates across each URL at http://sobre.arquivo.pt/about-the-archive/example-pages-in-the-portuguese-web-archive
