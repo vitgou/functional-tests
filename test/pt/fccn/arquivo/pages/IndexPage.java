@@ -235,29 +235,29 @@ public class IndexPage {
         this.url = driver.getCurrentUrl();
         
         String xpath="//*[@id='8']/td[7]/a[@title='26 Novembro 2002']"; // historical link selected
-        String title = getTitlesearchbyURL(query,xpath);
-        String title_cap=getTitlesearchbyURL(queryPT,xpath);
-        if (title==null){
-            throw new IllegalStateException("Title is null");
+        String anchorText = getVersionURL(query,xpath);
+        String anchorText_cap=getVersionURL(queryPT,xpath);
+
+
+        if (anchorText==null){
+            throw new IllegalStateException("Version on the 26th of November 2002 not found");
         }
-        else if (!title.equals(title_cap)){
-            System.out.println("Title no caps: " + title);
-            System.out.println("Title with caps: " + title_cap);
+        else if (!anchorText.equals(anchorText_cap)){
+            System.out.println("Anchor text no caps: " + anchorText);
+            System.out.println("Anchor text with caps: " + anchorText_cap);
             return false;
         }
-        System.out.println("Passed Title no caps: " + title);
-        System.out.println("Passed Title with caps: " + title_cap);
+        System.out.println("Passed Anchor no caps: " + anchorText);
+        System.out.println("Passed Anchor with caps: " + anchorText_cap);
         return true;
     
 }
 
 /**
- * Get the title of a page 
- * query url
- * date on format "10 Dez"
- * @return title of the webapge on 10 Dez
+ * Get the anchor href of link matching xpath expression 
+ * 
  */
-public String getTitlesearchbyURL(String query,String xpath){
+public String getVersionURL(String query,String xpath){
         try{
 	        driver.get(this.url);
 	        WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
@@ -269,15 +269,8 @@ public String getTitlesearchbyURL(String query,String xpath){
 	        btnSubmitElement.click();
 	        WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));   
-	        dateAnchorElement.click();             
-	        if((new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-	            .until(ExpectedConditions.titleContains("FCCN"))){
-	            return driver.getTitle();
-	        }
-	        else{
-	            System.out.println("Unexpected title: " + driver.getTitle());
-	            throw new IllegalStateException("Unexpected title: " + driver.getTitle());
-	        }
+	        return dateAnchorElement.getAttribute("href");
+
 	    }catch(RuntimeException e ){ throw new IllegalStateException("Timed Out");}
 	     catch (Exception e ){
 	         	throw new IllegalStateException("Exception. Can't evaluate webpage title");
