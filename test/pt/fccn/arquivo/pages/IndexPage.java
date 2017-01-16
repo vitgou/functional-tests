@@ -278,9 +278,9 @@ public String getTitlesearchbyURL(String query,String xpath){
 	            System.out.println("Unexpected title: " + driver.getTitle());
 	            throw new IllegalStateException("Unexpected title: " + driver.getTitle());
 	        }
-	    }catch(RuntimeException e ){ System.out.println("Timed Out");}
+	    }catch(RuntimeException e ){ throw new IllegalStateException("Timed Out");}
 	     catch (Exception e ){
-	         	System.out.println("Exception. Can't evaluate webpage title");
+	         	throw new IllegalStateException("Exception. Can't evaluate webpage title");
 	     }
 
 }
