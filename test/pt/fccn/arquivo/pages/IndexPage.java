@@ -25,6 +25,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.NoSuchElementException;
+import java.lang.RuntimeException;
 
 import java.net.URL;
 import javax.xml.parsers.*;
@@ -257,25 +258,30 @@ public class IndexPage {
  * @return title of the webapge on 10 Dez
  */
 public String getTitlesearchbyURL(String query,String xpath){
-        driver.get(this.url);
-        WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));           
-        txtSearchElement.clear();
-        txtSearchElement.sendKeys(query);
-        WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
-        btnSubmitElement.click();
-        WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));   
-        dateAnchorElement.click();             
-        if((new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.titleContains("FCCN"))){
-            return driver.getTitle();
-        }
-        else{
-            System.out.println("Unexpected title: " + driver.getTitle());
-            throw new IllegalStateException("Unexpected title: " + driver.getTitle());
-        }
+        try{
+	        driver.get(this.url);
+	        WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));           
+	        txtSearchElement.clear();
+	        txtSearchElement.sendKeys(query);
+	        WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
+	        btnSubmitElement.click();
+	        WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));   
+	        dateAnchorElement.click();             
+	        if((new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	            .until(ExpectedConditions.titleContains("FCCN"))){
+	            return driver.getTitle();
+	        }
+	        else{
+	            System.out.println("Unexpected title: " + driver.getTitle());
+	            throw new IllegalStateException("Unexpected title: " + driver.getTitle());
+	        }catch(RuntimeException e ){ System.out.println("Timed Out");}
+	         catch (Exception e ){
+	         	System.out.println("Exception. Can't evaluate webpage title");
+	         }
+
 }
 
 }
