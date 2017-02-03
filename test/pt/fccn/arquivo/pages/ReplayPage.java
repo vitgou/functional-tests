@@ -548,7 +548,7 @@ public class ReplayPage {
 
         String expectedanchorHref = serverName+"?l="+ prop.getProperty("lang") ;
         String optionalExpectedanchorHref = serverName.substring(0,serverName.length()-1)+"?l="+ prop.getProperty("lang") ;
-        String expectedlogoAlt = "logo";
+        String expectedlogoAlt = "Arquivo.pt logo";
         String expectedlogoSrc = serverName+"wayback/static/resources/img/arquivo100v.png";
 
         if((expectedanchorHref.equals(anchorHref) || optionalExpectedanchorHref.equals(anchorHref)) && expectedlogoAlt.equals(logoAlt) && expectedlogoSrc.equals(logoSrc)) {
