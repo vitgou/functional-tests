@@ -49,8 +49,8 @@ public class AdvancedTest extends WebDriverTestBaseParalell{
         assertTrue("The page displayed has not got the title text being displayed",advancedPage.titleIsCorrect(term));
         System.out.print("Running 2nd Assertion. \n");
         assertTrue("The page  is not online",advancedPage.existsInResults(Ispre_prod));
-        System.out.print("Running 3rd Assertion. \n");
-        assertTrue("Problems searching with url's on advanced search",advancedPage.searchURL());
+        /*System.out.print("Running 3rd Assertion. \n");
+        assertTrue("Problems searching with url's on advanced search",advancedPage.searchURL());*/
         System.out.print("Passed All Assertions. \n");
 
     }
