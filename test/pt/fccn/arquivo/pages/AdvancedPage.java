@@ -89,9 +89,9 @@ public class AdvancedPage {
             WebElement listOfResults = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.elementToBeClickable(By.id(listOfResultsTag))); 
             
-            title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")).getText();
+            title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]")).getText();
             results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
-            if (!title.contains("SAPO") || title==null){
+            if (!title.contains("sapo.pt") || title==null){
                 System.out.println("Unexpected Title, missing SAPO");
                 return false;            
             }
