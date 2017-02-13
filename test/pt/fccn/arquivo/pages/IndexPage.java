@@ -203,7 +203,8 @@ public class IndexPage {
      */
     public AdvancedPage goToAdvancedPage(){
         try{
-            WebElement advancedLink = driver.findElement(By.id("pesquisa-avancada"));
+            WebElement advancedLink = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("pesquisa-avancada")));            
             advancedLink.click();
         }
         catch(NoSuchElementException e){
