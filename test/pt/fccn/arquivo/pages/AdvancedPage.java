@@ -19,6 +19,7 @@ package pt.fccn.arquivo.pages;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
 
@@ -50,7 +51,7 @@ public class AdvancedPage {
         this.driver= driver;
         // Check that we're on the right page.
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        
+
         if (!(driver.getCurrentUrl().contains(pageURLCheck))) {
             throw new IllegalStateException("This is not the results search page\n URL of current page: " + driver.getCurrentUrl());
         }
