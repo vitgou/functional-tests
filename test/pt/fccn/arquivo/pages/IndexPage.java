@@ -203,7 +203,8 @@ public class IndexPage {
      */
     public AdvancedPage goToAdvancedPage(){
         try{
-            WebElement advancedLink = (new WebDriverWait(driver, 120)) /* Wait Up to 120 seconds should throw RunTimeExcpetion*/
+            Sysytem.out.println("Going to AdvancedPage");
+            WebElement advancedLink = (new WebDriverWait(driver, 25)) /* Wait Up to 120 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"pesquisa-avancada\"]")));            
             advancedLink.click();
         }
