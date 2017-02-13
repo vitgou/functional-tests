@@ -203,8 +203,7 @@ public class IndexPage {
      */
     public AdvancedPage goToAdvancedPage(){
         try{
-            System.out.println("Waiting 50seconds for advanced search link");
-            WebElement advancedLink = (new WebDriverWait(driver, 50)) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+            WebElement advancedLink = (new WebDriverWait(driver, 25)) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.presenceOfElementLocated(By.id("pesquisa-avancada")));            
             advancedLink.click();
         }
