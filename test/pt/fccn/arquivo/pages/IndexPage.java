@@ -203,10 +203,11 @@ public class IndexPage {
      */
     public AdvancedPage goToAdvancedPage(){
         try{
-            System.out.println("Going to AdvancedPage");
+            System.out.println("Start goToAdvancedPage() method");
             WebElement advancedLink = (new WebDriverWait(driver, 25)) /* Wait Up to 120 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"pesquisa-avancada\"]")));            
             advancedLink.click();
+             System.out.println("Finished goToAdvancedPage() method");
         }
         catch(NoSuchElementException e){
                   System.out.println("Could not find the pesquisa-avancada element");
