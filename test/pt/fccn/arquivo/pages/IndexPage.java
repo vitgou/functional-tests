@@ -208,10 +208,9 @@ public class IndexPage {
             .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"pesquisa-avancada\"]")));            
             advancedLink.click();
              System.out.println("Finished goToAdvancedPage() method");
-        }
-        catch(NoSuchElementException e){
-                  System.out.println("Could not find the pesquisa-avancada element");
-                  throw e;
+        }catch(NoSuchElementException e){
+	          System.out.println("Could not find the pesquisa-avancada element");
+	          throw e;
         } catch (Exception e){
             System.out.println("Unexpected Error. Unable to go to AdvancedPage");
             throw e;

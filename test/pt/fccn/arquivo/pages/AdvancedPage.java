@@ -19,6 +19,9 @@ package pt.fccn.arquivo.pages;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
@@ -39,6 +42,8 @@ public class AdvancedPage {
     private final String listOfResultsTag = "resultados-lista";
     private String results_withWWW=null;
     private String results_withoutWWW=null;
+    private final int timeout = 25;
+    
     // Patern to detect if there are results
     
     // Tags for searching
@@ -52,7 +57,7 @@ public class AdvancedPage {
         // Check that we're on the right page.
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-        if (!((new WebDriverWait(driver, 25)).until(ExpectedConditions.urlContains(pageURLCheck)))) {
+        if (!((new WebDriverWait(driver, timeout)).until(ExpectedConditions.urlContains(pageURLCheck)))) {
             throw new IllegalStateException("This is not the results search page\n URL of current page: " + driver.getCurrentUrl());
         }
     }
@@ -77,19 +82,19 @@ public class AdvancedPage {
         String title=null;
         
         try {
-            WebElement advAnd = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("adv_and")));             
             advAnd.clear();
             advAnd.sendKeys("sapo");
-            WebElement siteElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            WebElement siteElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("site")));
             siteElement.clear();
             siteElement.sendKeys("sapo.pt");
-            WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitTop")));
             btnSubmitElement.click();
 
-            WebElement listOfResults = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            WebElement listOfResults = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.elementToBeClickable(By.id(listOfResultsTag))); 
             
             title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]")).getText();
@@ -99,7 +104,6 @@ public class AdvancedPage {
                 return false;            
             }
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             System.out.println("Some Error Finding Elements in existsInResults");
             e.printStackTrace();
             return false;
@@ -107,34 +111,93 @@ public class AdvancedPage {
         return true;
     }
     
-   
-    
     /**
      * Check if the advanced search by URL with or without www. returns the same results
      * For instance, sapo.pt and www.sapo.pt have to return the same number of results
      * @return
      */
-    public boolean searchURL(){
+    public boolean searchURL( ){
         try{
             WebElement listOfResults=null;
-            driver.findElement(By.id("txtSearch")).clear();
-            driver.findElement(By.id("txtSearch")).sendKeys("sapo site:www.sapo.pt");
-            driver.findElement(By.id("btnSubmit")).click();
-            try {
-                Thread.sleep(5000);                 //wait for page to load
-            } catch(InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }        
-            listOfResults = driver.findElement(By.id(listOfResultsTag));
+            
+            listOfResults = searchQuery( "sapo site:www.sapo.pt" ); //driver.findElement(By.id(listOfResultsTag));
             results_withoutWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
-        
+            
             if (results_withoutWWW.equals(results_withWWW))
                 return true;
             return false;
-        }catch (Exception e ){
+        }catch ( Exception e ){
             System.out.println("Error searching URL");
             e.printStackTrace();
             return false;
         }
     }
+    
+    public boolean checkOPSite( ){
+    	String domainSupposed = expandURL( "programas.rtp.pt" );
+    	WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
+    	
+    	//get all result from first page results
+    	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
+    	
+    	for( WebElement elem : allElements ) { 
+    		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
+    		String domain = expandURL( urlResult );
+            if( !domain.equals( domainSupposed ) )
+            	return false;
+    	}
+    	return true;
+    	
+    }
+    
+    public WebElement searchQuery( String term ) {
+    	 try{
+             driver.findElement( By.id( "txtSearch" ) ).clear( );
+             driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
+             driver.findElement( By.id( "btnSubmit" ) ).click( );
+             WebElement listOfResults = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                     .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
+             return listOfResults;
+         }catch ( Exception e ){
+             System.out.println( "Error searching URL" );
+             e.printStackTrace( );
+             return null;
+         }
+    }
+
+	public String expandURL( String url ) {
+		 	String urlResult;
+		 	
+	    	if ( url.startsWith( "http://" ) ) 
+	    		urlResult = urlRemoveProtocol( "http://" , url );
+			else if ( url.startsWith( "https://" ) ) 
+				urlResult = urlRemoveProtocol( "https://" , url );
+			else 
+				urlResult = urlRemoveProtocol( "http://" , "http://".concat( url ) );
+			
+			if( urlResult == null || urlResult == "" )
+				return "";
+			
+			if( urlResult.startsWith( "www." ) ) 
+				urlResult = urlResult.replaceFirst( "www." , "" );
+			        
+	    	return urlResult;
+	}
+	 
+	 
+	public String urlRemoveProtocol( String protocol , String url ) {
+		String urlexpanded = "";
+		String siteHost = "";
+		try{
+			URL siteURL = new URL( url );
+			siteHost = siteURL.getHost( );
+			url = url.replace( siteHost, siteHost.toLowerCase( ) ); // hostname to lowercase
+			urlexpanded = url.substring( protocol.length( ) );
+			return urlexpanded; 
+		} catch ( MalformedURLException e ) {
+			return null;
+		}
+	}
+    
+    
 }
