@@ -119,16 +119,20 @@ public class AdvancedPage {
     public boolean searchURL( ){
         try{
             WebElement listOfResults=null;
-            
+            System.out.println( "[searhURL]" );
             listOfResults = searchQuery( "sapo site:www.sapo.pt" ); //driver.findElement(By.id(listOfResultsTag));
-            results_withoutWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
+            if( listOfResults == null )
+            	return false;
+            
+            System.out.println( "listOfResults = " + listOfResults.getSize( ) );
+            results_withoutWWW = listOfResults.findElement( By.xpath( "//*[@id=\"resultados\"]" ) ).getText();
             
             if (results_withoutWWW.equals(results_withWWW))
                 return true;
             return false;
         }catch ( Exception e ){
             System.out.println("Error searching URL");
-            e.printStackTrace();
+            e.printStackTrace( );
             return false;
         }
     }
