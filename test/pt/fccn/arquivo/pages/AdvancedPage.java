@@ -181,11 +181,16 @@ public class AdvancedPage {
 			
 			if( urlResult.startsWith( "www." ) ) 
 				urlResult = urlResult.replaceFirst( "www." , "" );
-			        
+			
+			urlResult = removeSubdirectories( urlResult );
+			
 	    	return urlResult;
 	}
 	 
-	 
+	public static String removeSubdirectories( String input ) {
+		return input.substring( 0 , input.indexOf( "/" ) );
+	 }
+	
 	public String urlRemoveProtocol( String protocol , String url ) {
 		String urlexpanded = "";
 		String siteHost = "";
