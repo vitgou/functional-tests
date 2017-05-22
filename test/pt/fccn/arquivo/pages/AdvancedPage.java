@@ -133,15 +133,17 @@ public class AdvancedPage {
     }
     
     public boolean checkOPSite( ){
+    	System.out.println( "[checkOPSite]" );
     	String domainSupposed = expandURL( "programas.rtp.pt" );
     	WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
-    	
+    	System.out.println( "results = " + results.getTagName( ) );
     	//get all result from first page results
     	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
-    	
+    	System.out.println( "allElements[0] = " + allElements.get( 0 ).getText( )  );
     	for( WebElement elem : allElements ) { 
     		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
     		String domain = expandURL( urlResult );
+    		System.out.println( "domain["+domain+"] equals ["+domainSupposed+"]" );
             if( !domain.equals( domainSupposed ) )
             	return false;
     	}
