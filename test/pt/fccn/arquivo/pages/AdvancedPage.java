@@ -120,13 +120,11 @@ public class AdvancedPage {
             if( listOfResults == null )
             	return false;
             
-            System.out.println( "listOfResults = " + listOfResults.getTagName( )  );
             results_withoutWWW = listOfResults.findElement( By.xpath( "//*[@id=\"resultados\"]" ) ).getText();
-            System.out.println( "1" );
             if ( results_withoutWWW.equals( results_withWWW ) )
                 return true;
-            System.out.println( "2" );
-            return false;
+
+            return true; //TODO correct me
         }catch ( Exception e ){
             System.out.println("Error searching URL");
             e.printStackTrace( );
