@@ -188,8 +188,11 @@ public class AdvancedPage {
 	}
 	 
 	public static String removeSubdirectories( String input ) {
-		return input.substring( 0 , input.indexOf( "/" ) );
-	 }
+		if( input == null || input.equals( "" ) ) return "";
+		int idx = input.indexOf( "/" );
+		if( idx == -1 ) return input;
+		return input.substring( 0 , idx );
+	}
 	
 	public String urlRemoveProtocol( String protocol , String url ) {
 		String urlexpanded = "";
