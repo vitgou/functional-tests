@@ -17,14 +17,10 @@
  */
 package pt.fccn.arquivo.pages;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -124,11 +120,12 @@ public class AdvancedPage {
             if( listOfResults == null )
             	return false;
             
-            System.out.println( "listOfResults = " + listOfResults.getSize( ) );
+            System.out.println( "listOfResults = " + listOfResults.getTagName( )  );
             results_withoutWWW = listOfResults.findElement( By.xpath( "//*[@id=\"resultados\"]" ) ).getText();
-            
-            if (results_withoutWWW.equals(results_withWWW))
+            System.out.println( "1" );
+            if ( results_withoutWWW.equals( results_withWWW ) )
                 return true;
+            System.out.println( "2" );
             return false;
         }catch ( Exception e ){
             System.out.println("Error searching URL");
