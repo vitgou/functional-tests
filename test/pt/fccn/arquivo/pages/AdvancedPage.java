@@ -132,29 +132,35 @@ public class AdvancedPage {
         }
     }
     
+    /**
+     * Check if advanced search by URL with site operator
+     * @return
+     */
     public boolean checkOPSite( ){
     	System.out.println( "[checkOPSite]" );
     	String domainSupposed = expandURL( "programas.rtp.pt" );
     	WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
-    	//System.out.println( "results = " + results.getTagName( ) );
+    	System.out.println( "results = " + results.getTagName( ) );
     	//get all result from first page results
     	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
     	if( allElements == null || allElements.isEmpty( ) )
     		return false;
     	System.out.println( "Number of responses " + allElements.size( ) );
     	for( WebElement elem : allElements ) { 
-    		//System.out.println( "elem = " + elem.getTagName( ) );
     		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
-    		//System.out.println( "urlResult elem = " + urlResult );
     		String domain = expandURL( urlResult );
-    		//System.out.println( "domain["+domain+"] equals ["+domainSupposed+"]" );
-            if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) )
+    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) )
             	return false;
     	}
     	return true;
     	
     }
     
+    /**
+     * Search for the term in the Arquivo.pt page
+     * @param term
+     * @return
+     */
     public WebElement searchQuery( String term ) {
     	 try{
              driver.findElement( By.id( "txtSearch" ) ).clear( );
@@ -170,6 +176,11 @@ public class AdvancedPage {
          }
     }
 
+    /**
+     * remove protocol and subdirectories in the url
+     * @param url
+     * @return
+     */
 	public String expandURL( String url ) {
 		 	String urlResult;
 		 	
@@ -191,6 +202,11 @@ public class AdvancedPage {
 	    	return urlResult;
 	}
 	 
+	/**
+	 * remove subdirectorires in the url string
+	 * @param input
+	 * @return
+	 */
 	public static String removeSubdirectories( String input ) {
 		if( input == null || input.equals( "" ) ) return "";
 		int idx = input.indexOf( "/" );
@@ -198,6 +214,12 @@ public class AdvancedPage {
 		return input.substring( 0 , idx );
 	}
 	
+	/**
+	 * remove protocol in the url string
+	 * @param protocol
+	 * @param url
+	 * @return
+	 */
 	public String urlRemoveProtocol( String protocol , String url ) {
 		String urlexpanded = "";
 		String siteHost = "";
