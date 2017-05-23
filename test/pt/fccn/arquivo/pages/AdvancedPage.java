@@ -139,7 +139,9 @@ public class AdvancedPage {
     	//System.out.println( "results = " + results.getTagName( ) );
     	//get all result from first page results
     	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
-    	//System.out.println( "allElements[0] = " + allElements.get( 0 ).getText( )  );
+    	if( allElements == null || allElements.isEmpty( ) )
+    		return false;
+    	System.out.println( "Number of responses " + allElements.size( ) );
     	for( WebElement elem : allElements ) { 
     		//System.out.println( "elem = " + elem.getTagName( ) );
     		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
