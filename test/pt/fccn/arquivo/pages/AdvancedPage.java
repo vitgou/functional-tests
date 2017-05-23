@@ -136,21 +136,19 @@ public class AdvancedPage {
     	System.out.println( "[checkOPSite]" );
     	String domainSupposed = expandURL( "programas.rtp.pt" );
     	WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
-    	System.out.println( "results = " + results.getTagName( ) );
+    	//System.out.println( "results = " + results.getTagName( ) );
     	//get all result from first page results
     	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
-    	System.out.println( "allElements[0] = " + allElements.get( 0 ).getText( )  );
+    	//System.out.println( "allElements[0] = " + allElements.get( 0 ).getText( )  );
     	for( WebElement elem : allElements ) { 
-    		System.out.println( "elem = " + elem.getTagName( ) );
+    		//System.out.println( "elem = " + elem.getTagName( ) );
     		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
-    		System.out.println( "urlResult elem = " + urlResult );
+    		//System.out.println( "urlResult elem = " + urlResult );
     		String domain = expandURL( urlResult );
-    		System.out.println( "domain["+domain+"] equals ["+domainSupposed+"]" );
+    		//System.out.println( "domain["+domain+"] equals ["+domainSupposed+"]" );
             if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) )
             	return false;
-            
     	}
-    	System.out.println( "Return true" );
     	return true;
     	
     }
