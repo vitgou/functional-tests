@@ -116,7 +116,7 @@ public class AdvancedPage {
         try{
             WebElement listOfResults=null;
             System.out.println( "[searhURL]" );
-            listOfResults = searchQuery( "sapo site:www.sapo.pt" ); //driver.findElement(By.id(listOfResultsTag));
+            listOfResults = searchQuery( "sapo site:sapo.pt" ); 
             if( listOfResults == null )
             	return false;
             
@@ -124,7 +124,7 @@ public class AdvancedPage {
             if ( results_withoutWWW.equals( results_withWWW ) )
                 return true;
 
-            return true; //TODO correct me
+            return false; 
         }catch ( Exception e ){
             System.out.println("Error searching URL");
             e.printStackTrace( );
@@ -143,7 +143,7 @@ public class AdvancedPage {
     	System.out.println( "results = " + results.getTagName( ) );
     	//get all result from first page results
     	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
-    	if( allElements == null || allElements.isEmpty( ) )
+    	if( allElements == null || allElements.isEmpty( ) ) 
     		return false;
     	System.out.println( "Number of responses " + allElements.size( ) );
     	for( WebElement elem : allElements ) { 
@@ -153,7 +153,6 @@ public class AdvancedPage {
             	return false;
     	}
     	return true;
-    	
     }
     
     /**
