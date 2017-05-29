@@ -232,7 +232,7 @@ public class IndexPage {
      * @param query
      * @return
      */
-    public boolean searchbyURL(String query,String queryPT){
+    public boolean searchbyURL( String query , String queryPT ) {
         
         this.url = driver.getCurrentUrl();
         

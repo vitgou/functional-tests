@@ -41,12 +41,11 @@ public class UrlsearchTest extends WebDriverTestBaseParalell{
 	String termPT = "fccn.PT";
     @Test
     @Retry
-    public void UrlsearchTest() {
-    	System.out.print("Running UrlsearchTest. \n");
-        IndexPage index = new IndexPage(driver);
-        
+    public void UrlsearchTest( ) {
+    	System.out.print( "[UrlsearchTest] Running UrlsearchTest. \n" );
+        IndexPage index = new IndexPage( driver );
+        System.out.println( "[UrlsearchTest] index on" );
         assertTrue("Problems when searching by URL, i.e: fccn.pt and fccn.PT are not the same",
-        		index.searchbyURL(term,termPT));
-
+        		index.searchbyURL( term ,termPT ) );
     }
 }
