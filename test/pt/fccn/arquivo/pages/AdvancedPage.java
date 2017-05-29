@@ -28,6 +28,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.google.common.base.Function;
+
 /**
  * @author nutchwax
  * driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)
@@ -164,19 +166,35 @@ public class AdvancedPage {
      */
     public WebElement searchQuery( String term ) {
     	 try{
+    		 // times out after 5 seconds
+             WebDriverWait wait = new WebDriverWait( driver , timeout - 20 );
+             wait.until( presenceOfElementLocated( By.id( "search-home" ) ) );  
+    		 
              driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
+             
              WebElement listOfResults = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                      .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
+
              return listOfResults;
+             
          }catch ( Exception e ){
              System.out.println( "Error searching URL" );
              e.printStackTrace( );
              return null;
          }
     }
-
+    
+    private static Function<WebDriver,WebElement> presenceOfElementLocated( final By locator ) {
+        return new Function< WebDriver , WebElement >( ) {
+            @Override
+            public WebElement apply( WebDriver driver ) {
+                return driver.findElement( locator );
+            }
+        };
+    }
+    
     /**
      * remove protocol and subdirectories in the url
      * @param url
