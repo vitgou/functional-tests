@@ -168,8 +168,8 @@ public class AdvancedPage {
     	 try{
     		 // times out after 5 seconds
              WebDriverWait wait = new WebDriverWait( driver , timeout + timeout ); // 
-             wait.until( ExpectedConditions.elementToBeClickable( By.xpath( "///*[@id=\"txtSearch\"]" ) ) );  
-    		 System.out.println( "1" );
+             wait.until( ExpectedConditions.elementToBeClickable( By.xpath( "//*[@id=\"txtSearch\"]" ) ) );  
+    		 System.out.println( "1" ); 
              driver.findElement( By.id( "txtSearch" ) ).clear( );
              System.out.println( "2" );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
