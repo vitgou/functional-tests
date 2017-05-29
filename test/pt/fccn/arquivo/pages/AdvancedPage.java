@@ -167,8 +167,8 @@ public class AdvancedPage {
     public WebElement searchQuery( String term ) {
     	 try{
     		 // times out after 5 seconds
-             WebDriverWait wait = new WebDriverWait( driver , timeout - 20 );
-             wait.until( ExpectedConditions.visibilityOfElementLocated( By.id( "search-home" ) ) );  
+             WebDriverWait wait = new WebDriverWait( driver , timeout );
+             wait.until( ExpectedConditions.visibilityOfElementLocated( By.id( "btnSubmit" ) ) );  
     		 
              driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
