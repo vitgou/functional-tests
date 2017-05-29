@@ -229,7 +229,8 @@ public class IndexPage {
     /**
      * Make a search by URL and inspect if the hostname is not case-sensitive
      * for instance, fccn.pt and fccn.PT are the same
-     * @param query
+     * @pa
+	        ram query
      * @return
      */
     public boolean searchbyURL( String query , String queryPT ) {
@@ -261,16 +262,20 @@ public class IndexPage {
  */
 public String getVersionURL(String query,String xpath){
         try{
-	        driver.get(this.url);
+        	System.out.println( "[getVersionURL] query["+query+"] xpath["+xpath+"] url["+this.url+"]" );
+        	driver.get(this.url);
+        	System.out.println( "Get txtSearch" );
 	        WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));           
 	        txtSearchElement.clear();
 	        txtSearchElement.sendKeys(query);
+	        System.out.println( "click in btnSubmit" );
 	        WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
 	        btnSubmitElement.click();
 	        WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-	            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));   
+	            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+	        System.out.println( "dateAnchorElement = " + dateAnchorElement.getTagName( ) );
 	        return dateAnchorElement.getAttribute("href");
 
 	    }catch(RuntimeException e ){ throw new IllegalStateException("Timed Out");}
