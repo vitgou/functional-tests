@@ -167,11 +167,13 @@ public class AdvancedPage {
     public WebElement searchQuery( String term ) {
     	 try{
     		 // times out after 5 seconds
-             WebDriverWait wait = new WebDriverWait( driver , timeout );
-             wait.until( ExpectedConditions.visibilityOfElementLocated( By.id( "btnSubmit" ) ) );  
+             WebDriverWait wait = new WebDriverWait( driver , timeout + timeout ); // 
+             wait.until( ExpectedConditions.visibilityOfElementLocated( By.xpath( "///*[@id=\"txtSearch\"]" ) ) );  
     		 
              driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
+             
+             wait.until( ExpectedConditions.visibilityOfElementLocated( By.xpath( "//*[@id=\"btnSubmit\"]" ) ) );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
              
              WebElement listOfResults = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
