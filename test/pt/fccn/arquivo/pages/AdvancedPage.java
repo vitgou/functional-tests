@@ -168,7 +168,7 @@ public class AdvancedPage {
     	 try{
     		 // times out after 5 seconds
              WebDriverWait wait = new WebDriverWait( driver , timeout - 20 );
-             wait.until( presenceOfElementLocated( By.id( "search-home" ) ) );  
+             wait.until( ExpectedConditions.visibilityOfElementLocated( By.id( "search-home" ) ) );  
     		 
              driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
@@ -184,15 +184,6 @@ public class AdvancedPage {
              e.printStackTrace( );
              return null;
          }
-    }
-    
-    private static Function<WebDriver,WebElement> presenceOfElementLocated( final By locator ) {
-        return new Function< WebDriver , WebElement >( ) {
-            @Override
-            public WebElement apply( WebDriver driver ) {
-                return driver.findElement( locator );
-            }
-        };
     }
     
     /**
