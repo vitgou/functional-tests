@@ -134,7 +134,7 @@ public class AdvancedPage {
             e.printStackTrace( );
             return false;
         }
-    }
+    }driver
      
     /**
      * Check if advanced search by URL with site operator
@@ -172,8 +172,11 @@ public class AdvancedPage {
     		 driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
+             System.out.println( "ola5" );
              WebElement listOfResults = ( new WebDriverWait( driver, timeout + timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                      .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
+             System.out.println( "ola6" );
+             
              return listOfResults;
              
          }catch ( Exception e ){
