@@ -169,16 +169,16 @@ public class AdvancedPage {
     		 // times out after 5 seconds
              WebDriverWait wait = new WebDriverWait( driver , timeout + timeout ); // 
              wait.until( ExpectedConditions.elementToBeClickable( By.xpath( "//*[@id=\"txtSearch\"]" ) ) );  
-    		 System.out.println( "1" ); 
+    		 System.out.println( "ola1" ); 
              driver.findElement( By.id( "txtSearch" ) ).clear( );
-             System.out.println( "2" );
+             System.out.println( "ola2" );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
-             System.out.println( "3" );
+             System.out.println( "ola3" );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
-             System.out.println( "4" );
+             System.out.println( "ola4" );
              WebElement listOfResults = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                      .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
-             System.out.println( "5" );
+             System.out.println( "ola5" );
              return listOfResults;
              
          }catch ( Exception e ){
