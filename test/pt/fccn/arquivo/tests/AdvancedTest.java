@@ -53,6 +53,7 @@ public class AdvancedTest extends WebDriverTestBaseParalell{
         assertTrue( "Problems searching with url's on advanced search", advancedPage.searchURL( ) );
         System.out.println( "Running 4rd Assertion.\n" );
         assertTrue( "Problems search with operator \"site:\"" , advancedPage.checkOPSite( ) );
+        //TODO test with dates is missing!
         System.out.print( "Passed All Assertions. \n" );
     }
 }

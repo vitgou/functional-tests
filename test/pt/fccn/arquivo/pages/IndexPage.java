@@ -240,8 +240,8 @@ public class IndexPage {
         String anchorText = getVersionURL(query,xpath);
         String anchorText_cap=getVersionURL(queryPT,xpath);
 
-
-        if (anchorText==null){
+        System.out.println( "anchorText["+anchorText+"] anchorText_cap["+anchorText_cap+"]" );
+        if ( anchorText == null ){
             throw new IllegalStateException("Version on the 26th of November 2002 not found");
         }
         else if (!anchorText.equals(anchorText_cap)){

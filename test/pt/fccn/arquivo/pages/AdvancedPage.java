@@ -30,7 +30,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author nutchwax
- *
+ * driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)
  */
 public class AdvancedPage {
     private final WebDriver driver;
@@ -50,6 +50,8 @@ public class AdvancedPage {
      */
     public AdvancedPage(WebDriver driver){
         this.driver= driver;
+        this.driver.manage().timeouts().implicitlyWait( 30, TimeUnit.SECONDS );
+        
         // Check that we're on the right page.
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
@@ -99,7 +101,7 @@ public class AdvancedPage {
                 System.out.println("Unexpected Title, missing SAPO");
                 return false;            
             }
-        } catch (Exception e) {
+        } catch (Exception e) { 
             System.out.println("Some Error Finding Elements in existsInResults");
             e.printStackTrace();
             return false;
@@ -131,7 +133,7 @@ public class AdvancedPage {
             return false;
         }
     }
-    
+     
     /**
      * Check if advanced search by URL with site operator
      * @return
