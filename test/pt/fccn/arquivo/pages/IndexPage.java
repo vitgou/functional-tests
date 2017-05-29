@@ -237,7 +237,7 @@ public class IndexPage {
         
         this.url = driver.getCurrentUrl();
         
-        String xpath="//*[@id='8']/td[7]/a[@title='26 Novembro 2002']"; // historical link selected
+        String xpath="//*[@id='8']/td[7]/a[@title='26 Novembro 2002  às 13:04']"; // historical link selected
         String anchorText = getVersionURL(query,xpath);
         String anchorText_cap=getVersionURL(queryPT,xpath);
 
@@ -245,13 +245,14 @@ public class IndexPage {
         if ( anchorText == null ){
             throw new IllegalStateException("Version on the 26th of November 2002 not found");
         }
-        else if (!anchorText.equals(anchorText_cap)){
+        else if ( !anchorText.equals( anchorText_cap ) ){
             System.out.println("Anchor text no caps: " + anchorText);
             System.out.println("Anchor text with caps: " + anchorText_cap);
             return false;
         }
         System.out.println("Passed Anchor no caps: " + anchorText);
         System.out.println("Passed Anchor with caps: " + anchorText_cap);
+
         return true;
     
 }
