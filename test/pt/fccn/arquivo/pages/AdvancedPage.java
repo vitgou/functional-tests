@@ -134,7 +134,7 @@ public class AdvancedPage {
             e.printStackTrace( );
             return false;
         }
-    }driver
+    }
      
     /**
      * Check if advanced search by URL with site operator
