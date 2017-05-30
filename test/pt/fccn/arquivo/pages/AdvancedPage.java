@@ -173,10 +173,9 @@ public class AdvancedPage {
 	 
 	    	System.out.println( "results = " + results.getTagName( ) );
 	    	System.out.println( "results text = " + results.getText( ) );
-	    	results.clear();
 	    	//get all result from first page results
-	    	/*List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
-	    	if( allElements == null || allElements.isEmpty( ) ) 
+	    	List< WebElement > allElements = results.findElements( By.xpath("//*[@id=\"resultados-lista\"]/ul/li") );
+	    	/*if( allElements == null || allElements.isEmpty( ) ) 
 	    		return false; 
 	    	System.out.println( "Number of responses " + allElements.size( ) );
 	    	for( WebElement elem : allElements ) { 
