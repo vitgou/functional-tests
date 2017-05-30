@@ -172,7 +172,6 @@ public class AdvancedPage {
 	         .until( ExpectedConditions.visibilityOfElementLocated( By.id( listOfResultsTag ) ) ); 
 	 		
 	    	System.out.println( "results = " + results.getTagName( ) );
-	    	System.out.println( "results text = " + results.getText( ) );
 	    	//get all result from first page results
 	    	List< WebElement > allElements = results.findElements( By.xpath("//*[@id=\"resultados-lista\"]/ul/li") );
 	    	if( allElements == null || allElements.isEmpty( ) ) {	
@@ -182,8 +181,8 @@ public class AdvancedPage {
 	    	System.out.println( "Number of responses " + allElements.size( ) );
 	    	for( WebElement elem : allElements ) {  //*[@id="resultados-lista"]/ul/li[1]/span[3]
 	    		String urlResult = elem.findElement( By.xpath( "/*[3]" ) ).getText( );
-	    		String domain = expandURL( urlResult );
 	    		System.out.println( "urlResult["+urlResult+"]" );
+	    		String domain = expandURL( urlResult );
 	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) ) {
 	    			System.out.println( "domain["+domain.toLowerCase( )+"] is not equal domainSupposed["+domainSupposed.toLowerCase( )+"]" );
 	    			return false;
