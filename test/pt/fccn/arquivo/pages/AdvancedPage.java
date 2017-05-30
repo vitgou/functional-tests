@@ -180,8 +180,8 @@ public class AdvancedPage {
 	    		return false; 
 	    	}
 	    	System.out.println( "Number of responses " + allElements.size( ) );
-	    	for( WebElement elem : allElements ) { 
-	    		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
+	    	for( WebElement elem : allElements ) {  //*[@id="resultados-lista"]/ul/li[1]/span[3]
+	    		String urlResult = elem.findElement( By.xpath( "/*[3]" ) ).getText( );
 	    		String domain = expandURL( urlResult );
 	    		System.out.println( "urlResult["+urlResult+"]" );
 	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) ) {
