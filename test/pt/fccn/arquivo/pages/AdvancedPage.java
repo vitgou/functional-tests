@@ -135,7 +135,7 @@ public class AdvancedPage {
 
      		listOfResults = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
              .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
-     		driver
+     		
             if( listOfResults == null )
             	return false;
             
