@@ -143,7 +143,13 @@ public class AdvancedPage {
     public boolean checkOPSite( ){
     	System.out.println( "[checkOPSite]" );
     	String domainSupposed = expandURL( "programas.rtp.pt" );
-    	WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
+    	//WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
+		driver.findElement( By.id( "txtSearch" ) ).clear( );
+ 		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
+ 		driver.findElement( By.id( "btnSubmit" ) ).click( );
+ 		WebElement results = ( new WebDriverWait( driver, timeout + timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+         .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
+ 
     	System.out.println( "results = " + results.getTagName( ) );
     	//get all result from first page results
     	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
@@ -172,10 +178,8 @@ public class AdvancedPage {
     		 driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
-             System.out.println( "ola5" );
              WebElement listOfResults = ( new WebDriverWait( driver, timeout + timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                      .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
-             System.out.println( "ola6" );
              
              return listOfResults;
              
