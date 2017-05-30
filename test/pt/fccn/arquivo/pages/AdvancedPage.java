@@ -163,7 +163,7 @@ public class AdvancedPage {
 	        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	                .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
 	        advAnd.clear();
-	        advAnd.sendKeys( "sapo site:sapo.pt" ); //"2001 \"Vasco Matos Trigo\" site:programas.rtp.pt"
+	        advAnd.sendKeys( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" ); //"2001 \"Vasco Matos Trigo\" site:programas.rtp.pt"
 	        WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
 	        btnSubmitElement.click();
@@ -175,7 +175,7 @@ public class AdvancedPage {
 	    	System.out.println( "results text = " + results.getText( ) );
 	    	//get all result from first page results
 	    	List< WebElement > allElements = results.findElements( By.xpath("//*[@id=\"resultados-lista\"]/ul/li") );
-	    	if( allElements == null || allElements.isEmpty( ) ){	
+	    	if( allElements == null || allElements.isEmpty( ) ) {	
 	    		System.out.println( "allElements is null or empty" );
 	    		return false; 
 	    	}
