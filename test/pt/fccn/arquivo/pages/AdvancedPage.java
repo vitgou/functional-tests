@@ -169,7 +169,7 @@ public class AdvancedPage {
 	        btnSubmitElement.click();
 	        
 	 		WebElement results = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-	         .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
+	         .until( ExpectedConditions.presenceOfElementLocated( By.id( listOfResultsTag ) ) ); 
 	 
 	    	System.out.println( "results = " + results.getTagName( ) );
 	    	//get all result from first page results
@@ -185,7 +185,7 @@ public class AdvancedPage {
 	    	}
 	    	
     	} catch( Exception e ){
-            System.out.println("Some Error Finding Elements in existsInResults");
+            System.out.println("Some Error Finding Elements in checkOPSite");
             e.printStackTrace();
             return false;
     	}
