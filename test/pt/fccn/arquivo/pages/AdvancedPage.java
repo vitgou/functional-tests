@@ -122,14 +122,17 @@ public class AdvancedPage {
             WebElement listOfResults=null;
             System.out.println( "[searhURL]" );
             //listOfResults = searchQuery( "sapo site:sapo.pt" ); 
-            driver.findElement( By.id( "txtSearch" ) ).clear( );
+            WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                    .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
+            advAnd.clear();
+            advAnd.sendKeys("sapo site:sapo.pt");
+            WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                    .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
+            btnSubmitElement.click();
+            /*driver.findElement( By.id( "txtSearch" ) ).clear( );
      		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "sapo site:sapo.pt" );
-     		driver.findElement( By.id( "btnSubmit" ) ).click( );
-     		try {
-                Thread.sleep(waitingPeriod);  //wait for page to load
-            } catch(InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
+     		driver.findElement( By.id( "btnSubmit" ) ).click( );*/
+
      		listOfResults = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
              .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
 
@@ -156,14 +159,18 @@ public class AdvancedPage {
     	System.out.println( "[checkOPSite]" );
     	String domainSupposed = expandURL( "programas.rtp.pt" );
     	//WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
-		driver.findElement( By.id( "txtSearch" ) ).clear( );
+        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
+        advAnd.clear();
+        advAnd.sendKeys("2001 \"Vasco Matos Trigo\" site:programas.rtp.pt");
+        WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
+        btnSubmitElement.click();
+        
+    	/*driver.findElement( By.id( "txtSearch" ) ).clear( );
  		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
- 		driver.findElement( By.id( "btnSubmit" ) ).click( );
-        try {
-            Thread.sleep(waitingPeriod);  //wait for page to load
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
+ 		driver.findElement( By.id( "btnSubmit" ) ).click( );*/
+ 
  		WebElement results = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
          .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
  
@@ -192,7 +199,7 @@ public class AdvancedPage {
     		 driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
-             WebElement listOfResults = ( new WebDriverWait( driver, timeout + timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+             WebElement listOfResults = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                      .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
              
              return listOfResults;
