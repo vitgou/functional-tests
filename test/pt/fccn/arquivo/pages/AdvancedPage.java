@@ -163,7 +163,7 @@ public class AdvancedPage {
 	        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	                .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
 	        advAnd.clear();
-	        advAnd.sendKeys("2001 \"Vasco Matos Trigo\" site:programas.rtp.pt");
+	        advAnd.sendKeys( "sapo site:sapo.pt" ); //"2001 \"Vasco Matos Trigo\" site:programas.rtp.pt"
 	        WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
 	        btnSubmitElement.click();
@@ -172,9 +172,8 @@ public class AdvancedPage {
 	         .until( ExpectedConditions.visibilityOfElementLocated( By.id( listOfResultsTag ) ) ); 
 	 
 	    	System.out.println( "results = " + results.getTagName( ) );
-	    	System.out.println( "results size = " + results.getSize( ) );
 	    	//get all result from first page results
-	    	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
+	    	/*List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
 	    	if( allElements == null || allElements.isEmpty( ) ) 
 	    		return false; 
 	    	System.out.println( "Number of responses " + allElements.size( ) );
@@ -183,7 +182,7 @@ public class AdvancedPage {
 	    		String domain = expandURL( urlResult );
 	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) )
 	            	return false;
-	    	}
+	    	}*/
 	    	
     	} catch( Exception e ){
             System.out.println("Some Error Finding Elements in checkOPSite");
