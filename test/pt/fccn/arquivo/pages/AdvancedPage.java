@@ -173,14 +173,14 @@ public class AdvancedPage {
 	 		
 	    	System.out.println( "results = " + results.getTagName( ) );
 	    	//get all result from first page results
-	    	List< WebElement > allElements = results.findElements( By.xpath("//*[@id=\"resultados-lista\"]/ul/li") );
+	    	List< WebElement > allElements = results.findElements( By.xpath(".//ul/li") );
 	    	if( allElements == null || allElements.isEmpty( ) ) {	
 	    		System.out.println( "allElements is null or empty" );
 	    		return false; 
 	    	}
 	    	System.out.println( "Number of responses " + allElements.size( ) );
 	    	for( WebElement elem : allElements ) {  //*[@id="resultados-lista"]/ul/li[1]/span[3]
-	    		String urlResult = elem.findElement( By.xpath( "/*[3]" ) ).getText( );
+	    		String urlResult = elem.findElement( By.xpath( ".//[3]" ) ).getText( );
 	    		System.out.println( "urlResult["+urlResult+"]" );
 	    		String domain = expandURL( urlResult );
 	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) ) {
