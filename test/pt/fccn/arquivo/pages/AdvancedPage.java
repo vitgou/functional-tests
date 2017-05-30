@@ -172,7 +172,7 @@ public class AdvancedPage {
 	         .until( ExpectedConditions.visibilityOfElementLocated( By.id( listOfResultsTag ) ) ); 
 	 
 	    	System.out.println( "results = " + results.getTagName( ) );
-	    	System.out.println( "results.text => " + results.getText( ) );
+	    	System.out.println( "results size = " + results.getSize( ) );
 	    	//get all result from first page results
 	    	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
 	    	if( allElements == null || allElements.isEmpty( ) ) 
