@@ -135,7 +135,7 @@ public class AdvancedPage {
 
      		listOfResults = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
              .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
-
+     		driver
             if( listOfResults == null )
             	return false;
             
@@ -173,7 +173,7 @@ public class AdvancedPage {
 	 		
 	    	System.out.println( "results = " + results.getTagName( ) );
 	    	//get all result from first page results
-	    	List< WebElement > allElements = results.findElements( By.xpath(".//ul//*") );
+	    	List< WebElement > allElements = results.findElements( By.xpath(".//ul") );
 	    	if( allElements == null || allElements.isEmpty( ) ) {	
 	    		System.out.println( "allElements is null or empty" );
 	    		return false; 
