@@ -28,7 +28,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 /*@SuiteClasses({ TestSearchOneTerm.class,HighlightsTest.class, 
         TermsAndConditionsTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class,UrlsearchTest.class, ReplayTest.class })*/
-@SuiteClasses({ TestSearchOneTerm.class,HighlightsTest.class, ReplayTest.class,
+// HighlightsTest.class 
+@SuiteClasses({ TestSearchOneTerm.class, ReplayTest.class,
     TermsAndConditionsTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class, UrlsearchTest.class }) /*TODO:: Add replayTest*/
 
 public class AllTests {

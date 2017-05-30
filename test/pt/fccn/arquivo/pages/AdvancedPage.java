@@ -69,7 +69,8 @@ public class AdvancedPage {
      */
     public boolean titleIsCorrect(String query){
         if (driver.getTitle().contains(query) && !query.isEmpty())
-            return true;
+            return true;// times out after 5 seconds
+        
         else
             return false;
     }
@@ -178,9 +179,6 @@ public class AdvancedPage {
      */
     public WebElement searchQuery( String term ) {
     	 try{
-    		 // times out after 5 seconds
-             //WebDriverWait wait = new WebDriverWait( driver , timeout + timeout ); // 
-             //wait.until( ExpectedConditions.elementToBeClickable( By.xpath( "//*[@id=\"txtSearch\"]" ) ) );  
     		 driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
