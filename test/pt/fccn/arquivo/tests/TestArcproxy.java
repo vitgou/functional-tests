@@ -34,7 +34,6 @@ public class TestArcproxy extends WebDriverTestBaseParalell{
 			assertTrue("There are problems in the coherence of ArcProxy ",arcproxy.inspectArcproxy(false));
 			assertTrue("The date of archived pages are not the same before perfomed ",arcproxy.inspectArcproxy(true));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

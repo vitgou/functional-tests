@@ -41,7 +41,7 @@ public class AdvancedPage {
     private String results_withWWW=null;
     private String results_withoutWWW=null;
     private final int timeout = 25;
-    
+    private static final int waitingPeriod = 10000; //Time to load the Web page in miliseconds
     // Patern to detect if there are results
     
     // Tags for searching
@@ -125,6 +125,11 @@ public class AdvancedPage {
             driver.findElement( By.id( "txtSearch" ) ).clear( );
      		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "sapo site:sapo.pt" );
      		driver.findElement( By.id( "btnSubmit" ) ).click( );
+     		try {
+                Thread.sleep(waitingPeriod);  //wait for page to load
+            } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
      		listOfResults = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
              .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
 
@@ -154,6 +159,11 @@ public class AdvancedPage {
 		driver.findElement( By.id( "txtSearch" ) ).clear( );
  		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
  		driver.findElement( By.id( "btnSubmit" ) ).click( );
+        try {
+            Thread.sleep(waitingPeriod);  //wait for page to load
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
  		WebElement results = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
          .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
  

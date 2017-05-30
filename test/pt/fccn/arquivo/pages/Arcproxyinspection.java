@@ -194,7 +194,6 @@ public class Arcproxyinspection {
 			replay_bar_with_date =  driver.findElement(By.xpath("//*[@id=\"replay_iframe\"]"));
 			
 		} catch ( org.openqa.selenium.NoSuchElementException e) {
-			// TODO Auto-generated catch block
 			//System.out.print("\nReplay bar not injected. "+id+"\n");
 			return null;
 		}
