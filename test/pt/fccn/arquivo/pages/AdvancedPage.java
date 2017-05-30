@@ -41,7 +41,7 @@ public class AdvancedPage {
     private String results_withWWW=null;
     private String results_withoutWWW=null;
     private final int timeout = 25;
-    private static final int waitingPeriod = 5000; //Time to load the Web page in miliseconds
+    private static final int waitingPeriod = 3000; //Time to load the Web page in miliseconds
     // Patern to detect if there are results
     
     // Tags for searching
@@ -88,7 +88,7 @@ public class AdvancedPage {
             advAnd.clear();
             advAnd.sendKeys("sapo");
             WebElement siteElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("site")));
+                .unt10il(ExpectedConditions.presenceOfElementLocated(By.id("site")));
             siteElement.clear();
             siteElement.sendKeys("sapo.pt");
             WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
