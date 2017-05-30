@@ -120,7 +120,13 @@ public class AdvancedPage {
         try{
             WebElement listOfResults=null;
             System.out.println( "[searhURL]" );
-            listOfResults = searchQuery( "sapo site:sapo.pt" ); 
+            //listOfResults = searchQuery( "sapo site:sapo.pt" ); 
+            driver.findElement( By.id( "txtSearch" ) ).clear( );
+     		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "sapo site:sapo.pt" );
+     		driver.findElement( By.id( "btnSubmit" ) ).click( );
+     		listOfResults = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+             .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
+
             if( listOfResults == null )
             	return false;
             
@@ -147,7 +153,7 @@ public class AdvancedPage {
 		driver.findElement( By.id( "txtSearch" ) ).clear( );
  		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
  		driver.findElement( By.id( "btnSubmit" ) ).click( );
- 		WebElement results = ( new WebDriverWait( driver, timeout + timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+ 		WebElement results = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
          .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
  
     	System.out.println( "results = " + results.getTagName( ) );
@@ -173,8 +179,8 @@ public class AdvancedPage {
     public WebElement searchQuery( String term ) {
     	 try{
     		 // times out after 5 seconds
-             WebDriverWait wait = new WebDriverWait( driver , timeout + timeout ); // 
-             wait.until( ExpectedConditions.elementToBeClickable( By.xpath( "//*[@id=\"txtSearch\"]" ) ) );  
+             //WebDriverWait wait = new WebDriverWait( driver , timeout + timeout ); // 
+             //wait.until( ExpectedConditions.elementToBeClickable( By.xpath( "//*[@id=\"txtSearch\"]" ) ) );  
     		 driver.findElement( By.id( "txtSearch" ) ).clear( );
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
