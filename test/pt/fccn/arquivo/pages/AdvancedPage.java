@@ -173,6 +173,7 @@ public class AdvancedPage {
 	 
 	    	System.out.println( "results = " + results.getTagName( ) );
 	    	System.out.println( "results text = " + results.getText( ) );
+	    	results.clear();
 	    	//get all result from first page results
 	    	/*List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
 	    	if( allElements == null || allElements.isEmpty( ) ) 
@@ -184,13 +185,13 @@ public class AdvancedPage {
 	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) )
 	            	return false;
 	    	}*/
-	    	
+	    	return true;
     	} catch( Exception e ){
             System.out.println("Some Error Finding Elements in checkOPSite");
             e.printStackTrace();
             return false;
     	}
-    	return true;
+    	
 
     }
     
