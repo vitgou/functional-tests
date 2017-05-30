@@ -173,7 +173,7 @@ public class AdvancedPage {
 	 		
 	    	System.out.println( "results = " + results.getTagName( ) );
 	    	//get all result from first page results
-	    	List< WebElement > allElements = results.findElements( By.xpath(".//ul/li") );
+	    	List< WebElement > allElements = results.findElements( By.xpath(".//ul//*") );
 	    	if( allElements == null || allElements.isEmpty( ) ) {	
 	    		System.out.println( "allElements is null or empty" );
 	    		return false; 
