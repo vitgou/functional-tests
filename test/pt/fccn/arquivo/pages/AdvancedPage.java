@@ -122,13 +122,13 @@ public class AdvancedPage {
             WebElement listOfResults=null;
             System.out.println( "[searhURL]" );
             //listOfResults = searchQuery( "sapo site:sapo.pt" ); 
-            WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                    .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
-            advAnd.clear();
-            advAnd.sendKeys("sapo site:sapo.pt");
-            WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                    .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
-            btnSubmitElement.click();
+            WebElement advAnd = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                    .until( ExpectedConditions.presenceOfElementLocated( By.id( "txtSearch" ) ) );             
+            advAnd.clear( );
+            advAnd.sendKeys( "sapo site:sapo.pt" );
+            WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+                    .until( ExpectedConditions.presenceOfElementLocated( By.id( "btnSubmit" ) ) );
+            btnSubmitElement.click( );
             /*driver.findElement( By.id( "txtSearch" ) ).clear( );
      		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "sapo site:sapo.pt" );
      		driver.findElement( By.id( "btnSubmit" ) ).click( );*/
@@ -145,7 +145,7 @@ public class AdvancedPage {
 
             return false; 
         }catch ( Exception e ){
-            System.out.println("Error searching URL");
+            System.out.println( "Error searching URL" );
             e.printStackTrace( );
             return false;
         }
@@ -158,35 +158,39 @@ public class AdvancedPage {
     public boolean checkOPSite( ){
     	System.out.println( "[checkOPSite]" );
     	String domainSupposed = expandURL( "programas.rtp.pt" );
-    	//WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
-        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
-        advAnd.clear();
-        advAnd.sendKeys("2001 \"Vasco Matos Trigo\" site:programas.rtp.pt");
-        WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
-        btnSubmitElement.click();
-        
-    	/*driver.findElement( By.id( "txtSearch" ) ).clear( );
- 		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
- 		driver.findElement( By.id( "btnSubmit" ) ).click( );*/
- 
- 		WebElement results = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-         .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
- 
-    	System.out.println( "results = " + results.getTagName( ) );
-    	//get all result from first page results
-    	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
-    	if( allElements == null || allElements.isEmpty( ) ) 
-    		return false;
-    	System.out.println( "Number of responses " + allElements.size( ) );
-    	for( WebElement elem : allElements ) { 
-    		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
-    		String domain = expandURL( urlResult );
-    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) )
-            	return false;
+    	try{
+	    	//WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
+	        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	                .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
+	        advAnd.clear();
+	        advAnd.sendKeys("2001 \"Vasco Matos Trigo\" site:programas.rtp.pt");
+	        WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
+	        btnSubmitElement.click();
+	        
+	 		WebElement results = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	         .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
+	 
+	    	System.out.println( "results = " + results.getTagName( ) );
+	    	//get all result from first page results
+	    	List< WebElement > allElements = results.findElements(By.xpath("//*[@id=\"resultados-lista\"]/ul/li"));
+	    	if( allElements == null || allElements.isEmpty( ) ) 
+	    		return false;
+	    	System.out.println( "Number of responses " + allElements.size( ) );
+	    	for( WebElement elem : allElements ) { 
+	    		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
+	    		String domain = expandURL( urlResult );
+	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) )
+	            	return false;
+	    	}
+	    	
+    	} catch( Exception e ){
+            System.out.println("Some Error Finding Elements in existsInResults");
+            e.printStackTrace();
+            return false;
     	}
     	return true;
+
     }
     
     /**
