@@ -163,7 +163,7 @@ public class AdvancedPage {
 	        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	                .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
 	        advAnd.clear();
-	        advAnd.sendKeys( "sapo site:www.sapo.pt" ); //"2001 \"Vasco Matos Trigo\" site:programas.rtp.pt"
+	        advAnd.sendKeys( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" ); //"2001 \"Vasco Matos Trigo\" site:programas.rtp.pt"
 	        WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
 	        btnSubmitElement.click();
@@ -183,14 +183,15 @@ public class AdvancedPage {
 	    	for( WebElement elem : allElements ) { 
 	    		String urlResult = elem.findElement( By.xpath( "//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]" ) ).getText( );
 	    		String domain = expandURL( urlResult );
-	    		/*if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) ) {
+	    		System.out.println( "urlResult["+urlResult+"]" );
+	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) ) {
 	    			System.out.println( "domain["+domain.toLowerCase( )+"] is not equal domainSupposed["+domainSupposed.toLowerCase( )+"]" );
 	    			return false;
-	    		}*/
+	    		}
 	    	}
 	    	return true;
     	} catch( Exception e ){
-            System.out.println("Some Error Finding Elements in checkOPSite");
+            System.out.println("Error in checkOPSite");
             e.printStackTrace();
             return false;
     	}
