@@ -169,7 +169,7 @@ public class AdvancedPage {
 	        btnSubmitElement.click();
 	        
 	 		WebElement results = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-	         .until( ExpectedConditions.presenceOfElementLocated( By.id( listOfResultsTag ) ) ); 
+	         .until( ExpectedConditions.visibilityOfElementLocated( By.id( listOfResultsTag ) ) ); 
 	 
 	    	System.out.println( "results = " + results.getTagName( ) );
 	    	//get all result from first page results
