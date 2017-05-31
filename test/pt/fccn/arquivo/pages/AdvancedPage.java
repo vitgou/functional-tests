@@ -168,11 +168,11 @@ public class AdvancedPage {
 	        WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
 	        btnSubmitElement.click();
-	        
-	        List<WebElement> results = (new WebDriverWait(driver, timeout))
+	        this.sleep( 2 );
+	        List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until(ExpectedConditions
 	                        .visibilityOfAllElementsLocatedBy(
-	                                By.xpath( xpathSpan )
+	                        		      By.xpath( xpathSpan )
 	                        )
 	        );
 	        
@@ -300,5 +300,12 @@ public class AdvancedPage {
 		}
 	}
     
+	public void sleep( int seconds ) {
+	    try {
+	        Thread.sleep( seconds * 1000 );
+	    } catch ( InterruptedException e ) {
+
+	    }
+	}
     
 }
