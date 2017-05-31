@@ -56,7 +56,7 @@ public class TermsAndConditionsPage {
     public boolean toEnglishVersion(){
         // Check that we're on the right page.
         WebElement linkTextENElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id\"polylang-2\"]/ul/li[2]/a"))); // //*[@id='portal-languageselector']/li[1]/a 
+            .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#polylang-2 > ul > li.lang-item.lang-item-441.lang-item-en > a"))); // //*[@id='portal-languageselector']/li[1]/a 
         linkTextENElement.click(); 
 
         if(! (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
@@ -65,7 +65,7 @@ public class TermsAndConditionsPage {
             System.out.println("Found: " + driver.getTitle());
             throw new IllegalStateException("This is not the terms and conditions page, in English\nTitle received is " + driver.getTitle()+" "+this.getClass().getName());
         	//return false;
-        }
+        }  
         return true;
     }
 
@@ -75,7 +75,7 @@ public class TermsAndConditionsPage {
     public boolean toPortugueseVersion( ){
         // Check that we're on the right page.
         WebElement linkTextPTElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"polylang-2\"]/ul/li[1]/a"))); 
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("#polylang-2 > ul > li.lang-item.lang-item-163.lang-item-pt.lang-item-first.current-lang > a"))); 
         linkTextPTElement.click();
 
         if(! (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
