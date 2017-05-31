@@ -43,13 +43,11 @@ public class TermsAndConditionsTest extends WebDriverTestBaseParalell{
     public void termsAndConditionsTest() {
     	System.out.print("Running TermsAndConditionsTest. \n");
         IndexPage indexPage = new IndexPage(driver);
-        System.out.println("0");
+        System.out.println("ola0");
         TermsAndConditionsPage termsPage = indexPage.getTermsAndConditionsPage();
-        System.out.println("1");
+        System.out.println("ola1");
         assertTrue("This is not the terms and conditions page, in English\nTitle recived is ",termsPage.toEnglishVersion());
-        System.out.println("2");
+        System.out.println("ola2");
         assertTrue("This is not the terms and conditions page, in Portuguese\nTitle in page is ",termsPage.toPortugueseVersion());
-        System.out.println("3");
-
     }
 }
