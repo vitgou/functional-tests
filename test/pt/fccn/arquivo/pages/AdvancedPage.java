@@ -186,7 +186,7 @@ public class AdvancedPage {
 	    			return false;
 	    		}
 	    	}
-	        this.sleep( 1 );
+	        
 	    	return true;
     	} catch( Exception e ){
             System.out.println("Error in checkOPSite");
