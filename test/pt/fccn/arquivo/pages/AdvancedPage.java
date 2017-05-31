@@ -186,7 +186,7 @@ public class AdvancedPage {
 	    			return false;
 	    		}
 	    	}
-	        
+	        this.sleep( 1 );
 	    	return true;
     	} catch( Exception e ){
             System.out.println("Error in checkOPSite");
@@ -256,7 +256,7 @@ public class AdvancedPage {
 	}
 	
 	/**
-	 * remove protocol in the url string
+	 * remove protocol in the url stIndexPage index = new IndexPage( driver );ring
 	 * @param protocol
 	 * @param url
 	 * @return
