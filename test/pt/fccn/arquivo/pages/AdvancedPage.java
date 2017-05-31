@@ -129,9 +129,6 @@ public class AdvancedPage {
             WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                     .until( ExpectedConditions.presenceOfElementLocated( By.id( "btnSubmit" ) ) );
             btnSubmitElement.click( );
-            /*driver.findElement( By.id( "txtSearch" ) ).clear( );
-     		driver.findElement( By.id( "txtSearch" ) ).sendKeys( "sapo site:sapo.pt" );
-     		driver.findElement( By.id( "btnSubmit" ) ).click( );*/
 
      		listOfResults = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
              .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
@@ -190,34 +187,12 @@ public class AdvancedPage {
 	    		}
 	    	}
 	        
-	 		/*WebElement results = ( new WebDriverWait( driver, timeout  ) ) 
-	         .until( ExpectedConditions.visibilityOfElementLocated( By.id( listOfResultsTag ) ) ); 
-	 		
-	    	System.out.println( "results = " + results.getTagName( ) );
-	    	//get all result from first page results
-	    	List< WebElement > allElements = results.findElements( By.xpath(".//") );
-	    	if( allElements == null || allElements.isEmpty( ) ) {	
-	    		System.out.println( "allElements is null or empty" );
-	    		return false; 
-	    	}
-	    	System.out.println( "Number of responses " + allElements.size( ) );
-	    	for( WebElement elem : allElements ) {  //*[@id="resultados-lista"]/ul/li[1]/span[3]
-	    		String urlResult = elem.findElement( By.xpath( ".//[3]" ) ).getText( );
-	    		System.out.println( "urlResult["+urlResult+"]" );
-	    		String domain = expandURL( urlResult );
-	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) ) {
-	    			System.out.println( "domain["+domain.toLowerCase( )+"] is not equal domainSupposed["+domainSupposed.toLowerCase( )+"]" );
-	    			return false;
-	    		}
-	    	}*/
 	    	return true;
     	} catch( Exception e ){
             System.out.println("Error in checkOPSite");
             e.printStackTrace();
             return false;
     	}
-    	
-
     }
     
     /**
