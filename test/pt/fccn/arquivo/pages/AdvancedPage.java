@@ -30,7 +30,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.base.Function;
 
-/**
+/**allElements
  * @author nutchwax
  * driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)
  */
@@ -158,6 +158,7 @@ public class AdvancedPage {
     public boolean checkOPSite( ){
     	System.out.println( "[checkOPSite]" );
     	String domainSupposed = expandURL( "programas.rtp.pt" );
+    	String xpathSpan = "//div[@id = '" + listOfResultsTag + "']/ul/li/span";
     	try{
 	    	//WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
 	        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
@@ -168,7 +169,28 @@ public class AdvancedPage {
 	                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
 	        btnSubmitElement.click();
 	        
-	 		WebElement results = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	        List<WebElement> results = (new WebDriverWait(driver, timeout))
+	                .until(ExpectedConditions
+	                        .visibilityOfAllElementsLocatedBy(
+	                                By.xpath( xpathSpan )
+	                        )
+	        );
+	        
+	        for( WebElement elem : results ) {  //*[@id="resultados-lista"]/ul/li[1]/span[3]
+	    		System.out.println( "span["+ elem.getText( ) +"]" );
+	    		String text = elem.getText( );
+	    		if( text == null || text == "" ) {
+	    			System.out.println( "Span is empty!");
+	    			return false;
+	    		}
+	    		String domain = expandURL( text );
+	    		if( !domain.toLowerCase( ).equals( domainSupposed.toLowerCase( ) ) ) {
+	    			System.out.println( "domain["+domain.toLowerCase( )+"] is not equal domainSupposed["+domainSupposed.toLowerCase( )+"]" );
+	    			return false;
+	    		}
+	    	}
+	        
+	 		/*WebElement results = ( new WebDriverWait( driver, timeout  ) ) 
 	         .until( ExpectedConditions.visibilityOfElementLocated( By.id( listOfResultsTag ) ) ); 
 	 		
 	    	System.out.println( "results = " + results.getTagName( ) );
@@ -187,7 +209,7 @@ public class AdvancedPage {
 	    			System.out.println( "domain["+domain.toLowerCase( )+"] is not equal domainSupposed["+domainSupposed.toLowerCase( )+"]" );
 	    			return false;
 	    		}
-	    	}
+	    	}*/
 	    	return true;
     	} catch( Exception e ){
             System.out.println("Error in checkOPSite");
