@@ -75,7 +75,7 @@ public class TermsAndConditionsPage {
     public boolean toPortugueseVersion( ){
         // Check that we're on the right page.
         WebElement linkTextPTElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("#polylang-2 > ul > li.lang-item.lang-item-163.lang-item-pt.lang-item-first.current-lang > a"))); 
+            .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#polylang-2 > ul > li.lang-item.lang-item-163.lang-item-pt.lang-item-first.current-lang > a"))); 
         linkTextPTElement.click();
 
         if(! (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
