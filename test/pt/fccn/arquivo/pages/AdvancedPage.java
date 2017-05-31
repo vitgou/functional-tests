@@ -158,7 +158,7 @@ public class AdvancedPage {
     public boolean checkOPSite( ){
     	System.out.println( "[checkOPSite]" );
     	String domainSupposed = expandURL( "programas.rtp.pt" );
-    	String xpathSpan = "//div[@id = '" + listOfResultsTag + "']/ul/li/span";
+    	String xpathSpan = "//div[@id = '" + listOfResultsTag + "']/ul/li/span[3]";
     	try{
 	    	//WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
 	        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
