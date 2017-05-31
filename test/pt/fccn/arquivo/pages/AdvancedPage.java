@@ -167,7 +167,7 @@ public class AdvancedPage {
 	        btnSubmitElement.click();
 	        this.sleep( 2 );
 	        List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
-	                .until(ExpectedConditions
+	                .until( ExpectedConditions
 	                        .visibilityOfAllElementsLocatedBy(
 	                        		      By.xpath( xpathSpan )
 	                        )

@@ -56,8 +56,8 @@ public class TermsAndConditionsPage {
     public boolean toEnglishVersion(){
         // Check that we're on the right page.
         WebElement linkTextENElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='portal-languageselector']/li[1]/a"))); 
-        linkTextENElement.click();
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id\"polylang-2\"]/ul/li[2]/a"))); // //*[@id='portal-languageselector']/li[1]/a 
+        linkTextENElement.click(); 
 
         if(! (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.titleContains(titleTextEN))){
@@ -72,10 +72,10 @@ public class TermsAndConditionsPage {
     /**
      * Change to the Portuguese version of the page
      */
-    public boolean toPortugueseVersion(){
+    public boolean toPortugueseVersion( ){
         // Check that we're on the right page.
         WebElement linkTextPTElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='portal-languageselector']/li[2]/a"))); 
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"polylang-2\"]/ul/li[1]/a"))); 
         linkTextPTElement.click();
 
         if(! (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
