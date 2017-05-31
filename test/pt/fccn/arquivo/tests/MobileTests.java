@@ -28,8 +28,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 /*@SuiteClasses({ TestSearchOneTerm.class,HighlightsTest.class, 
         TermsAndConditionsTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class,UrlsearchTest.class, ReplayTest.class })*/
-@SuiteClasses({ TestSearchOneTerm.class, 
-    TermsAndConditionsTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,AdvancedTest.class, UrlsearchTest.class })
+@SuiteClasses({ TestSearchOneTerm.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,AdvancedTest.class, UrlsearchTest.class })
+//TODO refactoring and add suite TermsAndConditionsTest.class
 
 public class MobileTests {
 
