@@ -23,8 +23,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -95,9 +97,14 @@ public class AdvancedPage {
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitTop")));
             btnSubmitElement.click();
             this.sleep( 2 );
+            
+            JavascriptExecutor jse = ( JavascriptExecutor ) driver;
+            
+            jse.executeScript("scroll(0, 250)"); // if the element is on bottom.
+            
             WebElement listOfResults = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.elementToBeClickable(By.id(listOfResultsTag))); 
-            
+           
             title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]")).getText();
             results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
             if (!title.contains("sapo.pt") || title==null){
