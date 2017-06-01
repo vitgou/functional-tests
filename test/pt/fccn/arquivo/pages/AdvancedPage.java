@@ -94,13 +94,13 @@ public class AdvancedPage {
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("site")));
             siteElement.clear();
             siteElement.sendKeys("sapo.pt");
-            jse.executeScript("scroll(0, 250)"); // if the element is on bottom.
+            //jse.executeScript("scroll(0, 250)"); // if the element is on bottom.
             WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitTop")));
             btnSubmitElement.click();
             this.sleep( 2 );
             
-            jse.executeScript("scroll(0, 250)"); // if the element is on bottom.
+            //jse.executeScript("scroll(0, 250)"); // if the element is on bottom.
             
             WebElement listOfResults = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.elementToBeClickable(By.id(listOfResultsTag))); 
