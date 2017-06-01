@@ -85,6 +85,7 @@ public class AdvancedPage {
         String title=null;
         
         try {
+        	JavascriptExecutor jse = ( JavascriptExecutor ) driver;
             WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("adv_and")));             
             advAnd.clear();
@@ -93,12 +94,11 @@ public class AdvancedPage {
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("site")));
             siteElement.clear();
             siteElement.sendKeys("sapo.pt");
+            jse.executeScript("scroll(0, 250)"); // if the element is on bottom.
             WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitTop")));
             btnSubmitElement.click();
             this.sleep( 2 );
-            
-            JavascriptExecutor jse = ( JavascriptExecutor ) driver;
             
             jse.executeScript("scroll(0, 250)"); // if the element is on bottom.
             
@@ -113,7 +113,7 @@ public class AdvancedPage {
             }
         } catch (Exception e) { 
             System.out.println("Some Error Finding Elements in existsInResults");
-            e.printStackTrace();
+            e.printStackTrace( );
             return false;
         }
         return true;
