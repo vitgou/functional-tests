@@ -194,8 +194,8 @@ public class IndexPage {
      * @return the image
      */
     public boolean isSponsorGovImageCorrect (){
-        WebElement imagefccn = driver.findElement(By.cssSelector("//*[@id=\"fccn\"]"));
-        WebElement imageSponsor = driver.findElement(By.cssSelector("//*[@id=\"empresa\"]/div/a[2]/img"));
+        WebElement imagefccn = driver.findElement(By.xpath( "//*[@id=\"fccn\"]" ));
+        WebElement imageSponsor = driver.findElement(By.xpath("//*[@id=\"empresa\"]/div/a[2]/img"));
         String srcFccn 		= imagefccn.getAttribute("src");
         String srcSponsor 	= imageSponsor.getAttribute("src");
         return srcFccn.endsWith("logo-fccn.png") && srcSponsor.endsWith("10-Digital_PT_4C_H_FC_MCTES_opt-e1491300980870.png");
