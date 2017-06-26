@@ -146,8 +146,9 @@ public class IndexPage {
     
     /**
      * Change language of the page to english
+     * @throws Exception 
      */
-    public void langToEnglish(){
+    public void langToEnglish() throws Exception{
         try{         
              WebElement langElem = driver.findElement(By.linkText(linkTextEN));             
              langElem.click();
@@ -159,10 +160,10 @@ public class IndexPage {
              String pageTitle = driver.getTitle();
              if (!titleTextEN.contentEquals(pageTitle))
                  throw new IllegalStateException("Expected Title: "+ titleTextEN + "\nFound Title: " + pageTitle);
-        }catch (Exception e ){
+        }catch (Exception e){
             System.out.println("Problems changing language to English");
             e.printStackTrace();
-            throw e;
+            throw new Exception( e );
         }     
     }
     /**
@@ -202,8 +203,9 @@ public class IndexPage {
     }
     /**
      * Click the Highlights page
+     * @throws Exception 
      */
-    public AdvancedPage goToAdvancedPage(){
+    public AdvancedPage goToAdvancedPage() throws Exception{
         try{
             System.out.println("Start goToAdvancedPage() method");
             WebElement advancedLink = (new WebDriverWait(driver, 25)) /* Wait Up to 120 seconds should throw RunTimeExcpetion*/
@@ -215,7 +217,7 @@ public class IndexPage {
 	          throw e;
         } catch (Exception e){
             System.out.println("Unexpected Error. Unable to go to AdvancedPage");
-            throw e;
+            throw new Exception( e );
         }                  
         return new AdvancedPage(driver);
     }

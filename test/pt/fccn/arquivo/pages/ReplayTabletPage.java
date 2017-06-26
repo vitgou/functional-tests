@@ -148,9 +148,17 @@ public class ReplayTabletPage {
 
       for(String currentURL:testURLs){
         System.out.println("Current URL: " + currentURL);
-        goToCurrentURL(currentURL);
+        try {
+			goToCurrentURL(currentURL);
+		} catch (Exception e) {
+			return false;
+		}
         System.out.println("Went to the URL");
-        switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
+        try {
+			switchLanguage(language);
+		} catch (Exception e) {
+			return false;
+		} // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
         System.out.println("Switched the language!");
         if( /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
            !facebookOk(currentURL) || 
@@ -383,8 +391,9 @@ public class ReplayTabletPage {
     /**
      * Jump to the current URL
      * wait some time to load the Webpage
+     * @throws Exception 
      */
-    public void goToCurrentURL(String currentURL){
+    public void goToCurrentURL(String currentURL) throws Exception{
       try{
         driver.get(serverName+"wayback/"+currentURL);
         try {
@@ -395,7 +404,7 @@ public class ReplayTabletPage {
       }catch(Exception e ){
         System.out.println("Some error going to the current URL");
         e.printStackTrace();
-        throw e;
+        throw new Exception( e );
       }      
     }
 
@@ -414,8 +423,9 @@ public class ReplayTabletPage {
 
     /**
     * Changes the Language of the Page, to the value given in lang string (PT or EN)
+     * @throws Exception 
     */
-    public void switchLanguage(String lang){
+    public void switchLanguage(String lang) throws Exception{
       try{
           try {
             Thread.sleep(10000);  //wait for page to load
@@ -436,7 +446,7 @@ public class ReplayTabletPage {
       }catch (Exception e){
         System.out.println("Error switching language to: " + lang);
         e.printStackTrace();
-        throw e;
+        throw new Exception ( e );
       }
     }
 

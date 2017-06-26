@@ -48,7 +48,11 @@ public class HighlightsTest extends WebDriverTestBaseParalell{
     public void highlightLinkTest() {
     	System.out.print("Running HighlightsTest. \n");
         IndexPage index = new IndexPage(driver);
-        index.langToEnglish();
+        try{
+        	index.langToEnglish( );
+	    } catch( Exception e ) {
+	    	fail("Exception -> highlightLinkTest");
+	    }
         HighlightsPage highlightPage = index.goToHighlightsPage();
         System.out.println("Starting Assertions!");	
         assertTrue("The page displayed has not got the correct text being displayed",

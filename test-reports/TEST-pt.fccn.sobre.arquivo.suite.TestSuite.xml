@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="0" hostname="p18.arquivo.pt" name="pt.fccn.sobre.arquivo.suite.TestSuite" tests="1" time="0.136" timestamp="2017-06-26T16:44:03">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="env.SELINUX_USE_CURRENT_RANGE" value="" />
+    <property name="env.LESSOPEN" value="||/usr/bin/lesspipe.sh %s" />
+    <property name="lib.dir" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/lib" />
+    <property name="ant.file.funcional-tests" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/build.xml" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.name" value="Linux" />
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/netx.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/plugin.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/rhino.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/classes" />
+    <property name="test.reports.dir" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/test-reports" />
+    <property name="env.PWD" value="/home/jnobre/workspaceFuncional-Tests/functional-tests" />
+    <property name="env.LANG" value="pt_PT.UTF-8" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="/usr/share/ant" />
+    <property name="java.runtime.version" value="1.6.0_41-b41" />
+    <property name="env.HISTSIZE" value="1000" />
+    <property name="env.DISPLAY" value="localhost:10.0" />
+    <property name="local-browser" value="firefox" />
+    <property name="user.name" value="jnobre" />
+    <property name="test.browser" value="firefox" />
+    <property name="env.USER" value="jnobre" />
+    <property name="env.HISTCONTROL" value="ignoredups" />
+    <property name="env.SHELL" value="/bin/bash" />
+    <property name="env.SSH_TTY" value="/dev/pts/0" />
+    <property name="env.NLSPATH" value="/usr/dt/lib/nls/msg/%L/%N.cat" />
+    <property name="test-website" value="http://p2.arquivo.pt" />
+    <property name="build.dir" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/build" />
+    <property name="env.PATH" value="/home/heritrix/scripts:/usr/java/jdk1.7.0_71/bin/:/home/heritrix/heritrix-1.14.4_1/bin:/usr/local/maven/bin:/home/heritrix/scripts:/usr/java/jdk1.8.0_60/bin/:/home/heritrix/heritrix-1.14.4_1/bin:/usr/local/maven/bin:/home/heritrix/scripts:/usr/java/jdk1.6.0_13/bin/:/home/heritrix/heritrix-1.14.4_1/bin:/usr/local/maven/bin:/home/heritrix/scripts:/usr/java/jdk1.7.0_71/bin/:/home/heritrix/heritrix-1.14.4_1/bin:/usr/local/maven/bin:/home/heritrix/scripts:/usr/java/jdk1.7.0_71/bin/:/home/heritrix/heritrix-1.14.4_1/bin:/usr/local/maven/bin:/home/heritrix/scripts:/usr/java/jdk1.6.0_13/bin/:/home/heritrix/heritrix-1.14.4_1/bin:/usr/local/maven/bin:/home/heritrix/scripts:/usr/java/jdk1.7.0_71/bin/:/home/heritrix/heritrix-1.14.4_1/bin:/home/heritrix/scripts:/usr/java/jdk1.7.0_71/bin/:/home/heritrix/heritrix-1.14.4_1/bin:/usr/local/maven/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/jnobre/bin:/home/jnobre/bin:/home/jnobre/bin:/home/jnobre/bin:/home/jnobre/bin:/home/jnobre/bin:/home/jnobre/bin:/home/jnobre/bin" />
+    <property name="user.language" value="pt" />
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/amd64" />
+    <property name="env.SSH_CONNECTION" value="193.136.44.10 46686 10.0.5.23 22" />
+    <property name="remote.saucelabs.user" value="ArquivoPT" />
+    <property name="ant.project.name" value="funcional-tests" />
+    <property name="java.version" value="1.6.0_41" />
+    <property name="test.resolution" value="1280x1024" />
+    <property name="env.SSH_CLIENT" value="193.136.44.10 46686 22" />
+    <property name="version" value="SNAPSHOT" />
+    <property name="seleniumHost" value="localhost" />
+    <property name="user.timezone" value="" />
+    <property name="hubPollerIntervalInSeconds" value="30" />
+    <property name="prop.test" value="${env.PROP_TEST}" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="env.SELINUX_ROLE_REQUESTED" value="" />
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="test.os" value="Windows 2003" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="env.SHLVL" value="7" />
+    <property name="file.separator" value="/" />
+    <property name="env.HOSTNAME" value="p18.arquivo.pt" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="50.0" />
+    <property name="user.country" value="PT" />
+    <property name="java.home" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre" />
+    <property name="dist.dir" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/dist" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="env.LOGNAME" value="jnobre" />
+    <property name="ant.file" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/build.xml" />
+    <property name="os.version" value="2.6.32-504.el6.x86_64" />
+    <property name="env.G_BROKEN_FILENAMES" value="1" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="23.41-b41" />
+    <property name="test.remote.access.key" value="663108d4-2412-436a-89d0-f8856bd33377" />
+    <property name="ant.library.dir" value="/usr/share/ant/lib" />
+    <property name="remote.saucelabs.key" value="663108d4-2412-436a-89d0-f8856bd33377" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="env.TERM" value="xterm-256color" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="testcase" value="pt.fccn.sobre.arquivo.suite.TestSuite" />
+    <property name="user.home" value="/home/jnobre" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="env.M2_HOME" value="/usr/local/maven" />
+    <property name="test.dir" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/test" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="java.library.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/amd64/server:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/amd64:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="test.url" value="http://sobre.arquivo.pt" />
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+    <property name="java.class.path" value="/usr/share/java/ant.jar:/usr/share/java/ant-launcher.jar:/usr/share/java/jaxp_parser_impl.jar:/usr/share/java/xml-commons-apis.jar:/usr/share/java/ivy.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-nodeps.jar:/usr/share/java/jaxp_transform_impl.jar:/usr/share/java/ant/ant-trax.jar:/usr/share/java/xalan-j2-serializer.jar:/usr/lib/jvm/java/lib/tools.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-nodeps.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant.jar" />
+    <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  clean test -Dtestcase=pt.fccn.sobre.arquivo.suite.TestSuite -Dtest.url=http://sobre.arquivo.pt -Dtest.remote.access.user=ArquivoPT -Dtest.remote.access.key=663108d4-2412-436a-89d0-f8856bd33377 -Dremote.saucelabs.user=ArquivoPT -Dremote.saucelabs.key=663108d4-2412-436a-89d0-f8856bd33377 -Dtest.resolution=1280x1024" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on May 10 2016" />
+    <property name="seleniumPort" value="4444" />
+    <property name="env.CVS_RSH" value="ssh" />
+    <property name="env.XFILESEARCHPATH" value="/usr/dt/app-defaults/%L/Dt" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="test-OS" value="Windows 2003" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="env.HOME" value="/home/jnobre" />
+    <property name="env.LD_LIBRARY_PATH" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/amd64/server:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/amd64:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/../lib/amd64" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="env.LS_COLORS" value="rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=05;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lz=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.bz=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.rar=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="user.dir" value="/home/jnobre/workspaceFuncional-Tests/functional-tests" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+    <property name="local-browser-version" value="38" />
+    <property name="test.remote.access.user" value="ArquivoPT" />
+    <property name="basedir" value="/home/jnobre/workspaceFuncional-Tests/functional-tests" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="env.SELINUX_LEVEL_REQUESTED" value="" />
+    <property name="ant.core.lib" value="/usr/share/java/ant-1.7.1.jar" />
+    <property name="serverlib.path" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/server/selenium-server-standalone-2.48.2.jar" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="env.MAIL" value="/var/spool/mail/jnobre" />
+    <property name="test.browser.version" value="38" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="src.dir" value="/home/jnobre/workspaceFuncional-Tests/functional-tests/src" />
+  </properties>
+  <testcase classname="pt.fccn.sobre.arquivo.tests.CommonQuestionsTest" name="initializationError" time="0.005">
+    <error message="org/openqa/selenium/Capabilities : Unsupported major.minor version 51.0" type="java.lang.UnsupportedClassVersionError">java.lang.UnsupportedClassVersionError: org/openqa/selenium/Capabilities : Unsupported major.minor version 51.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:648)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:270)
+	at java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.lang.Class.privateGetDeclaredConstructors(Class.java:2545)
+	at java.lang.Class.getConstructors(Class.java:1519)
+	at com.saucelabs.junit.ConcurrentParameterized.&lt;init&gt;(ConcurrentParameterized.java:90)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:534)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:534)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:534)
+</error>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

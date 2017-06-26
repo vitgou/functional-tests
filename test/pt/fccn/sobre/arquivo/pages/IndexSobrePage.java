@@ -67,9 +67,6 @@ public class IndexSobrePage {
         }catch( NoSuchElementException e ){
         	System.out.println( "Could not find the pesquisa-avancada element" );
         	throw e;
-        } catch ( Exception e ){
-            System.out.println( "Unexpected Error. Unable to go to CommonQuestions" );
-            throw e;
         }                  
         return new CommonQuestionsPage( driver );
     }

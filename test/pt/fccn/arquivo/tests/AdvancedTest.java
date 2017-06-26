@@ -44,7 +44,12 @@ public class AdvancedTest extends WebDriverTestBaseParalell{
         IndexPage index = new IndexPage( driver );
         Ispre_prod = index.setPreProd( pre_prod );
         System.out.println( "Going to the Advanced Page" );
-        AdvancedPage advancedPage = index.goToAdvancedPage( );
+        AdvancedPage advancedPage = null;
+        try{   
+        	advancedPage = index.goToAdvancedPage( );
+        } catch( Exception e ) {
+        	fail("Exception -> AdvancedTest");
+        }
         System.out.print( "Running 1st Assertion. \n" );	
         assertTrue( "The page displayed has not got the title text being displayed", advancedPage.titleIsCorrect( term ) );
         System.out.print( "Running 2nd Assertion. \n" );
