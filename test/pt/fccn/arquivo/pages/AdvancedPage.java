@@ -94,7 +94,7 @@ public class AdvancedPage {
             siteElement.clear();
             siteElement.sendKeys("sapo.pt");
 
-           WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitTop")));
             btnSubmitElement.click();
             this.sleep( 2 );
@@ -102,7 +102,7 @@ public class AdvancedPage {
             WebElement listOfResults = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
                 .until(ExpectedConditions.elementToBeClickable(By.id(listOfResultsTag))); 
            
-            title=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/span[3]")).getText();
+            title = listOfResults.findElement( By.cssSelector( "#resultados-lista > ul > li:nth-child(1) > span.url" ) ).getText( );
             results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
             if (!title.contains("sapo.pt") || title==null){
                 System.out.println("Unexpected Title, missing SAPO");
