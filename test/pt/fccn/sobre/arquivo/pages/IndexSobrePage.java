@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -27,7 +29,7 @@ public class IndexSobrePage {
     	InputStream input = null;
     	try {
 			input = new FileInputStream( "sobreTestsFiles/props_indexPage.properties" );
-			prop.load( input ); //load a properties file
+			prop.load( new InputStreamReader( input, Charset.forName("UTF-8") ) ); //load a properties file
     	} catch ( FileNotFoundException e ) {
     		throw e;
     	} catch ( IOException e1) {
@@ -42,7 +44,8 @@ public class IndexSobrePage {
         }
     	
         // Check that we're on the right page.
-        String pageTitle= driver.getTitle();
+        String pageTitle= driver.getTitle( );
+        Charset.forName( "UTF-8" ).encode( pageTitle );
         System.out.println( "Page title = " + pageTitle + " == " + prop.getProperty( "title_pt" ) );
         if ( !( pageTitle.contentEquals( prop.getProperty( "title_pt" ) ) || (pageTitle.contentEquals("title_en") ) ) ){
             throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
