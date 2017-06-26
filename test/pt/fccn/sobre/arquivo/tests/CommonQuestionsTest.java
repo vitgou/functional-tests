@@ -1,6 +1,10 @@
 package pt.fccn.sobre.arquivo.tests;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.junit.Test;
 
@@ -22,13 +26,23 @@ public class CommonQuestionsTest extends WebDriverTestBaseParalell {
 	
 	@Test
 	@Retry
-	public void commonQuestionsTest( ) {
+	public void commonQuestionsTest( )  {
 		System.out.print( "Running Common Questions Test. \n");
-        IndexSobrePage index = new IndexSobrePage( driver );
+		IndexSobrePage index = null;
+		try{
+			 index = new IndexSobrePage( driver );
+		} catch( IOException e ) {
+			fail("IOException -> IndexSobrePage");
+		}
+		
         System.out.println( "Going to the CommonQuestions" );
-        CommonQuestionsPage commonQuestions = index.goToCommonQuestionsPage( );
-        assertTrue("Failed The Common Question in Portuguese", commonQuestions.inspectQuestions( "PT" ) );
-		assertTrue("Failed The Common Question in English", commonQuestions.inspectQuestions( "EN" ) );
-	}
+        try{
+	        CommonQuestionsPage commonQuestions = index.goToCommonQuestionsPage( );
+	        assertTrue("Failed The Common Question in Portuguese", commonQuestions.inspectQuestions( "PT" ) );
+			assertTrue("Failed The Common Question in English", commonQuestions.inspectQuestions( "EN" ) );
+        } catch( FileNotFoundException e ) {
+			fail("FileNotFoundException -> goToCommonQuestionsPage");
+		}
+    }
 
 }

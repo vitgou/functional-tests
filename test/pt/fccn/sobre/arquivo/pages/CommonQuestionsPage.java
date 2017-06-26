@@ -15,14 +15,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CommonQuestionsPage {
 	
 	WebDriver driver;
-	List< String > CommonQuestionsPT = new ArrayList< >( );
-	List< String > CommonQuestionsEN = new ArrayList< >( );
+	List< String > CommonQuestionsPT;
+	List< String > CommonQuestionsEN;
 	private final String dir = "sobreTestsFiles";
 	private final int timeout = 50;
 	
 	public CommonQuestionsPage( WebDriver driver ) throws FileNotFoundException{
 		this.driver = driver;
-		
+		CommonQuestionsPT = new ArrayList< String >( );
+		CommonQuestionsEN = new ArrayList< String >( );
 		if( !loadQuestions( "CommonQuestions_pt.txt" , "pt" ) ) 
 			throw new FileNotFoundException( );
 		
@@ -64,6 +65,7 @@ public class CommonQuestionsPage {
 	        
 	        for( WebElement elem : results ) { 
 	    		System.out.println( "Elemento TagName = " + elem.getTagName( ) );
+	    		
 	    	}
 	        
 	    	return true;
