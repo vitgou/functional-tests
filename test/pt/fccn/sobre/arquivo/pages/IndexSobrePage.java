@@ -43,7 +43,7 @@ public class IndexSobrePage {
     	
         // Check that we're on the right page.
         String pageTitle= driver.getTitle();
-        System.out.println( "Page title = " + pageTitle );
+        System.out.println( "Page title = " + pageTitle + " == " + prop.getProperty( "title_pt" ) );
         if ( !( pageTitle.contentEquals( prop.getProperty( "title_pt" ) ) || (pageTitle.contentEquals("title_en") ) ) ){
             throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
         }
@@ -67,7 +67,8 @@ public class IndexSobrePage {
         }catch( NoSuchElementException e ){
         	System.out.println( "Could not find the pesquisa-avancada element" );
         	throw e;
-        }                  
+        } 
+        
         return new CommonQuestionsPage( driver );
     }
     
