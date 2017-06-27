@@ -34,9 +34,9 @@ public class ExamplesTest extends WebDriverTestBaseParalell {
         System.out.println( "Going to the CommonQuestions" );
         try{
 	        ExamplesPage examplePage = index.goToExamplePage( );
-	        assertTrue("Failed The Common Question in Portuguese", examplePage. );
+	        assertTrue("Failed The Common Question in Portuguese", examplePage.checkLinksExamples( "PT" ) );
 
-	        assertTrue("Failed The Common Question in English", examplePage. );
+	        //assertTrue("Failed The Common Question in English", examplePage. );
         } catch( FileNotFoundException e ) {
 			fail("FileNotFoundException -> goToExamplePage");
 		}
