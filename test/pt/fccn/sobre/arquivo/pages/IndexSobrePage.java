@@ -117,9 +117,8 @@ public class IndexSobrePage {
     		System.out.println( "[footer] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
-    			linkExists( url );
-    			/*if( !linkExists( url ) )
-    				return false;*/
+    			if( !linkExists( url ) )
+    				return false;
     		}
     		
 	    	return true;
@@ -134,7 +133,7 @@ public class IndexSobrePage {
     
     
 	/**
-	 * Check if link exists
+	 * Check if link exists (Accepted 200 or 301 or 302)
 	 * @param URLName
 	 * @return
 	 */
@@ -145,12 +144,13 @@ public class IndexSobrePage {
 	      con.setConnectTimeout( timeout );
 	      con.setRequestMethod( "HEAD" );
 	      System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
-	      return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK );
+	      return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK || con.getResponseCode( ) == HttpURLConnection.HTTP_MOVED_PERM || con.getResponseCode( ) == HttpURLConnection.HTTP_MOVED_TEMP );
 	    } catch ( Exception e ) {
 	       e.printStackTrace( );
 	       return false;
 	    }
 	}
+
     
 }
 
