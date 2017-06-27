@@ -139,15 +139,16 @@ public class IndexSobrePage {
 	 */
 	private boolean linkExists( String URLName ){
 	    try {
-	      HttpURLConnection.setFollowRedirects( false );
-	      HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
-	      con.setConnectTimeout( timeout );
-	      con.setRequestMethod( "HEAD" );
-	      System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
-	      return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK || con.getResponseCode( ) == HttpURLConnection.HTTP_MOVED_PERM || con.getResponseCode( ) == HttpURLConnection.HTTP_MOVED_TEMP );
+	    	System.out.println( "[Footer] url[" + URLName + "]" );
+	    	HttpURLConnection.setFollowRedirects( false );
+	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
+	    	con.setConnectTimeout( timeout );
+	    	con.setRequestMethod( "HEAD" );
+	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
+	    	return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK || con.getResponseCode( ) == HttpURLConnection.HTTP_MOVED_PERM || con.getResponseCode( ) == HttpURLConnection.HTTP_MOVED_TEMP );
 	    } catch ( Exception e ) {
-	       e.printStackTrace( );
-	       return false;
+	    	e.printStackTrace( );
+	    	return false;
 	    }
 	}
 
