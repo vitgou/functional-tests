@@ -2,6 +2,7 @@ package pt.fccn.sobre.arquivo.pages;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -55,6 +56,7 @@ public class CommonQuestionsPage {
 	public boolean inspectQuestions( String language ) {
 		System.out.println( "[inspectQuestions]" );
     	String xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
+    	int idx = 0;
     	try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -63,9 +65,16 @@ public class CommonQuestionsPage {
 	                        )
 	        );
 	        
+    		if( CommonQuestionsPT.size( ) != results.size( ) )
+    			return false;
+    		
 	        for( WebElement elem : results ) { 
-	    		System.out.println( "Elemento Text = " + elem.getText( ) );
-	    		
+	    		String question = elem.getText( );
+	    		Charset.forName( "UTF-8" ).encode( question );
+	    		System.out.println( "question = " + question + " != " + CommonQuestionsPT.get( idx ) );
+	    		if( !question.equals( CommonQuestionsPT.get( idx ) ) )
+	    			return false;
+	    		idx++;
 	    	}
 	        
 	    	return true;
