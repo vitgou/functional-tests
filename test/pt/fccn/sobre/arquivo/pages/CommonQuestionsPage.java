@@ -64,7 +64,7 @@ public class CommonQuestionsPage {
 	                        		      By.xpath( xpathDivs )
 	                        )
 	        );
-	        
+	        System.out.println( "List["+CommonQuestionsPT.size( )+"] != Results["+results.size( )+"]" );
     		if( CommonQuestionsPT.size( ) != results.size( ) )
     			return false;
     		
