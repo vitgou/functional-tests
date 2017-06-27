@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -35,12 +34,10 @@ public class CommonQuestionsPage {
 		
 		if( !loadQuestions( "CommonQuestions_en.txt" , "en" ) )
 			throw new FileNotFoundException( );
-		
 	}
 	
 	
 	private boolean loadQuestions( String filename , String language ) {
-		Scanner s;
 		try {
 			String line;
 
@@ -57,13 +54,7 @@ public class CommonQuestionsPage {
 			isr.close( );
 			fis.close( );
 			
-			for( String question : CommonQuestionsPT ) {
-				System.out.println( "QuestionPT => " + question );
-			}
-			
-			for( String question : CommonQuestionsEN ) {
-				System.out.println( "QuestionEN => " + question );
-			}
+			//printQuestions( ); //Debug
 			
 			return true;
 		} catch ( FileNotFoundException exFile ) {
@@ -75,7 +66,6 @@ public class CommonQuestionsPage {
 		}
 		
 	}
-	
 	
 	public boolean inspectQuestions( String language ) {
 		System.out.println( "[inspectQuestions]" );
@@ -109,4 +99,15 @@ public class CommonQuestionsPage {
     	}
 
 	}
+	
+	private void printQuestions( ){
+		for( String question : CommonQuestionsPT ) {
+			System.out.println( "QuestionPT => " + question );
+		}
+		
+		for( String question : CommonQuestionsEN ) {
+			System.out.println( "QuestionEN => " + question );
+		}
+	}
+
 }

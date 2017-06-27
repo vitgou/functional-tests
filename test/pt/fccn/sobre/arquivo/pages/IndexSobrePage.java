@@ -62,20 +62,44 @@ public class IndexSobrePage {
             WebElement cQuestionsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath("//*[@id=\"wp_editor_widget-8\"]/ul/li[1]/a")
+            				By.xpath( "//*[@id=\"wp_editor_widget-8\"]/ul/li[1]/a" )
             				)
             		);            
             cQuestionsLink.click( );
             System.out.println( "Finished goToCommonQuestionsPage() method" );
         }catch( NoSuchElementException e ){
-        	System.out.println( "Could not find the pesquisa-avancada element" );
+        	System.out.println( "Could not find the link element" );
         	throw e;
         } 
         
         return new CommonQuestionsPage( driver );
     }
     
+    /**
+     * 
+     * @return
+     */
+    public ExamplesPage goToExamplePage( ) {
+    	
+        try{
+            System.out.println( "Start goToExamplePage() method" );
+            WebElement examplePageLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+            .until(
+            		ExpectedConditions.presenceOfElementLocated(
+            				By.xpath( "//*[@id=\"menu-item-1863\"]/a" )
+            				)
+            		);            
+            examplePageLink.click( );
+            System.out.println( "Finished goToExamplePage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new ExamplesPage( driver );
+    	
     
+    }
     
 }
 
