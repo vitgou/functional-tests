@@ -117,8 +117,9 @@ public class IndexSobrePage {
     		System.out.println( "[footer] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
-    			if( !linkExists( url ) )
-    				return false;
+    			linkExists( url );
+    			/*if( !linkExists( url ) )
+    				return false;*/
     		}
     		
 	    	return true;
