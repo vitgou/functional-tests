@@ -1,7 +1,12 @@
 package pt.fccn.sobre.arquivo.pages;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,14 +42,20 @@ public class CommonQuestionsPage {
 	private boolean loadQuestions( String filename , String language ) {
 		Scanner s;
 		try {
-			s = new Scanner( new File( dir.concat( File.separator ).concat( filename ) ) , "utf-8" );
-			while ( s.hasNext( ) ) {
+			String line;
+
+		    InputStream fis = new FileInputStream( dir.concat( File.separator ).concat( filename ) );
+		    InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+		    BufferedReader br = new BufferedReader(isr);
+		    while ((line = br.readLine()) != null) {
 				if( language.equals( "pt" ) )
-					CommonQuestionsPT.add( s.next( ) );
+					CommonQuestionsPT.add( line );
 				else
-					CommonQuestionsEN.add( s.next( ) );
+					CommonQuestionsEN.add( line );
 			}
-			s.close( );
+			br.close( );
+			isr.close( );
+			fis.close( );
 			
 			for( String question : CommonQuestionsPT ) {
 				System.out.println( "QuestionPT => " + question );
@@ -55,10 +66,14 @@ public class CommonQuestionsPage {
 			}
 			
 			return true;
-		} catch ( FileNotFoundException e ) {
-			e.printStackTrace( );
+		} catch ( FileNotFoundException exFile ) {
+			exFile.printStackTrace( );
+			return false;
+		} catch ( IOException exIo ) {
+			exIo.printStackTrace( );
 			return false;
 		}
+		
 	}
 	
 	
