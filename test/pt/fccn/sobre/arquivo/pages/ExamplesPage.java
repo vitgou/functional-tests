@@ -64,6 +64,7 @@ public class ExamplesPage {
 	      HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	      con.setConnectTimeout( timeout );
 	      con.setRequestMethod( "HEAD" );
+	      System.out.println( "url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
 	      return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK );
 	    } catch ( Exception e ) {
 	       e.printStackTrace( );
