@@ -6,6 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import pt.fccn.sobre.arquivo.tests.CommonQuestionsTest;
 import pt.fccn.sobre.arquivo.tests.ExamplesTest;
+import pt.fccn.sobre.arquivo.tests.FooterTest;
 
 	
 /**
@@ -13,7 +14,7 @@ import pt.fccn.sobre.arquivo.tests.ExamplesTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses({ CommonQuestionsTest.class , ExamplesTest.class }) 
+@SuiteClasses( { CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class } ) 
 public class TestSuite {
 
 }

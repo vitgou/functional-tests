@@ -5,7 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -97,9 +100,56 @@ public class IndexSobrePage {
         } 
         
         return new ExamplesPage( driver );
+    
+    }
+    
+    public boolean checkFooterLinks( String language ) {
+		System.out.println( "[checkFooterLinks]" );
+    	String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
+    	try{
+    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
+	                .until( ExpectedConditions
+	                        .visibilityOfAllElementsLocatedBy(
+	                        		      By.xpath( xpatha )
+	                        )
+	        );
+    		
+    		System.out.println( "[footer] results size = " + results.size( ) );
+    		for( WebElement elem : results ) {
+    			String url = elem.getAttribute( "href" );
+    			if( !linkExists( url ) )
+    				return false;
+    		}
+    		
+	    	return true;
+    	} catch( Exception e ){
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
     	
     
     }
+    
+    
+	/**
+	 * Check if link exists
+	 * @param URLName
+	 * @return
+	 */
+	private boolean linkExists( String URLName ){
+	    try {
+	      HttpURLConnection.setFollowRedirects( false );
+	      HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
+	      con.setConnectTimeout( timeout );
+	      con.setRequestMethod( "HEAD" );
+	      System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
+	      return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK );
+	    } catch ( Exception e ) {
+	       e.printStackTrace( );
+	       return false;
+	    }
+	}
     
 }
 

@@ -25,7 +25,7 @@ public class ExamplesPage {
 	 * Test links Examples
 	 * @return
 	 */
-	public boolean checkLinksExamples( String language ){
+	public boolean checkLinksExamples( String language ) {
 		System.out.println( "[checkLinksExamples]" );
     	String xpatha = "//*[@id=\"post-1861\"]/div/div/div/div/div/p[2]/a"; //get link examples
     	try{
@@ -39,15 +39,14 @@ public class ExamplesPage {
     		System.out.println( "results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
-    			System.out.println( "Test url = " + url );
     			if( !linkExists( url ) )
     				return false;
     		}
     		
 	    	return true;
     	} catch( Exception e ){
-            System.out.println("Error in checkOPSite");
-            e.printStackTrace();
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
             return false;
     	}
 	}
