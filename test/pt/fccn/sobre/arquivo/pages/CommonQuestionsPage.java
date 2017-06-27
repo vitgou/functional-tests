@@ -64,7 +64,7 @@ public class CommonQuestionsPage {
 	        );
 	        
 	        for( WebElement elem : results ) { 
-	    		System.out.println( "Elemento TagName = " + elem.getAttribute( "id" ) );
+	    		System.out.println( "Elemento TagName = " + elem.getText( ) );
 	    		
 	    	}
 	        
