@@ -21,6 +21,7 @@ public class ExamplesTest extends WebDriverTestBaseParalell {
 	}
 	
 	@Test
+	@Retry
 	public void examplesTest( )  {
 		System.out.print( "Running examples Test. \n");
 		IndexSobrePage index = null;

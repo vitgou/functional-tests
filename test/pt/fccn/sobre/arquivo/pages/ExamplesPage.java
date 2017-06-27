@@ -40,8 +40,9 @@ public class ExamplesPage {
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			System.out.println( "Test url = " + url );
-    			if( !linkExists( url ) )
-    				return false;
+    			linkExists( url );
+    			/*if( !linkExists( url ) )
+    				return false;*/
     		}
     		
 	    	return true;
@@ -60,8 +61,8 @@ public class ExamplesPage {
 	private boolean linkExists( String URLName ){
 	    try {
 	      HttpURLConnection.setFollowRedirects( false );
-	      HttpURLConnection con =
-	         (HttpURLConnection) new URL( URLName ).openConnection( );
+	      HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
+	      con.setConnectTimeout( timeout );
 	      con.setRequestMethod( "HEAD" );
 	      return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK );
 	    } catch ( Exception e ) {
