@@ -45,6 +45,15 @@ public class CommonQuestionsPage {
 					CommonQuestionsEN.add( s.next( ) );
 			}
 			s.close( );
+			
+			for( String question : CommonQuestionsPT ) {
+				System.out.println( "QuestionPT => " + question );
+			}
+			
+			for( String question : CommonQuestionsEN ) {
+				System.out.println( "QuestionEN => " + question );
+			}
+			
 			return true;
 		} catch ( FileNotFoundException e ) {
 			e.printStackTrace( );
