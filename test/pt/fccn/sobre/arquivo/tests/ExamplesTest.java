@@ -34,7 +34,7 @@ public class ExamplesTest extends WebDriverTestBaseParalell {
         System.out.println( "Going to the ExamplePage" );
         
         ExamplesPage examplePage = index.goToExamplePage( );
-        assertTrue("Failed The Common Question in Portuguese", examplePage.checkLinksExamples( "PT" ) );
+        assertTrue("Failed The Example Page Test in Portuguese", examplePage.checkLinksExamples( "PT" ) );
         
         //TODO english version missing
 	   

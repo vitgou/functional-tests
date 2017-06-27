@@ -36,6 +36,7 @@ public class ExamplesPage {
 	                        )
 	        );
     		
+    		System.out.println( "results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			System.out.println( "Test url = " + url );
