@@ -168,7 +168,7 @@ public class IndexSobrePage {
 	    		// get the cookie if need, for login
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 	    		
-	    		// open the new connnection again
+	    		// open the new connection again
 	    		con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 	    		con.setConnectTimeout( timeout );
 	    		con.setRequestProperty( "Cookie", cookies );
