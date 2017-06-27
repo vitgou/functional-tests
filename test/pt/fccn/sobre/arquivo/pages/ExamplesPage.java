@@ -40,9 +40,8 @@ public class ExamplesPage {
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			System.out.println( "Test url = " + url );
-    			linkExists( url );
-    			/*if( !linkExists( url ) )
-    				return false;*/
+    			if( !linkExists( url ) )
+    				return false;
     		}
     		
 	    	return true;
@@ -63,7 +62,7 @@ public class ExamplesPage {
 	      HttpURLConnection.setFollowRedirects( false );
 	      HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	      con.setConnectTimeout( timeout );
-	      con.setRequestMethod( "GET" );
+	      con.setRequestMethod( "HEAD" );
 	      System.out.println( "url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
 	      return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK );
 	    } catch ( Exception e ) {
