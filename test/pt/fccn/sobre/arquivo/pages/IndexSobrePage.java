@@ -138,14 +138,48 @@ public class IndexSobrePage {
 	 * @return
 	 */
 	private boolean linkExists( String URLName ){
-	    try {
+	    boolean redirect = false;
+		try {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
 	    	HttpURLConnection.setFollowRedirects( false );
 	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( timeout );
 	    	con.setRequestMethod( "HEAD" );
+	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
+	    	con.addRequestProperty( "User-Agent", "Mozilla" );
+	    	con.addRequestProperty( "Referer", "google.com" );
+
+	    	
+	    	// normally, 3xx is redirect
+	    	int status = con.getResponseCode();
+	    	if (status != HttpURLConnection.HTTP_OK) {
+	    		if (status == HttpURLConnection.HTTP_MOVED_TEMP
+	    			|| status == HttpURLConnection.HTTP_MOVED_PERM
+	    				|| status == HttpURLConnection.HTTP_SEE_OTHER)
+	    		redirect = true;
+	    	}
+	    	
 	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
-	    	return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK || con.getResponseCode( ) == HttpURLConnection.HTTP_MOVED_PERM || con.getResponseCode( ) == HttpURLConnection.HTTP_MOVED_TEMP );
+	    	
+	    	if( redirect ) {
+	    		// get redirect url from "location" header field
+	    		String newUrl = con.getHeaderField( "Location" );
+	    		
+	    		// get the cookie if need, for login
+	    		String cookies = con.getHeaderField( "Set-Cookie" );
+	    		
+	    		// open the new connnection again
+	    		con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
+	    		con.setConnectTimeout( timeout );
+	    		con.setRequestProperty( "Cookie", cookies );
+	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
+	    		con.addRequestProperty( "User-Agent", "Mozilla" );
+	    		con.addRequestProperty( "Referer", "google.com" );
+	    		status = con.getResponseCode( );
+	    	}
+	    	
+	    	return ( status == HttpURLConnection.HTTP_OK );
+	    	
 	    } catch ( Exception e ) {
 	    	e.printStackTrace( );
 	    	return false;
