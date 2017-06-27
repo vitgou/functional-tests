@@ -54,7 +54,7 @@ public class CommonQuestionsPage {
 	
 	public boolean inspectQuestions( String language ) {
 		System.out.println( "[inspectQuestions]" );
-    	String xpathDivs = "//*[@id=\"post-2096\"]/div/div";
+    	String xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
     	try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -64,7 +64,7 @@ public class CommonQuestionsPage {
 	        );
 	        
 	        for( WebElement elem : results ) { 
-	    		System.out.println( "Elemento TagName = " + elem.getText( ) );
+	    		System.out.println( "Elemento Text = " + elem.getText( ) );
 	    		
 	    	}
 	        
