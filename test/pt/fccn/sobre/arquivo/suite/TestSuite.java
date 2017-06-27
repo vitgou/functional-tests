@@ -12,6 +12,7 @@ import pt.fccn.arquivo.tests.TestSearchOneTermOpenSearch;
 import pt.fccn.arquivo.tests.TestSponsorImage;
 import pt.fccn.arquivo.tests.UrlsearchTest;
 import pt.fccn.sobre.arquivo.tests.CommonQuestionsTest;
+import pt.fccn.sobre.arquivo.tests.ExamplesTest;
 
 	
 /**
@@ -19,7 +20,7 @@ import pt.fccn.sobre.arquivo.tests.CommonQuestionsTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses({ CommonQuestionsTest.class }) 
+@SuiteClasses({ CommonQuestionsTest.class , ExamplesTest.class }) 
 public class TestSuite {
 
 }
