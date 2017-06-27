@@ -31,15 +31,13 @@ public class ExamplesTest extends WebDriverTestBaseParalell {
 			fail("IOException -> IndexSobrePage");
 		}
 		
-        System.out.println( "Going to the CommonQuestions" );
-        try{
-	        ExamplesPage examplePage = index.goToExamplePage( );
-	        assertTrue("Failed The Common Question in Portuguese", examplePage.checkLinksExamples( "PT" ) );
-
-	        //assertTrue("Failed The Common Question in English", examplePage. );
-        } catch( FileNotFoundException e ) {
-			fail("FileNotFoundException -> goToExamplePage");
-		}
+        System.out.println( "Going to the ExamplePage" );
+        
+        ExamplesPage examplePage = index.goToExamplePage( );
+        assertTrue("Failed The Common Question in Portuguese", examplePage.checkLinksExamples( "PT" ) );
+        
+        //TODO english version missing
+	   
     }
 
 }
