@@ -189,6 +189,7 @@ public class IndexSobrePage {
 	    		// get the cookie if need, for login
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 	    		
+	    		newUrl = "https://www.facebook.com/Arquivo.pt/";
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
