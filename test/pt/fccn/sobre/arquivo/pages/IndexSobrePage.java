@@ -140,9 +140,9 @@ public class IndexSobrePage {
     				if( !textTolink.get( text ).equals( url ) )
     					return false;
     			} else 
-    				System.out.println( "Return = " + linkExists( url , text ) );
-	    			/*if( !linkExists( url , text ) )
-	    				return false;*/
+    				if( !linkExists( url , text ) )
+	    				return false;
+    				//Debug System.out.println( "Return = " + linkExists( url , text ) );
     		
     		}
     		
@@ -230,9 +230,6 @@ public class IndexSobrePage {
 		}
 	    
 	}
-	
-	
-
 	
 	private boolean readFromFile( String filename ) {
 		textTolink = new HashMap< String , String >( );
