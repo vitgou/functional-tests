@@ -136,7 +136,10 @@ public class IndexSobrePage {
     			String url = elem.getAttribute( "href" );
     			String text = elem.getText( );
     			Charset.forName( "UTF-8" ).encode( text );
-    			System.out.println( "Return = " + linkExists( url , text ) );
+    			if( url.startsWith( "https://" ) )
+    				System.out.println( "Return = " + linkExistsSSL( url , text ) );
+    			else
+    				System.out.println( "Return = " + linkExists( url , text ) );
     			/*if( !linkExists( url , text ) )
     				return false;*/
     		}
@@ -157,12 +160,12 @@ public class IndexSobrePage {
 	 * @param URLName
 	 * @return
 	 */
-	private boolean linkExists( String URLName , String text ) {
+	private boolean linkExists( String URLName , String text  ) {
 	    boolean redirect = false;
 		try {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
-	    	//HttpsURLConnection.setFollowRedirects( false );
-	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
+	    	
+	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -192,7 +195,7 @@ public class IndexSobrePage {
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 	    		
 	    		// open the new connection again
-				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
+				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 	    		con.setRequestProperty( "Cookie", cookies );
@@ -210,6 +213,76 @@ public class IndexSobrePage {
 	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
 	    	
 	    	if( status == HttpURLConnection.HTTP_OK &&  textTolink.get( text ).equals( URLName ) )
+	    		return true;
+	    	else
+	    		return false;
+	
+	    } catch ( MalformedURLException e ) {
+	    	System.out.println( "MalformedURLException e = " + e.getMessage( ) );
+			return false;
+		} catch ( IOException e ) {
+			System.out.println( "IOException e = " + e.getMessage( ) );
+			return false;
+		}
+	    
+	}
+	
+	/**
+	 * Check if link exists
+	 * @param URLName
+	 * @return
+	 */
+	private boolean linkExistsSSL( String URLName , String text  ) {
+	    boolean redirect = false;
+		try {
+	    	System.out.println( "[Footer SSL] url[" + URLName + "]" );
+	    	
+	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
+	    	con.setConnectTimeout( 5000 );
+	    	con.setRequestMethod( "HEAD" );
+	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
+	    	con.addRequestProperty( "User-Agent", "Mozilla" );
+	    	con.addRequestProperty( "Referer", "google.com" );
+	    	
+	    	System.out.println("Debug 1");
+	    	// normally, 3xx is redirect
+	    	int status = con.getResponseCode( );
+	    	System.out.println( "Status-code = " + status );
+	    	if (status != HttpsURLConnection.HTTP_OK) {
+	    		if (status == HttpsURLConnection.HTTP_MOVED_TEMP
+	    			|| status == HttpsURLConnection.HTTP_MOVED_PERM
+	    				|| status == HttpsURLConnection.HTTP_SEE_OTHER)
+	    		redirect = true;
+	    	}
+	    	
+	    	redirect = checkRedirect( status );
+	    	
+	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
+	    	
+	    	while( redirect ) {
+	    		// get redirect url from "location" header field
+	    		String newUrl = con.getHeaderField( "Location" );
+	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
+	    		// get the cookie if need, for login
+	    		String cookies = con.getHeaderField( "Set-Cookie" );
+	    		
+	    		// open the new connection again
+				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
+				con.setConnectTimeout( 5000 );
+				con.setRequestMethod( "HEAD" );
+	    		con.setRequestProperty( "Cookie", cookies );
+	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
+	    		con.addRequestProperty( "User-Agent", "Mozilla" );
+	    		con.addRequestProperty( "Referer", "google.com" );
+	    		status = con.getResponseCode( );
+
+	    		URLName = newUrl;
+	    		System.out.println( "Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
+	    		redirect = checkRedirect( status );
+	    	}
+	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
+	    	
+	    	if( status == HttpsURLConnection.HTTP_OK &&  textTolink.get( text ).equals( URLName ) )
 	    		return true;
 	    	else
 	    		return false;
