@@ -134,8 +134,9 @@ public class IndexSobrePage {
     			String url = elem.getAttribute( "href" );
     			String text = elem.getText( );
     			Charset.forName( "UTF-8" ).encode( text );
-    			if( !linkExists( url , text ) )
-    				return false;
+    			System.out.println( "Return = " + linkExists( url , text ) );
+    			/*if( !linkExists( url , text ) )
+    				return false;*/
     		}
     		
 	    	return true;
@@ -221,7 +222,7 @@ public class IndexSobrePage {
 											new InputStreamReader( 
 													new FileInputStream (dir.concat( File.separator ).concat( filename ) ) , "UTF8" ) );
 			String line = "";
-			while( (line = in.readLine( )) != null ) {
+			while( ( line = in.readLine( ) ) != null ) {
 				String parts[ ] = line.split( "," );
 				textTolink.put( parts[ 0 ], parts[ 1 ] );
 			}
