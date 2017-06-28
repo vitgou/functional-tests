@@ -1,14 +1,20 @@
 package pt.fccn.sobre.arquivo.pages;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -23,11 +29,17 @@ public class IndexSobrePage {
 	WebDriver driver;
 	
 	private final int timeout = 50;
+	Map< String, String > textTolink;
+	private final String dir = "sobreTestsFiles";
 	
+	
+	/**
+	 * 
+	 * @param driver
+	 * @throws IOException
+	 */
     public IndexSobrePage( WebDriver driver ) throws IOException {
         this.driver = driver;
-        
-        
         Properties prop = new Properties( );
     	InputStream input = null;
     	try {
@@ -106,6 +118,9 @@ public class IndexSobrePage {
     public boolean checkFooterLinks( String language ) {
 		System.out.println( "[checkFooterLinks]" );
     	String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
+    	
+    	readFromFile( "FooterLinks.txt" );
+    	
     	try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -117,12 +132,13 @@ public class IndexSobrePage {
     		System.out.println( "[footer] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
-    			if( !linkExists( url ) )
+    			String text = elem.getText( );
+    			if( !linkExists( url , text ) )
     				return false;
     		}
     		
 	    	return true;
-    	} catch( Exception e ){
+    	} catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
             e.printStackTrace( );
             return false;
@@ -133,11 +149,11 @@ public class IndexSobrePage {
     
     
 	/**
-	 * Check if link exists (Accepted 200 or 301 or 302)
+	 * Check if link exists
 	 * @param URLName
 	 * @return
 	 */
-	private boolean linkExists( String URLName ){
+	private boolean linkExists( String URLName , String text ) {
 	    boolean redirect = false;
 		try {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
@@ -149,9 +165,8 @@ public class IndexSobrePage {
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
 
-	    	
 	    	// normally, 3xx is redirect
-	    	int status = con.getResponseCode();
+	    	int status = con.getResponseCode( );
 	    	if (status != HttpURLConnection.HTTP_OK) {
 	    		if (status == HttpURLConnection.HTTP_MOVED_TEMP
 	    			|| status == HttpURLConnection.HTTP_MOVED_PERM
@@ -164,28 +179,58 @@ public class IndexSobrePage {
 	    	if( redirect ) {
 	    		// get redirect url from "location" header field
 	    		String newUrl = con.getHeaderField( "Location" );
-	    		
+	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
 	    		// get the cookie if need, for login
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 	    		
 	    		// open the new connection again
-	    		con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
-	    		con.setConnectTimeout( timeout );
+				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
+				con.setConnectTimeout( timeout );
 	    		con.setRequestProperty( "Cookie", cookies );
 	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    		con.addRequestProperty( "User-Agent", "Mozilla" );
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
+	    		URLName = newUrl;
 	    	}
 	    	
-	    	return ( status == HttpURLConnection.HTTP_OK );
-	    	
-	    } catch ( Exception e ) {
-	    	e.printStackTrace( );
-	    	return false;
-	    }
+	    	if( status == HttpURLConnection.HTTP_OK &&  
+	    			textTolink.get( text ).equals( URLName ) )
+	    		return true;
+	    	else
+	    		return false;
+	
+	    } catch ( MalformedURLException e ) {
+			e.printStackTrace( );
+			return false;
+		} catch ( IOException e ) {
+			e.printStackTrace( );
+			return false;
+		}
+	    
 	}
 
+	
+	private boolean readFromFile( String filename ) {
+		textTolink = new HashMap< String , String >( );
+		try {
+			BufferedReader in = new BufferedReader( new FileReader( dir.concat( File.separator ).concat( filename ) ) );
+			String line = "";
+			while( (line = in.readLine( )) != null ) {
+				String parts[ ] = line.split( "," );
+				textTolink.put( parts[ 0 ], parts[ 1 ] );
+			}
+			in.close( );
+			System.out.println( "Map => " + textTolink.toString( ) );
+			return true;
+		} catch ( FileNotFoundException e ) {
+			e.printStackTrace( );
+			return false;
+		} catch (IOException e) {
+			e.printStackTrace( );
+			return false;
+		}
+	}
     
 }
 
