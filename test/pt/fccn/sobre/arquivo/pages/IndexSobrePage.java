@@ -189,7 +189,7 @@ public class IndexSobrePage {
 	    		
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
-				con.setConnectTimeout( timeout );
+				con.setConnectTimeout( 5000 );
 	    		con.setRequestProperty( "Cookie", cookies );
 	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    		con.addRequestProperty( "User-Agent", "Mozilla" );
