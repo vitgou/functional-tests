@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.net.ssl.HttpsURLConnection;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -159,8 +161,8 @@ public class IndexSobrePage {
 	    boolean redirect = false;
 		try {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
-	    	HttpURLConnection.setFollowRedirects( false );
-	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
+	    	//HttpsURLConnection.setFollowRedirects( false );
+	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -190,7 +192,7 @@ public class IndexSobrePage {
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 	    		
 	    		// open the new connection again
-				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
+				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 	    		con.setRequestProperty( "Cookie", cookies );
