@@ -133,6 +133,7 @@ public class IndexSobrePage {
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			String text = elem.getText( );
+    			Charset.forName( "UTF-8" ).encode( text );
     			if( !linkExists( url , text ) )
     				return false;
     		}
@@ -194,6 +195,8 @@ public class IndexSobrePage {
 	    		URLName = newUrl;
 	    	}
 	    	
+	    	
+	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName );
 	    	if( status == HttpURLConnection.HTTP_OK &&  
 	    			textTolink.get( text ).equals( URLName ) )
 	    		return true;
@@ -218,6 +221,7 @@ public class IndexSobrePage {
 			String line = "";
 			while( (line = in.readLine( )) != null ) {
 				String parts[ ] = line.split( "," );
+				Charset.forName( "UTF-8" ).encode( parts[ 0 ] );
 				textTolink.put( parts[ 0 ], parts[ 1 ] );
 			}
 			in.close( );
