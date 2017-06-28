@@ -197,8 +197,8 @@ public class IndexSobrePage {
 	    	
 	    	
 	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName );
-	    	if( status == HttpURLConnection.HTTP_OK &&  
-	    			textTolink.get( text ).equals( URLName ) )
+	    	
+	    	if( status == HttpURLConnection.HTTP_OK &&  textTolink.get( text ).equals( URLName ) )
 	    		return true;
 	    	else
 	    		return false;
@@ -217,11 +217,12 @@ public class IndexSobrePage {
 	private boolean readFromFile( String filename ) {
 		textTolink = new HashMap< String , String >( );
 		try {
-			BufferedReader in = new BufferedReader( new FileReader( dir.concat( File.separator ).concat( filename ) ) );
+			BufferedReader in = new BufferedReader( 
+											new InputStreamReader( 
+													new FileInputStream (dir.concat( File.separator ).concat( filename ) ) , "UTF8" ) );
 			String line = "";
 			while( (line = in.readLine( )) != null ) {
 				String parts[ ] = line.split( "," );
-				Charset.forName( "UTF-8" ).encode( parts[ 0 ] );
 				textTolink.put( parts[ 0 ], parts[ 1 ] );
 			}
 			in.close( );
