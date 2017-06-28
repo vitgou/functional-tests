@@ -161,8 +161,8 @@ public class IndexSobrePage {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
 	    	HttpURLConnection.setFollowRedirects( false );
 	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
-	    	con.setConnectTimeout( timeout );
-	    	con.setRequestMethod( "GET" );
+	    	con.setConnectTimeout( 5000 );
+	    	con.setRequestMethod( "POST" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
@@ -207,10 +207,10 @@ public class IndexSobrePage {
 	    		return false;
 	
 	    } catch ( MalformedURLException e ) {
-			e.printStackTrace( );
+	    	System.out.println( "MalformedURLException e = " + e.getMessage( ) );
 			return false;
 		} catch ( IOException e ) {
-			e.printStackTrace( );
+			System.out.println( "IOException e = " + e.getMessage( ) );
 			return false;
 		}
 	    
