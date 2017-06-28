@@ -186,6 +186,7 @@ public class IndexSobrePage {
 	    	redirect = checkRedirect( status );
 	    	
 	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
+	    	con.disconnect( );
 	    	
 	    	while( redirect ) {
 	    		// get redirect url from "location" header field
@@ -207,6 +208,7 @@ public class IndexSobrePage {
 	    		URLName = newUrl;
 	    		System.out.println( "Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
 	    		redirect = checkRedirect( status );
+	    		con.disconnect( );
 	    	}
 	    	
 	    	
@@ -239,10 +241,13 @@ public class IndexSobrePage {
 	    	
 	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
-	    	con.setRequestMethod( "HEAD" );
+	    	con.setRequestMethod( "GET" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
-	    	con.addRequestProperty( "User-Agent", "Mozilla" );
-	    	con.addRequestProperty( "Referer", "google.com" );
+	    	con.setRequestProperty("Accept",
+	    			"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+	    	con.setUseCaches(false);
+	    	con.addRequestProperty( "User-Agent", "Mozilla/5.0" );
+	    	con.addRequestProperty( "Referer", "https://www.google.pt" );
 	    	
 	    	System.out.println("Debug 1");
 	    	
@@ -258,6 +263,7 @@ public class IndexSobrePage {
 	    	redirect = checkRedirect( status );
 	    	
 	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
+	    	con.disconnect( );
 	    	
 	    	while( redirect ) {
 	    		// get redirect url from "location" header field
@@ -279,6 +285,7 @@ public class IndexSobrePage {
 	    		URLName = newUrl;
 	    		System.out.println( "Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
 	    		redirect = checkRedirect( status );
+	    		con.disconnect( );
 	    	}
 	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
 	    	
