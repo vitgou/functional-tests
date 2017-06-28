@@ -136,6 +136,7 @@ public class IndexSobrePage {
     			String url = elem.getAttribute( "href" );
     			String text = elem.getText( );
     			Charset.forName( "UTF-8" ).encode( text );
+    		
     			if( url.startsWith( "https://" ) )
     				System.out.println( "Return = " + linkExistsSSL( url , text ) );
     			else
@@ -172,7 +173,6 @@ public class IndexSobrePage {
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
 	    	
-	    	System.out.println("Debug 1");
 	    	// normally, 3xx is redirect
 	    	int status = con.getResponseCode( );
 	    	System.out.println( "Status-code = " + status );
@@ -245,7 +245,7 @@ public class IndexSobrePage {
 	    	con.addRequestProperty( "Referer", "google.com" );
 	    	
 	    	System.out.println("Debug 1");
-	    	// normally, 3xx is redirect
+	    	
 	    	int status = con.getResponseCode( );
 	    	System.out.println( "Status-code = " + status );
 	    	if (status != HttpsURLConnection.HTTP_OK) {
