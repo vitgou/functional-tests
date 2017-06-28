@@ -136,13 +136,14 @@ public class IndexSobrePage {
     			String url = elem.getAttribute( "href" );
     			String text = elem.getText( );
     			Charset.forName( "UTF-8" ).encode( text );
-    		
-    			if( url.startsWith( "https://" ) )
-    				System.out.println( "Return = " + linkExistsSSL( url , text ) );
-    			else
+    			if( url.startsWith( "http://www.facebook.com/" ) ){
+    				if( !textTolink.get( text ).equals( url ) )
+    					return false;
+    			} else 
     				System.out.println( "Return = " + linkExists( url , text ) );
-    			/*if( !linkExists( url , text ) )
-    				return false;*/
+	    			/*if( !linkExists( url , text ) )
+	    				return false;*/
+    		
     		}
     		
 	    	return true;
@@ -200,7 +201,9 @@ public class IndexSobrePage {
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 	    		con.setRequestProperty( "Cookie", cookies );
-	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
+
+		    	
+		    			con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    		con.addRequestProperty( "User-Agent", "Mozilla" );
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
@@ -210,7 +213,6 @@ public class IndexSobrePage {
 	    		redirect = checkRedirect( status );
 	    		con.disconnect( );
 	    	}
-	    	
 	    	
 	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
 	    	
@@ -229,80 +231,7 @@ public class IndexSobrePage {
 	    
 	}
 	
-	/**
-	 * Check if link exists
-	 * @param URLName
-	 * @return
-	 */
-	private boolean linkExistsSSL( String URLName , String text  ) {
-	    boolean redirect = false;
-		try {
-	    	System.out.println( "[Footer SSL] url[" + URLName + "]" );
-	    	
-	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
-	    	con.setConnectTimeout( 5000 );
-	    	con.setRequestMethod( "GET" );
-	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
-	    	con.setRequestProperty("Accept",
-	    			"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-	    	con.setUseCaches(false);
-	    	con.addRequestProperty( "User-Agent", "Mozilla/5.0" );
-	    	con.addRequestProperty( "Referer", "https://www.google.pt" );
-	    	
-	    	System.out.println("Debug 1");
-	    	
-	    	int status = con.getResponseCode( );
-	    	System.out.println( "Status-code = " + status );
-	    	if (status != HttpsURLConnection.HTTP_OK) {
-	    		if (status == HttpsURLConnection.HTTP_MOVED_TEMP
-	    			|| status == HttpsURLConnection.HTTP_MOVED_PERM
-	    				|| status == HttpsURLConnection.HTTP_SEE_OTHER)
-	    		redirect = true;
-	    	}
-	    	
-	    	redirect = checkRedirect( status );
-	    	
-	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
-	    	con.disconnect( );
-	    	
-	    	while( redirect ) {
-	    		// get redirect url from "location" header field
-	    		String newUrl = con.getHeaderField( "Location" );
-	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
-	    		// get the cookie if need, for login
-	    		String cookies = con.getHeaderField( "Set-Cookie" );
-	    		
-	    		// open the new connection again
-				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
-				con.setConnectTimeout( 5000 );
-				con.setRequestMethod( "HEAD" );
-	    		con.setRequestProperty( "Cookie", cookies );
-	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
-	    		con.addRequestProperty( "User-Agent", "Mozilla" );
-	    		con.addRequestProperty( "Referer", "google.com" );
-	    		status = con.getResponseCode( );
-
-	    		URLName = newUrl;
-	    		System.out.println( "Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
-	    		redirect = checkRedirect( status );
-	    		con.disconnect( );
-	    	}
-	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
-	    	
-	    	if( status == HttpsURLConnection.HTTP_OK &&  textTolink.get( text ).equals( URLName ) )
-	    		return true;
-	    	else
-	    		return false;
 	
-	    } catch ( MalformedURLException e ) {
-	    	System.out.println( "MalformedURLException e = " + e.getMessage( ) );
-			return false;
-		} catch ( IOException e ) {
-			System.out.println( "IOException e = " + e.getMessage( ) );
-			return false;
-		}
-	    
-	}
 
 	
 	private boolean readFromFile( String filename ) {
