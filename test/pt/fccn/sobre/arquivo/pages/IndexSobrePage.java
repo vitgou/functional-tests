@@ -178,9 +178,11 @@ public class IndexSobrePage {
 	    		redirect = true;
 	    	}
 	    	
+	    	redirect = checkRedirect( status );
+	    	
 	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
 	    	
-	    	if( redirect ) {
+	    	while( redirect ) {
 	    		// get redirect url from "location" header field
 	    		String newUrl = con.getHeaderField( "Location" );
 	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
@@ -196,10 +198,11 @@ public class IndexSobrePage {
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
 	    		URLName = newUrl;
+	    		redirect = checkRedirect( status );
 	    	}
 	    	
 	    	
-	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName );
+	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
 	    	
 	    	if( status == HttpURLConnection.HTTP_OK &&  textTolink.get( text ).equals( URLName ) )
 	    		return true;
@@ -240,5 +243,16 @@ public class IndexSobrePage {
 		}
 	}
     
+	
+	private boolean checkRedirect( int status ){
+		if (status != HttpURLConnection.HTTP_OK) {
+    		if (status == HttpURLConnection.HTTP_MOVED_TEMP
+    			|| status == HttpURLConnection.HTTP_MOVED_PERM
+    				|| status == HttpURLConnection.HTTP_SEE_OTHER)
+    		return true;
+    	}
+		return false;
+	}
+	
 }
 
