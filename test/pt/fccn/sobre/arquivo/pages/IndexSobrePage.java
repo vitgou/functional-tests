@@ -162,7 +162,7 @@ public class IndexSobrePage {
 	    	HttpURLConnection.setFollowRedirects( false );
 	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
-	    	con.setRequestMethod( "POST" );
+	    	con.setRequestMethod( "GET" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
