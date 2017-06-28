@@ -162,7 +162,7 @@ public class IndexSobrePage {
 	    	HttpURLConnection.setFollowRedirects( false );
 	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
-	    	con.setRequestMethod( "GET" );
+	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
@@ -189,17 +189,18 @@ public class IndexSobrePage {
 	    		// get the cookie if need, for login
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 	    		
-	    		newUrl = "https://www.facebook.com/Arquivo.pt/";
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
+				con.setRequestMethod( "HEAD" );
 	    		con.setRequestProperty( "Cookie", cookies );
 	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    		con.addRequestProperty( "User-Agent", "Mozilla" );
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
+
 	    		URLName = newUrl;
-	    		System.out.println( "Novo redirect status = " + status );
+	    		System.out.println( "Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
 	    		redirect = checkRedirect( status );
 	    	}
 	    	
