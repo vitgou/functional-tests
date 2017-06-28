@@ -166,9 +166,11 @@ public class IndexSobrePage {
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
-
+	    	
+	    	System.out.println("Debug 1");
 	    	// normally, 3xx is redirect
 	    	int status = con.getResponseCode( );
+	    	System.out.println( "Status-code = " + status );
 	    	if (status != HttpURLConnection.HTTP_OK) {
 	    		if (status == HttpURLConnection.HTTP_MOVED_TEMP
 	    			|| status == HttpURLConnection.HTTP_MOVED_PERM
