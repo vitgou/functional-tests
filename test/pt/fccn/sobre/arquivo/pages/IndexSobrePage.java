@@ -198,6 +198,7 @@ public class IndexSobrePage {
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
 	    		URLName = newUrl;
+	    		System.out.println( "Novo redirect status = " + status );
 	    		redirect = checkRedirect( status );
 	    	}
 	    	
