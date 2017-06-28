@@ -14,7 +14,7 @@ import pt.fccn.sobre.arquivo.tests.FooterTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( { CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class } ) 
+@SuiteClasses( {  FooterTest.class } ) //TODO CommonQuestionsTest.class , ExamplesTest.class  
 public class TestSuite {
 
 }
