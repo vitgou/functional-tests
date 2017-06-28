@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,15 +15,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
-import javax.net.ssl.HttpsURLConnection;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 
 
 public class IndexSobrePage {
@@ -92,6 +91,40 @@ public class IndexSobrePage {
         return new CommonQuestionsPage( driver );
     }
     
+    /**
+     * 
+     * @return
+     * @throws FileNotFoundException 
+     */
+	public SiteMapPage goToSiteMapPage() throws FileNotFoundException {
+		
+        try{
+            System.out.println( "Start goToSiteMapPage() method" );
+            
+            Actions actions = new Actions( driver ); 
+            WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-2068\"]/a" )
+                    				)
+                    		);            
+            actions.moveToElement( menuHoverLink ).perform( ); //click in menu ajuda
+            WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-3864\"]/a" )
+                    				)
+                    		);
+            menuClickLink.click( );
+            System.out.println( "Finished goToSiteMapPage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new SiteMapPage( driver );
+	}
+	
     /**
      * 
      * @return
@@ -264,6 +297,8 @@ public class IndexSobrePage {
     	}
 		return false;
 	}
+
+
 	
 }
 
