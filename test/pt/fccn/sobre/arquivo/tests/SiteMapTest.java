@@ -27,15 +27,16 @@ public class SiteMapTest extends WebDriverTestBaseParalell {
 		try{
 			index = new IndexSobrePage( driver );
 			SiteMapPage siteMap = index.goToSiteMapPage( );
+			System.out.println( "Going to the FooterTest" );
+		        
+	        assertTrue("Failed The Example Page Test in Portuguese", siteMap.checkSiteMap( "PT" ) );
+	        
+	        //TODO english version missing
 		} catch( IOException e ) {
 			fail("IOException -> IndexSobrePage");
 		}
 		
-        System.out.println( "Going to the FooterTest" );
-        
-        assertTrue("Failed The Example Page Test in Portuguese", siteMap. );
-        
-        //TODO english version missing
+       
 	   
     }
 	
