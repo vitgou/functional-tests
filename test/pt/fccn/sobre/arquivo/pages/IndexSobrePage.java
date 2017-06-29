@@ -125,6 +125,41 @@ public class IndexSobrePage {
         return new SiteMapPage( driver );
 	}
 	
+	
+    /**
+     * 
+     * @return
+     * @throws FileNotFoundException 
+     */
+	public PublicationsPage goToPublicationsPage( ) throws FileNotFoundException {
+		
+        try{
+            System.out.println( "Start goToPublicationsPage() method" );
+            
+            Actions actions = new Actions( driver ); 
+            WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				)
+                    		);            
+            actions.moveToElement( menuHoverLink ).perform( ); //click in menu ajuda
+            WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-3769\"]/a" )
+                    				)
+                    		);
+            menuClickLink.click( );
+            System.out.println( "Finished goToPublicationsPage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new PublicationsPage( driver );
+	}
+	
     /**
      * 
      * @return

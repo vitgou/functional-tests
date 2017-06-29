@@ -9,13 +9,13 @@ import org.junit.Test;
 
 import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
-import pt.fccn.sobre.arquivo.pages.CommonQuestionsPage;
 import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
+import pt.fccn.sobre.arquivo.pages.PublicationsPage;
 import pt.fccn.sobre.arquivo.pages.SiteMapPage;
 
-public class SiteMapTest extends WebDriverTestBaseParalell {
+public class PublicationsTest extends WebDriverTestBaseParalell {
 
-	public SiteMapTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+	public PublicationsTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
 		super( os, version, browser, deviceName, deviceOrientation );
 	}
 
@@ -26,17 +26,16 @@ public class SiteMapTest extends WebDriverTestBaseParalell {
 		IndexSobrePage index = null;
 		try{
 			index = new IndexSobrePage( driver );
-			SiteMapPage siteMap = index.goToSiteMapPage( );
+			PublicationsPage publications = index.goToPublicationsPage( );
 			System.out.println( "Going to the FooterTest" );
 		    
-	        assertTrue("Failed The Example Page Test in Portuguese", siteMap.checkSiteMap( "PT" ) );
+	        assertTrue("Failed The Publications Page Test in Portuguese", publications.checkPubicationsLinks( "PT" ) );
 	        
 	        //TODO english version missing
 	        
 		} catch( IOException e ) {
-			fail("IOException -> IndexSobrePage");
+			fail("IOException -> footerTest");
 		}
 		
     }
-	
 }
