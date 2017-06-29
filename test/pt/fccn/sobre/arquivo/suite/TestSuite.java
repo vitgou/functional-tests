@@ -7,6 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 import pt.fccn.sobre.arquivo.tests.CommonQuestionsTest;
 import pt.fccn.sobre.arquivo.tests.ExamplesTest;
 import pt.fccn.sobre.arquivo.tests.FooterTest;
+import pt.fccn.sobre.arquivo.tests.NewsTest;
 import pt.fccn.sobre.arquivo.tests.PublicationsTest;
 import pt.fccn.sobre.arquivo.tests.SiteMapTest;
 
@@ -16,7 +17,8 @@ import pt.fccn.sobre.arquivo.tests.SiteMapTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( {  CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class , PublicationsTest.class } ) //TODO SiteMapTest.class    
+@SuiteClasses( { NewsTest.class  } ) //TODO SiteMapTest.class
+//TODO CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class , PublicationsTest.class
 public class TestSuite {
 
 }
