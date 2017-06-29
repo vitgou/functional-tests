@@ -11,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pt.fccn.arquivo.tests.util.AnalyzeURLs;
+
 public class ExamplesPage {
 	
 	WebDriver driver;
@@ -39,7 +41,8 @@ public class ExamplesPage {
     		System.out.println( "results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
-    			if( !linkExists( url ) )
+    			int statusCode = AnalyzeURLs.linkExists( url );
+    			if( !AnalyzeURLs.checkOk( statusCode ) )
     				return false;
     		}
     		
@@ -56,7 +59,7 @@ public class ExamplesPage {
 	 * @param URLName
 	 * @return
 	 */
-	private boolean linkExists( String URLName ){
+	/*private boolean linkExists( String URLName ){
 	    try {
 	      HttpURLConnection.setFollowRedirects( false );
 	      HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
@@ -68,7 +71,7 @@ public class ExamplesPage {
 	       e.printStackTrace( );
 	       return false;
 	    }
-	}
+	}*/
 	
 	
 }
