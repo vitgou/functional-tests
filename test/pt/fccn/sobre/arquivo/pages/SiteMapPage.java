@@ -39,7 +39,7 @@ public class SiteMapPage {
 	
 	public boolean checkSiteMap( String language ) {
 		System.out.println( "[checkSiteMap]" );
-		String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
+		String xpatha = "//*[@id=\"post-2659\"]/div/div/div/ul/li"; //get sitemap links
     	
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -49,12 +49,14 @@ public class SiteMapPage {
 	                        )
 	        );
     		
-    		System.out.println( "[footer] results size = " + results.size( ) );
+    		System.out.println( "[SiteMap] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
-    			String url = elem.getAttribute( "href" );
-    			String text = elem.getText( );
-    			Charset.forName( "UTF-8" ).encode( text );
-    		
+    			if( elem.getTagName().toLowerCase( ).equals( "li" ) ) {
+    				WebElement subelem = elem.findElement( By.xpath( "//*/li/a" ) );
+    				String text = subelem.getText( );
+    				Charset.forName( "UTF-8" ).encode( text );
+    				System.out.println( "Text = " + text );
+    			}
     		}
     		
 	    	return true;
