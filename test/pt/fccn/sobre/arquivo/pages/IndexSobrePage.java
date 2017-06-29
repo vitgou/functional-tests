@@ -194,13 +194,13 @@ public class IndexSobrePage {
     public NewsPage goToNewsPage( ) throws FileNotFoundException{
         try{
             System.out.println( "Start goToNewsPage( ) method" );
-            WebElement cQuestionsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+            WebElement newsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath( "///*[@id=\"menu-item-1858\"]/a" )
+            				By.xpath( "//*[@id=\"menu-item-1858\"]/a" )
             				)
             		);            
-            cQuestionsLink.click( );
+            newsLink.click( );
             System.out.println( "Finished goToNewsPage( ) method" );
         }catch( NoSuchElementException e ){
         	System.out.println( "Could not find the link element" );
