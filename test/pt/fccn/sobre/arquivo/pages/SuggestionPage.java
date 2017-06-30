@@ -97,10 +97,13 @@ public class SuggestionPage {
 	private void inicializar( ) {
 		handlePrincipal = driver.getWindowHandle( );
 		System.out.println("handlePrincipal -> " + handlePrincipal);
-
+		WebElement iframeSwitch = ( new WebDriverWait( driver, timeout ) ) 
+	                .until(
+	                		ExpectedConditions.presenceOfElementLocated( 
+	                				By.xpath( xpathiframe ) ) );
 
 		wait = new WebDriverWait(driver, 20);
-		driver.switchTo().frame( xpathiframe );
+		driver.switchTo().frame( iframeSwitch );
 		handleCheckBox = driver.getWindowHandle( );
 		System.out.println( "handleCheckBox -> " + handleCheckBox );
 
