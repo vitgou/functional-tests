@@ -82,7 +82,7 @@ public class AdvancedPage {
      * @return true if it contains sapo.pt from 1996 on result list
      */
     public boolean existsInResults(boolean isPreProd) {
-        String title=null;
+        String title = null;
         
         try {
         	WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/

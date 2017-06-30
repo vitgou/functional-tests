@@ -96,6 +96,30 @@ public class IndexSobrePage {
     /**
      * 
      * @return
+     * @throws FileNotFoundException
+     */
+    public CollaboratePage goToCollaboratePage( ) throws FileNotFoundException{
+    	try{
+            System.out.println( "Start goToCollaboratePage() method" );
+            WebElement collaborateLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+            .until(
+            		ExpectedConditions.presenceOfElementLocated(
+            				By.xpath( "//*[@id=\"menu-item-3393\"]/a" )
+            				)
+            		);            
+            collaborateLink.click( );
+            System.out.println( "Finished goToCollaboratePage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        }
+    	return new CollaboratePage( driver );
+    }
+    
+    
+    /**
+     * 
+     * @return
      * @throws FileNotFoundException 
      */
 	public SiteMapPage goToSiteMapPage() throws FileNotFoundException {
