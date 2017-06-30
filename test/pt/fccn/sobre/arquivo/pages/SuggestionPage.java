@@ -22,10 +22,11 @@ public class SuggestionPage {
 	public boolean sendSuggestion( String language ) {
 		System.out.println( "[sendSuggestion]" );
 		try{
-			String xpathSites = "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[2]/span/textarea";
+			String xpathSites 		= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[2]/span/textarea";
 			String xpathDescription = "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[3]/span/input";
-			String xpathEmail = "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[4]/span/input";
-			String xpathSendButton = "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/p/input";
+			String xpathEmail 		= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[4]/span/input";
+			String xpathSendButton 	= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/p/input";
+			String xpathCaptcha 	= "//*[@id=\"recaptcha-anchor\"]/div[5]";
 			
 	      	WebElement UrlsElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	            .until( 
@@ -48,7 +49,7 @@ public class SuggestionPage {
 	        emailElement.clear( );
 	        emailElement.sendKeys( "[Test Selenium] Email field." );
 	        
-	        driver.findElement( By.xpath( "div[class=recaptcha-checkbox-checkmark]" ) ).click( );
+	        driver.findElement( By.xpath( xpathCaptcha ) ).click( );
 	        
 	      	try {
 	            Thread.sleep( 4000 );                 //wait for page to load
