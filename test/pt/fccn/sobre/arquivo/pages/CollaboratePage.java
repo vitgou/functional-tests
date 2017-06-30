@@ -38,7 +38,7 @@ public class CollaboratePage {
             WebElement suggestionSiteLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath( "//*[@id=\"wp_editor_widget-8\"]/ul/li[1]/a" )
+            				By.xpath( "//*[@id=\"parent-fieldname-text\"]/ul/li[2]/a" )
             				)
             		);            
             suggestionSiteLink.click( );
