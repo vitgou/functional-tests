@@ -18,14 +18,14 @@ public class SuggestionPage {
 
 	WebDriver driver;
 	private final int timeout = 50;
-	
+	String xpathiframe		= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[5]/div/div/div/iframe";
 
-	static String handlePrincipal;
-	static String handleCheckBox;
-	static String handleImages;
-	static WebDriverWait wait;
-	static WebElement checkBox;
-	static WebElement iframeCheck; 
+	private String handlePrincipal;
+	private String handleCheckBox;
+	private String handleImages;
+	private WebDriverWait wait;
+	private WebElement checkBox;
+	private WebElement iframeCheck; 
 	
 	public SuggestionPage( WebDriver driver ) throws FileNotFoundException{
 		this.driver = driver;
@@ -40,7 +40,7 @@ public class SuggestionPage {
 			String xpathEmail 		= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[4]/span/input";
 			String xpathSendButton 	= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/p/input";
 			String xpathCaptcha 	= "//*[@id=\"recaptcha-anchor\"]/div[5]";
-			String xpathiframe		= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[5]/div/div/div/iframe";
+			
 			
 	      	WebElement UrlsElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	            .until( 
@@ -95,15 +95,12 @@ public class SuggestionPage {
 	
 	
 	private void inicializar( ) {
-		
-		wait = new WebDriverWait(driver, 20);
-		iframeCheck = wait.until(
-				ExpectedConditions.presenceOfElementLocated(
-						By.tagName("iframe") ) );
-		
-		System.out.println("name iframe checkbox -> " + iframeCheck.getAttribute("title"));
+		handlePrincipal = driver.getWindowHandle( );
+		System.out.println("handlePrincipal -> " + handlePrincipal);
 
-		driver.switchTo().frame( iframeCheck.getAttribute( "title" ) );
+
+		wait = new WebDriverWait(driver, 20);
+		driver.switchTo().frame( xpathiframe );
 		handleCheckBox = driver.getWindowHandle( );
 		System.out.println( "handleCheckBox -> " + handleCheckBox );
 
@@ -128,7 +125,6 @@ public class SuggestionPage {
 		boolean continuar = true;
 
 		do {
-
 			try {
 				wait = new WebDriverWait( driver, timeout - 30 );
 				driver.switchTo( ).window( handlePrincipal );
