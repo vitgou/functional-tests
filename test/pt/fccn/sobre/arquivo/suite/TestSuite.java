@@ -10,6 +10,7 @@ import pt.fccn.sobre.arquivo.tests.FooterTest;
 import pt.fccn.sobre.arquivo.tests.NewsTest;
 import pt.fccn.sobre.arquivo.tests.PublicationsTest;
 import pt.fccn.sobre.arquivo.tests.SiteMapTest;
+import pt.fccn.sobre.arquivo.tests.SuggestionSiteTest;
 
 	
 /**
@@ -17,8 +18,8 @@ import pt.fccn.sobre.arquivo.tests.SiteMapTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( { NewsTest.class  } ) //TODO SiteMapTest.class
-//TODO CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class , PublicationsTest.class
+@SuiteClasses( { SuggestionSiteTest.class } ) //TODO SiteMapTest.class
+//TODO CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class , PublicationsTest.class, NewsTest.class 
 public class TestSuite {
 
 }

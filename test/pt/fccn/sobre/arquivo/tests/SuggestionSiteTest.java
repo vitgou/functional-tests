@@ -31,13 +31,13 @@ public class SuggestionSiteTest extends WebDriverTestBaseParalell{
 			CollaboratePage collaborate = index.goToCollaboratePage( );
 			System.out.println( "Going to the Collborate Page" );
 		    SuggestionPage sug = collaborate.goToSuggestionSitePage( );
-		    System.out.println( "Going to the Suggestion SIte Page" );
-	        assertTrue("Failed The News Page Test in Portuguese", sug.checkNewsLinks( "PT" ) );
+		    System.out.println( "Going to the Suggestion Site Page" );
+	        assertTrue("Failed The News Page Test in Portuguese", sug.sendSuggestion( "PT" ) );
 	        
 	        //TODO english version missing
 	        
 		} catch( IOException e ) {
-			fail("IOException -> footerTest");
+			fail("IOException -> suggestionsSiteTest");
 		}
 		
     }
