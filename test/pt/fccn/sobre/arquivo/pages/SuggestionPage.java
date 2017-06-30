@@ -27,6 +27,7 @@ public class SuggestionPage {
 			String xpathEmail 		= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[4]/span/input";
 			String xpathSendButton 	= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/p/input";
 			String xpathCaptcha 	= "//*[@id=\"recaptcha-anchor\"]/div[5]";
+			String xpathiframe		= "//*[@id=\"wpcf7-f2384-p2063-o1\"]/form/div[5]/div/div/div/iframe";
 			
 	      	WebElement UrlsElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	            .until( 
@@ -49,14 +50,25 @@ public class SuggestionPage {
 	        emailElement.clear( );
 	        emailElement.sendKeys( "[Test Selenium] Email field." );
 	        
+	        WebElement iframeSwitch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+	                .until(
+	                		ExpectedConditions.presenceOfElementLocated( 
+	                				By.xpath( xpathiframe ) ) );
+	        
+	        driver.switchTo( ).frame( iframeSwitch ); // switch to Captcha iframe
+	        System.out.println( "Switched to iframe" );
 	        driver.findElement( By.xpath( xpathCaptcha ) ).click( );
 	        
+	        driver.switchTo( ).defaultContent( ); // switch default content
+	        
 	      	try {
-	            Thread.sleep( 4000 );                 //wait for page to load
+	            Thread.sleep( 4000 );   //wait for page to load
 	      	} catch( InterruptedException ex ) {
 	            Thread.currentThread( ).interrupt( );
 	        }
 	        
+	      	
+	      	
 	        WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 	            .until(
 	            		ExpectedConditions.presenceOfElementLocated(
