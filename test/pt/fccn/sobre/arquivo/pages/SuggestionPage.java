@@ -96,22 +96,26 @@ public class SuggestionPage {
 	
 	private void inicializar( ) {
 		
-		 wait = new WebDriverWait(driver, 20);
-		iframeCheck = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("iframe")));
-		
-		System.out.println("name iframe checkbox -> " + iframeCheck.getAttribute("name"));
-
-		driver.switchTo().frame(iframeCheck.getAttribute("name"));
-		handleCheckBox = driver.getWindowHandle();
-		System.out.println("handleCheckBox -> " + handleCheckBox);
-
 		wait = new WebDriverWait(driver, 20);
-		checkBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("recaptcha-anchor")));
+		iframeCheck = wait.until(
+				ExpectedConditions.presenceOfElementLocated(
+						By.tagName("iframe") ) );
+		
+		System.out.println("name iframe checkbox -> " + iframeCheck.getAttribute("title"));
 
-		Actions builder = new Actions(driver);
+		driver.switchTo().frame( iframeCheck.getAttribute( "title" ) );
+		handleCheckBox = driver.getWindowHandle( );
+		System.out.println( "handleCheckBox -> " + handleCheckBox );
 
-		builder.moveToElement(checkBox).perform();
-		checkBox.click();
+		wait = new WebDriverWait( driver, 20 );
+		checkBox = wait.until(
+				ExpectedConditions.presenceOfElementLocated(
+						By.id( "recaptcha-anchor" ) ) );
+
+		Actions builder = new Actions( driver );
+
+		builder.moveToElement( checkBox ).perform( );
+		checkBox.click( );
 
 	}
 	
@@ -129,7 +133,7 @@ public class SuggestionPage {
 				wait = new WebDriverWait( driver, timeout - 30 );
 				driver.switchTo( ).window( handlePrincipal );
 				for ( WebElement frame : driver.findElements( By.tagName( "iframe" ) ) ) {
-					System.out.println( "FRAME -> " + frame.getAttribute( "name" ) );
+					System.out.println( "FRAME -> " + frame.getAttribute( "title" ) );
 				}
  
 				List< WebElement > frames = wait.until(
@@ -149,9 +153,9 @@ public class SuggestionPage {
 
 				WebElement elementFrameTable = driver.findElements( 
 						By.tagName( "iframe" ) ).get( 1 );
-				System.out.println("name iframe table -> " + elementFrameTable.getAttribute( "name" ) );
+				System.out.println("name iframe table -> " + elementFrameTable.getAttribute( "title" ) );
 				System.out.println("HTML iframe table -> " + elementFrameTable.getAttribute( "innerHTML" ) );
-				driver.switchTo( ).frame( elementFrameTable.getAttribute( "name" ) );
+				driver.switchTo( ).frame( elementFrameTable.getAttribute( "title" ) );
 				handleImages = driver.getWindowHandle( );
 				System.out.println("handleImages -> " + handleImages);
 
@@ -199,8 +203,8 @@ public class SuggestionPage {
 				wait.until(
 						ExpectedConditions.presenceOfElementLocated( 
 								By.tagName( "iframe" ) ) );
-				System.out.println("name iframe checkbox -> " + iframeCheck.getAttribute("name"));
-				driver.switchTo( ).frame( iframeCheck.getAttribute( "name" ) );
+				System.out.println("name iframe checkbox -> " + iframeCheck.getAttribute("title"));
+				driver.switchTo( ).frame( iframeCheck.getAttribute( "title" ) );
 				handleCheckBox = driver.getWindowHandle();
 				System.out.println("handleCheckBox -> " + handleCheckBox);
 				wait = new WebDriverWait( driver , timeout );
