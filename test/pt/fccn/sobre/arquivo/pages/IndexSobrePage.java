@@ -57,7 +57,7 @@ public class IndexSobrePage {
 		} 
     	
     	try {
-          Thread.sleep( 5000 );                 //wait for page to load
+          Thread.sleep( 5000 );  //wait for page to load
         } catch( InterruptedException ex ) {
           Thread.currentThread( ).interrupt( );
         }
