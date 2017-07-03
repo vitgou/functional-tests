@@ -30,14 +30,7 @@ public class AnalyzeURLs {
 	    	// normally, 3xx is redirect
 	    	int status = con.getResponseCode( );
 	    	System.out.println( "Status-code = " + status );
-	    	if (status != HttpURLConnection.HTTP_OK) {
-	    		if (status == HttpURLConnection.HTTP_MOVED_TEMP
-	    			|| status == HttpURLConnection.HTTP_MOVED_PERM
-	    				|| status == HttpURLConnection.HTTP_SEE_OTHER)
-	    		redirect = true;
-	    	}
-	    	
-	    	redirect = checkRedirect( status );
+	  	    redirect = checkRedirect( status );
 	    	System.out.println( "[linkExists] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
 	    	con.disconnect( );
 	    	
@@ -97,13 +90,6 @@ public class AnalyzeURLs {
 	    	// normally, 3xx is redirect
 	    	int status = con.getResponseCode( );
 	    	System.out.println( "Status-code = " + status );
-	    	if (status != HttpURLConnection.HTTP_OK) {
-	    		if (status == HttpURLConnection.HTTP_MOVED_TEMP
-	    			|| status == HttpURLConnection.HTTP_MOVED_PERM
-	    				|| status == HttpURLConnection.HTTP_SEE_OTHER)
-	    		redirect = true;
-	    	}
-	    	
 	    	redirect = checkRedirect( status );
 	    	
 	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );

@@ -1,6 +1,7 @@
 package pt.fccn.sobre.arquivo.pages;
 
 import java.io.FileNotFoundException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,8 @@ public class NewsPage {
 	
 	public NewsPage( WebDriver driver ) throws FileNotFoundException{
 		this.driver = driver;
+		
+	
 	}
 	
 	

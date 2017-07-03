@@ -1,7 +1,6 @@
 package pt.fccn.sobre.arquivo.pages;
 
 import java.io.FileNotFoundException;
-import java.nio.charset.Charset;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -13,21 +12,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pt.fccn.arquivo.tests.util.AnalyzeURLs;
 
-public class PublicationsPage {
-	
-	
+public class ReportsPage {
+
 	WebDriver driver;
 	private final int timeout = 50;
 	
-	public PublicationsPage( WebDriver driver ) throws FileNotFoundException{
+	public ReportsPage( WebDriver driver ) throws FileNotFoundException{
 		this.driver = driver;
 		
 	}
 	
-	
-	public boolean checkPubicationsLinks( String language ) {
-		System.out.println( "[checkPubicationsLinks]" );
-		String xpatha = "//*[@id=\"post-2225\"]/div/div/div/ul/li/a"; //get footer links
+	public boolean checkReportsLinks( String language ) {
+		System.out.println( "[checkReportsLinks]" );
+		String xpatha = "//*[@id=\"post-2977\"]/div/div/ul/li/a"; //get footer links
     	
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -37,7 +34,7 @@ public class PublicationsPage {
 	                        )
 	        );
     		
-    		System.out.println( "[Publications] results size = " + results.size( ) );
+    		System.out.println( "[Reports] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );

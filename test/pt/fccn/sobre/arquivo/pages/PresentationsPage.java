@@ -13,21 +13,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pt.fccn.arquivo.tests.util.AnalyzeURLs;
 
-public class PublicationsPage {
-	
+public class PresentationsPage {
 	
 	WebDriver driver;
 	private final int timeout = 50;
 	
-	public PublicationsPage( WebDriver driver ) throws FileNotFoundException{
+	public PresentationsPage( WebDriver driver ) throws FileNotFoundException{
 		this.driver = driver;
+
 		
 	}
 	
-	
-	public boolean checkPubicationsLinks( String language ) {
-		System.out.println( "[checkPubicationsLinks]" );
-		String xpatha = "//*[@id=\"post-2225\"]/div/div/div/ul/li/a"; //get footer links
+	public boolean checkPresentationLinks( String language ) {
+		System.out.println( "[checkPresentationLinks]" );
+		String xpatha = "//*[@id=\"post-3219\"]/div/div/ul/li/a"; 
     	
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -37,7 +36,7 @@ public class PublicationsPage {
 	                        )
 	        );
     		
-    		System.out.println( "[Publications] results size = " + results.size( ) );
+    		System.out.println( "[Presentation Links] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
@@ -49,7 +48,7 @@ public class PublicationsPage {
     		
 	    	return true;
     	} catch( NoSuchElementException e ){
-            System.out.println( "Error in checkOPSite" );
+            System.out.println( "Error in checkPresentationLinks" );
             e.printStackTrace( );
             return false;
     	}

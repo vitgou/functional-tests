@@ -11,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pt.fccn.arquivo.tests.util.AnalyzeURLs;
+
 public class CollaboratePage {
 	
 	WebDriver driver;
@@ -51,5 +53,36 @@ public class CollaboratePage {
 		return new SuggestionPage( driver );
 	}
 	
+	
+	public boolean checkCollaborateLinks( String language ) {
+		System.out.println( "[checkCollaborateLinks]" );
+		String xpatha = "//*[@id=\"parent-fieldname-text\"]/ul/li/a"; 
+    	
+		try{
+    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
+	                .until( ExpectedConditions
+	                        .visibilityOfAllElementsLocatedBy(
+	                        		      By.xpath( xpatha )
+	                        )
+	        );
+    		
+    		System.out.println( "[Collaborate Links] results size = " + results.size( ) );
+    		for( WebElement elem : results ) {
+    			String url = elem.getAttribute( "href" );
+    			int statusCode = AnalyzeURLs.linkExists( url );
+    			if( !AnalyzeURLs.checkOk( statusCode ) ) {
+    				System.out.println( "Failed: Url[" + url + "] status-code[" + statusCode + "]" );
+    				return false;
+    			}
+    		}
+    		
+	    	return true;
+    	} catch( NoSuchElementException e ){
+            System.out.println( "Error in checkCollaborateLinks" );
+            e.printStackTrace( );
+            return false;
+    	}
+		
+	}
 	
 }

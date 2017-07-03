@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -169,7 +170,7 @@ public class IndexSobrePage {
                     				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
                     				)
                     		);            
-            actions.moveToElement( menuHoverLink ).perform( ); //click in menu ajuda
+            actions.moveToElement( menuHoverLink ).perform( );
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
@@ -185,6 +186,178 @@ public class IndexSobrePage {
         
         return new PublicationsPage( driver );
 	}
+	
+    /**
+     * 
+     * @return
+     * @throws FileNotFoundException 
+     */
+	public ReportsPage goToReportsPage( ) throws FileNotFoundException {
+		
+        try{
+            System.out.println( "Start goToReportsPage() method" );
+            
+            Actions actions = new Actions( driver ); 
+            WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				)
+                    		);            
+            actions.moveToElement( menuHoverLink ).perform( );
+            WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-3771\"]/a" )
+                    				)
+                    		);
+            menuClickLink.click( );
+            System.out.println( "Finished goToReportsPage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new ReportsPage( driver );
+	}
+	
+    /**
+     * 
+     * @return
+     * @throws FileNotFoundException 
+     */
+	public NewsOnMediaPage goToNewOnMediaPage( ) throws FileNotFoundException {
+		
+        try{
+            System.out.println( "Start goToNewOnMediaPage() method" );
+            
+            Actions actions = new Actions( driver ); 
+            WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				)
+                    		);            
+            actions.moveToElement( menuHoverLink ).perform( );
+            WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-3926\"]/a" )
+                    				)
+                    		);
+            menuClickLink.click( );
+            System.out.println( "Finished goToNewOnMediaPage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new NewsOnMediaPage( driver );
+	}
+	
+    /**
+     * 
+     * @return
+     * @throws FileNotFoundException 
+     */
+	public AudioPage goToAudioPage( ) throws FileNotFoundException {
+		
+        try{
+            System.out.println( "Start goToAudioPage() method" );
+            
+            Actions actions = new Actions( driver ); 
+            WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				)
+                    		);            
+            actions.moveToElement( menuHoverLink ).perform( );
+            WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-3927\"]/a" )
+                    				)
+                    		);
+            menuClickLink.click( );
+            System.out.println( "Finished goToAudioPage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new AudioPage( driver );
+	}
+	
+    /**
+     * 
+     * @return
+     * @throws FileNotFoundException 
+     */
+	public VideoPage goToVideoPage( ) throws FileNotFoundException {
+		
+        try{
+            System.out.println( "Start goToVideoPage() method" );
+            
+            Actions actions = new Actions( driver ); 
+            WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				)
+                    		);            
+            actions.moveToElement( menuHoverLink ).perform( );
+            WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-3928\"]/a" )
+                    				)
+                    		);
+            menuClickLink.click( );
+            System.out.println( "Finished goToVideoPage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new VideoPage( driver );
+	}
+	
+	
+    /**
+     * 
+     * @return
+     * @throws FileNotFoundException 
+     */
+	public PresentationsPage goToPresentationsPage( ) throws FileNotFoundException {
+		
+        try{
+            System.out.println( "Start goToPresentationsPage() method" );
+            
+            Actions actions = new Actions( driver ); 
+            WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				)
+                    		);            
+            actions.moveToElement( menuHoverLink ).perform( );
+            WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated(
+                    				By.xpath( "//*[@id=\"menu-item-3929\"]/a" )
+                    				)
+                    		);
+            menuClickLink.click( );
+            System.out.println( "Finished goToPresentationsPage() method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new PresentationsPage( driver );
+	}
+	
 	
     /**
      * 
@@ -225,7 +398,7 @@ public class IndexSobrePage {
             				)
             		);            
             newsLink.click( );
-            System.out.println( "Finished goToNewsPage( ) method" );
+            System.out.println( "Finished goToNewsPaindexge( ) method" );
         }catch( NoSuchElementException e ){
         	System.out.println( "Could not find the link element" );
         	throw e;
@@ -236,14 +409,37 @@ public class IndexSobrePage {
     
     /**
      * 
-     * @param language
+     * @throws FileNotFoundException 
+     */
+    public AboutPage goToAboutPage( ) throws FileNotFoundException{
+        try{
+            System.out.println( "Start goToAboutPage( ) method" );
+            WebElement newsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+            .until(
+            		ExpectedConditions.presenceOfElementLocated(
+            				By.xpath( "//*[@id=\"menu-item-3416\"]/a" )
+            				)
+            		);            
+            newsLink.click( );
+            System.out.println( "Finished goToAboutPage( ) method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        } 
+        
+        return new AboutPage( driver );
+    }
+    
+    /**
+     * 
+     * @param l//*[@id=\"menu-item-1858\"]/aanguage
      * @return
      */
     public boolean checkFooterLinks( String language ) {
 		System.out.println( "[checkFooterLinks]" );
     	String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
     	
-    	readFromFile( "FooterLinks.txt" );
+    	readFromFileToMap( "FooterLinks.txt" );
     	
     	try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -280,12 +476,86 @@ public class IndexSobrePage {
     
     }
     
+    
+    public boolean checkSearchLinks( String language ) { //TODO: connect to preprod
+		System.out.println( "[checkSearchLinks]" );
+    	String xpathInput 	= "//*[@id=\"search-4\"]/form/label/input"; 
+    	String xpathbtn 	= "//*[@id=\"wp_editor_widget-17\"]/div/div[2]/div/span/a";
+    	
+    	List< String > searchTerms = readFromFileToList( "FooterLinks.txt" );
+    	
+    	try{
+
+    		for( String term : searchTerms ) {
+        		WebElement input = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+        	            .until(
+        	            		ExpectedConditions.presenceOfElementLocated(
+        	            				By.xpath( xpathInput )
+        	            				)
+        	            		);  
+        		
+        		WebElement btnsearch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+        	            .until(
+        	            		ExpectedConditions.presenceOfElementLocated(
+        	            				By.xpath( xpathbtn )
+        	            				)
+        	            		); 
+        		
+    			input.clear( );
+    			input.sendKeys( term );
+    			btnsearch.click( );
+    			sleepThread( );
+    			
+    			
+    			
+    		}
+    		
+    		
+	    	return true;
+    	} catch( NoSuchElementException e ){
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
+    	
+    	
+    	
+    }
+    
     /**
      * 
      * @param filename
      * @return
      */
-	private boolean readFromFile( String filename ) {
+	private List< String > readFromFileToList( String filename ) {
+		List< String > searchTerms = new ArrayList< String >( );
+		try {
+			BufferedReader in = new BufferedReader( 
+											new InputStreamReader( 
+													new FileInputStream (dir.concat( File.separator ).concat( filename ) ) , "UTF8" ) );
+			String line = "";
+			while( ( line = in.readLine( ) ) != null ) {
+				searchTerms.add( line );
+			}
+			in.close( );
+			System.out.println( "searchTerms => " + textTolink.toString( ) );
+			return searchTerms;
+		} catch ( FileNotFoundException e ) {
+			e.printStackTrace( );
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace( );
+			return null;
+		}
+	}
+	
+    
+    /**
+     * 
+     * @param filename
+     * @return
+     */
+	private boolean readFromFileToMap( String filename ) {
 		textTolink = new HashMap< String , String >( );
 		try {
 			BufferedReader in = new BufferedReader( 
@@ -305,6 +575,14 @@ public class IndexSobrePage {
 		} catch (IOException e) {
 			e.printStackTrace( );
 			return false;
+		}
+	}
+	
+	private void sleepThread( ) {
+		try {
+			Thread.sleep( 4000 );
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 	

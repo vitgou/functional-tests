@@ -27,7 +27,7 @@ public class NewsTest extends WebDriverTestBaseParalell {
 		try{
 			index = new IndexSobrePage( driver );
 			NewsPage news = index.goToNewsPage( );
-			System.out.println( "Going to the FooterTest" );
+			System.out.println( "Going to the checkNewsLinks" );
 		    
 	        assertTrue("Failed The News Page Test in Portuguese", news.checkNewsLinks( "PT" ) );
 	        
