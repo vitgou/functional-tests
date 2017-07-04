@@ -471,7 +471,8 @@ public class IndexSobrePage {
     			String url = elem.getAttribute( "href" );
     			String text = elem.getText( );
     			Charset.forName( "UTF-8" ).encode( text );
-    			if( url.startsWith( "http://www.facebook.com/" ) ){
+    			if( url.startsWith( "http://www.facebook.com/" ) || 
+    					url.startsWith( "https://www.facebook.com/" ) ){
     				if( !textTolink.get( text ).equals( url ) )
     					return false;
     			} else {
