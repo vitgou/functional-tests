@@ -69,7 +69,7 @@ public class CommonQuestionsPage {
 	
 	public boolean inspectQuestions( String language ) {
 		System.out.println( "[inspectQuestions]" );
-    	String xpathDivs = "//*[@id=\"post-2096\"]/div/div";
+    	String xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
     	// //*[@id=\"post-2096\"]/div/div/div/h3
     	int idx = 0;
     	try{
@@ -100,7 +100,10 @@ public class CommonQuestionsPage {
 	    		System.out.println( "question = " + question + " != " + CommonQuestionsPT.get( idx ) );
 	    		if( ( !question.equals( CommonQuestionsPT.get( idx ) ) && language.equals( "PT" ) )
 	    				||  ( !question.equals( CommonQuestionsEN.get( idx ) ) && language.equals( "EN" ) ) )
+	    		{
+	    			System.out.println( "Entra aqui!!!" );
 	    			return false;
+	    		}
 	    		idx++;
 	    	}
 	        
