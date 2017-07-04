@@ -429,6 +429,19 @@ public class IndexSobrePage {
     }
     
     /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"polylang-2\"]/ul/li[2]/a";
+    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
+    
+    /**
      * 
      * @param l//*[@id=\"menu-item-1858\"]/aanguage
      * @return
@@ -437,8 +450,14 @@ public class IndexSobrePage {
 		System.out.println( "[checkFooterLinks]" );
     	String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
     	
-    	readFromFileToMap( "FooterLinks.txt" );
     	
+    	
+   		if( language.equals( "EN" ) ) {
+   			readFromFileToMap( "FooterLinksPT.txt" );
+   			switchLanguage( );
+   		} else
+   			readFromFileToMap( "FooterLinksEN.txt" );
+
     	try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions

@@ -1,0 +1,24 @@
+What is Arquivo.pt?,http://sobre.arquivo.pt/en/help/what-is-arquivo-pt/
+Publications,http://sobre.arquivo.pt/en/publications/
+Examples of preserved pages,http://sobre.arquivo.pt/en/examples/
+Press,http://sobre.arquivo.pt/en/press/
+Services and open-source,http://sobre.arquivo.pt/en/services-and-open-source-projects/
+Terms and Conditions,http://sobre.arquivo.pt/en/terms-and-conditions/
+Subscribe mailing list,https://groups.google.com/forum/#!forum/divulgarquivopt/join
+Latest news,http://sobre.arquivo.pt/en/news/
+Twitter,https://twitter.com/PT_WebArchive
+Facebook,https://www.facebook.com/PortugueseWebArchive/
+Subscribe RSS,http://sobre.arquivo.pt/en/feed/
+Videos,http://sobre.arquivo.pt/en/publications/videos/
+Suggest a site,http://sobre.arquivo.pt/en/suggest/
+Dissemination materials,http://sobre.arquivo.pt/en/press/dissemination-materials/
+Publish preservable sites,http://sobre.arquivo.pt/en/recommendations-for-authors-to-enable-web-archiving/
+Supply historical web content,http://sobre.arquivo.pt/en/supplying-historical-portuguese-web-contents/
+Research & Development,http://sobre.arquivo.pt/en/rd/
+Search,http://sobre.arquivo.pt/en/help/search/
+Advanced search,http://sobre.arquivo.pt/en/help/advanced-search/
+Access,http://sobre.arquivo.pt/en/help/access-to-archived-contents/
+Crawling and archiving,http://sobre.arquivo.pt/en/help/crawling-and-archiving-web-content/
+Frequently Asked Questions,http://sobre.arquivo.pt/en/help/
+Training Courses,http://sobre.arquivo.pt/en/training-courses-by-arquivo-pt/
+Contact,http://sobre.arquivo.pt/en/contact/

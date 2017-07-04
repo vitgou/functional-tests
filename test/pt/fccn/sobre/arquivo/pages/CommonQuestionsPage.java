@@ -130,7 +130,7 @@ public class CommonQuestionsPage {
     }
     
 	
-	
+    @SuppressWarnings("unused")
 	private void printQuestions( ){
 		for( String question : CommonQuestionsPT ) {
 			System.out.println( "QuestionPT => " + question );
