@@ -102,10 +102,8 @@ public class CommonQuestionsPage {
 	    		System.out.println( "question = " + question + " != " + ( language.equals( "PT" ) ? CommonQuestionsPT.get( idx ) : CommonQuestionsEN.get( idx ) ) );
 	    		if( ( !question.equals( CommonQuestionsPT.get( idx ) ) && language.equals( "PT" ) )
 	    				||  ( !question.equals( CommonQuestionsEN.get( idx ) ) && language.equals( "EN" ) ) )
-	    		{
-	    			System.out.println( "Entra aqui!!!" );
 	    			return false;
-	    		}
+	    		
 	    		idx++;
 	    	}
 	        
@@ -127,17 +125,11 @@ public class CommonQuestionsPage {
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
-      		sleepThread( );
+      		IndexSobrePage.sleepThread( );
       	}
     }
     
-	private  void sleepThread( ) {
-		try {
-			Thread.sleep( 4000 );
-		} catch (InterruptedException e) {
-			System.out.println( e );
-		}
-	}
+	
 	
 	private void printQuestions( ){
 		for( String question : CommonQuestionsPT ) {

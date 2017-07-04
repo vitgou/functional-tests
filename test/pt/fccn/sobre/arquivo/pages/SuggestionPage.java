@@ -76,7 +76,7 @@ public class SuggestionPage {
 	        // switch default content
 	        captchaRobot( );
 	        
-	        sleepThread( );
+	        IndexSobrePage.sleepThread( );
 	        
 	        WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	            .until(
@@ -123,7 +123,7 @@ public class SuggestionPage {
 
 
 		inicializar( );
-		sleepThread( );
+		IndexSobrePage.sleepThread( );
 
 		boolean continuar = true;
 
@@ -167,17 +167,17 @@ public class SuggestionPage {
 				builderImagem1.moveToElement( imagens.get( 0 ) ).perform( );
 				imagens.get( 0 ).click( );
 
-				sleepThread( );
+				IndexSobrePage.sleepThread( );
 				Actions builderImagem2 = new Actions( driver );
 				builderImagem2.moveToElement( imagens.get( 1 ) ).perform( );
 				imagens.get( 1 ).click( );
 
-				sleepThread( );
+				IndexSobrePage.sleepThread( );
 				Actions builderImagem3 = new Actions( driver );
 				builderImagem3.moveToElement( imagens.get( 5 ) ).perform( );
 				imagens.get(5).click( );
 
-				sleepThread( );
+				IndexSobrePage.sleepThread( );
 				WebElement botaoVerify = driver.findElement( By.id( "recaptcha-verify-button" ) );
 
 				Actions builderVerify = new Actions( driver );
@@ -232,15 +232,7 @@ public class SuggestionPage {
 
 		} while (continuar);
 
-		sleepThread();
-	}
-	
-	private  void sleepThread( ) {
-		try {
-			Thread.sleep( 4000 );
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		IndexSobrePage.sleepThread( );
 	}
 	
 	

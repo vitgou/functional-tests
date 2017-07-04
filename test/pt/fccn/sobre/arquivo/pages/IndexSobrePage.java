@@ -576,7 +576,7 @@ public class IndexSobrePage {
 		}
 	}
 	
-	private void sleepThread( ) {
+	public static void sleepThread( ) {
 		try {
 			Thread.sleep( 4000 );
 		} catch (InterruptedException e) {

@@ -1,8 +1,5 @@
 package pt.fccn.sobre.arquivo.pages;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -29,8 +26,16 @@ public class ExamplesPage {
 	 */
 	public boolean checkLinksExamples( String language ) {
 		System.out.println( "[checkLinksExamples]" );
-    	String xpatha = "//*[@id=\"post-1861\"]/div/div/div/div/div/p[2]/a"; //get link examples
+    	String xpatha = ""; 
     	try{
+    		
+    		if( language.equals( "EN" ) ) { 
+    			switchLanguage( );
+    			xpatha = "//*[@id=\"post-2357\"]/div/div/div/div/div/p[2]/a"; //TODO verified
+    		} else
+    			xpatha = "//*[@id=\"post-1861\"]/div/div/div/div/div/p[2]/a";
+    		
+    		
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
 	                        .visibilityOfAllElementsLocatedBy(
@@ -53,25 +58,18 @@ public class ExamplesPage {
             return false;
     	}
 	}
-	
-	/**
-	 * Check if link exists
-	 * @param URLName
-	 * @return
-	 */
-	/*private boolean linkExists( String URLName ){
-	    try {
-	      HttpURLConnection.setFollowRedirects( false );
-	      HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
-	      con.setConnectTimeout( timeout );
-	      con.setRequestMethod( "HEAD" );
-	      System.out.println( "url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
-	      return ( con.getResponseCode( ) == HttpURLConnection.HTTP_OK );
-	    } catch ( Exception e ) {
-	       e.printStackTrace( );
-	       return false;
-	    }
-	}*/
-	
+
+    /**
+    * Change to the English version
+    */ 
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"polylang-2\"]/ul/li[2]/a";
+    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
 	
 }
