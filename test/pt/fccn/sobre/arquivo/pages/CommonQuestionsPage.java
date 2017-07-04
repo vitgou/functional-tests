@@ -72,21 +72,33 @@ public class CommonQuestionsPage {
     	String xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
     	int idx = 0;
     	try{
+    		if( language.equals( "EN" ) ) {
+    			switchLanguage( );
+    		}
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
 	                        .visibilityOfAllElementsLocatedBy(
 	                        		      By.xpath( xpathDivs )
 	                        )
 	        );
-	        System.out.println( "List["+CommonQuestionsPT.size( )+"] != Results["+results.size( )+"]" );
-    		if( CommonQuestionsPT.size( ) != results.size( ) )
-    			return false;
+    		
+    		if( language.equals( "PT" ) ) {
+    			System.out.println( "List["+CommonQuestionsPT.size( )+"] != Results["+results.size( )+"]" );
+        		if( CommonQuestionsPT.size( ) != results.size( ) )
+        			return false;
+    		} else {
+    			System.out.println( "List["+CommonQuestionsEN.size( )+"] != Results["+results.size( )+"]" );
+        		if( CommonQuestionsEN.size( ) != results.size( ) )
+        			return false;
+    		}
+    		
     		
 	        for( WebElement elem : results ) { 
 	    		String question = elem.getText( );
 	    		Charset.forName( "UTF-8" ).encode( question );
 	    		System.out.println( "question = " + question + " != " + CommonQuestionsPT.get( idx ) );
-	    		if( !question.equals( CommonQuestionsPT.get( idx ) ) )
+	    		if( ( !question.equals( CommonQuestionsPT.get( idx ) ) && language.equals( "PT" ) )
+	    				||  ( !question.equals( CommonQuestionsEN.get( idx ) ) && language.equals( "EN" ) ) )
 	    			return false;
 	    		idx++;
 	    	}
@@ -98,6 +110,32 @@ public class CommonQuestionsPage {
             return false;
     	}
 
+	}
+	
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	
+      	WebElement UrlsElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+	            .until( 
+	            		ExpectedConditions.presenceOfElementLocated( 
+	            				By.xpath( xpathEnglishVersion ) ) );   
+    	
+    	
+    	if( UrlsElement.getText( ).equals( "English" ) ){
+	        UrlsElement.click( ); //change the language
+	        sleepThread( ); 
+    	} 
+    }
+    
+	private  void sleepThread( ) {
+		try {
+			Thread.sleep( 4000 );
+		} catch (InterruptedException e) {
+			e.printStackTrace( );
+		}
 	}
 	
 	private void printQuestions( ){

@@ -235,7 +235,7 @@ public class SuggestionPage {
 		sleepThread();
 	}
 	
-	private static void sleepThread( ) {
+	private  void sleepThread( ) {
 		try {
 			Thread.sleep( 4000 );
 		} catch (InterruptedException e) {

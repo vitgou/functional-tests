@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 import pt.fccn.arquivo.pages.AdvancedPage;
 import pt.fccn.arquivo.pages.IndexPage;
@@ -37,12 +38,18 @@ public class CommonQuestionsTest extends WebDriverTestBaseParalell {
 		
         System.out.println( "Going to the CommonQuestions" );
         try{
-	        CommonQuestionsPage commonQuestions = index.goToCommonQuestionsPage( );
+	        
+        	CommonQuestionsPage commonQuestions = index.goToCommonQuestionsPage( );
 	        assertTrue("Failed The Common Question in Portuguese", commonQuestions.inspectQuestions( "PT" ) );
-			//assertTrue("Failed The Common Question in English", commonQuestions.inspectQuestions( "EN" ) );
+			
+	        //English version
+	        assertTrue("Failed The Common Question in English", commonQuestions.inspectQuestions( "EN" ) );
+	        
         } catch( FileNotFoundException e ) {
 			fail("FileNotFoundException -> goToCommonQuestionsPage");
 		}
     }
+	
+
 
 }
