@@ -35,9 +35,9 @@ public class ExamplesTest extends WebDriverTestBaseParalell {
         
         ExamplesPage examplePage = index.goToExamplePage( );
         assertTrue("Failed The Example Page Test in Portuguese", examplePage.checkLinksExamples( "PT" ) );
-        
-        //TODO english version missing
-	   
+        System.out.println( "Success The Example Page Test in Portuguese" );
+        assertTrue("Failed The Example Page Test in English", examplePage.checkLinksExamples( "EN" ) );
+        System.out.println( "Success The Example Page Test in English" );
     }
 
 }
