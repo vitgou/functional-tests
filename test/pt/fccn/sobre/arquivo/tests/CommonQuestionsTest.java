@@ -41,9 +41,10 @@ public class CommonQuestionsTest extends WebDriverTestBaseParalell {
 	        
         	CommonQuestionsPage commonQuestions = index.goToCommonQuestionsPage( );
 	        assertTrue("Failed The Common Question in Portuguese", commonQuestions.inspectQuestions( "PT" ) );
-			
+			System.out.println( "Success The Common Question in Portuguese" );
 	        //English version
 	        assertTrue("Failed The Common Question in English", commonQuestions.inspectQuestions( "EN" ) );
+	        System.out.println( "Success The Common Question in English" );
 	        
         } catch( FileNotFoundException e ) {
 			fail("FileNotFoundException -> goToCommonQuestionsPage");
