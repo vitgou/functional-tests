@@ -69,7 +69,8 @@ public class CommonQuestionsPage {
 	
 	public boolean inspectQuestions( String language ) {
 		System.out.println( "[inspectQuestions]" );
-    	String xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
+    	String xpathDivs = "//*[@id=\"post-2096\"]/div/div";
+    	// //*[@id=\"post-2096\"]/div/div/div/h3
     	int idx = 0;
     	try{
     		if( language.equals( "EN" ) ) {
@@ -105,7 +106,7 @@ public class CommonQuestionsPage {
 	        
 	    	return true;
     	} catch( Exception e ){
-            System.out.println("Error in checkOPSite");
+            System.out.println("Error in inspectQuestions");
             e.printStackTrace();
             return false;
     	}
