@@ -69,13 +69,17 @@ public class CommonQuestionsPage {
 	
 	public boolean inspectQuestions( String language ) {
 		System.out.println( "[inspectQuestions]" );
-    	String xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
+    	String xpathDivs;
     	// //*[@id=\"post-2096\"]/div/div/div/h3
+    	//*[@id="qe-faqs-index"]
     	int idx = 0;
     	try{
     		if( language.equals( "EN" ) ) {
     			switchLanguage( );
-    		}
+    			xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
+    		} else
+    			xpathDivs = "//*[@id=\"post-2392\"]/div/div/div/h3";
+    			
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
 	                        .visibilityOfAllElementsLocatedBy(
@@ -123,6 +127,7 @@ public class CommonQuestionsPage {
     	String xpathEnglishVersion = "//*[@id=\"polylang-2\"]/ul/li[2]/a";
     	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
       		sleepThread( );
       	}
