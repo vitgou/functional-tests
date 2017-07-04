@@ -76,9 +76,9 @@ public class CommonQuestionsPage {
     	try{
     		if( language.equals( "EN" ) ) {
     			switchLanguage( );
-    			xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
-    		} else
     			xpathDivs = "//*[@id=\"post-2392\"]/div/div/div/h3";
+    		} else
+    			xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
     			
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
