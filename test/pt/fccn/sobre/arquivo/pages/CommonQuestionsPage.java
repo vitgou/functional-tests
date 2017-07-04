@@ -58,10 +58,10 @@ public class CommonQuestionsPage {
 			
 			return true;
 		} catch ( FileNotFoundException exFile ) {
-			exFile.printStackTrace( );
+			System.out.println( exFile );
 			return false;
 		} catch ( IOException exIo ) {
-			exIo.printStackTrace( );
+			System.out.println( exIo );
 			return false;
 		}
 		
@@ -70,13 +70,11 @@ public class CommonQuestionsPage {
 	public boolean inspectQuestions( String language ) {
 		System.out.println( "[inspectQuestions]" );
     	String xpathDivs;
-    	// //*[@id=\"post-2096\"]/div/div/div/h3
-    	//*[@id="qe-faqs-index"]
     	int idx = 0;
     	try{
     		if( language.equals( "EN" ) ) {
     			switchLanguage( );
-    			xpathDivs = "//*[@id=\"post-2392\"]/div/div/div/h3";
+    			xpathDivs = "//*[@id=\"post-2392\"]/div/div/div/h3"; //TODO verified
     		} else
     			xpathDivs = "//*[@id=\"post-2096\"]/div/div/div/h3";
     			
@@ -98,10 +96,10 @@ public class CommonQuestionsPage {
     		}
     		
     		
-	        for( WebElement elem : results ) { 
+	        for( WebElement elem : results ) {
 	    		String question = elem.getText( );
 	    		Charset.forName( "UTF-8" ).encode( question );
-	    		System.out.println( "question = " + question + " != " + CommonQuestionsPT.get( idx ) );
+	    		System.out.println( "question = " + question + " != " + ( language.equals( "PT" ) ? CommonQuestionsPT.get( idx ) : CommonQuestionsEN.get( idx ) ) );
 	    		if( ( !question.equals( CommonQuestionsPT.get( idx ) ) && language.equals( "PT" ) )
 	    				||  ( !question.equals( CommonQuestionsEN.get( idx ) ) && language.equals( "EN" ) ) )
 	    		{
@@ -114,7 +112,7 @@ public class CommonQuestionsPage {
 	    	return true;
     	} catch( Exception e ){
             System.out.println("Error in inspectQuestions");
-            e.printStackTrace();
+            System.out.println( e );
             return false;
     	}
 
@@ -137,7 +135,7 @@ public class CommonQuestionsPage {
 		try {
 			Thread.sleep( 4000 );
 		} catch (InterruptedException e) {
-			e.printStackTrace( );
+			System.out.println( e );
 		}
 	}
 	
