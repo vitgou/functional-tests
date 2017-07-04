@@ -453,10 +453,10 @@ public class IndexSobrePage {
     	
     	
    		if( language.equals( "EN" ) ) {
-   			readFromFileToMap( "FooterLinksPT.txt" );
+   			readFromFileToMap( "FooterLinksEN.txt" );
    			switchLanguage( );
    		} else
-   			readFromFileToMap( "FooterLinksEN.txt" );
+   			readFromFileToMap( "FooterLinksPT.txt" );
 
     	try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
