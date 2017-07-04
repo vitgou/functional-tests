@@ -122,7 +122,7 @@ public class AnalyzeURLs {
 	    	
 	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
 	    	
-	    	if( status == HttpURLConnection.HTTP_OK &&  textTolink.get( text ).equals( URLName ) )
+	    	if( status == HttpURLConnection.HTTP_OK &&  textTolink.get( text ).trim( ).equals( URLName.trim() ) )
 	    		return true;
 	    	else
 	    		return false;
