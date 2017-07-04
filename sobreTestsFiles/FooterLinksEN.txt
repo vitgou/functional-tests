@@ -8,7 +8,7 @@ Subscribe mailing list,https://groups.google.com/forum/#!forum/divulgarquivopt/j
 Latest news,http://sobre.arquivo.pt/en/news/
 Twitter,https://twitter.com/PT_WebArchive
 Facebook,http://www.facebook.com/pages/Portuguese-Web-Archive/112762872075966
-Subscribe RSS,http://sobre.arquivo.pt/en/feed/
+Subscribe RSS,http://sobre.arquivo.pt/en/rss/
 Videos,http://sobre.arquivo.pt/en/publications/videos/
 Suggest a site,http://sobre.arquivo.pt/en/suggest/
 Dissemination materials,http://sobre.arquivo.pt/en/press/dissemination-materials/
