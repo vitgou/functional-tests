@@ -122,16 +122,10 @@ public class CommonQuestionsPage {
     private void switchLanguage( ){
     	String xpathEnglishVersion = "//*[@id=\"polylang-2\"]/ul/li[2]/a";
     	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
-      	WebElement UrlsElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
-	            .until( 
-	            		ExpectedConditions.presenceOfElementLocated( 
-	            				By.xpath( xpathEnglishVersion ) ) );   
-    	
-    	
-    	if( UrlsElement.getText( ).equals( "English" ) ){
-	        UrlsElement.click( ); //change the language
-	        sleepThread( ); 
-    	} 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		sleepThread( );
+      	}
     }
     
 	private  void sleepThread( ) {
