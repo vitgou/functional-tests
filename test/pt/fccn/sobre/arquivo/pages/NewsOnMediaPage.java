@@ -43,7 +43,7 @@ public class NewsOnMediaPage {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
     			if( !AnalyzeURLs.checkOk( statusCode ) ) {
-    				System.out.println( "Failed: Url[" + url + "] status-code[" + statusCode + "]" );
+    				System.out.println( "Failed: text[" + elem.getText( ) + "] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
     			}
     		}
