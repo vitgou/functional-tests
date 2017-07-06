@@ -24,8 +24,13 @@ public class AudioPage {
 	
 	public boolean checkAudioLinks( String language ) {
 		System.out.println( "[checkAudioLinks]" );
-		String xpatha = "//*[@id=\"post-3192\"]/div/div/ul/li/a"; 
-    	
+		String xpatha; 
+		
+		if( language.equals( "PT" ) )
+			xpatha = "//*[@id=\"post-3021\"]/div/div/ul/li/a";
+		else
+			xpatha = "//*[@id=\"post-3192\"]/div/div/ul/li/a";
+		
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions

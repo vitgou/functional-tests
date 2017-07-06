@@ -274,7 +274,7 @@ public class IndexSobrePage {
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
                     				By.xpath( xpathPublication )
-                    				) //*[@id="menu-item-3773"]/a
+                    				) 
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
