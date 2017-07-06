@@ -1,6 +1,7 @@
 package pt.fccn.sobre.arquivo.pages;
 
 import java.io.FileNotFoundException;
+import java.nio.charset.Charset;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -43,7 +44,7 @@ public class NewsOnMediaPage {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
     			if( !AnalyzeURLs.checkOk( statusCode ) ) {
-    				System.out.println( "Failed: text[" + elem.getText( ) + "] link[" + url + "] status-code[" + statusCode + "]" );
+    				System.out.println( "Failed: text[" + Charset.forName( "UTF-8" ).encode( elem.getText( ) ) + "] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
     			}
     		}
