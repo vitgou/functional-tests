@@ -74,7 +74,7 @@ public class IndexSobrePage {
      */
     public CommonQuestionsPage goToCommonQuestionsPage( ) throws FileNotFoundException{
         try{
-            System.out.println( "Start goToCommonQuestionsPage() method" );
+            System.out.println( "Start goToCommonQuestionsPage( ) method" );
             WebElement cQuestionsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
@@ -82,7 +82,7 @@ public class IndexSobrePage {
             				)
             		);            
             cQuestionsLink.click( );
-            System.out.println( "Finished goToCommonQuestionsPage() method" );
+            System.out.println( "Finished goToCommonQuestionsPage( ) method" );
         }catch( NoSuchElementException e ){
         	System.out.println( "Could not find the link element" );
         	throw e;

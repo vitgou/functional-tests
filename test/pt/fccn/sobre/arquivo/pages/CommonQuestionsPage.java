@@ -120,7 +120,7 @@ public class CommonQuestionsPage {
     * Change to the English version
     */
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"polylang-2\"]/ul/li[2]/a";
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
     	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
