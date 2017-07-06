@@ -298,8 +298,13 @@ public class IndexSobrePage {
      * @return
      * @throws FileNotFoundException 
      */
-	public VideoPage goToVideoPage( ) throws FileNotFoundException {
+	public VideoPage goToVideoPage( String language ) throws FileNotFoundException {
+		String xpathVideo = "";
 		
+		if( language.equals( "EN" ) )
+			xpathVideo = "//*[@id=\"menu-item-3928\"]/a";
+		else 
+			xpathVideo = "//*[@id=\"menu-item-3774\"]/a";
         try{
             System.out.println( "Start goToVideoPage() method" );
             
@@ -314,7 +319,7 @@ public class IndexSobrePage {
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-3928\"]/a" )
+                    				By.xpath( xpathVideo )
                     				)
                     		);
             menuClickLink.click( );
