@@ -239,9 +239,9 @@ public class IndexSobrePage {
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-3926\"]/a" )
+                    				By.xpath( "//*[@id=\"menu-item-3772\"]/a" )
                     				)
-                    		);
+                    		); 
             menuClickLink.click( );
             System.out.println( "Finished goToNewOnMediaPage() method" );
         }catch( NoSuchElementException e ){

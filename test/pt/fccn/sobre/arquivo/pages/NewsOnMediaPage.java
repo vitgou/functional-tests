@@ -24,7 +24,7 @@ public class NewsOnMediaPage {
 	
 	public boolean checkNewsLinks( String language ) {
 		System.out.println( "[checkNewsLinks]" );
-		String xpatha = "//*[@id=\"post-2812\"]/div/div/ul/li/a"; //get footer links
+		String xpatha = "//*[@id=\"post-2812\"]/div/div/ul/li/a"; //get links
     	
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
