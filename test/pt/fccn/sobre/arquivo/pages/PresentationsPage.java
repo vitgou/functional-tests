@@ -31,7 +31,7 @@ public class PresentationsPage {
 		if( language.equals( "PT" ) )
 			idDiv = "post-3036";
 		else{
-			switchLanguage( );
+			//switchLanguage( );
 			idDiv = "post-3219";
 		}
 			

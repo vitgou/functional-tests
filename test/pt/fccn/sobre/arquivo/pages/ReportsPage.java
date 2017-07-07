@@ -1,6 +1,7 @@
 package pt.fccn.sobre.arquivo.pages;
 
 import java.io.FileNotFoundException;
+import java.nio.charset.Charset;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -28,9 +29,10 @@ public class ReportsPage {
 		
 		if( language.equals( "EN" ) ) {
 			idDiv = "post-3196";
-			switchLanguage( );
+			//switchLanguage( );
 		} else 
 			idDiv = "post-2977";
+		
 		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/ul/li/a"; //get footer links
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -44,8 +46,10 @@ public class ReportsPage {
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
+    			String text = elem.getText( );
+    			Charset.forName( "UTF-8" ).encode( text );
     			if( !AnalyzeURLs.checkOk( statusCode ) ) {
-    				System.out.println( "Failed: Url[" + url + "] status-code[" + statusCode + "]" );
+    				System.out.println( "Failed: text[" + text + "] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
     			}
     		}
@@ -56,19 +60,5 @@ public class ReportsPage {
             e.printStackTrace( );
             return false;
     	}
-		
 	}
-	
-    /**
-    * Change to the English version
-    */
-    private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
-      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
-      		System.out.println( "Change language to English" );
-      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
-      		IndexSobrePage.sleepThread( );
-      	}
-    }
-	
 }

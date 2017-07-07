@@ -59,8 +59,8 @@ public class CollaboratePage {
 		System.out.println( "[checkCollaborateLinks]" );
 		String xpatha = "//*[@id=\"parent-fieldname-text\"]/ul/li/a"; 
     	
-		if( language.equals( "EN" ) ) //redirect to english version
-    		switchLanguage( );
+	/*	if( language.equals( "EN" ) ) //redirect to english version
+    		switchLanguage( );*/
     		
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
