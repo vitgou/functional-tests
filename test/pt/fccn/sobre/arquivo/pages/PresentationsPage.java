@@ -30,8 +30,11 @@ public class PresentationsPage {
 		 
 		if( language.equals( "PT" ) )
 			idDiv = "post-3036";
-		else
+		else{
+			switchLanguage( );
 			idDiv = "post-3219";
+		}
+			
 		
 		String xpatha = "//*[@id=\""+ idDiv +"\"]/div/div/ul/li/a";
 		try{
@@ -63,5 +66,18 @@ public class PresentationsPage {
     	}
 		
 	}
+	
+
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
 	
 }

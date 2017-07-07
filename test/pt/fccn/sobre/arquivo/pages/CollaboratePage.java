@@ -55,10 +55,13 @@ public class CollaboratePage {
 	}
 	
 	
-	public boolean checkCollaborateLinks( ) {
+	public boolean checkCollaborateLinks( String language ) {
 		System.out.println( "[checkCollaborateLinks]" );
 		String xpatha = "//*[@id=\"parent-fieldname-text\"]/ul/li/a"; 
     	
+		if( language.equals( "EN" ) ) //redirect to english version
+    		switchLanguage( );
+    		
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -89,5 +92,18 @@ public class CollaboratePage {
     	}
 		
 	}
+	
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
 	
 }

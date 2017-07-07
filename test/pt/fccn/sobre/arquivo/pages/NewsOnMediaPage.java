@@ -26,8 +26,10 @@ public class NewsOnMediaPage {
 	public boolean checkNewsLinks( String language ) {
 		System.out.println( "[checkNewsLinks]" );
 		String xpatha = "";
-		if( language.equals( "EN" ) )
+		if( language.equals( "EN" ) ){
 			xpatha = "//*[@id=\"post-2812\"]/div/div/ul/li/a"; //get links
+			switchLanguage( );
+		}
 		else
 			xpatha = "//*[@id=\"post-2635\"]/div/div/ul/li/a"; //get links
 		
@@ -57,5 +59,19 @@ public class NewsOnMediaPage {
     	}
 		
 	}
+	
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
+	
 	
 }

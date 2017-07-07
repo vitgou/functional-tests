@@ -29,8 +29,10 @@ public class AudioPage {
 		
 		if( language.equals( "PT" ) )
 			xpatha = "//*[@id=\"post-3021\"]/div/div/ul/li/a";
-		else
+		else {
 			xpatha = "//*[@id=\"post-3192\"]/div/div/ul/li/a";
+			switchLanguage( );
+		}
 		
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -60,5 +62,18 @@ public class AudioPage {
     	}
 		
 	}
+	
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
 	
 }

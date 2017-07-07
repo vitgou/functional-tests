@@ -28,8 +28,10 @@ public class VideoPage {
 		String id = "";
 		if( language.equals( "PT" ) )
 			id = "post-2756";
-		else
+		else {
+			switchLanguage( );
 			id = "post-2816";
+		}
 		String xpathVideos 			= "//*[@id=\"" + id + "\"]/div/div/div/ul/li/a";
 		String xpathDissemination 	= "//*[@id=\"" + id + "\"]/div/div/ul[1]/li/a";
     	String xpathTechnical 		= "//*[@id=\"" + id + "\"]/div/div/ul[2]/li/a";
@@ -73,5 +75,19 @@ public class VideoPage {
             return false;
     	}
 	}
-	
+
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
+    
+    
 }

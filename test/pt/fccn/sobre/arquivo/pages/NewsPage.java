@@ -36,6 +36,9 @@ public class NewsPage {
 		System.out.println( "[checkLinks]" );
 		String xpatha = "//*[@id=\"post-1857\"]/div/div/aside/div/ul/li/a"; //get news links
     	
+		if( language.equals( "EN" ) )
+			switchLanguage( );
+		
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -64,9 +67,11 @@ public class NewsPage {
 	             		); 
     	    
     	    String urlRss = rssLink.getAttribute( "href" );
+    	    String text = rssLink.getText( );
+			Charset.forName( "UTF-8" ).encode( text );
     	    int statusCode = AnalyzeURLs.linkExists( urlRss );
     	    if( !AnalyzeURLs.checkOk( statusCode ) &&  urlRss.equals( "http://sobre.arquivo.pt/pt/feed/" )){
-    	    	System.out.println( "Failed: Url[" + urlRss + "] status-code[" + statusCode + "]" );
+    	    	System.out.println( "Failed: text[" + text + "] link[" + urlRss + "] status-code[" + statusCode + "]" );
     	    	return false;
     	    }
     	    
@@ -78,5 +83,18 @@ public class NewsPage {
     	}
 		
 	}
+	
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
 	
 }

@@ -26,6 +26,9 @@ public class ReportsPage {
 		System.out.println( "[checkReportsLinks]" );
 		String xpatha = "//*[@id=\"post-2977\"]/div/div/ul/li/a"; //get footer links
     	
+		if( language.equals( "EN" ) )
+			switchLanguage( );
+		
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -52,5 +55,17 @@ public class ReportsPage {
     	}
 		
 	}
+	
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
 	
 }

@@ -34,6 +34,9 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 		IndexSobrePage index = null;
 		try{
 			index = new IndexSobrePage( driver );
+			/**************************/
+			/*** Portuguese version ***/ 
+			/**************************/
 			NewsPage news = index.goToNewsPage( );
 			assertTrue("Failed The News Page Test in Portuguese", news.checkNewsLinks( "PT" ) );
 			PublicationsPage publications = index.goToPublicationsPage( );
@@ -48,12 +51,22 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			PresentationsPage pres = index.goToPresentationsPage( "PT" );
 			assertTrue("Failed The Presentations Page Test in Portuguese", pres.checkPresentationLinks( "PT" ) );
 			CollaboratePage coll = index.goToCollaboratePage( );
-			assertTrue("Failed The Collaborate Page Test in Portuguese", coll.checkCollaborateLinks( ) );
+			assertTrue("Failed The Collaborate Page Test in Portuguese", coll.checkCollaborateLinks( "PT" ) );
 			AboutPage about = index.goToAboutPage( "PT" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", about.checkAboutLinks( "PT" ) );
 			
-			//TODO english version missing
-			
+			/***********************/
+			/*** English version ***/ 
+			/***********************/
+			assertTrue("Failed The News Page Test in Portuguese", news.checkNewsLinks( "EN" ) );
+			assertTrue("Failed The Reports Page Test in Portuguese", reports.checkReportsLinks( "EN" ) );
+			//assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "EN") );
+			//TODO 404 assertTrue("Failed The Audio Page Test in Portuguese", audio.checkAudioLinks( "EN" ) );
+			//TODO assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "EN" ) );
+			assertTrue("Failed The Presentations Page Test in Portuguese", pres.checkPresentationLinks( "EN" ) );
+			assertTrue("Failed The Collaborate Page Test in Portuguese", coll.checkCollaborateLinks( "EN" ) );
+			assertTrue("Failed The Collaborate Page Test in Portuguese", about.checkAboutLinks( "EN" ) );
+
 	        
 		} catch( IOException e ) {
 			fail("IOException -> IndexSobrePage");

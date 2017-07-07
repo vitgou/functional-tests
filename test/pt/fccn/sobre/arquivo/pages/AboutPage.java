@@ -28,6 +28,8 @@ public class AboutPage {
 		String xpathVideos 			= "//*[@id=\"parent-fieldname-text\"]/ul[1]/li/a";
 		String xpathDissemination 	= "//*[@id=\"parent-fieldname-text\"]/ul[2]/li/a";
     	String xpathTechnical 		= "//*[@id=\"parent-fieldname-text\"]/ul[3]/li/a";
+    	if( language.equals( "EN" ) )
+    		switchLanguage( );
     	
 		if( !extractLinks( xpathVideos ) )
 			return false;
@@ -67,6 +69,17 @@ public class AboutPage {
     	}
 	}
 	
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
 	
 	
 }
