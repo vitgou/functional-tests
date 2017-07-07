@@ -358,12 +358,12 @@ public class IndexSobrePage {
 		
 		String xpatha = "";
 		
-		if( language.equals( "PT" ) ){ 
+		if( language.equals( "PT" ) ) 
 			xpatha = "//*[@id=\"menu-item-3775\"]/a";
-		} else {
-			switchLanguage( );
+		else 
 			xpatha = "//*[@id=\"menu-item-3929\"]/a";
-		}
+	
+		
 		
         try{
             System.out.println( "Start goToPresentationsPage() method" );
