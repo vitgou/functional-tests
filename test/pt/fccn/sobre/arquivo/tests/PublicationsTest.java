@@ -31,7 +31,7 @@ public class PublicationsTest extends WebDriverTestBaseParalell {
 		    
 	        assertTrue("Failed The Publications Page Test in Portuguese", publications.checkPubicationsLinks( "PT" ) );
 	        
-	        //TODO english version missing
+	        assertTrue("Failed The Publications Page Test in Portuguese", publications.checkPubicationsLinks( "EN" ) );
 	        
 		} catch( IOException e ) {
 			fail("IOException -> footerTest");
