@@ -24,11 +24,14 @@ public class ReportsPage {
 	
 	public boolean checkReportsLinks( String language ) {
 		System.out.println( "[checkReportsLinks]" );
-		String xpatha = "//*[@id=\"post-2977\"]/div/div/ul/li/a"; //get footer links
-    	
-		if( language.equals( "EN" ) )
-			switchLanguage( );
+		String idDiv = "";
 		
+		if( language.equals( "EN" ) ) {
+			idDiv = "post-3196";
+			switchLanguage( );
+		} else 
+			idDiv = "post-2977";
+		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/ul/li/a"; //get footer links
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions

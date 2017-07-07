@@ -34,10 +34,15 @@ public class NewsPage {
 	 */
 	public boolean checkNewsLinks( String language ) {
 		System.out.println( "[checkLinks]" );
-		String xpatha = "//*[@id=\"post-1857\"]/div/div/aside/div/ul/li/a"; //get news links
-    	
-		if( language.equals( "EN" ) )
+		String idDiv = "";
+		
+		if( language.equals( "EN" ) ) {
+			idDiv = "post-2336";
 			switchLanguage( );
+		} else 
+			idDiv = "post-1857";
+		
+		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/aside/div/ul/li/a"; //get news links
 		
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
