@@ -345,6 +345,7 @@ public class IndexSobrePage {
 		if( language.equals( "PT" ) ){ 
 			xpatha = "//*[@id=\"menu-item-3775\"]/a";
 		} else {
+			switchLanguage( );
 			xpatha = "//*[@id=\"menu-item-3929\"]/a";
 		}
 		
@@ -376,6 +377,8 @@ public class IndexSobrePage {
 	}
 	
 	
+    
+    
     /**
      * 
      * @return

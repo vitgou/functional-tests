@@ -27,8 +27,16 @@ public class PublicationsPage {
 	
 	public boolean checkPubicationsLinks( String language ) {
 		System.out.println( "[checkPubicationsLinks]" );
-		String xpatha = "//*[@id=\"post-2225\"]/div/div/div/ul/li/a"; //get footer links
-    	
+		String idDiv = "";
+		
+		if( language.equals( "PT" ) )
+			idDiv = "post-2225";
+		else {
+			switchLanguage( );
+			idDiv = "post-2814";
+		}
+		
+		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/div/ul/li/a"; //get footer links	
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -41,8 +49,10 @@ public class PublicationsPage {
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
+    			String text = elem.getText( );
+    			Charset.forName( "UTF-8" ).encode( text );
     			if( !AnalyzeURLs.checkOk( statusCode ) ) {
-    				System.out.println( "Failed: Url[" + url + "] status-code[" + statusCode + "]" );
+    				System.out.println( "Failed: text[" + text + "] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
     			}
     		}
@@ -55,5 +65,19 @@ public class PublicationsPage {
     	}
 		
 	}
+	
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
+	
 	
 }

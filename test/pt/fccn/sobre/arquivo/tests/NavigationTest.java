@@ -58,14 +58,23 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			/***********************/
 			/*** English version ***/ 
 			/***********************/
-			assertTrue("Failed The News Page Test in Portuguese", news.checkNewsLinks( "EN" ) );
+			NewsPage newsEN = index.goToNewsPage( );
+			assertTrue("Failed The News Page Test in Portuguese", newsEN.checkNewsLinks( "EN" ) );
+			PublicationsPage publicationsEN = index.goToPublicationsPage( );
+			ReportsPage reportsEN = index.goToReportsPage( );
 			assertTrue("Failed The Reports Page Test in Portuguese", reports.checkReportsLinks( "EN" ) );
+			//TODO NewsOnMediaPage newsonmedia = index.goToNewOnMediaPage( );
 			//assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "EN") );
+			//TODO AudioPage audio = index.goToAudioPage( "PT" );
 			//TODO 404 assertTrue("Failed The Audio Page Test in Portuguese", audio.checkAudioLinks( "EN" ) );
+			//TODO to slow VideoPage video = index.goToVideoPage( "PT" );
 			//TODO assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "EN" ) );
-			assertTrue("Failed The Presentations Page Test in Portuguese", pres.checkPresentationLinks( "EN" ) );
-			assertTrue("Failed The Collaborate Page Test in Portuguese", coll.checkCollaborateLinks( "EN" ) );
-			assertTrue("Failed The Collaborate Page Test in Portuguese", about.checkAboutLinks( "EN" ) );
+			PresentationsPage presEN = index.goToPresentationsPage( "PT" );
+			assertTrue("Failed The Presentations Page Test in Portuguese", presEN.checkPresentationLinks( "EN" ) );
+			CollaboratePage collEN = index.goToCollaboratePage( );
+			assertTrue("Failed The Collaborate Page Test in Portuguese", collEN.checkCollaborateLinks( "EN" ) );
+			AboutPage aboutEN = index.goToAboutPage( "PT" );
+			assertTrue("Failed The Collaborate Page Test in Portuguese", aboutEN.checkAboutLinks( "EN" ) );
 
 	        
 		} catch( IOException e ) {
