@@ -103,7 +103,7 @@ public class IndexSobrePage {
             .until(
             		ExpectedConditions.presenceOfElementLocated(
             				By.xpath( "//*[@id=\"menu-item-3393\"]/a" )
-            				)
+            				) 
             		);            
             collaborateLink.click( );
             System.out.println( "Finished goToCollaboratePage() method" );
@@ -338,7 +338,15 @@ public class IndexSobrePage {
      * @return
      * @throws FileNotFoundException 
      */
-	public PresentationsPage goToPresentationsPage( ) throws FileNotFoundException {
+	public PresentationsPage goToPresentationsPage( String language ) throws FileNotFoundException {
+		
+		String xpatha = "";
+		
+		if( language.equals( "PT" ) ){ 
+			xpatha = "//*[@id=\"menu-item-3775\"]/a";
+		} else {
+			xpatha = "//*[@id=\"menu-item-3929\"]/a";
+		}
 		
         try{
             System.out.println( "Start goToPresentationsPage() method" );
@@ -354,7 +362,7 @@ public class IndexSobrePage {
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-3929\"]/a" )
+                    				By.xpath( xpatha )
                     				)
                     		);
             menuClickLink.click( );
@@ -421,14 +429,21 @@ public class IndexSobrePage {
      * 
      * @throws FileNotFoundException 
      */
-    public AboutPage goToAboutPage( ) throws FileNotFoundException{
-        try{
+    public AboutPage goToAboutPage( String language ) throws FileNotFoundException{
+        String idDiv = "";
+        
+        if( language.equals( "PT" ) )
+        	idDiv = "menu-item-3416";
+        else
+        	idDiv = "menu-item-3449";
+    	
+    	try{
             System.out.println( "Start goToAboutPage( ) method" );
             WebElement newsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath( "//*[@id=\"menu-item-3416\"]/a" )
-            				)
+            				By.xpath( "//*[@id=\""+idDiv+"\"]/a" )
+            				)   
             		);            
             newsLink.click( );
             System.out.println( "Finished goToAboutPage( ) method" );

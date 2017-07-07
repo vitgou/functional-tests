@@ -43,18 +43,17 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			//assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "PT") );
 			//TODO AudioPage audio = index.goToAudioPage( "PT" );
 			//assertTrue("Failed The Audio Page Test in Portuguese", audio.checkAudioLinks( "PT" ) );
-			VideoPage video = index.goToVideoPage( "PT" );
-			assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "PT" ) );
-			PresentationsPage pres = index.goToPresentationsPage( );
+			/*TODO to slow VideoPage video = index.goToVideoPage( "PT" );
+			assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "PT" ) );*/
+			PresentationsPage pres = index.goToPresentationsPage( "PT" );
 			assertTrue("Failed The Presentations Page Test in Portuguese", pres.checkPresentationLinks( "PT" ) );
 			CollaboratePage coll = index.goToCollaboratePage( );
-			assertTrue("Failed The Collaborate Page Test in Portuguese", coll.checkCollaborateLinks( "PT" ) );
-			AboutPage about = index.goToAboutPage( );
+			assertTrue("Failed The Collaborate Page Test in Portuguese", coll.checkCollaborateLinks( ) );
+			AboutPage about = index.goToAboutPage( "PT" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", about.checkAboutLinks( "PT" ) );
 			
+			//TODO english version missing
 			
-			
-	        //TODO english version missing
 	        
 		} catch( IOException e ) {
 			fail("IOException -> IndexSobrePage");

@@ -54,7 +54,7 @@ public class CollaboratePage {
 	}
 	
 	
-	public boolean checkCollaborateLinks( String language ) {
+	public boolean checkCollaborateLinks( ) {
 		System.out.println( "[checkCollaborateLinks]" );
 		String xpatha = "//*[@id=\"parent-fieldname-text\"]/ul/li/a"; 
     	

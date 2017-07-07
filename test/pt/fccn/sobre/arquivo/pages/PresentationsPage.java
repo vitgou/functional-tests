@@ -26,8 +26,14 @@ public class PresentationsPage {
 	
 	public boolean checkPresentationLinks( String language ) {
 		System.out.println( "[checkPresentationLinks]" );
-		String xpatha = "//*[@id=\"post-3219\"]/div/div/ul/li/a"; 
-    	
+		String idDiv = "";
+		 
+		if( language.equals( "PT" ) )
+			idDiv = "post-3036";
+		else
+			idDiv = "post-3219";
+		
+		String xpatha = "//*[@id=\""+ idDiv +"\"]/div/div/ul/li/a";
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -40,8 +46,10 @@ public class PresentationsPage {
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
+    			String text = elem.getText( );
+    			Charset.forName( "UTF-8" ).encode( text );
     			if( !AnalyzeURLs.checkOk( statusCode ) ) {
-    				System.out.println( "Failed: Url[" + url + "] status-code[" + statusCode + "]" );
+    				System.out.println( "Failed: text["+text+"] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
     			}
     		}
