@@ -1,6 +1,7 @@
 package pt.fccn.sobre.arquivo.pages;
 
 import java.io.FileNotFoundException;
+import java.nio.charset.Charset;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -24,10 +25,15 @@ public class VideoPage {
 	
 	public boolean checkVideoLinks( String language ) {
 		System.out.println( "[checkVideoLinks]" );
-		String xpathVideos 			= "//*[@id=\"post-2816\"]/div/div/div/ul/li/a";
-		String xpathDissemination 	= "//*[@id=\"post-2816\"]/div/div/ul[1]/li/a";
-    	String xpathTechnical 		= "//*[@id=\"post-2816\"]/div/div/ul[2]/li/a";
-    	
+		String id = "";
+		if( language.equals( "PT" ) )
+			id = "post-2756";
+		else
+			id = "post-2816";
+		String xpathVideos 			= "//*[@id=\"" + id + "\"]/div/div/div/ul/li/a";
+		String xpathDissemination 	= "//*[@id=\"" + id + "\"]/div/div/ul[1]/li/a";
+    	String xpathTechnical 		= "//*[@id=\"" + id + "\"]/div/div/ul[2]/li/a";
+
 		if( !extractLinks( xpathVideos ) )
 			return false;
 		if( !extractLinks( xpathDissemination ) )
@@ -52,8 +58,10 @@ public class VideoPage {
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
+    			String text = elem.getText( );
+    			Charset.forName( "UTF-8" ).encode( text );
     			if( !AnalyzeURLs.checkOk( statusCode ) ) {
-    				System.out.println( "Failed: Url[" + url + "] status-code[" + statusCode + "]" );
+    				System.out.println( "Failed: text["+text+"] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
     			}
     		}
