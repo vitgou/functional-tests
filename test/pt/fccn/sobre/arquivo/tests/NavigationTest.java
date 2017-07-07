@@ -39,8 +39,8 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			/**************************/
 			NewsPage news = index.goToNewsPage( );
 			assertTrue("Failed The News Page Test in Portuguese", news.checkNewsLinks( "PT" ) );
-			PublicationsPage publications = index.goToPublicationsPage( );
-			ReportsPage reports = index.goToReportsPage( );
+			PublicationsPage publications = index.goToPublicationsPage( "PT" );
+			ReportsPage reports = index.goToReportsPage( "PT" );
 			assertTrue("Failed The Reports Page Test in Portuguese", reports.checkReportsLinks( "PT" ) );
 			//TODO NewsOnMediaPage newsonmedia = index.goToNewOnMediaPage( );
 			//assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "PT") );
@@ -60,8 +60,8 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			/***********************/
 			NewsPage newsEN = index.goToNewsPage( );
 			assertTrue("Failed The News Page Test in Portuguese", newsEN.checkNewsLinks( "EN" ) );
-			PublicationsPage publicationsEN = index.goToPublicationsPage( );
-			ReportsPage reportsEN = index.goToReportsPage( );
+			PublicationsPage publicationsEN = index.goToPublicationsPage( "EN" );
+			ReportsPage reportsEN = index.goToReportsPage( "EN" );
 			assertTrue("Failed The Reports Page Test in Portuguese", reports.checkReportsLinks( "EN" ) );
 			//TODO NewsOnMediaPage newsonmedia = index.goToNewOnMediaPage( );
 			//assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "EN") );
@@ -69,7 +69,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			//TODO 404 assertTrue("Failed The Audio Page Test in Portuguese", audio.checkAudioLinks( "EN" ) );
 			//TODO to slow VideoPage video = index.goToVideoPage( "PT" );
 			//TODO assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "EN" ) );
-			PresentationsPage presEN = index.goToPresentationsPage( "PT" );
+			PresentationsPage presEN = index.goToPresentationsPage( "EN" );
 			assertTrue("Failed The Presentations Page Test in Portuguese", presEN.checkPresentationLinks( "EN" ) );
 			CollaboratePage collEN = index.goToCollaboratePage( );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", collEN.checkCollaborateLinks( "EN" ) );

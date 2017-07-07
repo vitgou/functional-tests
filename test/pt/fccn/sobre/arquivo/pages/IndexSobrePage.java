@@ -155,24 +155,33 @@ public class IndexSobrePage {
      * @return
      * @throws FileNotFoundException 
      */
-	public PublicationsPage goToPublicationsPage( ) throws FileNotFoundException {
-		
-        try{
+	public PublicationsPage goToPublicationsPage( String language ) throws FileNotFoundException {
+		String idMenuPub 		= "";
+		String idMenuPubCien 	= "";
+        
+		try{
             System.out.println( "Start goToPublicationsPage() method" );
-            
+            if( language.equals( "EN" ) ) {
+            	idMenuPub 		= "menu-item-2363";
+            	idMenuPubCien 	= "menu-item-3924";
+            } else {
+            	idMenuPub 		= "menu-item-1869";
+            	idMenuPubCien 	= "menu-item-3769";
+            }
+          
             Actions actions = new Actions( driver ); 
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
                     				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
-                    				)
+                    				) 
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
-                    .until(
+                    .until( 
                     		ExpectedConditions.presenceOfElementLocated(
                     				By.xpath( "//*[@id=\"menu-item-3769\"]/a" )
-                    				)
+                    				) 
                     		);
             menuClickLink.click( );
             System.out.println( "Finished goToPublicationsPage() method" );
@@ -189,23 +198,30 @@ public class IndexSobrePage {
      * @return
      * @throws FileNotFoundException 
      */
-	public ReportsPage goToReportsPage( ) throws FileNotFoundException {
-		
+	public ReportsPage goToReportsPage( String language ) throws FileNotFoundException {
+		String idMenu 		= "";
+		String idSubMenu 	= "";
         try{
             System.out.println( "Start goToReportsPage() method" );
-            
+            if( language.equals( "EN" ) ) {
+            	idMenu 		= "menu-item-2363";
+            	idSubMenu 	= "menu-item-3925";
+            } else {
+            	idMenu 		= "menu-item-1869";
+            	idSubMenu 	= "menu-item-3771";
+            } 
             Actions actions = new Actions( driver ); 
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				By.xpath( "//*[@id=\"" + idMenu + "\"]/a" )
                     				)
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-3771\"]/a" )
+                    				By.xpath( "//*[@id=\"" + idSubMenu + "\"]/a" )
                     				)
                     		);
             menuClickLink.click( );
