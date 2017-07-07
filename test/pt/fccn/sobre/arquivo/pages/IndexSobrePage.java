@@ -160,7 +160,7 @@ public class IndexSobrePage {
 		String idMenuPubCien 	= "";
         
 		try{
-            System.out.println( "Start goToPublicationsPage() method" );
+            System.out.println( "Start goToPublicationsPage( ) method" );
             if( language.equals( "EN" ) ) {
             	idMenuPub 		= "menu-item-2363";
             	idMenuPubCien 	= "menu-item-3924";
@@ -173,18 +173,18 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				By.xpath( "//*[@id=\""+ idMenuPub +"\"]/a" )
                     				) 
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until( 
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-3769\"]/a" )
+                    				By.xpath( "//*[@id=\"" + idMenuPubCien + "\"]/a" )
                     				) 
                     		);
             menuClickLink.click( );
-            System.out.println( "Finished goToPublicationsPage() method" );
+            System.out.println( "Finished goToPublicationsPage( ) method" );
         }catch( NoSuchElementException e ){
         	System.out.println( "Could not find the link element" );
         	throw e;

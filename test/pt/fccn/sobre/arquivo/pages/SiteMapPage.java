@@ -39,8 +39,8 @@ public class SiteMapPage {
 	
 	public boolean checkSiteMap( String language ) {
 		System.out.println( "[checkSiteMap]" );
-		String xpatha = "//*[@id=\"post-2659\"]/div/div/div/ul/li"; //get sitemap links
-    	
+		String xpatha = "//*[@id=\"search-4\"]/form/label/input"; //get sitemap links
+		
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
