@@ -148,8 +148,7 @@ public class IndexSobrePage {
         
         return new SiteMapPage( driver );
 	}
-	
-	
+
     /**
      * 
      * @return

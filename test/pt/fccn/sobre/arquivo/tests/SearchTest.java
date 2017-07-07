@@ -10,6 +10,7 @@ import org.junit.Test;
 import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
+import pt.fccn.sobre.arquivo.pages.SearchPage;
 import pt.fccn.sobre.arquivo.pages.SiteMapPage;
 
 public class SearchTest extends WebDriverTestBaseParalell {
@@ -24,11 +25,10 @@ public class SearchTest extends WebDriverTestBaseParalell {
 		System.out.print( "Running SearchTest Test. \n");
 		IndexSobrePage index = null;
 		try{
-			index = new IndexSobrePage( driver );
-			SiteMapPage siteMap = index.goToSiteMapPage( );
+			SearchPage search = new SearchPage( driver );
 			System.out.println( "Going to the FooterTest" );
 		    
-	        assertTrue("Failed The Example Page Test in Portuguese", siteMap.checkSiteMap( "PT" ) );
+	        assertTrue("Failed The Example Page Test in Portuguese", search.checkSearch( "PT" ) );
 
 	        //*[@id="resInfo-0"]
 	        

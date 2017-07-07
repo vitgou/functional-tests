@@ -18,26 +18,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SiteMapPage {
-
+public class SearchPage {
 	WebDriver driver;
 	private final String dir = "sobreTestsFiles";
 	List< String > topicsPT;
 	List< String > topicsEN;
 	private final int timeout = 50;
 	
-	public SiteMapPage( WebDriver driver ) throws FileNotFoundException{
+	public SearchPage( WebDriver driver ) throws FileNotFoundException{
 		this.driver = driver;
 		
-		if( !loadTopics( "SearchLinks.txt" , "pt" ) ) 
+		if( !loadTopics( "SiteMapTopicsPT.txt" , "pt" ) ) 
 			throw new FileNotFoundException( );
 		
-		if( !loadTopics( "SearchLinks.txt" , "en" ) )
+		if( !loadTopics( "SiteMapTopicsEN.txt" , "en" ) )
 			throw new FileNotFoundException( );
 		
 	}
 	
-	public boolean checkSiteMap( String language ) {
+	public boolean checkSearch( String language ) {
 		System.out.println( "[checkSiteMap]" );
 		String xpatha = "//*[@id=\"search-4\"]/form/label/input"; //get sitemap links
 		
@@ -98,5 +97,4 @@ public class SiteMapPage {
 		}
 		
 	}
-	
 }
