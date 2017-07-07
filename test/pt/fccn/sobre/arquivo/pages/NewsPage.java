@@ -41,6 +41,7 @@ public class NewsPage {
 			switchLanguage( );
 		} else 
 			idDiv = "post-1857";
+		System.out.println( "Page title = " + driver.getTitle( ) );
 		
 		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/aside/div/ul/li/a"; //get news links
 		
