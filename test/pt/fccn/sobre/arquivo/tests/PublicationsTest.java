@@ -26,7 +26,7 @@ public class PublicationsTest extends WebDriverTestBaseParalell {
 		IndexSobrePage index = null;
 		try{
 			index = new IndexSobrePage( driver );
-			PublicationsPage publications = index.goToPublicationsPage( );
+			PublicationsPage publications = index.goToPublicationsPage( "PT" );
 			System.out.println( "Going to the FooterTest" );
 		    
 	        assertTrue("Failed The Publications Page Test in Portuguese", publications.checkPubicationsLinks( "PT" ) );
