@@ -1,6 +1,7 @@
 package pt.fccn.sobre.arquivo.pages;
 
 import java.io.FileNotFoundException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,10 +71,14 @@ public class CollaboratePage {
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
-    			if( !AnalyzeURLs.checkOk( statusCode ) ) {
-    				System.out.println( "Failed: Url[" + url + "] status-code[" + statusCode + "]" );
+    			String text = elem.getText( );
+    			Charset.forName( "UTF-8" ).encode( text );
+    			System.out.println( "Failed: text["+text+"] link[" + url + "] status-code[" + statusCode + "]" );
+    			
+    			/*if( !AnalyzeURLs.checkOk( statusCode ) ) {
+    				System.out.println( "Failed: text["+text+"] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
-    			}
+    			}*/
     		}
     		
 	    	return true;
