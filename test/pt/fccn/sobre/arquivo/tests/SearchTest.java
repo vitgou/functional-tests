@@ -29,6 +29,9 @@ public class SearchTest extends WebDriverTestBaseParalell {
 			System.out.println( "Going to the FooterTest" );
 		    
 	        assertTrue("Failed The Example Page Test in Portuguese", siteMap.checkSiteMap( "PT" ) );
+
+	        //*[@id="resInfo-0"]
+	        
 	        
 	        //TODO english version missing
 	        

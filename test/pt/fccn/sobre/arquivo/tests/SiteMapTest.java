@@ -29,7 +29,7 @@ public class SiteMapTest extends WebDriverTestBaseParalell {
 			SiteMapPage siteMap = index.goToSiteMapPage( );
 			System.out.println( "Going to the FooterTest" );
 		    
-	        assertTrue("Failed The Example Page Test in Portuguese", siteMap.checkSiteMap( "PT" ) );
+	        assertTrue("Failed The SiteMap Page Test in Portuguese", siteMap.checkSiteMap( "PT" ) );
 	        
 	        //TODO english version missing
 	        

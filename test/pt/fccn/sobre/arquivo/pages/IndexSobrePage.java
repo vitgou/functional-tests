@@ -356,12 +356,16 @@ public class IndexSobrePage {
      */
 	public PresentationsPage goToPresentationsPage( String language ) throws FileNotFoundException {
 		
-		String xpatha = "";
+		String xpathDivMenu = "";
+		String xpathDibSubMenu = "";
 		
-		if( language.equals( "PT" ) ) 
-			xpatha = "//*[@id=\"menu-item-3775\"]/a";
-		else 
-			xpatha = "//*[@id=\"menu-item-3929\"]/a";
+		if( language.equals( "PT" ) ) {
+			xpathDivMenu = "//*[@id=\"menu-item-1869\"]/a";
+			xpathDibSubMenu = "//*[@id=\"menu-item-3775\"]/a";
+		} else {
+			xpathDivMenu = "//*[@id=\"menu-item-2363\"]/a";
+			xpathDibSubMenu = "//*[@id=\"menu-item-3929\"]/a";
+		}
 	
 		
 		
@@ -372,14 +376,14 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				By.xpath( xpathDivMenu )
                     				)
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( xpatha )
+                    				By.xpath( xpathDibSubMenu )
                     				)
                     		);
             menuClickLink.click( );
