@@ -35,12 +35,17 @@ public class NewsPage {
 	public boolean checkNewsLinks( String language ) {
 		System.out.println( "[checkLinks]" );
 		String idDiv = "";
+		String idaRss = "";
 		
 		if( language.equals( "EN" ) ) {
 			idDiv = "post-2336";
+			idaRss = "post-2336";
 			switchLanguage( );
-		} else 
+		} else {
+			idaRss = "post-1857";
 			idDiv = "post-1857";
+		}
+			
 		System.out.println( "Page title = " + driver.getTitle( ) );
 		
 		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/aside/div/ul/li/a"; //get news links
@@ -63,8 +68,8 @@ public class NewsPage {
     			}
     		}
     		
-    		String xpathRss = "//*[@id=\"post-1857\"]/div/div/h4/a";
-    		
+    		String xpathRss = "//*[@id=\"" + idaRss + "\"]/div/div/h4/a";
+
     	    WebElement rssLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	             .until( ExpectedConditions.
 	            		 presenceOfElementLocated(
