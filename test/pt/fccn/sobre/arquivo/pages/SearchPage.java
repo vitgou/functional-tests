@@ -37,7 +37,7 @@ public class SearchPage {
 	}
 	
 	public boolean checkSearch( String language ) {
-		System.out.println( "[checkSiteMap]" );
+		System.out.println( "[checkSearch]" );
 		String xpathResults = "//*[@id=\"search-4\"]/form/label/input"; //get search links
         String xpathButton = "//*[@id=\"wp_editor_widget-17\"]/div/div[2]/div/span/a";
 
@@ -48,8 +48,6 @@ public class SearchPage {
 			else 
 				searchPT( xpathResults , xpathButton );
 
-			checkResults( );
-			
     		return true;
     	} catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
@@ -60,7 +58,7 @@ public class SearchPage {
 	}
 	
 	private boolean checkResults( ) {
-		System.out.println( "[checkSiteMap]" );
+		System.out.println( "[checkResults]" );
 		String xpathResults = "//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[3]/div"; //get search links
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -87,7 +85,7 @@ public class SearchPage {
 	}
 	
 	private void searchEN( String xpathResults , String xpathButton ) {
-		
+		System.out.println( "[searchEN]" );
         for( String topic : topicsEN ) {
 			WebElement emailElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	                .until(
@@ -104,12 +102,15 @@ public class SearchPage {
 	            		ExpectedConditions.presenceOfElementLocated(
 	            				By.id( xpathButton ) ) );
 	        btnSubmitElement.click( );
+	        
+	        checkResults( );
 		}
 		
 		
 	}
 	
 	private void searchPT( String xpathResults , String xpathSendButton ) {
+		System.out.println( "[searchPT]" );
         for( String topic : topicsPT ) {
     		WebElement emailElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
@@ -126,6 +127,8 @@ public class SearchPage {
                 		ExpectedConditions.presenceOfElementLocated(
                 				By.id( xpathSendButton ) ) );
             btnSubmitElement.click( );
+            
+            checkResults( );
         }
 	}
 	
