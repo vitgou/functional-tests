@@ -50,7 +50,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "PT" ) );*/
 			PresentationsPage pres = index.goToPresentationsPage( "PT" );
 			assertTrue("Failed The Presentations Page Test in Portuguese", pres.checkPresentationLinks( "PT" ) );
-			CollaboratePage coll = index.goToCollaboratePage( );
+			CollaboratePage coll = index.goToCollaboratePage( "PT" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", coll.checkCollaborateLinks( "PT" ) );
 			AboutPage about = index.goToAboutPage( "PT" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", about.checkAboutLinks( "PT" ) );
@@ -71,7 +71,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			//TODO assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "EN" ) );
 			PresentationsPage presEN = index.goToPresentationsPage( "EN" );
 			assertTrue("Failed The Presentations Page Test in Portuguese", presEN.checkPresentationLinks( "EN" ) );
-			CollaboratePage collEN = index.goToCollaboratePage( );
+			CollaboratePage collEN = index.goToCollaboratePage( "EN" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", collEN.checkCollaborateLinks( "EN" ) );
 			AboutPage aboutEN = index.goToAboutPage( "PT" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", aboutEN.checkAboutLinks( "EN" ) );
