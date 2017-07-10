@@ -63,22 +63,29 @@ public class SearchPage {
 		
 		////*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[3]/div[1]/div[1]/table/tbody/tr/td[2]/div[3]
 		try{
-    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
+    		WebElement divElem = ( new WebDriverWait( driver, timeout ) )
+	                .until( ExpectedConditions
+	                			.presenceOfElementLocated(
+	                        		      By.xpath( xpathResults )
+	                        )
+	        );
+    		
+    		System.out.println( "[checkSearch] results size = " + divElem.getAttribute( "innerHTML" ) );
+  /*  		
+    		List< WebElement > resultsAux = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
 	                        .visibilityOfAllElementsLocatedBy(
 	                        		      By.xpath( xpathResults )
 	                        )
 	        );
     		
-    		System.out.println( "[checkSearch] results size = " + results.size( ) );
-    		
-    		for( WebElement elem : results ) {
+   			for( WebElement elem : results ) {
 				String text = elem.getAttribute( "innerHTML" );
 				
 				Charset.forName( "UTF-8" ).encode( text );
 				System.out.println( "Text = " + text );
     		}
-    		
+  */  		
 	    	return true;
     	} catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
