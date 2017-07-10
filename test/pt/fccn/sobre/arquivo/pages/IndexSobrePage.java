@@ -464,7 +464,7 @@ public class IndexSobrePage {
         else
         	idDiv = "menu-item-3449";
     	
-    	try{
+    	try{ 
             System.out.println( "Start goToAboutPage( ) method" );
             WebElement newsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(

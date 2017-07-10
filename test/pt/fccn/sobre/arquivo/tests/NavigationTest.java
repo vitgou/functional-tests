@@ -73,7 +73,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			assertTrue("Failed The Presentations Page Test in Portuguese", presEN.checkPresentationLinks( "EN" ) );
 			CollaboratePage collEN = index.goToCollaboratePage( "EN" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", collEN.checkCollaborateLinks( "EN" ) );
-			AboutPage aboutEN = index.goToAboutPage( "PT" );
+			AboutPage aboutEN = index.goToAboutPage( "EN" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", aboutEN.checkAboutLinks( "EN" ) );
 
 	        
