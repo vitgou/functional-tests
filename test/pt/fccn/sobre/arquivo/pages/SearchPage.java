@@ -100,8 +100,10 @@ public class SearchPage {
 	        WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	            .until(
 	            		ExpectedConditions.presenceOfElementLocated(
-	            				By.id( xpathButton ) ) );
+	            				By.xpath( xpathButton ) ) );
 	        btnSubmitElement.click( );
+	        
+	        IndexSobrePage.sleepThread( );
 	        
 	        checkResults( );
 		}
@@ -125,8 +127,10 @@ public class SearchPage {
             WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
                 		ExpectedConditions.presenceOfElementLocated(
-                				By.id( xpathSendButton ) ) );
+                				By.xpath( xpathSendButton ) ) );
             btnSubmitElement.click( );
+            
+            IndexSobrePage.sleepThread( );
             
             checkResults( );
         }
