@@ -140,6 +140,8 @@ public class SearchPage {
             sleepThread( );
             
             checkResults( );
+            
+            break; //TODO debug break - REMOVE !!!! 
         }
 	}
 	
