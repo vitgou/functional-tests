@@ -27,7 +27,8 @@ public class SearchPage {
 	
 	public SearchPage( WebDriver driver ) throws FileNotFoundException{
 		this.driver = driver;
-		
+		topicsPT = new ArrayList< String >( );
+		topicsEN = new ArrayList< String >( );
 		if( !loadTopics( "SearchLinksPT.txt" , "pt" ) ) 
 			throw new FileNotFoundException( );
 		
@@ -122,6 +123,7 @@ public class SearchPage {
 	private void searchPT( String xpathResults , String xpathSendButton ) {
 		System.out.println( "[searchPT]" );
         for( String topic : topicsPT ) {
+        	System.out.println( "Search for " + topic );
     		WebElement emailElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated( 
@@ -148,8 +150,6 @@ public class SearchPage {
 	private boolean loadTopics( String filename , String language ) {
 		try {
 			String line;
-			topicsPT = new ArrayList< String >( );
-			topicsEN = new ArrayList< String >( );
 		    InputStream fis = new FileInputStream( dir.concat( File.separator ).concat( filename ) );
 		    InputStreamReader isr = new InputStreamReader( fis, Charset.forName( "UTF-8" ) );
 		    BufferedReader br = new BufferedReader(isr);
