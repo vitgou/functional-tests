@@ -114,7 +114,7 @@ public class SearchPage {
 	        
 	        sleepThread( );
 	        
-	        checkResults( );
+	        checkResults( topic );
 		}
 	}
 	
@@ -139,7 +139,7 @@ public class SearchPage {
             
             sleepThread( );
             
-            checkResults( );
+            checkResults( topic );
             
             break; //TODO debug break - REMOVE !!!! 
         }
@@ -161,7 +161,7 @@ public class SearchPage {
 			isr.close( );
 			fis.close( );
 			
-			//printQuestions( ); //Debug
+			//printQuestions( ); Info Debug
 			
 			return true;
 		} catch ( FileNotFoundException exFile ) {
