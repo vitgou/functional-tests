@@ -10,6 +10,7 @@ import pt.fccn.sobre.arquivo.tests.FooterTest;
 import pt.fccn.sobre.arquivo.tests.NavigationTest;
 import pt.fccn.sobre.arquivo.tests.NewsTest;
 import pt.fccn.sobre.arquivo.tests.PublicationsTest;
+import pt.fccn.sobre.arquivo.tests.SearchTest;
 import pt.fccn.sobre.arquivo.tests.SiteMapTest;
 import pt.fccn.sobre.arquivo.tests.SuggestionSiteTest;
 
@@ -19,7 +20,7 @@ import pt.fccn.sobre.arquivo.tests.SuggestionSiteTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( { NavigationTest.class } ) 
+@SuiteClasses( { SearchTest.class } ) 
 //TODO done  CommonQuestionsTest.class, ExamplesTest.class , FooterTest.class , PublicationsTest.class, NewsTest.class ,  NavigationTest.class 
 //TODO error SuggestionSiteTest.class , SiteMapTest.class
 
