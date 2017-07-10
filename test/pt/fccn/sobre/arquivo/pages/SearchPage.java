@@ -61,7 +61,7 @@ public class SearchPage {
 	private boolean checkResults( ) {
 		System.out.println( "[checkResults]" );
 		String xpathResults = "//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[3]"; //get search links
-		
+		String xpathText = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]";
 		////*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[3]/div[1]/div[1]/table/tbody/tr/td[2]/div[3]
 		try{
     		WebElement divElem = ( new WebDriverWait( driver, timeout ) )
@@ -72,21 +72,15 @@ public class SearchPage {
 	        );
     		
     		System.out.println( "[checkSearch] results size = " + divElem.getAttribute( "innerHTML" ) );
-  /*  		
-    		List< WebElement > resultsAux = ( new WebDriverWait( driver, timeout ) )
-	                .until( ExpectedConditions
-	                        .visibilityOfAllElementsLocatedBy(
-	                        		      By.xpath( xpathResults )
-	                        )
-	        );
+   		
+    		List< WebElement > results = divElem.findElements( By.xpath( xpathText ) );
     		
    			for( WebElement elem : results ) {
-				String text = elem.getAttribute( "innerHTML" );
-				
+				String text = elem.getText( );
 				Charset.forName( "UTF-8" ).encode( text );
 				System.out.println( "Text = " + text );
     		}
-  */  		
+   		
 	    	return true;
     	} catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
