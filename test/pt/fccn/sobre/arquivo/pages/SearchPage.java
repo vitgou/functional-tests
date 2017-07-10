@@ -28,10 +28,10 @@ public class SearchPage {
 	public SearchPage( WebDriver driver ) throws FileNotFoundException{
 		this.driver = driver;
 		
-		if( !loadTopics( "SiteMapTopicsPT.txt" , "pt" ) ) 
+		if( !loadTopics( "SearchLinksPT.txt" , "pt" ) ) 
 			throw new FileNotFoundException( );
 		
-		if( !loadTopics( "SiteMapTopicsEN.txt" , "en" ) )
+		if( !loadTopics( "SearchLinksEN.txt" , "en" ) )
 			throw new FileNotFoundException( );
 		
 	}
