@@ -26,17 +26,13 @@ public class SearchTest extends WebDriverTestBaseParalell {
 		IndexSobrePage index = null;
 		try{
 			SearchPage search = new SearchPage( driver );
-			System.out.println( "Going to the FooterTest" );
+			System.out.println( "Going to the SearchingTest" );
 		    
-	        assertTrue("Failed The Example Page Test in Portuguese", search.checkSearch( "PT" ) );
-
-	        //*[@id="resInfo-0"]
-	        
-	        
-	        //TODO english version missing
+	        assertTrue("Failed The Search Test in Portuguese", search.checkSearch( "PT" ) );
+	        assertTrue("Failed The Search Test in Portuguese", search.checkSearch( "EN" ) );
 	        
 		} catch( IOException e ) {
-			fail("IOException -> IndexSobrePage");
+			fail("IOException -> SearchingTest");
 		}
 		
     }

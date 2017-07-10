@@ -38,24 +38,44 @@ public class SearchPage {
 	
 	public boolean checkSearch( String language ) {
 		System.out.println( "[checkSiteMap]" );
-		String xpatha = "//*[@id=\"search-4\"]/form/label/input"; //get sitemap links
-		
+		String xpathResults = "//*[@id=\"search-4\"]/form/label/input"; //get search links
+        String xpathButton = "//*[@id=\"wp_editor_widget-17\"]/div/div[2]/div/span/a";
+
+		try{
+			
+			if( language.equals( "EN" ) )
+				searchEN( xpathResults , xpathButton );
+			else 
+				searchPT( xpathResults , xpathButton );
+
+			checkResults( );
+			
+    		return true;
+    	} catch( NoSuchElementException e ){
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
+    	
+	}
+	
+	private boolean checkResults( ) {
+		System.out.println( "[checkSiteMap]" );
+		String xpathResults = "//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[3]/div"; //get search links
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
 	                        .visibilityOfAllElementsLocatedBy(
-	                        		      By.xpath( xpatha )
+	                        		      By.xpath( xpathResults )
 	                        )
 	        );
     		
-    		System.out.println( "[SiteMap] results size = " + results.size( ) );
+    		System.out.println( "[checkSearch] results size = " + results.size( ) );
+    		
     		for( WebElement elem : results ) {
-    			if( elem.getTagName().toLowerCase( ).equals( "li" ) ) {
-    				WebElement subelem = elem.findElement( By.xpath( "//*/li/a" ) );
-    				String text = subelem.getText( );
-    				Charset.forName( "UTF-8" ).encode( text );
-    				System.out.println( "Text = " + text );
-    			}
+				String text = elem.getText( );
+				Charset.forName( "UTF-8" ).encode( text );
+				System.out.println( "Text = " + text );
     		}
     		
 	    	return true;
@@ -64,7 +84,49 @@ public class SearchPage {
             e.printStackTrace( );
             return false;
     	}
-    	
+	}
+	
+	private void searchEN( String xpathResults , String xpathButton ) {
+		
+        for( String topic : topicsEN ) {
+			WebElement emailElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+	                .until(
+	                		ExpectedConditions.presenceOfElementLocated( 
+	                				By.xpath( xpathResults ) ) );
+	        emailElement.clear( );
+	        emailElement.sendKeys( topic );
+	        
+	     
+	        IndexSobrePage.sleepThread( );
+	        
+	        WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+	            .until(
+	            		ExpectedConditions.presenceOfElementLocated(
+	            				By.id( xpathButton ) ) );
+	        btnSubmitElement.click( );
+		}
+		
+		
+	}
+	
+	private void searchPT( String xpathResults , String xpathSendButton ) {
+        for( String topic : topicsPT ) {
+    		WebElement emailElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated( 
+                    				By.xpath( xpathResults ) ) );
+            emailElement.clear( );
+            emailElement.sendKeys( topic );
+            
+         
+            IndexSobrePage.sleepThread( );
+            
+            WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated(
+                				By.id( xpathSendButton ) ) );
+            btnSubmitElement.click( );
+        }
 	}
 	
 	private boolean loadTopics( String filename , String language ) {
