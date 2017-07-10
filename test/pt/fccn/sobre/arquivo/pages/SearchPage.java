@@ -71,7 +71,8 @@ public class SearchPage {
     		System.out.println( "[checkSearch] results size = " + results.size( ) );
     		
     		for( WebElement elem : results ) {
-				String text = elem.getText( );
+				String text = elem.getAttribute( "innerHTML" );
+				
 				Charset.forName( "UTF-8" ).encode( text );
 				System.out.println( "Text = " + text );
     		}
