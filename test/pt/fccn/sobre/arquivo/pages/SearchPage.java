@@ -59,7 +59,9 @@ public class SearchPage {
 	
 	private boolean checkResults( ) {
 		System.out.println( "[checkResults]" );
-		String xpathResults = "//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[3]"; //get search links
+		String xpathResults = "//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[3]/div/div/table/tbody/tr/td[2]/div[3]"; //get search links
+		
+		////*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[3]/div[1]/div[1]/table/tbody/tr/td[2]/div[3]
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
