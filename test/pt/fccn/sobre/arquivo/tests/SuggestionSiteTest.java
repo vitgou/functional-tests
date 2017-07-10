@@ -28,7 +28,7 @@ public class SuggestionSiteTest extends WebDriverTestBaseParalell{
 		IndexSobrePage index = null;
 		try{
 			index = new IndexSobrePage( driver );
-			CollaboratePage collaborate = index.goToCollaboratePage( );
+			CollaboratePage collaborate = index.goToCollaboratePage( "PT" );
 			System.out.println( "Going to the Collborate Page" );
 		    SuggestionPage sug = collaborate.goToSuggestionSitePage( );
 		    System.out.println( "Going to the Suggestion Site Page" );
