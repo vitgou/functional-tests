@@ -66,7 +66,7 @@ public class SearchPage {
 	private boolean checkResults( String topic ) {
 		System.out.println( "[checkResults]" );
 		String xpathResults = "//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[3]"; //get search links
-		String xpathText = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]";
+		String xpathText = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]/b";
 		////*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[3]/div[1]/div[1]/table/tbody/tr/td[2]/div[3]
 		try{
     		WebElement divElem = ( new WebDriverWait( driver, timeout + 40 ) )
@@ -82,9 +82,9 @@ public class SearchPage {
     		List< WebElement > results = divElem.findElements( By.xpath( xpathText ) );
     		System.out.println( "Number of results = " + results.size( ) );
    			for( WebElement elem : results ) {
-				
-   				WebElement boldText = elem.findElement( By.tagName( "b" ) );
-				String text = boldText.getText( );
+				System.out.println( "elem HTML = " + elem.getText( ) );
+   				//WebElement boldText = elem.findElement( By.tagName( "b" ) );
+				String text = elem.getText( ); //boldText.getText( );
 				Charset.forName( "UTF-8" ).encode( text );
 				System.out.println( "Text of responses = " + text );
 				//System.out.println( "HTML => " + elem.getAttribute( "innerHTML" ) );
