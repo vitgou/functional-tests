@@ -64,7 +64,7 @@ public class SearchPage {
 		String xpathText = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]";
 		////*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[3]/div[1]/div[1]/table/tbody/tr/td[2]/div[3]
 		try{
-    		WebElement divElem = ( new WebDriverWait( driver, timeout ) )
+    		WebElement divElem = ( new WebDriverWait( driver, timeout + 40 ) )
 	                .until( ExpectedConditions
 	                			.presenceOfElementLocated(
 	                        		      By.xpath( xpathResults )
