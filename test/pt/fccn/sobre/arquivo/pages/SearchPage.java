@@ -45,11 +45,16 @@ public class SearchPage {
 		try{
 			
 			if( language.equals( "EN" ) )
-				searchEN( xpathResults , xpathButton );
+				if( searchEN( xpathResults , xpathButton ) )
+					return true;
+				else
+					return false;
 			else 
-				searchPT( xpathResults , xpathButton );
+				if( searchPT( xpathResults , xpathButton ) )
+					return true;
+				else 
+					return false;
 
-    		return true;
     	} catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
             e.printStackTrace( );
@@ -80,10 +85,11 @@ public class SearchPage {
 				String text = elem.getText( );
 				Charset.forName( "UTF-8" ).encode( text );
 				System.out.println( "Text of responses = " + text );
-				if( !text.contains( topic ) ){
+				System.out.println( "Tag => " + elem.getTagName( ) );
+				/*if( !text.contains( topic ) ){
 					System.out.println( "Failed text["+text+"] not contains topic["+topic+"]" );
 					return false;
-				}
+				}*/
     		}
    		
 	    	return true;
@@ -94,7 +100,7 @@ public class SearchPage {
     	}
 	}
 	
-	private void searchEN( String xpathResults , String xpathButton ) {
+	private boolean searchEN( String xpathResults , String xpathButton ) {
 		System.out.println( "[searchEN]" );
         for( String topic : topicsEN ) {
 			WebElement emailElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -115,11 +121,13 @@ public class SearchPage {
 	        
 	        sleepThread( );
 	        
-	        checkResults( topic );
+	        if( !checkResults( topic ) )
+	        	return false;
 		}
+        return true;
 	}
 	
-	private void searchPT( String xpathResults , String xpathSendButton ) {
+	private boolean searchPT( String xpathResults , String xpathSendButton ) {
 		System.out.println( "[searchPT]" );
         for( String topic : topicsPT ) {
         	System.out.println( "Search for " + topic );
@@ -140,10 +148,11 @@ public class SearchPage {
             
             sleepThread( );
             
-            checkResults( topic );
-            
+            if( !checkResults( topic ) ) 
+            	return false;
             break; //TODO debug break - REMOVE !!!! 
         }
+        return true;
 	}
 	
 	private boolean loadTopics( String filename , String language ) {
