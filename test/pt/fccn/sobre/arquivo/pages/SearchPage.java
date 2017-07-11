@@ -82,15 +82,22 @@ public class SearchPage {
     		List< WebElement > results = divElem.findElements( By.xpath( xpathText ) );
     		System.out.println( "Number of results = " + results.size( ) );
    			for( WebElement elem : results ) {
-				String text = elem.getText( );
+				
+   				WebElement boldText = elem.findElement( By.tagName( "b" ) );
+				String text = boldText.getText( );
 				Charset.forName( "UTF-8" ).encode( text );
 				System.out.println( "Text of responses = " + text );
-				System.out.println( "HTML => " + elem.getAttribute( "innerHTML" ) );
-				/*if( !text.contains( topic ) ){
+				//System.out.println( "HTML => " + elem.getAttribute( "innerHTML" ) );
+				
+				if( elem.getText() == null || elem.getText( ).equals( "" ) )
+					continue;
+				
+				if( !text.toLowerCase( ).equals( topic.toLowerCase( ) ) ){
 					System.out.println( "Failed text["+text+"] not contains topic["+topic+"]" );
 					return false;
-				}*/
-    		}
+				}
+    		
+   			}
    		
 	    	return true;
     	} catch( NoSuchElementException e ){
