@@ -82,11 +82,9 @@ public class SearchPage {
     		List< WebElement > results = divElem.findElements( By.xpath( xpathText ) );
     		System.out.println( "Number of results = " + results.size( ) );
    			for( WebElement elem : results ) {
-				System.out.println( "elem HTML = " + elem.getText( ) );
-   				//WebElement boldText = elem.findElement( By.tagName( "b" ) );
-				String text = elem.getText( ); //boldText.getText( );
+				//System.out.println( "elem HTML = " + elem.getText( ) );
+   				String text = elem.getText( ); //boldText.getText( );
 				Charset.forName( "UTF-8" ).encode( text );
-				System.out.println( "Text of responses = " + text );
 				//System.out.println( "HTML => " + elem.getAttribute( "innerHTML" ) );
 				
 				if( elem.getText() == null || elem.getText( ).equals( "" ) )
@@ -96,7 +94,7 @@ public class SearchPage {
 					System.out.println( "Failed text["+text+"] not contains topic["+topic+"]" );
 					return false;
 				}
-    		
+				System.out.println( "Success text["+text+"] equals topic["+topic+"]" );
    			}
    		
 	    	return true;
@@ -157,7 +155,7 @@ public class SearchPage {
             
             if( !checkResults( topic ) ) 
             	return false;
-            break; //TODO debug break - REMOVE !!!! 
+            //break; //TODO debug break - REMOVE !!!! 
         }
         return true;
 	}
