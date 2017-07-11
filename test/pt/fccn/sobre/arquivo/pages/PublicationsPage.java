@@ -36,7 +36,7 @@ public class PublicationsPage {
 			idDiv = "post-2814";
 		}
 		
-		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/div/ul/li/a"; //get footer links	
+		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/div/ul/li/a"; //get publications links	
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions

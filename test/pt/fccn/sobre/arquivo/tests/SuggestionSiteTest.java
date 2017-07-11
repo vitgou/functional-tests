@@ -20,7 +20,9 @@ public class SuggestionSiteTest extends WebDriverTestBaseParalell{
 		super( os, version, browser, deviceName, deviceOrientation );
 	}
 
-	
+	/**
+	 * Test has no effect. Turned into a manual test
+	 */
 	@Test
 	@Retry
 	public void suggestionsSiteTest( )  {

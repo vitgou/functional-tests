@@ -25,8 +25,13 @@ public class SiteMapPage {
 	
 	public boolean checkSiteMap( String language ) {
 		System.out.println( "[checkSiteMap]" );
-		String xpathDiv = "//*[@id=\"post-2659\"]/div/div/div"; //find the div tag
-		
+		String idDiv = "";
+		if( language.equals( "EN" ) )
+			idDiv = "post-2764";
+		else 
+			idDiv = "post-2659";
+
+		String xpathDiv = "//*[@id=\""+ idDiv +"\"]/div/div/div"; //find the div tag
 		try{
 		   WebElement divTag = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	                .until(
