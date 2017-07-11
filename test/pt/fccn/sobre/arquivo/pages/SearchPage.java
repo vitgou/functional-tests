@@ -66,8 +66,9 @@ public class SearchPage {
 	private boolean checkResults( String topic ) {
 		System.out.println( "[checkResults]" );
 		String xpathResults = "//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[3]"; //get search links
-		String xpathText = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]/b";
-		////*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[3]/div[1]/div[1]/table/tbody/tr/td[2]/div[3]
+		String xpathText = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]/b[1]";
+		String teste = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]";
+		// //*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[3]/div[1]/div[1]/table/tbody/tr/td[2]/div[3]
 		try{
     		WebElement divElem = ( new WebDriverWait( driver, timeout + 40 ) )
 	                .until( ExpectedConditions
@@ -80,6 +81,9 @@ public class SearchPage {
     		System.out.println( "HTML => " + divElem.getAttribute( "innerHTML" ));
     		
     		List< WebElement > results = divElem.findElements( By.xpath( xpathText ) );
+    		
+    		WebElement test = divElem.findElement( By.xpath( xpathText ) );
+    		System.out.println( "HTML TESTE ===> " + test.getText( ) );
     		System.out.println( "Number of results = " + results.size( ) );
    			for( WebElement elem : results ) {
 				//System.out.println( "elem HTML = " + elem.getText( ) );
