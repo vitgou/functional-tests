@@ -85,7 +85,7 @@ public class SearchPage {
 				String text = elem.getText( );
 				Charset.forName( "UTF-8" ).encode( text );
 				System.out.println( "Text of responses = " + text );
-				System.out.println( "Tag => " + elem.getTagName( ) );
+				System.out.println( "HTML => " + elem.getAttribute( "innerHTML" ) );
 				/*if( !text.contains( topic ) ){
 					System.out.println( "Failed text["+text+"] not contains topic["+topic+"]" );
 					return false;
