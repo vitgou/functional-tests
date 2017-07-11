@@ -72,9 +72,10 @@ public class SearchPage {
 	        );
     		
     		//System.out.println( "[checkSearch] results size = " + divElem.getAttribute( "innerHTML" ) );
-   		
-    		List< WebElement > results = divElem.findElements( By.xpath( xpathText ) );
+    		System.out.println( "HTML => " + divElem.getAttribute( "innerHTML" ));
     		
+    		List< WebElement > results = divElem.findElements( By.xpath( xpathText ) );
+    		System.out.println( "Number of results = " + results.size( ) );
    			for( WebElement elem : results ) {
 				String text = elem.getText( );
 				Charset.forName( "UTF-8" ).encode( text );
