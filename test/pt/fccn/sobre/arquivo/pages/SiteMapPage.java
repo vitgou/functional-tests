@@ -26,9 +26,10 @@ public class SiteMapPage {
 	public boolean checkSiteMap( String language ) {
 		System.out.println( "[checkSiteMap]" );
 		String idDiv = "";
-		if( language.equals( "EN" ) )
+		if( language.equals( "EN" ) ){
+			switchLanguage( );
 			idDiv = "post-2764";
-		else 
+		}else 
 			idDiv = "post-2659";
 
 		String xpathDiv = "//*[@id=\""+ idDiv +"\"]/div/div/div"; //find the div tag
@@ -62,6 +63,17 @@ public class SiteMapPage {
     	
 	}
 	
-
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-4506-en\"]/a";
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		IndexSobrePage.sleepThread( );
+      	}
+    }
+    
 	
 }
