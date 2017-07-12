@@ -42,10 +42,10 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			PublicationsPage publications = index.goToPublicationsPage( "PT" );
 			ReportsPage reports = index.goToReportsPage( "PT" );
 			assertTrue("Failed The Reports Page Test in Portuguese", reports.checkReportsLinks( "PT" ) );
-			//TODO NewsOnMediaPage newsonmedia = index.goToNewOnMediaPage( );
-			//assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "PT") );
-			//TODO AudioPage audio = index.goToAudioPage( "PT" );
-			//assertTrue("Failed The Audio Page Test in Portuguese", audio.checkAudioLinks( "PT" ) );
+			NewsOnMediaPage newsonmedia = index.goToNewOnMediaPage( );
+			assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "PT") );
+			AudioPage audio = index.goToAudioPage( "PT" );
+			assertTrue("Failed The Audio Page Test in Portuguese", audio.checkAudioLinks( "PT" ) );
 			/*TODO to slow VideoPage video = index.goToVideoPage( "PT" );
 			assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "PT" ) );*/
 			PresentationsPage pres = index.goToPresentationsPage( "PT" );
@@ -64,10 +64,10 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			PublicationsPage publicationsEN = index.goToPublicationsPage( "EN" );
 			ReportsPage reportsEN = index.goToReportsPage( "EN" );
 			assertTrue("Failed The Reports Page Test in Portuguese", reports.checkReportsLinks( "EN" ) );
-			//TODO NewsOnMediaPage newsonmedia = index.goToNewOnMediaPage( );
-			//assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "EN") );
-			//TODO AudioPage audio = index.goToAudioPage( "PT" );
-			//TODO 404 assertTrue("Failed The Audio Page Test in Portuguese", audio.checkAudioLinks( "EN" ) );
+			NewsOnMediaPage newsonmediaEN = index.goToNewOnMediaPage( );
+			assertTrue("Failed The New on Media Page Test in Portuguese", newsonmediaEN.checkNewsLinks( "EN") );
+			AudioPage audioEN = index.goToAudioPage( "PT" );
+			assertTrue("Failed The Audio Page Test in Portuguese", audioEN.checkAudioLinks( "EN" ) );
 			//TODO to slow VideoPage video = index.goToVideoPage( "PT" );
 			//TODO assertTrue("Failed The Video Page Test in Portuguese", video.checkVideoLinks( "EN" ) );
 			PresentationsPage presEN = index.goToPresentationsPage( "EN" );
