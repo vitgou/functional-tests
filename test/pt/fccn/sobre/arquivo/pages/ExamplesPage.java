@@ -31,10 +31,10 @@ public class ExamplesPage {
     		
     		if( language.equals( "EN" ) ) { 
     			switchLanguage( );
-    			xpatha = "//*[@id=\"post-2357\"]/div/div/div/div/div/p[2]/a"; //TODO verified
+    			xpatha = "//*[@id=\"post-2357\"]/div/div/div/div/div/div/p[2]/a"; //TODO verified
     		} else
-    			xpatha = "//*[@id=\"post-1861\"]/div/div/div/div/div/p[2]/a";
-    		
+    			xpatha = "//*[@id=\"post-1861\"]/div/div/div/div/div/div/p[2]/a";
+    		             
     		
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
