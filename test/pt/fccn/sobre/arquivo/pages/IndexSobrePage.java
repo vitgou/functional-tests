@@ -532,8 +532,10 @@ public class IndexSobrePage {
     					return false;
     				}
     			} else {
-    				if( !AnalyzeURLs.linkExists( url , text , textTolink ) )
+    				if( !AnalyzeURLs.linkExists( url , text , textTolink ) ) {
+    					System.out.println( "url["+url+"] text["+text+"] textTolink["+textTolink+"]" );
     					return false;
+    				}
 	    			
     			}
     			//Debug System.out.println( "Return = " + linkExists( url , text ) );
