@@ -63,7 +63,25 @@ public class SearchPage {
     	
 	}
 	
+	
 	private boolean checkResults( String topic ) {
+		System.out.println( "[checkResults]" );
+	    try{
+			driver.findElement( By.name( "q" ) ).clear( );
+		    driver.findElement( By.name( "q" ) ).sendKeys( topic );
+		    driver.findElement( By.cssSelector("input.search-submit") ).click( );
+		    String text = driver.findElement( By.cssSelector("b") ).getText( );
+		    System.out.println( "Text = " + text );
+		    return true;
+	    } catch( NoSuchElementException e ){
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
+		
+	}
+	
+	/*private boolean checkResults( String topic ) {
 		System.out.println( "[checkResults]" );
 		String xpathResults = "//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[3]"; //get search links
 		String xpathText = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]/b[1]";
@@ -86,17 +104,15 @@ public class SearchPage {
     		System.out.println( "HTML TESTE ===> " + test.getText( ) );
     		System.out.println( "Number of results = " + results.size( ) );
    			for( WebElement elem : results ) {
-				//System.out.println( "elem HTML = " + elem.getText( ) );
-   				String text = elem.getText( ); //boldText.getText( );
+   				String text = elem.getText( ); 
 				Charset.forName( "UTF-8" ).encode( text );
-				//System.out.println( "HTML => " + elem.getAttribute( "innerHTML" ) );
 				
-				if( elem.getText() == null || elem.getText( ).equals( "" ) )
+				if( elem.getText( ) == null || elem.getText( ).equals( "" ) )
 					continue;
 				
 				if( !text.toLowerCase( ).equals( topic.toLowerCase( ) ) ){
 					System.out.println( "Failed text["+text+"] not contains topic["+topic+"]" );
-					return false;
+					return true;
 				}
 				System.out.println( "Success text["+text+"] equals topic["+topic+"]" );
    			}
@@ -107,7 +123,7 @@ public class SearchPage {
             e.printStackTrace( );
             return false;
     	}
-	}
+	}*/
 	
 	private boolean searchEN( String xpathResults , String xpathButton ) {
 		System.out.println( "[searchEN]" );
