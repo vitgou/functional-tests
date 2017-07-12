@@ -67,12 +67,7 @@ public class SearchPage {
 	private boolean checkResults( String topic ) {
 		System.out.println( "[checkResults]" );
 	    try{
-			driver.findElement( By.name( "q" ) ).clear( );
-		    driver.findElement( By.name( "q" ) ).sendKeys( topic );
-		    sleepThread( );
-		    driver.findElement( By.cssSelector("input.search-submit") ).click( );
-		    sleepThread( );
-		    String text = driver.findElement( By.cssSelector("b") ).getText( );
+			String text = driver.findElement( By.cssSelector("b") ).getText( );
 		    System.out.println( "Text = " + text );
 		    
 		    return true;
