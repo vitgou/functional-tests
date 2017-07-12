@@ -125,7 +125,7 @@ public class IndexSobrePage {
      * @return
      * @throws FileNotFoundException 
      */
-	public SiteMapPage goToSiteMapPage() throws FileNotFoundException {
+	public SiteMapPage goToSiteMapPage( ) throws FileNotFoundException {
 		
         try{
             System.out.println( "Start goToSiteMapPage() method" );
@@ -134,16 +134,16 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-4085\"]/a" )
+                    				By.xpath( "//*[@id=\"menu-item-4473\"]/a" )
                     				)
                     		);            
             actions.moveToElement( menuHoverLink ).perform( ); //click in menu ajuda
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-4119\"]/a" )
-                    				) 
-                    		);
+                    				By.xpath( "//*[@id=\"menu-item-4507\"]/a" )
+                    				)  
+                    		); 
             menuClickLink.click( );
             System.out.println( "Finished goToSiteMapPage() method" );
         }catch( NoSuchElementException e ){
