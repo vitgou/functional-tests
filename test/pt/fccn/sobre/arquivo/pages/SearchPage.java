@@ -69,9 +69,12 @@ public class SearchPage {
 	    try{
 			driver.findElement( By.name( "q" ) ).clear( );
 		    driver.findElement( By.name( "q" ) ).sendKeys( topic );
+		    sleepThread( );
 		    driver.findElement( By.cssSelector("input.search-submit") ).click( );
+		    sleepThread( );
 		    String text = driver.findElement( By.cssSelector("b") ).getText( );
 		    System.out.println( "Text = " + text );
+		    
 		    return true;
 	    } catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
@@ -87,7 +90,7 @@ public class SearchPage {
 		String xpathText = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]/b[1]";
 		String teste = "//div/div/div/table/tbody/tr/td/div[@class=\"gs-bidi-start-align gs-snippet\"]";
 		// //*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[3]/div[1]/div[1]/table/tbody/tr/td[2]/div[3]
-		try{
+		try{sleepThread( )
     		WebElement divElem = ( new WebDriverWait( driver, timeout + 40 ) )
 	                .until( ExpectedConditions
 	                			.presenceOfElementLocated(
