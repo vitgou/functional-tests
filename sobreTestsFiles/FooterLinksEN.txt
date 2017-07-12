@@ -7,7 +7,7 @@ Terms and Conditions,http://preprod.sobre.arquivo.pt/en/terms-and-conditions/
 Subscribe mailing list,https://groups.google.com/forum/#!forum/divulgarquivopt/join
 Latest news,http://preprod.sobre.arquivo.pt/en/news/
 Twitter,https://twitter.com/PT_WebArchive
-Facebook,http://www.facebook.com/pages/Portuguese-Web-Archive/112762872075966
+Facebook,https://www.facebook.com/Arquivo.pt
 Subscribe RSS,http://preprod.sobre.arquivo.pt/en/rss/
 Videos,http://preprod.sobre.arquivo.pt/en/publications/videos/
 Suggest a site,http://preprod.sobre.arquivo.pt/en/suggest/
