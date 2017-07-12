@@ -134,15 +134,15 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-2068\"]/a" )
+                    				By.xpath( "//*[@id=\"menu-item-4085\"]/a" )
                     				)
                     		);            
             actions.moveToElement( menuHoverLink ).perform( ); //click in menu ajuda
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-3864\"]/a" )
-                    				)
+                    				By.xpath( "//*[@id=\"menu-item-4119\"]/a" )
+                    				) 
                     		);
             menuClickLink.click( );
             System.out.println( "Finished goToSiteMapPage() method" );
