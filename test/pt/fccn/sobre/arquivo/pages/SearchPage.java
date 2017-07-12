@@ -69,8 +69,9 @@ public class SearchPage {
 	    try{
 			String text = driver.findElement( By.cssSelector("b") ).getText( );
 		    System.out.println( "Text = " + text );
-		    
-		    return true;
+		    Charset.forName( "UTF-8" ).encode( text );
+			System.out.println( "[checkResults] text["+text+"] equals topic["+topic+"]" );
+			return ( text.toLowerCase( ).equals( topic.toLowerCase( ) ) );
 	    } catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
             e.printStackTrace( );
