@@ -414,8 +414,8 @@ public class IndexSobrePage {
             WebElement examplePageLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath( "//*[@id=\"menu-item-1863\"]/a" )
-            				)
+            				By.xpath( "//*[@id=\"menu-item-4471\"]/a" )
+            				) 
             		);            
             examplePageLink.click( );
             System.out.println( "Finished goToExamplePage() method" );
