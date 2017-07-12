@@ -38,8 +38,8 @@ public class SiteMapTest extends WebDriverTestBaseParalell {
 	        /***********************/
 	        /*** English version ***/ 
 	        /***********************/
-	        /*TODO Mapping portugues->english assertTrue("Failed The SiteMap Page Test in English", siteMap.checkSiteMap( "EN" ) );
-	        System.out.println( "Success The SiteMap Page Test in English" );*/
+	        assertTrue("Failed The SiteMap Page Test in English", siteMap.checkSiteMap( "EN" ) );
+	        System.out.println( "Success The SiteMap Page Test in English" );
 	        
 		} catch( IOException e ) {
 			fail("IOException -> SiteMTest");
