@@ -26,13 +26,19 @@ public class FooterTest extends WebDriverTestBaseParalell {
 		try{
 			 index = new IndexSobrePage( driver );
 		} catch( IOException e ) {
-			fail("IOException -> IndexSobrePage");
+			fail("IOException -> footerTest");
 		}
 		
         System.out.println( "Going to the FooterTest" );
-        
+        /**************************/
+        /*** Portuguese version ***/ 
+        /**************************/
         assertTrue("Failed The Footer Test in Portuguese", index.checkFooterLinks( "PT" ) );
         System.out.println( "Success The Footer Test in Portuguese" );
+        
+        /***********************/
+        /*** English version ***/ 
+        /***********************/
         assertTrue("Failed The Footer Test in English", index.checkFooterLinks( "EN" ) );
         System.out.println( "Success The Footer Test in English" );
 	   

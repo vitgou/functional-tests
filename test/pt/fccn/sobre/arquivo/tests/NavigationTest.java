@@ -30,7 +30,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 	@Test
 	@Retry
 	public void navigation( )  {
-		System.out.print( "Running navigation Test. \n");
+		System.out.println( "Going to the NavigationTest" );
 		IndexSobrePage index = null;
 		try{
 			index = new IndexSobrePage( driver );
@@ -54,6 +54,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			assertTrue("Failed The Collaborate Page Test in Portuguese", coll.checkCollaborateLinks( "PT" ) );
 			AboutPage about = index.goToAboutPage( "PT" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", about.checkAboutLinks( "PT" ) );
+			System.out.println( "Success The Navigation Test in Portuguese" );
 			
 			/***********************/
 			/*** English version ***/ 
@@ -75,10 +76,10 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			assertTrue("Failed The Collaborate Page Test in Portuguese", collEN.checkCollaborateLinks( "EN" ) );
 			AboutPage aboutEN = index.goToAboutPage( "EN" );
 			assertTrue("Failed The Collaborate Page Test in Portuguese", aboutEN.checkAboutLinks( "EN" ) );
-
+			System.out.println( "Success The Navigation Test in English" );
 	        
 		} catch( IOException e ) {
-			fail("IOException -> IndexSobrePage");
+			fail("IOException -> navigation");
 		}
 		
     }

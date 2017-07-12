@@ -27,19 +27,21 @@ public class NewsTest extends WebDriverTestBaseParalell {
 		try{
 			index = new IndexSobrePage( driver );
 			NewsPage news = index.goToNewsPage( );
-			System.out.println( "Going to the checkNewsLinks" );
+			System.out.println( "Going to the NewsTest" );
 			/**************************/
 			/*** Portuguese version ***/ 
 			/**************************/
 	        assertTrue("Failed The News Page Test in Portuguese", news.checkNewsLinks( "PT" ) );
+	        System.out.println( "Success The News Page Test in Portuguese" );
 	        
 	        /***********************/
 	        /*** English version ***/ 
 	        /***********************/
-	        assertTrue("Failed The News Page Test in Portuguese", news.checkNewsLinks( "EN" ) );
+	        assertTrue("Failed The News Page Test in English", news.checkNewsLinks( "EN" ) );
+	        System.out.println( "Success The News Page Test in English" );
 	        
 		} catch( IOException e ) {
-			fail("IOException -> footerTest");
+			fail("IOException -> newsTest");
 		}
 		
     }

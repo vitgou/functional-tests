@@ -28,14 +28,20 @@ public class ExamplesTest extends WebDriverTestBaseParalell {
 		try{
 			 index = new IndexSobrePage( driver );
 		} catch( IOException e ) {
-			fail("IOException -> IndexSobrePage");
+			fail("IOException -> examplesTest");
 		}
 		
         System.out.println( "Going to the ExamplePage" );
-        
+        /**************************/
+        /*** Portuguese version ***/ 
+        /**************************/
         ExamplesPage examplePage = index.goToExamplePage( );
         assertTrue("Failed The Example Page Test in Portuguese", examplePage.checkLinksExamples( "PT" ) );
         System.out.println( "Success The Example Page Test in Portuguese" );
+        
+        /***********************/
+        /*** English version ***/ 
+        /***********************/
         assertTrue("Failed The Example Page Test in English", examplePage.checkLinksExamples( "EN" ) );
         System.out.println( "Success The Example Page Test in English" );
     }

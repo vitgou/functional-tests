@@ -40,9 +40,15 @@ public class CommonQuestionsTest extends WebDriverTestBaseParalell {
         try{
 	        
         	CommonQuestionsPage commonQuestions = index.goToCommonQuestionsPage( );
-	        assertTrue("Failed The Common Question in Portuguese", commonQuestions.inspectQuestions( "PT" ) );
+        	/**************************/
+        	/*** Portuguese version ***/ 
+        	/**************************/
+        	assertTrue("Failed The Common Question in Portuguese", commonQuestions.inspectQuestions( "PT" ) );
 			System.out.println( "Success The Common Question in Portuguese" );
-	        //English version
+			
+			/***********************/
+			/*** English version ***/ 
+			/***********************/
 	        assertTrue("Failed The Common Question in English", commonQuestions.inspectQuestions( "EN" ) );
 	        System.out.println( "Success The Common Question in English" );
 	        

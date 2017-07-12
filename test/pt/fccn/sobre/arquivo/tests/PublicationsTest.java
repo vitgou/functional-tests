@@ -27,14 +27,22 @@ public class PublicationsTest extends WebDriverTestBaseParalell {
 		try{
 			index = new IndexSobrePage( driver );
 			PublicationsPage publications = index.goToPublicationsPage( "PT" );
-			System.out.println( "Going to the FooterTest" );
+			System.out.println( "Going to the PublicationsTest" );
 		    
+			/**************************/
+			/*** Portuguese version ***/ 
+			/**************************/
 	        assertTrue("Failed The Publications Page Test in Portuguese", publications.checkPubicationsLinks( "PT" ) );
+	        System.out.println( "Success The Publications Page Test in Portuguese" );
 	        
+	        /***********************/
+	        /*** English version ***/ 
+	        /***********************/
 	        assertTrue("Failed The Publications Page Test in Portuguese", publications.checkPubicationsLinks( "EN" ) );
+	        System.out.println( "Success The Publications Page Test in English" );
 	        
 		} catch( IOException e ) {
-			fail("IOException -> footerTest");
+			fail("IOException -> publicationsTest");
 		}
 		
     }
