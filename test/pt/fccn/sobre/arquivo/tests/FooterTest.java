@@ -31,7 +31,7 @@ public class FooterTest extends WebDriverTestBaseParalell {
 		
         System.out.println( "Going to the FooterTest" );
         /**************************/
-        /*** Portuguese version ***/ 
+        /*** Portuguese version ***/
         /**************************/
         assertTrue("Failed The Footer Test in Portuguese", index.checkFooterLinks( "PT" ) );
         System.out.println( "Success The Footer Test in Portuguese" );
