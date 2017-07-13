@@ -243,8 +243,16 @@ public class IndexSobrePage {
      * @return
      * @throws FileNotFoundException 
      */
-	public NewsOnMediaPage goToNewOnMediaPage( ) throws FileNotFoundException {
-		
+	public NewsOnMediaPage goToNewOnMediaPage( String language ) throws FileNotFoundException {
+		String idDiv = "";
+		String idDivSubMenu = "";
+		if( language.equals( "EN" ) ) {
+			idDiv = "4477";  //*[@id="menu-item-4477"]/a
+			idDivSubMenu = "4511"; //*[@id="menu-item-4511"]/a
+		} else {
+			idDiv = "4472";
+			idDivSubMenu = "4485";
+		}
         try{
             System.out.println( "Start goToNewOnMediaPage() method" );
             
@@ -252,14 +260,14 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
-                    				)
+                    				By.xpath( "//*[@id=\"menu-item-"+idDiv+"\"]/a" ) //*[@id="menu-item-4472"]/a
+                    				) //*[@id="menu-item-4477"]/a
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-3772\"]/a" )
+                    				By.xpath( "//*[@id=\"menu-item-"+idDivSubMenu+"\"]/a" ) //*[@id="menu-item-4485"]/a
                     				)
                     		); 
             menuClickLink.click( );
