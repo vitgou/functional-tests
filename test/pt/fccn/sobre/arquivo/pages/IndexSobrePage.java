@@ -286,16 +286,16 @@ public class IndexSobrePage {
      * @throws FileNotFoundException 
      */
 	public AudioPage goToAudioPage( String language ) throws FileNotFoundException {
-		String xpathPublication = "";  
+		String xpathPublicationMenu = "";  
 		String xpathAudio = "";
 		
 		if( language.equals( "PT" ) ){
 			xpathAudio = "//*[@id=\"menu-item-4486\"]/a";  //*[@id="menu-item-4486"]/a
-			xpathPublication = "//*[@id=\"menu-item-4472\"]/a";
+			xpathPublicationMenu = "//*[@id=\"menu-item-4472\"]/a";
 		}
 		else{
 			xpathAudio = "//*[@id=\"menu-item-4513\"]/a";  //*[@id="menu-item-4513"]/a
-			xpathPublication = "//*[@id=\"menu-item-4477\"]/a";
+			xpathPublicationMenu = "//*[@id=\"menu-item-4477\"]/a";//*[@id="menu-item-4477"]/a
 		}
 		
         try{
@@ -305,7 +305,7 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( xpathPublication )
+                    				By.xpath( xpathPublicationMenu ) 
                     				) 
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
