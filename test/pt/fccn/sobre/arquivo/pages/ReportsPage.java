@@ -33,17 +33,21 @@ public class ReportsPage {
 		} else 
 			idDiv = "post-2977";
 		
-		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/ul/li/a"; //get footer links
+		String xpathDiv = "//*[@id=\"" + idDiv + "\"]/div/div"; //get footer links
 		try{
-    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
-	                .until( ExpectedConditions
-	                        .visibilityOfAllElementsLocatedBy(
-	                        		      By.xpath( xpatha )
-	                        )
-	        );
     		
-    		System.out.println( "[Reports] results size = " + results.size( ) );
-    		for( WebElement elem : results ) {
+    		
+    		WebElement divTag = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+   	                .until(
+   	                		ExpectedConditions.presenceOfElementLocated(
+   	                				By.xpath( xpathDiv ) ) );
+   	        
+			//find all the a tags in the div tag
+   		   	List< WebElement > allAnchors = divTag.findElements( By.tagName( "a" ) );
+       		
+    		
+    		System.out.println( "[Reports] results size = " + allAnchors.size( ) );
+    		for( WebElement elem : allAnchors ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
     			String text = elem.getText( );

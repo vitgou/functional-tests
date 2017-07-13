@@ -27,26 +27,29 @@ public class PublicationsPage {
 	
 	public boolean checkPubicationsLinks( String language ) {
 		System.out.println( "[checkPubicationsLinks]" );
-		String xpatha = "";
+		String xpathDiv = "";
 		
 		if( language.equals( "PT" ) )
-			xpatha = "//*[@id=\"post-2225\"]/div/div/div/ul/li/a";
+			xpathDiv = "//*[@id=\"post-2225\"]/div/div/div";
 		else {
 			switchLanguage( );
-			xpatha = "//*[@id=\"post-2814\"]/div/div/ul/li/a";
+			xpathDiv = "//*[@id=\"post-2814\"]/div/div";
 		}
 
 			
 		try{
-    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
-	                .until( ExpectedConditions
-	                        .visibilityOfAllElementsLocatedBy(
-	                        		      By.xpath( xpatha )
-	                        )
-	        );
+  		
+			WebElement divTag = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+   	                .until(
+   	                		ExpectedConditions.presenceOfElementLocated(
+   	                				By.xpath( xpathDiv ) ) );
+   	        
+			//find all the a tags in the div tag
+   		   	List< WebElement > allAnchors = divTag.findElements( By.tagName( "a" ) );
+       		
     		
-    		System.out.println( "[Publications] results size = " + results.size( ) );
-    		for( WebElement elem : results ) {
+    		System.out.println( "[Publications] results size = " + allAnchors.size( ) );
+    		for( WebElement elem : allAnchors ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
     			String text = elem.getText( );
