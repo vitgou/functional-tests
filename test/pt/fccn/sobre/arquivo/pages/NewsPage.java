@@ -81,7 +81,7 @@ public class NewsPage {
     	    String text = rssLink.getText( );
 			Charset.forName( "UTF-8" ).encode( text );
     	    int statusCode = AnalyzeURLs.linkExists( urlRss );
-    	    if( !AnalyzeURLs.checkOk( statusCode ) &&  urlRss.equals( "http://sobre.arquivo.pt/pt/feed/" )){
+    	    if( !AnalyzeURLs.checkOk( statusCode ) &&  urlRss.equals( "http://preprod.sobre.arquivo.pt/pt/feed/" )){ //TODO preprod configurations 
     	    	System.out.println( "Failed: text[" + text + "] link[" + urlRss + "] status-code[" + statusCode + "]" );
     	    	return false;
     	    }
