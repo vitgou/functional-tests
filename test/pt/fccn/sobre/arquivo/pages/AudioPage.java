@@ -31,7 +31,7 @@ public class AudioPage {
 			xpatha = "//*[@id=\"post-3021\"]/div/div/ul/li/a";
 		else {
 			xpatha = "//*[@id=\"post-3192\"]/div/div/ul/li/a";
-			switchLanguage( );
+			//switchLanguage( );
 		}
 		
 		try{
