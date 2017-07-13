@@ -28,7 +28,7 @@ public class NewsOnMediaPage {
 		String xpathDiv = "";
 		if( language.equals( "EN" ) ){
 			xpathDiv = "//*[@id=\"post-2812\"]/div/div"; //get links
-			switchLanguage( );
+			//switchLanguage( );
 		}
 		else
 			xpathDiv = "//*[@id=\"post-2635\"]/div/div"; //get links

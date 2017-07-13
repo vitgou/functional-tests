@@ -247,8 +247,8 @@ public class IndexSobrePage {
 		String idDiv = "";
 		String idDivSubMenu = "";
 		if( language.equals( "EN" ) ) {
-			idDiv = "4477";  //*[@id="menu-item-4477"]/a
-			idDivSubMenu = "4511"; //*[@id="menu-item-4511"]/a
+			idDiv = "4477"; //*[@id="menu-item-4477"]/a
+			idDivSubMenu = "4512"; //*[@id="menu-item-4512"]/a
 		} else {
 			idDiv = "4472";
 			idDivSubMenu = "4485";
