@@ -48,18 +48,20 @@ public class NewsPage {
 			
 		System.out.println( "Page title = " + driver.getTitle( ) );
 		
-		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/aside/div/ul/li/a"; //get news links
+		String xpathDiv = "//*[@id=\"" + idDiv + "\"]/div/div/aside/div"; //get news links
 		
 		try{
-    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
-	                .until( ExpectedConditions
-	                        .visibilityOfAllElementsLocatedBy(
-	                        		      By.xpath( xpatha )
-	                        )
-	        );
+    		WebElement divTag = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+   	                .until(
+   	                		ExpectedConditions.presenceOfElementLocated(
+   	                				By.xpath( xpathDiv ) ) );
+   	        
+			//find all the a tags in the div tag
+   		   	List< WebElement > allAnchors = divTag.findElements( By.tagName( "a" ) );
+       		
     		
-    		System.out.println( "[footer] results size = " + results.size( ) );
-    		for( WebElement elem : results ) {
+    		System.out.println( "[footer] results size = " + allAnchors.size( ) );
+    		for( WebElement elem : allAnchors ) {
     			String url = elem.getAttribute( "href" );
     			int statusCode = AnalyzeURLs.linkExists( url );
     			if( !AnalyzeURLs.checkOk( statusCode ) ) {
@@ -99,8 +101,8 @@ public class NewsPage {
     * Change to the English version
     */
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
-    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-4506-en\"]/a";
+    	//*[@id="menu-item-4506-en"]/a
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
