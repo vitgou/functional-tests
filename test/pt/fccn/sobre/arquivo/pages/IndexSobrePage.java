@@ -286,13 +286,17 @@ public class IndexSobrePage {
      * @throws FileNotFoundException 
      */
 	public AudioPage goToAudioPage( String language ) throws FileNotFoundException {
-		String xpathPublication = "//*[@id=\"menu-item-1869\"]/a";
+		String xpathPublication = "";  
 		String xpathAudio = "";
 		
-		if( language.equals( "PT" ) )
-			xpathAudio = "//*[@id=\"menu-item-3773\"]/a";
-		else
-			xpathAudio = "//*[@id=\"menu-item-3927\"]/a";
+		if( language.equals( "PT" ) ){
+			xpathAudio = "//*[@id=\"menu-item-4486\"]/a";  //*[@id="menu-item-4486"]/a
+			xpathPublication = "//*[@id=\"menu-item-4472\"]/a";
+		}
+		else{
+			xpathAudio = "//*[@id=\"menu-item-4513\"]/a";  //*[@id="menu-item-4513"]/a
+			xpathPublication = "//*[@id=\"menu-item-4477\"]/a";
+		}
 		
         try{
             System.out.println( "Start goToAudioPage() method" );
@@ -328,11 +332,14 @@ public class IndexSobrePage {
      */
 	public VideoPage goToVideoPage( String language ) throws FileNotFoundException {
 		String xpathVideo = "";
-		
-		if( language.equals( "EN" ) )
-			xpathVideo = "//*[@id=\"menu-item-3928\"]/a";
-		else 
-			xpathVideo = "//*[@id=\"menu-item-3774\"]/a";
+		String xpathDiv = "";
+		if( language.equals( "EN" ) ){
+			xpathVideo = "//*[@id=\"menu-item-4514\"]/a"; //*[@id="menu-item-4514"]/a
+			xpathDiv = "//*[@id=\"menu-item-4477\"]/a";
+		} else {
+			xpathVideo = "//*[@id=\"menu-item-4487\"]/a"; //*[@id="menu-item-4487"]/a
+			xpathDiv = "//*[@id=\"menu-item-4472\"]/a";
+		}
         try{
             System.out.println( "Start goToVideoPage() method" );
             
@@ -340,7 +347,7 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-1869\"]/a" )
+                    				By.xpath( xpathDiv )
                     				)
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
@@ -372,16 +379,14 @@ public class IndexSobrePage {
 		String xpathDibSubMenu = "";
 		
 		if( language.equals( "PT" ) ) {
-			xpathDivMenu = "//*[@id=\"menu-item-1869\"]/a";
-			xpathDibSubMenu = "//*[@id=\"menu-item-3775\"]/a";
+			xpathDivMenu = "//*[@id=\"menu-item-4472\"]/a"; //*[@id="menu-item-4472"]/a
+			xpathDibSubMenu = "//*[@id=\"menu-item-4488\"]/a"; //*[@id="menu-item-4488"]/a
 		} else {
-			xpathDivMenu = "//*[@id=\"menu-item-2363\"]/a";
-			xpathDibSubMenu = "//*[@id=\"menu-item-3929\"]/a";
+			xpathDivMenu = "//*[@id=\"menu-item-4477\"]/a"; //*[@id="menu-item-4477"]/a
+			xpathDibSubMenu = "//*[@id=\"menu-item-4515\"]/a"; //*[@id="menu-item-4515"]/a
 		}
 	
-		
-		
-        try{
+		try{
             System.out.println( "Start goToPresentationsPage() method" );
             
             Actions actions = new Actions( driver ); 
