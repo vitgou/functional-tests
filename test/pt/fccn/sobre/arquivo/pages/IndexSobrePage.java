@@ -279,7 +279,7 @@ public class IndexSobrePage {
      */
 	public AudioPage goToAudioPage( String language ) throws FileNotFoundException {
 		String xpathPublication = "//*[@id=\"menu-item-1869\"]/a";
-		String xpathAudio = "";1869
+		String xpathAudio = "";
 		
 		if( language.equals( "PT" ) )
 			xpathAudio = "//*[@id=\"menu-item-3773\"]/a";
