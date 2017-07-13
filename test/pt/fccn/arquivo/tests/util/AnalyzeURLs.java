@@ -57,7 +57,6 @@ public class AnalyzeURLs {
 	    		con.disconnect( );
 	    	}
 	    	
-	    	//System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
 	    	return status;
 	
 	    } catch ( MalformedURLException e ) {
