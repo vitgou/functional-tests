@@ -33,7 +33,7 @@ public class PublicationsPage {
 			idDiv = "post-2225";
 		else {
 			switchLanguage( );
-			idDiv = "post-2814";
+			idDiv = "post-2357";
 		}
 		
 		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/div/ul/li/a"; //get publications links	
@@ -51,6 +51,8 @@ public class PublicationsPage {
     			int statusCode = AnalyzeURLs.linkExists( url );
     			String text = elem.getText( );
     			Charset.forName( "UTF-8" ).encode( text );
+    			if( statusCode != 200 )
+    				System.out.println( "Failed: text[" + text + "] link[" + url + "] status-code[" + statusCode + "]" );
     			/*if( !AnalyzeURLs.checkOk( statusCode ) ) {
     				System.out.println( "Failed: text[" + text + "] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
