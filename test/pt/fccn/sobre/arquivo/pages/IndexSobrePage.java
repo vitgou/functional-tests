@@ -99,9 +99,9 @@ public class IndexSobrePage {
     public CollaboratePage goToCollaboratePage( String  language ) throws FileNotFoundException{
     	String idMenu = "";
     	if( language.equals( "EN" ) )
-    		idMenu = "3407"; //*[@id="menu-item-3407"]/a
+    		idMenu = "4480"; //*[@id="menu-item-3407"]/a  //*[@id="menu-item-4480"]/a
     	else
-    		idMenu = "3393"; //*[@id="menu-item-3393"]/a
+    		idMenu = "4479"; //*[@id="menu-item-3393"]/a //*[@id="menu-item-4479"]/a
     	try{
     		System.out.println( "Start goToCollaboratePage() method" );
             WebElement collaborateLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -473,9 +473,9 @@ public class IndexSobrePage {
         String idDiv = "";
         
         if( language.equals( "PT" ) )
-        	idDiv = "menu-item-3416";
+        	idDiv = "menu-item-4473"; //*[@id="menu-item-4473"]/a
         else
-        	idDiv = "menu-item-3449";
+        	idDiv = "menu-item-4482";
     	
     	try{ 
             System.out.println( "Start goToAboutPage( ) method" );
