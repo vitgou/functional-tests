@@ -33,9 +33,9 @@ public class PublicationsPage {
 			idDiv = "post-2225";
 		else {
 			switchLanguage( );
-			idDiv = "post-2357";
+			idDiv = "post-2814";
 		}
-		
+
 		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/div/ul/li/a"; //get publications links	
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -71,7 +71,7 @@ public class PublicationsPage {
     /**
     * Change to the English version
     */
-    private void switchLanguage( ){
+    private void switchLanguage( ){ //*[@id="menu-item-4506-en"]/a
     	String xpathEnglishVersion = "//*[@id=\"menu-item-4506-en\"]/a"; //*[@id="menu-item-4506-en"]/a
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
