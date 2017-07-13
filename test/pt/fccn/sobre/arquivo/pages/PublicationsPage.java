@@ -55,11 +55,11 @@ public class PublicationsPage {
     			String text = elem.getText( );
     			Charset.forName( "UTF-8" ).encode( text );
     			if( statusCode != 200 )
-    				System.out.println( "Failed: text[" + text + "] link[" + url + "] status-code[" + statusCode + "]" );
-    			/*if( !AnalyzeURLs.checkOk( statusCode ) ) {
+    				//System.out.println( "Failed: text[" + text + "] link[" + url + "] status-code[" + statusCode + "]" );
+    			if( !AnalyzeURLs.checkOk( statusCode ) ) {
     				System.out.println( "Failed: text[" + text + "] link[" + url + "] status-code[" + statusCode + "]" );
     				return false;
-    			}*/
+    			}
     		}
     		
 	    	return true;
