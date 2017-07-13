@@ -24,7 +24,7 @@ public class AboutPage {
 	}
 	
 	public boolean checkAboutLinks( String language ) {
-		System.out.println( "[checkVideoLinks]" );
+		System.out.println( "[checkAboutLinks]" );
 		String xpathVideos 			= "//*[@id=\"parent-fieldname-text\"]/ul[1]/li/a";
 		String xpathDissemination 	= "//*[@id=\"parent-fieldname-text\"]/ul[2]/li/a";
     	String xpathTechnical 		= "//*[@id=\"parent-fieldname-text\"]/ul[3]/li/a";

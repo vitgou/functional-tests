@@ -473,9 +473,9 @@ public class IndexSobrePage {
         String idDiv = "";
         
         if( language.equals( "PT" ) )
-        	idDiv = "menu-item-4473"; //*[@id="menu-item-4473"]/a
+        	idDiv = "menu-item-4481";  //*[@id="menu-item-4481"]/a
         else
-        	idDiv = "menu-item-4482";
+        	idDiv = "menu-item-4482"; //*[@id="menu-item-4482"]/a
     	
     	try{ 
             System.out.println( "Start goToAboutPage( ) method" );
