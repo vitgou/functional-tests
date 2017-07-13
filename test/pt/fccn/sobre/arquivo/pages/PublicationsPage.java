@@ -27,16 +27,16 @@ public class PublicationsPage {
 	
 	public boolean checkPubicationsLinks( String language ) {
 		System.out.println( "[checkPubicationsLinks]" );
-		String idDiv = "";
+		String xpatha = "";
 		
 		if( language.equals( "PT" ) )
-			idDiv = "post-2225";
+			xpatha = "//*[@id=\"post-2225\"]/div/div/div/ul/li/a";
 		else {
 			switchLanguage( );
-			idDiv = "post-2814";
+			xpatha = "//*[@id=\"post-2814\"]/div/div/ul/li/a";
 		}
 
-		String xpatha = "//*[@id=\"" + idDiv + "\"]/div/div/div/ul/li/a"; //get publications links	
+			
 		try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
