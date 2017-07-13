@@ -19,10 +19,10 @@ import pt.fccn.sobre.arquivo.tests.SiteMapTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( {  NavigationTest.class } )
-//TODO PublicationsTest.class  ,   , SearchTest.class , SiteMapTest.class
+@SuiteClasses( { SearchTest.class , SiteMapTest.class  } )
+//TODO PublicationsTest.class  ,   , 
 //TODO error SuggestionSiteTest.class , SiteMapTest.class
-//TODO ta feito CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class  , NewsTest.class ,
+//TODO ta feito CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class  , NewsTest.class , NavigationTest.class
 public class TestSuite {
 
 }
