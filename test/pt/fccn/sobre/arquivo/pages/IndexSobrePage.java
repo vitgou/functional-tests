@@ -166,12 +166,12 @@ public class IndexSobrePage {
 		try{
             System.out.println( "Start goToPublicationsPage( ) method" );
             if( language.equals( "EN" ) ) {
-            	idMenuPub 		= "menu-item-2363";
-            	idMenuPubCien 	= "menu-item-3924";
+            	idMenuPub 		= "menu-item-4477"; //*[@id="menu-item-4477"]/a
+            	idMenuPubCien 	= "menu-item-4510"; //*[@id="menu-item-4510"]/a
             } else {
-            	idMenuPub 		= "menu-item-1869";
-            	idMenuPubCien 	= "menu-item-3769";
-            }
+            	idMenuPub 		= "menu-item-4472"; //*[@id="menu-item-4472"]/a
+            	idMenuPubCien 	= "menu-item-4483"; //*[@id="menu-item-4483"]/a
+            } 
           
             Actions actions = new Actions( driver ); 
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -279,7 +279,7 @@ public class IndexSobrePage {
      */
 	public AudioPage goToAudioPage( String language ) throws FileNotFoundException {
 		String xpathPublication = "//*[@id=\"menu-item-1869\"]/a";
-		String xpathAudio = "";
+		String xpathAudio = "";1869
 		
 		if( language.equals( "PT" ) )
 			xpathAudio = "//*[@id=\"menu-item-3773\"]/a";
