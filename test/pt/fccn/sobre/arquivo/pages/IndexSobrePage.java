@@ -208,11 +208,11 @@ public class IndexSobrePage {
         try{
             System.out.println( "Start goToReportsPage() method" );
             if( language.equals( "EN" ) ) {
-            	idMenu 		= "menu-item-2363";
-            	idSubMenu 	= "menu-item-3925";
+            	idMenu 		= "menu-item-4477"; //*[@id="menu-item-4477"]/a
+            	idSubMenu 	= "menu-item-4511";//*[@id="menu-item-4511"]/a
             } else {
-            	idMenu 		= "menu-item-1869";
-            	idSubMenu 	= "menu-item-3771";
+            	idMenu 		= "menu-item-4472"; //*[@id="menu-item-4472"]/a
+            	idSubMenu 	= "menu-item-4484"; //*[@id="menu-item-4484"]/a
             } 
             Actions actions = new Actions( driver ); 
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
