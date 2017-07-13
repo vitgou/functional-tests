@@ -42,7 +42,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			PublicationsPage publications = index.goToPublicationsPage( "PT" );
 			ReportsPage reports = index.goToReportsPage( "PT" );
 			assertTrue("Failed The Reports Page Test in Portuguese", reports.checkReportsLinks( "PT" ) );
-			NewsOnMediaPage newsonmedia = index.goToNewOnMediaPage( );
+			NewsOnMediaPage newsonmedia = index.goToNewOnMediaPage( "PT" );
 			assertTrue("Failed The New on Media Page Test in Portuguese", newsonmedia.checkNewsLinks( "PT") );
 			AudioPage audio = index.goToAudioPage( "PT" );
 			assertTrue("Failed The Audio Page Test in Portuguese", audio.checkAudioLinks( "PT" ) );
@@ -64,7 +64,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 			PublicationsPage publicationsEN = index.goToPublicationsPage( "EN" );
 			ReportsPage reportsEN = index.goToReportsPage( "EN" );
 			assertTrue("Failed The Reports Page Test in Portuguese", reports.checkReportsLinks( "EN" ) );
-			NewsOnMediaPage newsonmediaEN = index.goToNewOnMediaPage( );
+			NewsOnMediaPage newsonmediaEN = index.goToNewOnMediaPage( "EN" );
 			assertTrue("Failed The New on Media Page Test in Portuguese", newsonmediaEN.checkNewsLinks( "EN") );
 			AudioPage audioEN = index.goToAudioPage( "PT" );
 			assertTrue("Failed The Audio Page Test in Portuguese", audioEN.checkAudioLinks( "EN" ) );
