@@ -19,8 +19,8 @@ import pt.fccn.sobre.arquivo.tests.SiteMapTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( { PublicationsTest.class } )
-//TODO CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class  , NewsTest.class , NavigationTest.class, SearchTest.class , SiteMapTest.class
+@SuiteClasses( { CommonQuestionsTest.class , ExamplesTest.class , FooterTest.class  , NewsTest.class , NavigationTest.class, SearchTest.class , SiteMapTest.class, PublicationsTest.class } )
+//TODO 
 public class TestSuite {
 
 }
