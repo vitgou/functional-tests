@@ -170,11 +170,11 @@ public class Arcproxyinspection {
 			else{
 				System.out.println("URL: " + Url[0].substring(7)+"wayback/"+id);
 				driver.get("http://"+Url[0].substring(7)+"wayback/"+id);
-				
 			}
 			
 			//wait until title was loaded
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
+			System.out.println("[Arcproxyinspect] [getTitle] " + driver.getTitle());
 		}catch(RuntimeException e){System.out.println("Could not find the title.");}
 		return driver.getTitle();
 	}
