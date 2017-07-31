@@ -33,7 +33,7 @@ public class ExamplesPage {
     			switchLanguage( );
     			xpatha = "//*[@id=\"post-2357\"]/div/div/div/div/div/div/p[2]/a"; //TODO verified
     		} else
-    			xpatha = "//*[@id=\"post-1861\"]/div/div/div/div/div/div/p[2]/a";
+    			xpatha = "//*[@id=\"post-1861\"]/div/div/div/div/div/div/p[2]/a"; //*[@id="post-1861"]/div
     		             
     		
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
