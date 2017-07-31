@@ -73,11 +73,11 @@ public class AboutPage {
     * Change to the English version
     */
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-4194-en\"]/a";
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
-      		IndexSobrePage.sleepThread( );
+      		IndexSobrePage.sleepThread( ); 
       	}
     }
 	

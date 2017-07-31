@@ -79,7 +79,7 @@ public class IndexSobrePage {
             .until(
             		ExpectedConditions.presenceOfElementLocated(
             				By.xpath( "//*[@id=\"wp_editor_widget-8\"]/ul/li[1]/a" )
-            				)
+            				) 
             		);            
             cQuestionsLink.click( );
             System.out.println( "Finished goToCommonQuestionsPage( ) method" );
@@ -99,9 +99,9 @@ public class IndexSobrePage {
     public CollaboratePage goToCollaboratePage( String  language ) throws FileNotFoundException{
     	String idMenu = "";
     	if( language.equals( "EN" ) )
-    		idMenu = "4480"; //*[@id="menu-item-3407"]/a  //*[@id="menu-item-4480"]/a
+    		idMenu = "4168"; //*[@id="menu-item-4168"]/a
     	else
-    		idMenu = "4479"; //*[@id="menu-item-3393"]/a //*[@id="menu-item-4479"]/a
+    		idMenu = "4167"; //*[@id="menu-item-4167"]/a
     	try{
     		System.out.println( "Start goToCollaboratePage() method" );
             WebElement collaborateLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -166,11 +166,11 @@ public class IndexSobrePage {
 		try{
             System.out.println( "Start goToPublicationsPage( ) method" );
             if( language.equals( "EN" ) ) {
-            	idMenuPub 		= "menu-item-4477"; //*[@id="menu-item-4477"]/a
-            	idMenuPubCien 	= "menu-item-4510"; //*[@id="menu-item-4510"]/a
+            	idMenuPub 		= "menu-item-4165"; //*[@id="menu-item-4165"]/a
+            	idMenuPubCien 	= "menu-item-4198"; //*[@id="menu-item-4198"]/a
             } else {
-            	idMenuPub 		= "menu-item-4472"; //*[@id="menu-item-4472"]/a
-            	idMenuPubCien 	= "menu-item-4483"; //*[@id="menu-item-4483"]/a
+            	idMenuPub 		= "menu-item-4160"; //*[@id="menu-item-4160"]/a
+            	idMenuPubCien 	= "menu-item-4171"; //*[@id="menu-item-4171"]/a
             } 
           
             Actions actions = new Actions( driver ); 
@@ -208,11 +208,11 @@ public class IndexSobrePage {
         try{
             System.out.println( "Start goToReportsPage() method" );
             if( language.equals( "EN" ) ) {
-            	idMenu 		= "menu-item-4477"; //*[@id="menu-item-4477"]/a
-            	idSubMenu 	= "menu-item-4511";//*[@id="menu-item-4511"]/a
+            	idMenu 		= "menu-item-4165"; //*[@id="menu-item-4165"]/a
+            	idSubMenu 	= "menu-item-4199"; //*[@id="menu-item-4199"]/a
             } else {
-            	idMenu 		= "menu-item-4472"; //*[@id="menu-item-4472"]/a
-            	idSubMenu 	= "menu-item-4484"; //*[@id="menu-item-4484"]/a
+            	idMenu 		= "menu-item-4160"; //*[@id="menu-item-4160"]/a
+            	idSubMenu 	= "menu-item-4172"; //*[@id="menu-item-4172"]/a
             } 
             Actions actions = new Actions( driver ); 
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -240,18 +240,18 @@ public class IndexSobrePage {
 	
     /**
      * 
-     * @return
+     * @return4477
      * @throws FileNotFoundException 
      */
 	public NewsOnMediaPage goToNewOnMediaPage( String language ) throws FileNotFoundException {
 		String idDiv = "";
 		String idDivSubMenu = "";
 		if( language.equals( "EN" ) ) {
-			idDiv = "4477"; //*[@id="menu-item-4477"]/a
-			idDivSubMenu = "4512"; //*[@id="menu-item-4512"]/a
+			idDiv = "4165"; //*[@id="menu-item-4165"]/a
+			idDivSubMenu = "4200"; //*[@id="menu-item-4200"]/a
 		} else {
-			idDiv = "4472";
-			idDivSubMenu = "4485";
+			idDiv = "4160"; //*[@id="menu-item-4160"]/a
+			idDivSubMenu = "4173"; //*[@id="menu-item-4173"]/a
 		}
         try{
             System.out.println( "Start goToNewOnMediaPage() method" );
@@ -260,14 +260,14 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-"+idDiv+"\"]/a" ) //*[@id="menu-item-4472"]/a
-                    				) //*[@id="menu-item-4477"]/a
+                    				By.xpath( "//*[@id=\"menu-item-"+idDiv+"\"]/a" ) 
+                    				) 
                     		);            
             actions.moveToElement( menuHoverLink ).perform( );
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-"+idDivSubMenu+"\"]/a" ) //*[@id="menu-item-4485"]/a
+                    				By.xpath( "//*[@id=\"menu-item-"+idDivSubMenu+"\"]/a" ) 
                     				)
                     		); 
             menuClickLink.click( );
@@ -290,17 +290,17 @@ public class IndexSobrePage {
 		String xpathAudio = "";
 		
 		if( language.equals( "PT" ) ){
-			xpathAudio = "//*[@id=\"menu-item-4486\"]/a";  //*[@id="menu-item-4486"]/a
-			xpathPublicationMenu = "//*[@id=\"menu-item-4472\"]/a";
-		}
+			xpathAudio = "//*[@id=\"menu-item-4174\"]/a";  //*[@id="menu-item-4174"]/a
+			xpathPublicationMenu = "//*[@id=\"menu-item-4160\"]/a"; //*[@id="menu-item-4160"]/a
+		}   
 		else{
-			xpathAudio = "//*[@id=\"menu-item-4513\"]/a";  //*[@id="menu-item-4513"]/a
-			xpathPublicationMenu = "//*[@id=\"menu-item-4477\"]/a";//*[@id="menu-item-4477"]/a
-		}
+			xpathAudio = "//*[@id=\"menu-item-4201\"]/a";  //*[@id="menu-item-4201"]/a
+			xpathPublicationMenu = "//*[@id=\"menu-item-4165\"]/a"; //*[@id="menu-item-4165"]/a
+		}  
 		
         try{
             System.out.println( "Start goToAudioPage() method" );
-            
+			
             Actions actions = new Actions( driver ); 
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
@@ -334,11 +334,11 @@ public class IndexSobrePage {
 		String xpathVideo = "";
 		String xpathDiv = "";
 		if( language.equals( "EN" ) ){
-			xpathVideo = "//*[@id=\"menu-item-4514\"]/a"; //*[@id="menu-item-4514"]/a
-			xpathDiv = "//*[@id=\"menu-item-4477\"]/a";
+			xpathVideo = "//*[@id=\"menu-item-4202\"]/a"; //*[@id="menu-item-4202"]/a
+			xpathDiv = "//*[@id=\"menu-item-4165\"]/a"; //*[@id="menu-item-4165"]/a
 		} else {
-			xpathVideo = "//*[@id=\"menu-item-4487\"]/a"; //*[@id="menu-item-4487"]/a
-			xpathDiv = "//*[@id=\"menu-item-4472\"]/a";
+			xpathVideo = "//*[@id=\"menu-item-4175\"]/a"; //*[@id="menu-item-4175"]/a
+			xpathDiv = "//*[@id=\"menu-item-4160\"]/a"; //*[@id="menu-item-4160"]/a
 		}
         try{
             System.out.println( "Start goToVideoPage() method" );
@@ -378,12 +378,12 @@ public class IndexSobrePage {
 		String xpathDivMenu = "";
 		String xpathDibSubMenu = "";
 		
-		if( language.equals( "PT" ) ) {
-			xpathDivMenu = "//*[@id=\"menu-item-4472\"]/a"; //*[@id="menu-item-4472"]/a
-			xpathDibSubMenu = "//*[@id=\"menu-item-4488\"]/a"; //*[@id="menu-item-4488"]/a
+		if( language.equals( "EN" ) ) {
+			xpathDivMenu = "//*[@id=\"menu-item-4165\"]/a"; //*[@id="menu-item-4472"]/a
+			xpathDibSubMenu = "//*[@id=\"menu-item-4203\"]/a"; //*[@id="menu-item-4203"]/a
 		} else {
-			xpathDivMenu = "//*[@id=\"menu-item-4477\"]/a"; //*[@id="menu-item-4477"]/a
-			xpathDibSubMenu = "//*[@id=\"menu-item-4515\"]/a"; //*[@id="menu-item-4515"]/a
+			xpathDivMenu = "//*[@id=\"menu-item-4160\"]/a"; //*[@id="menu-item-4477"]/a
+			xpathDibSubMenu = "//*[@id=\"menu-item-4176\"]/a"; //*[@id="menu-item-4176"]
 		}
 	
 		try{
@@ -472,10 +472,10 @@ public class IndexSobrePage {
     public AboutPage goToAboutPage( String language ) throws FileNotFoundException{
         String idDiv = "";
         
-        if( language.equals( "PT" ) )
-        	idDiv = "menu-item-4481";  //*[@id="menu-item-4481"]/a
+        if( language.equals( "EN" ) )
+        	idDiv = "menu-item-4170"; //*[@id="menu-item-4170"]/a
         else
-        	idDiv = "menu-item-4482"; //*[@id="menu-item-4482"]/a
+        	idDiv = "menu-item-4169"; //*[@id="menu-item-4169"]/a
     	
     	try{ 
             System.out.println( "Start goToAboutPage( ) method" );
@@ -499,7 +499,7 @@ public class IndexSobrePage {
     * Change to the English version
     */
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"menu-item-4506-en\"]/a";
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-4194-en\"]/a"; //menu-item-4194-en
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
