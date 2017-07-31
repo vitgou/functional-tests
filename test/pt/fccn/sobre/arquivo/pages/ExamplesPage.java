@@ -63,8 +63,7 @@ public class ExamplesPage {
     * Change to the English version
     */ 
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"menu-item-4506-en\"]/a";
-    	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-4194-en\"]/a"; //*[@id="menu-item-4194-en"]/a
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );

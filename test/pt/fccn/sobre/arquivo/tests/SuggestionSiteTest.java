@@ -34,7 +34,7 @@ public class SuggestionSiteTest extends WebDriverTestBaseParalell{
 			System.out.println( "Going to the Collborate Page" );
 		    SuggestionPage sug = collaborate.goToSuggestionSitePage( );
 		    System.out.println( "Going to the Suggestion Site Page" );
-	        assertTrue("Failed The News Page Test in Portuguese", sug.sendSuggestion( "PT" ) );
+	        assertTrue("Failed The Suggestion Site Page Test in Portuguese", sug.sendSuggestion( "PT" ) );
 	        
 	        //TODO english version missing
 	        

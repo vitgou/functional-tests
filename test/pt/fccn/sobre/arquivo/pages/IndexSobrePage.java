@@ -134,14 +134,14 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-4473\"]/a" )
+                    				By.xpath( "//*[@id=\"menu-item-4161\"]/a" ) //*[@id="menu-item-4161"]/a
                     				)
                     		);            
             actions.moveToElement( menuHoverLink ).perform( ); //click in menu ajuda
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-4507\"]/a" )
+                    				By.xpath( "//*[@id=\"menu-item-4195\"]/a" ) //menu-item menu-item-type-post_type menu-item-object-page menu-item-4195
                     				)  
                     		); 
             menuClickLink.click( );
@@ -427,7 +427,7 @@ public class IndexSobrePage {
             WebElement examplePageLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath( "//*[@id=\"menu-item-4471\"]/a" )
+            				By.xpath( "//*[@id=\"menu-item-4159\"]/a" ) //*[@id="menu-item-4159"]/a
             				) 
             		);            
             examplePageLink.click( );
@@ -452,8 +452,8 @@ public class IndexSobrePage {
             WebElement newsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath( "//*[@id=\"menu-item-4470\"]/a" )
-            				) 
+            				By.xpath( "//*[@id=\"menu-item-4158\"]/a" ) //*[@id="menu-item-4158"]/a
+            				)
             		);            
             newsLink.click( );
             System.out.println( "Finished goToNewsPaindexge( ) method" );

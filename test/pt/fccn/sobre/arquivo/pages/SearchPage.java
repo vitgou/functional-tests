@@ -55,7 +55,7 @@ public class SearchPage {
 				else 
 					return false;
 
-    	} catch( NoSuchElementException e ){
+    	}catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
             e.printStackTrace( );
             return false;
