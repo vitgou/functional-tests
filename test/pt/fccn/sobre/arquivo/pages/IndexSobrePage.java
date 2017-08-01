@@ -99,9 +99,9 @@ public class IndexSobrePage {
     public CollaboratePage goToCollaboratePage( String  language ) throws FileNotFoundException{
     	String idMenu = "";
     	if( language.equals( "EN" ) )
-    		idMenu = "4168"; //*[@id="menu-item-4168"]/a
+    		idMenu = "4398"; //*[@id="menu-item-4168"]/a
     	else
-    		idMenu = "4167"; //*[@id="menu-item-4167"]/a
+    		idMenu = "4397"; //*[@id="menu-item-4167"]/a
     	try{
     		System.out.println( "Start goToCollaboratePage() method" );
             WebElement collaborateLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -134,14 +134,14 @@ public class IndexSobrePage {
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-4161\"]/a" ) //*[@id="menu-item-4161"]/a
+                    				By.xpath( "//*[@id=\"menu-item-4391\"]/a" )//*[@id="menu-item-4396"]/a/span
                     				)
                     		);            
             actions.moveToElement( menuHoverLink ).perform( ); //click in menu ajuda
             WebElement menuClickLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated(
-                    				By.xpath( "//*[@id=\"menu-item-4195\"]/a" ) //menu-item menu-item-type-post_type menu-item-object-page menu-item-4195
+                    				By.xpath( "//*[@id=\"menu-item-4425\"]/a" ) //*[@id="menu-item-4425"]/a
                     				)  
                     		); 
             menuClickLink.click( );
@@ -166,11 +166,11 @@ public class IndexSobrePage {
 		try{
             System.out.println( "Start goToPublicationsPage( ) method" );
             if( language.equals( "EN" ) ) {
-            	idMenuPub 		= "menu-item-4165"; //*[@id="menu-item-4165"]/a
-            	idMenuPubCien 	= "menu-item-4198"; //*[@id="menu-item-4198"]/a
+            	idMenuPub 		= "menu-item-4395"; //*[@id="menu-item-4395"]/a
+            	idMenuPubCien 	= "menu-item-4428"; //*[@id="menu-item-4428"]/a
             } else {
-            	idMenuPub 		= "menu-item-4160"; //*[@id="menu-item-4160"]/a
-            	idMenuPubCien 	= "menu-item-4171"; //*[@id="menu-item-4171"]/a
+            	idMenuPub 		= "menu-item-4390"; //*[@id="menu-item-4160"]/a
+            	idMenuPubCien 	= "menu-item-4401"; //*[@id="menu-item-4401"]/a
             } 
           
             Actions actions = new Actions( driver ); 
@@ -208,11 +208,11 @@ public class IndexSobrePage {
         try{
             System.out.println( "Start goToReportsPage() method" );
             if( language.equals( "EN" ) ) {
-            	idMenu 		= "menu-item-4165"; //*[@id="menu-item-4165"]/a
-            	idSubMenu 	= "menu-item-4199"; //*[@id="menu-item-4199"]/a
+            	idMenu 		= "menu-item-4395"; //*[@id="menu-item-4165"]/a
+            	idSubMenu 	= "menu-item-4429"; //*[@id="menu-item-4429"]/a
             } else {
-            	idMenu 		= "menu-item-4160"; //*[@id="menu-item-4160"]/a
-            	idSubMenu 	= "menu-item-4172"; //*[@id="menu-item-4172"]/a
+            	idMenu 		= "menu-item-4390"; //*[@id="menu-item-4160"]/a
+            	idSubMenu 	= "menu-item-4402"; //*[@id="menu-item-4402"]/a
             } 
             Actions actions = new Actions( driver ); 
             WebElement menuHoverLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -247,11 +247,11 @@ public class IndexSobrePage {
 		String idDiv = "";
 		String idDivSubMenu = "";
 		if( language.equals( "EN" ) ) {
-			idDiv = "4165"; //*[@id="menu-item-4165"]/a
-			idDivSubMenu = "4200"; //*[@id="menu-item-4200"]/a
+			idDiv = "4395"; 
+			idDivSubMenu = "4430"; //*[@id="menu-item-4430"]/a
 		} else {
-			idDiv = "4160"; //*[@id="menu-item-4160"]/a
-			idDivSubMenu = "4173"; //*[@id="menu-item-4173"]/a
+			idDiv = "4390"; 
+			idDivSubMenu = "4403"; //*[@id="menu-item-4403"]/a
 		}
         try{
             System.out.println( "Start goToNewOnMediaPage() method" );
@@ -290,12 +290,12 @@ public class IndexSobrePage {
 		String xpathAudio = "";
 		
 		if( language.equals( "PT" ) ){
-			xpathAudio = "//*[@id=\"menu-item-4174\"]/a";  //*[@id="menu-item-4174"]/a
-			xpathPublicationMenu = "//*[@id=\"menu-item-4160\"]/a"; //*[@id="menu-item-4160"]/a
+			xpathAudio = "//*[@id=\"menu-item-4404\"]/a";  //*[@id="menu-item-4174"]/a
+			xpathPublicationMenu = "//*[@id=\"menu-item-4390\"]/a"; 
 		}   
 		else{
-			xpathAudio = "//*[@id=\"menu-item-4201\"]/a";  //*[@id="menu-item-4201"]/a
-			xpathPublicationMenu = "//*[@id=\"menu-item-4165\"]/a"; //*[@id="menu-item-4165"]/a
+			xpathAudio = "//*[@id=\"menu-item-4431\"]/a";  //*[@id="menu-item-4201"]/a
+			xpathPublicationMenu = "//*[@id=\"menu-item-4395\"]/a"; 
 		}  
 		
         try{
@@ -334,11 +334,11 @@ public class IndexSobrePage {
 		String xpathVideo = "";
 		String xpathDiv = "";
 		if( language.equals( "EN" ) ){
-			xpathVideo = "//*[@id=\"menu-item-4202\"]/a"; //*[@id="menu-item-4202"]/a
-			xpathDiv = "//*[@id=\"menu-item-4165\"]/a"; //*[@id="menu-item-4165"]/a
+			xpathVideo = "//*[@id=\"menu-item-4432\"]/a"; //*[@id="menu-item-4202"]/a
+			xpathDiv = "//*[@id=\"menu-item-4395\"]/a";
 		} else {
-			xpathVideo = "//*[@id=\"menu-item-4175\"]/a"; //*[@id="menu-item-4175"]/a
-			xpathDiv = "//*[@id=\"menu-item-4160\"]/a"; //*[@id="menu-item-4160"]/a
+			xpathVideo = "//*[@id=\"menu-item-4405\"]/a"; //*[@id="menu-item-4175"]/a
+			xpathDiv =  "//*[@id=\"menu-item-4390\"]/a";
 		}
         try{
             System.out.println( "Start goToVideoPage() method" );
@@ -379,11 +379,11 @@ public class IndexSobrePage {
 		String xpathDibSubMenu = "";
 		
 		if( language.equals( "EN" ) ) {
-			xpathDivMenu = "//*[@id=\"menu-item-4165\"]/a"; //*[@id="menu-item-4472"]/a
-			xpathDibSubMenu = "//*[@id=\"menu-item-4203\"]/a"; //*[@id="menu-item-4203"]/a
+			xpathDivMenu =  "//*[@id=\"menu-item-4395\"]/a";
+			xpathDibSubMenu = "//*[@id=\"menu-item-4433\"]/a"; //*[@id="menu-item-4203"]/a
 		} else {
-			xpathDivMenu = "//*[@id=\"menu-item-4160\"]/a"; //*[@id="menu-item-4477"]/a
-			xpathDibSubMenu = "//*[@id=\"menu-item-4176\"]/a"; //*[@id="menu-item-4176"]
+			xpathDivMenu = "//*[@id=\"menu-item-4390\"]/a";
+			xpathDibSubMenu = "//*[@id=\"menu-item-4406\"]/a"; //*[@id="menu-item-4176"]
 		}
 	
 		try{
@@ -427,7 +427,7 @@ public class IndexSobrePage {
             WebElement examplePageLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath( "//*[@id=\"menu-item-4159\"]/a" ) //*[@id="menu-item-4159"]/a
+            				By.xpath( "//*[@id=\"menu-item-4389\"]/a" ) //*[@id="menu-item-4389"]/a
             				) 
             		);            
             examplePageLink.click( );
@@ -452,7 +452,7 @@ public class IndexSobrePage {
             WebElement newsLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
-            				By.xpath( "//*[@id=\"menu-item-4158\"]/a" ) //*[@id="menu-item-4158"]/a
+            				By.xpath( "//*[@id=\"menu-item-4388\"]/a" ) //*[@id="menu-item-4388"]/a
             				)
             		);            
             newsLink.click( );
@@ -473,9 +473,9 @@ public class IndexSobrePage {
         String idDiv = "";
         
         if( language.equals( "EN" ) )
-        	idDiv = "menu-item-4170"; //*[@id="menu-item-4170"]/a
+        	idDiv = "menu-item-4400"; //*[@id="menu-item-4170"]/a
         else
-        	idDiv = "menu-item-4169"; //*[@id="menu-item-4169"]/a
+        	idDiv = "menu-item-4399"; //*[@id="menu-item-4169"]/a
     	
     	try{ 
             System.out.println( "Start goToAboutPage( ) method" );
@@ -499,7 +499,7 @@ public class IndexSobrePage {
     * Change to the English version
     */
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"menu-item-4194-en\"]/a"; //menu-item-4194-en
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-4424-en\"]/a"; //menu-item-4194-en
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );

@@ -67,7 +67,7 @@ public class AudioPage {
     * Change to the English version
     */
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"menu-item-3862-en\"]/a";
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-4424-en\"]/a";
     	//TODO //*[@id=\"menu-item-3862-en\"]/a -> new template 
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );

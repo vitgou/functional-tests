@@ -120,7 +120,7 @@ public class CommonQuestionsPage {
     * Change to the English version
     */
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"menu-item-4506-en\"]/a";
+    	String xpathEnglishVersion = "//*[@id=\"menu-item-4424-en\"]/a";
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );

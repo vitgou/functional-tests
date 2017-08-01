@@ -35,7 +35,7 @@ public class NavigationTest  extends WebDriverTestBaseParalell {
 		try{
 			index = new IndexSobrePage( driver );
 			/**************************/
-			/*** Portuguese version ***/
+			/*** Portuguese version ***/ 
 			/**************************/
 			NewsPage news = index.goToNewsPage( );
 			assertTrue("[Nabigation Test] Failed The News Page Test in Portuguese", news.checkNewsLinks( "PT" ) );
