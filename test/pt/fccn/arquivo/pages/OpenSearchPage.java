@@ -108,7 +108,7 @@ public class OpenSearchPage {
         }
     }
     /**
-     * Verify coherence in result between opensarch api and search on arquivo.pt
+     * Verify coherence in result between opensearch api and search on arquivo.pt
      * @param firstTitleOfResultList The first result when searching for a query through arquivo.pt full text-search
      * @return true if the first result are coherent with opensearch result, false otherwises
      */

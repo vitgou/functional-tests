@@ -187,7 +187,7 @@ public class CollectionsTest extends WebDriverTestBaseParalell{
             // Verify that the url of the archived page is the same that the one of the search result
             assertEquals(urlFirstResult, urlReplayBar);
 
-            // Verify that the date on the replay bar is the same that the date on the first sarch result
+            // Verify that the date on the replay bar is the same that the date on the first search result
             Calendar dateReplayBar = new GregorianCalendar();
             dateReplayBar.setTime(
                 ReplayBarDateFormatter.parse(dateStringReplayBar)
