@@ -58,7 +58,7 @@ public class IndexPage {
 		System.out.println( "[checkSearch]" );
 		String xpathResults = "//*[@id=\"form_container\"]/div/input"; //get search links
         String xpathButton = "//*[@id=\"form_container\"]/div/span/button";
-
+        
 		try{
 			
 			if( language.equals( "EN" ) )
@@ -151,8 +151,12 @@ public class IndexPage {
     		for( WebElement elem : results ) {
     			String boldText = elem.getText( ).toLowerCase( ).trim( );
     			for( String term : terms ){
-    				if( term.toLowerCase( ).trim( ).equals( boldText ) ) 
+    				if( term.toLowerCase( ).trim( ).equals( boldText ) ) {
+    					System.out.println( " TRUE term["+term.toLowerCase( ).trim( )+"] equals["+boldText+"]" );
     					checkTerm = true;
+    				} else {
+    					System.out.println( " FALSE term["+term.toLowerCase( ).trim( )+"] equals["+boldText+"]" );
+    				}
     			} 			
     		}
 	    	
