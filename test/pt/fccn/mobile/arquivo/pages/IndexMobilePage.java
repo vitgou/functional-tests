@@ -1,12 +1,6 @@
 package pt.fccn.mobile.arquivo.pages;
 
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -14,18 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.w3c.dom.Document;
 
-import pt.fccn.arquivo.pages.AdvancedPage;
-import pt.fccn.arquivo.pages.Arcproxyinspection;
-import pt.fccn.arquivo.pages.HighlightsPage;
-import pt.fccn.arquivo.pages.OpenSearchPage;
-import pt.fccn.arquivo.pages.SearchPage;
-import pt.fccn.arquivo.pages.TermsAndConditionsPage;
-import pt.fccn.arquivo.tests.util.AnalyzeURLs;
-import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
 
-public class IndexPage {
+public class IndexMobilePage {
     // Webdriver that handles page interractions
     private final WebDriver driver;
     private final String pageURLCheck = "index.jsp";
@@ -36,12 +21,11 @@ public class IndexPage {
     private final String titleTextPT = "Arquivo.pt: pesquisa sobre o passado";
     private String[ ] topicsToSearch = new String[ ]{ "Antonio Costa" , "livros" , "Simone de Beauvoir" };
     private final int timeout = 50;
-    
-    
+    private boolean isPreProd=false;
     /**
      * Starts a new Index page
      */
-    public IndexPage( WebDriver driver ) {
+    public IndexMobilePage( WebDriver driver ) {
         this.driver = driver;
         try {
           Thread.sleep( 5000 );                 //wait for page to load
@@ -57,6 +41,10 @@ public class IndexPage {
         if( "ola".equals( "adeus" ) ) {
             throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
         }
+    }
+    
+    public void testPrint( ) {
+    	System.out.println( "Print test to the stdout!!!!" );
     }
     
 	public boolean checkSearch( String language ) {
@@ -98,7 +86,7 @@ public class IndexPage {
             inputElement.clear( );
             inputElement.sendKeys( topic );
             
-            IndexSobrePage.sleepThread( );
+            sleepThread( );
             
             WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
@@ -125,7 +113,7 @@ public class IndexPage {
             inputElement.clear( );
             inputElement.sendKeys( topic );
             
-            IndexSobrePage.sleepThread( );
+            sleepThread( );
             
             WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
@@ -179,6 +167,13 @@ public class IndexPage {
     	}
 	}
 
+	
+    public boolean setPreProd(String pre_prod){
+        if (driver.getCurrentUrl().contains(pre_prod)){
+           this.isPreProd=true;
+        }
+        return isPreProd;
+   }
     
     private void sleepThread( ) {
 		try {
