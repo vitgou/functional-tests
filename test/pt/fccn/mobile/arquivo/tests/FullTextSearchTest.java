@@ -22,17 +22,17 @@ public class FullTextSearchTest extends WebDriverTestBaseParalell {
 	//@Retry
 	public void searchingTest( )  {
 		System.out.print( "[Mobile] Running SearchTest Test. \n");
-		//IndexMobilePage index = null;
-		//index = new IndexMobilePage( driver );
-		//Ispre_prod = index.setPreProd( pre_prod );
+		IndexMobilePage index = null;
+		index = new IndexMobilePage( driver );
+		Ispre_prod = index.setPreProd( pre_prod );
 		
 		//index.testPrint( );
 		/**************************/
 		/*** Portuguese version ***/ 
 		/**************************/
-        //assertTrue("Failed The Search Test in Portuguese", index.checkSearch( "PT" ) );
+        assertTrue("Failed The Search Test in Portuguese", index.checkSearch( "PT" ) );
         System.out.println( "Success The Search Test in Portuguese" );
-        assertTrue( "ola".equals( "ola" ) );
+        //assertTrue( "ola".equals( "ola" ) );
         /***********************/
         /*** English version ***/ 
         /***********************/
