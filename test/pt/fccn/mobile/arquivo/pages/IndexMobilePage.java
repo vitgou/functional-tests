@@ -55,7 +55,6 @@ public class IndexMobilePage {
         if( "1".equals( "1" ) ) return true;
         
 		try{
-			
 			if( language.equals( "EN" ) )
 				if( searchEN( xpathResults , xpathButton ) )
 					return true;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="1" failures="0" hostname="p18.arquivo.pt" id="0" name="FullTextSearchTest" package="pt.fccn.arquivo.tests" tests="1" time="0.0" timestamp="2017-11-16T15:23:13">
+  <testsuite errors="1" failures="0" hostname="p18.arquivo.pt" id="0" name="FullTextSearchTest" package="pt.fccn.mobile.arquivo.tests" tests="1" time="0.0" timestamp="2017-11-16T16:28:29">
       <properties>
           <property name="java.vendor" value="Sun Microsystems Inc." />
 
@@ -130,7 +130,7 @@
 
           <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
 
-          <property name="testcase" value="pt.fccn.arquivo.tests.FullTextSearchTest" />
+          <property name="testcase" value="pt.fccn.mobile.arquivo.tests.FullTextSearchTest" />
 
           <property name="user.home" value="/home/jnobre" />
 
@@ -154,7 +154,7 @@
 
           <property name="java.class.path" value="/usr/share/java/ant.jar:/usr/share/java/ant-launcher.jar:/usr/share/java/jaxp_parser_impl.jar:/usr/share/java/xml-commons-apis.jar:/usr/share/java/ivy.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-nodeps.jar:/usr/share/java/jaxp_transform_impl.jar:/usr/share/java/ant/ant-trax.jar:/usr/share/java/xalan-j2-serializer.jar:/usr/lib/jvm/java/lib/tools.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-nodeps.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant.jar" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.arquivo.tests.FullTextSearchTest -Dtest.url=http://m.preprod.arquivo.pt" />
+          <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  test -Dtestcase=pt.fccn.mobile.arquivo.tests.FullTextSearchTest -Dtest.url=http://m.preprod.arquivo.pt" />
 
           <property name="seleniumPort" value="4444" />
 
@@ -218,14 +218,9 @@
 
       </properties>
 
-      <error message="pt.fccn.arquivo.tests.FullTextSearchTest" type="java.lang.ClassNotFoundException">java.lang.ClassNotFoundException: pt.fccn.arquivo.tests.FullTextSearchTest
-	at java.net.URLClassLoader$1.run(URLClassLoader.java:212)
-	at java.net.URLClassLoader$1.run(URLClassLoader.java:201)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:200)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:325)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:296)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:270)
+      <error message="pt/fccn/mobile/arquivo/tests/FullTextSearchTest : Unsupported major.minor version 51.0" type="java.lang.UnsupportedClassVersionError">java.lang.UnsupportedClassVersionError: pt/fccn/mobile/arquivo/tests/FullTextSearchTest : Unsupported major.minor version 51.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:648)
 	at java.lang.ClassLoader.loadClass(ClassLoader.java:270)
 	at java.lang.Class.forName0(Native Method)
 	at java.lang.Class.forName(Class.java:274)
