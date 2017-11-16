@@ -23,8 +23,8 @@ public class FullTextSearchTest extends WebDriverTestBaseParalell {
 	public void searchingTest( )  {
 		System.out.print( "[Mobile] Running SearchTest Test. \n");
 		IndexMobilePage index = null;
-		index = new IndexMobilePage( driver );
-		Ispre_prod = index.setPreProd( pre_prod );
+		//index = new IndexMobilePage( driver );
+		//Ispre_prod = index.setPreProd( pre_prod );
 		
 		//index.testPrint( );
 		/**************************/
