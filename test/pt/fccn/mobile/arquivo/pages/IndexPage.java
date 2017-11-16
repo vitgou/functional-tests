@@ -1,5 +1,6 @@
 package pt.fccn.mobile.arquivo.pages;
 
+import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
@@ -40,13 +41,15 @@ public class IndexPage {
     /**
      * Starts a new Index page
      */
-    public IndexPage( WebDriver driver ){
+    public IndexPage( WebDriver driver ) {
         this.driver = driver;
         try {
           Thread.sleep( 5000 );                 //wait for page to load
         } catch( InterruptedException ex ) {
           Thread.currentThread( ).interrupt( );
         }  
+        
+        
         // Check that we're on the right page.
         String pageTitle= driver.getTitle( );
         System.out.println( "pageTile = " + pageTitle );

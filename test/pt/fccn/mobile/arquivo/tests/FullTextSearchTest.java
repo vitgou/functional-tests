@@ -23,12 +23,8 @@ public class FullTextSearchTest extends WebDriverTestBaseParalell {
 	public void searchingTest( )  {
 		System.out.print( "[Mobile] Running SearchTest Test. \n");
 		IndexPage index = null;
+		index = new IndexPage( driver );
 	
-		try{
-			 index = new IndexPage( driver );
-		} catch( IOException e ) {
-			fail("IOException -> examplesTest");
-		}
 		/**************************/
 		/*** Portuguese version ***/ 
 		/**************************/
