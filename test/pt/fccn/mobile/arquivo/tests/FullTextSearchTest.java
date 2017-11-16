@@ -25,6 +25,7 @@ public class FullTextSearchTest extends WebDriverTestBaseParalell {
 		IndexPage index = null;
 		index = new IndexPage( driver );
 	
+		
 		/**************************/
 		/*** Portuguese version ***/ 
 		/**************************/
