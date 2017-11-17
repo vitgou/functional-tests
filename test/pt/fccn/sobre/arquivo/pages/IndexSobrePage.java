@@ -240,7 +240,7 @@ public class IndexSobrePage {
 	
     /**
      * 
-     * @return4477
+     * @return
      * @throws FileNotFoundException 
      */
 	public NewsOnMediaPage goToNewOnMediaPage( String language ) throws FileNotFoundException {

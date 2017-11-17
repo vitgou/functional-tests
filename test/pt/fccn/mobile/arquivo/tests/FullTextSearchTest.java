@@ -32,12 +32,12 @@ public class FullTextSearchTest extends WebDriverTestBaseParalell {
 		/**************************/
         assertTrue("Failed The Search Test in Portuguese", index.checkSearch( "PT" ) );
         System.out.println( "Success The Search Test in Portuguese" );
-        //assertTrue( "ola".equals( "ola" ) );
+        
         /***********************/
         /*** English version ***/ 
         /***********************/
-        //assertTrue("Failed The Search Test in English", search.checkSearch( "EN" ) );
-        //System.out.println( "Success The Search Test in English" );
+        assertTrue("Failed The Search Test in English", index.checkSearch( "EN" ) );
+        System.out.println( "Success The Search Test in English" );
 	}
 	
 }

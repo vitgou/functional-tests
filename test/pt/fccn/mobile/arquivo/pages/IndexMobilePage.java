@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
+
 
 public class IndexMobilePage {
     // Webdriver that handles page interractions
@@ -53,11 +55,13 @@ public class IndexMobilePage {
         String xpathButton = "//*[@id=\"form_container\"]/div/span/button";
      
 		try{
-			if( language.equals( "EN" ) )
+			if( language.equals( "EN" ) ) {
+				switchLanguage( );
 				if( searchEN( xpathResults , xpathButton ) )
 					return true;
 				else
 					return false;
+			}
 			else 
 				if( searchPT( xpathResults , xpathButton ) )
 					return true;
@@ -99,14 +103,14 @@ public class IndexMobilePage {
         return true;
 	}
 	
-	private boolean searchEN( String xpathResults , String xpathSendButton ) {
+	private boolean searchEN( String xpathinput , String xpathSendButton ) {
 		System.out.println( "[searchEN]" );
         for( String topic : topicsToSearch ) {
         	System.out.println( "Search for " + topic );
     		WebElement inputElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
                     		ExpectedConditions.presenceOfElementLocated( 
-                    				By.xpath( xpathResults ) ) );
+                    				By.xpath( xpathinput ) ) );
             inputElement.clear( );
             inputElement.sendKeys( topic );
             
@@ -143,12 +147,8 @@ public class IndexMobilePage {
     		for( WebElement elem : results ) {
     			String boldText = elem.getText( ).toLowerCase( ).trim( );
     			for( String term : terms ){
-    				if( term.toLowerCase( ).trim( ).equals( boldText ) ) {
-    					System.out.println( " TRUE term["+term.toLowerCase( ).trim( )+"] equals["+boldText+"]" );
+    				if( term.toLowerCase( ).trim( ).equals( boldText ) ) 
     					checkTerm = true;
-    				} else {
-    					System.out.println( " FALSE term["+term.toLowerCase( ).trim( )+"] equals["+boldText+"]" );
-    				}
     			} 			
     		}
 	    	
@@ -165,18 +165,32 @@ public class IndexMobilePage {
 	}
 
 	
-    public boolean setPreProd(String pre_prod){
-        if (driver.getCurrentUrl().contains(pre_prod)){
-           this.isPreProd=true;
+    public boolean setPreProd( String pre_prod ){
+        if ( driver.getCurrentUrl( ).contains( pre_prod ) ){
+           this.isPreProd = true;
         }
         return isPreProd;
-   }
+    }
+    
+    
+    /**
+    * Change to the English version
+    */
+    private void switchLanguage( ){
+    	String xpathEnglishVersion = "//*[@id=\"languageSelection\"]";
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "EN" ) ) {
+      		System.out.println( "Change language to English" );
+      		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+      		sleepThread( );
+      	}
+    }
+    
     
     private void sleepThread( ) {
 		try {
 			Thread.sleep( 6000 );
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch ( InterruptedException e ) {
+			e.printStackTrace( );
 		}
 	}
    
