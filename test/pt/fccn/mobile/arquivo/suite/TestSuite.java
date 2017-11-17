@@ -5,13 +5,14 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import pt.fccn.mobile.arquivo.tests.FullTextSearchTest;
+import pt.fccn.mobile.arquivo.tests.URLSearchTest;
 
 /**
  * @author João Nobre
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( { FullTextSearchTest.class } )
+@SuiteClasses( { FullTextSearchTest.class , URLSearchTest.class } )
 //TODO AdvancedSearchTest.class, URLSearchTest.class
 public class TestSuite {
 

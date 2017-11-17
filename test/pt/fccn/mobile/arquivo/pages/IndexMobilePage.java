@@ -22,6 +22,7 @@ public class IndexMobilePage {
     private final String titleTextEN = "Arquivo.pt - the Portuguese Web Archive: search pages from the past";
     private final String titleTextPT = "Arquivo.pt: pesquisa sobre o passado";
     private String[ ] topicsToSearch = new String[ ]{ "Antonio Costa" , "livros" , "Simone de Beauvoir" };
+    private String[ ] URLToSearch = new String[ ]{ "cienciaHoje.pt" , "uc.pt" };
     private final int timeout = 50;
     private boolean isPreProd=false;
     /**
@@ -49,7 +50,114 @@ public class IndexMobilePage {
     	System.out.println( "Print test to the stdout!!!!" );
     }
     
-	public boolean checkSearch( String language ) {
+    public boolean checkURLSearch( String language ) {
+    	System.out.println(  "[checkURLSearch]" );
+    	String xpathResults = "//*[@id=\"form_container\"]/div/input"; //get search links
+        String xpathButton = "//*[@id=\"form_container\"]/div/span/button";
+     
+		try{
+			if( language.equals( "EN" ) ) {
+				switchLanguage( );
+				if( searchURlEN( xpathResults , xpathButton ) )
+					return true;
+				else
+					return false;
+			}
+			else 
+				if( searchURLPT( xpathResults , xpathButton ) )
+					return true;
+				else 
+					return false;
+			
+    	}catch( NoSuchElementException e ){
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
+    	
+    }
+    
+    
+    
+	private boolean searchURLPT( String xpathResults , String xpathSendButton ) {
+		System.out.println( "[searchURLPT]" );
+        for( String url : URLToSearch ) {
+        	System.out.println( "Search for " + url );
+    		WebElement inputElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated( 
+                    				By.xpath( xpathResults ) ) );
+            inputElement.clear( );
+            inputElement.sendKeys( url );
+            
+            sleepThread( );
+            
+            WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated(
+                				By.xpath( xpathSendButton ) ) );
+            btnSubmitElement.click( );
+            
+            sleepThread( );
+      
+            if( !checkURLResults( url ) )
+            	return false;
+        }
+        return true;
+	}
+	
+	
+	private boolean searchURlEN( String xpathinput , String xpathSendButton ) {
+		System.out.println( "[searchURLEN]" );
+        for( String topic : topicsToSearch ) {
+        	System.out.println( "Search for " + topic );
+    		WebElement inputElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated( 
+                    				By.xpath( xpathinput ) ) );
+            inputElement.clear( );
+            inputElement.sendKeys( topic );
+            
+            sleepThread( );
+            
+            WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated(
+                				By.xpath( xpathSendButton ) ) );
+            btnSubmitElement.click( );
+            
+            sleepThread( );
+            
+            if( !checkURLResults( url ) )
+            	return false;
+        }
+        return true;
+	}
+	
+	private boolean checkURLResults( String url ) {
+		System.out.println( "[checkResults]" );
+		String getResumeResults = "//*[@id=\"years\"]/*[@class=\"yearUl row\"]/*[@class=\"col-xs-6 text-left yearText\"]/h4";
+	    try{
+    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
+	                .until( ExpectedConditions
+	                        .visibilityOfAllElementsLocatedBy(
+	                        		      By.xpath( getResumeResults )
+	                        )
+	        );
+    		
+    		if( results.size( ) > 0 )
+    			return true;
+    		else 
+    			return false;
+    		
+	    } catch( NoSuchElementException e ) {
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+	    }
+	}
+	
+	public boolean checkFullTextSearch( String language ) {
 		System.out.println( "[checkSearch]" );
 		String xpathResults = "//*[@id=\"form_container\"]/div/input"; //get search links
         String xpathButton = "//*[@id=\"form_container\"]/div/span/button";
@@ -57,13 +165,13 @@ public class IndexMobilePage {
 		try{
 			if( language.equals( "EN" ) ) {
 				switchLanguage( );
-				if( searchEN( xpathResults , xpathButton ) )
+				if( searchFullTextEN( xpathResults , xpathButton ) )
 					return true;
 				else
 					return false;
 			}
 			else 
-				if( searchPT( xpathResults , xpathButton ) )
+				if( searchFullTextPT( xpathResults , xpathButton ) )
 					return true;
 				else 
 					return false;
@@ -76,7 +184,7 @@ public class IndexMobilePage {
     	
 	}
 	
-	private boolean searchPT( String xpathResults , String xpathSendButton ) {
+	private boolean searchFullTextPT( String xpathResults , String xpathSendButton ) {
 		System.out.println( "[searchPT]" );
         for( String topic : topicsToSearch ) {
         	System.out.println( "Search for " + topic );
@@ -103,7 +211,7 @@ public class IndexMobilePage {
         return true;
 	}
 	
-	private boolean searchEN( String xpathinput , String xpathSendButton ) {
+	private boolean searchFullTextEN( String xpathinput , String xpathSendButton ) {
 		System.out.println( "[searchEN]" );
         for( String topic : topicsToSearch ) {
         	System.out.println( "Search for " + topic );
