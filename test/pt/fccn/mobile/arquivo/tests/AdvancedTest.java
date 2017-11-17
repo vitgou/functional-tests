@@ -18,6 +18,22 @@ public class AdvancedTest extends WebDriverTestBaseParalell {
 	String term = "Pesquisa Avançada — Arquivo.pt";
     @Test
     public void SearchAdvancedTest( ) {
+    	System.out.print( "[Mobile] Running SearchAdvancedTest URL. \n");
+		IndexMobilePage index = null;
+		index = new IndexMobilePage( driver );
+		Ispre_prod = index.setPreProd( pre_prod );
+    	AdvancedSearchPage advPage =  index.goToAdvancedPage( );
+		/**************************/
+		/*** Portuguese version ***/ 
+		/**************************/
+        assertTrue("Failed The Advanced Search Test in Portuguese", advPage.checkAdvancedSearch( "PT" ) );
+        System.out.println( "Success The Advanced Search Test in Portuguese" );
+        
+        /***********************/
+        /*** English version ***/ 
+        /***********************/
+        assertTrue("Failed The Advanced Search Test in English", advPage.checkAdvancedSearch( "EN" ) );
+        System.out.println( "Success The Advanced Search Test in English" );
     
     }
     

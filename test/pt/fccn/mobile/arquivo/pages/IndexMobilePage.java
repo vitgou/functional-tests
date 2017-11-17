@@ -1,5 +1,6 @@
 package pt.fccn.mobile.arquivo.pages;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,18 +10,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
-
 
 public class IndexMobilePage {
     // Webdriver that handles page interractions
     private final WebDriver driver;
-    private final String pageURLCheck = "index.jsp";
     private String url =null;
-    private final String searchBox = "txtSearch";
-    private final String linkTextEN = "English";
-    private final String titleTextEN = "Arquivo.pt - the Portuguese Web Archive: search pages from the past";
-    private final String titleTextPT = "Arquivo.pt: pesquisa sobre o passado";
     private String[ ] topicsToSearch = new String[ ]{ "Antonio Costa" , "livros" , "Simone de Beauvoir" };
     private String[ ] URLToSearch = new String[ ]{ "cienciaHoje.pt" , "uc.pt" };
     private final int timeout = 50;
@@ -48,6 +42,40 @@ public class IndexMobilePage {
     
     public void testPrint( ) {
     	System.out.println( "Print test to the stdout!!!!" );
+    }
+    
+    /**
+     * Click the link to the footer of the page
+     * @throws FileNotFoundException 
+     */
+    public AdvancedSearchPage goToAdvancedPage( ) {
+    	
+    	String xpathButton = "//*[@id=\"menuButton\"]";
+    	String xpathAdvancedSearchMenu = "//*[@id=\"mainMenu\"]/a[2]";
+    	try{
+            System.out.println( "Start goToAdvancedPage( ) method" );
+            WebElement menuButton = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+            .until(
+            		ExpectedConditions.presenceOfElementLocated(
+            				By.xpath( xpathButton )
+            				) 
+            		);            
+            menuButton.click( );
+            sleepThread( );
+            WebElement advancedSearchMenu = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+            .until(
+            		ExpectedConditions.presenceOfElementLocated(
+            				By.xpath( xpathAdvancedSearchMenu )
+            				) 
+            		);            
+            advancedSearchMenu.click( );
+            System.out.println( "Finished goToAdvancedPage( ) method" );
+        }catch( NoSuchElementException e ){
+        	System.out.println( "Could not find the link element" );
+        	throw e;
+        }
+        
+        return new AdvancedSearchPage( driver );
     }
     
     public boolean checkURLSearch( String language ) {
@@ -296,7 +324,7 @@ public class IndexMobilePage {
     
     private void sleepThread( ) {
 		try {
-			Thread.sleep( 6000 );
+			Thread.sleep( 4000 );
 		} catch ( InterruptedException e ) {
 			e.printStackTrace( );
 		}

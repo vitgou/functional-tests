@@ -26,7 +26,6 @@ public class FullTextSearchTest extends WebDriverTestBaseParalell {
 		index = new IndexMobilePage( driver );
 		Ispre_prod = index.setPreProd( pre_prod );
 		
-		//index.testPrint( );
 		/**************************/
 		/*** Portuguese version ***/ 
 		/**************************/
