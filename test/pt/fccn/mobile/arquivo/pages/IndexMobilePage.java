@@ -109,7 +109,7 @@ public class IndexMobilePage {
 	
 	private boolean searchURlEN( String xpathinput , String xpathSendButton ) {
 		System.out.println( "[searchURLEN]" );
-        for( String topic : topicsToSearch ) {
+        for( String topic : URLToSearch ) {
         	System.out.println( "Search for " + topic );
     		WebElement inputElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
@@ -135,7 +135,7 @@ public class IndexMobilePage {
 	}
 	
 	private boolean checkURLResults( String url ) {
-		System.out.println( "[checkResults]" );
+		System.out.println( "[checkURLResults]" );
 		String getResumeResults = "//*[@id=\"years\"]/*[@class=\"yearUl row\"]/*[@class=\"col-xs-6 text-left yearText\"]/h4";
 	    try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
