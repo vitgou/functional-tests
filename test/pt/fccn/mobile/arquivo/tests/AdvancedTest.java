@@ -28,6 +28,10 @@ public class AdvancedTest extends WebDriverTestBaseParalell {
 		/**************************/
         assertTrue("Failed The Advanced Search Test in Portuguese", advPage.checkAdvancedSearch( "PT" ) );
         System.out.println( "Success The Advanced Search Test in Portuguese" );
+        advPage =  index.goToAdvancedPage( );
+        assertTrue("Failed The Advanced Search Test in Portuguese", advPage.checkSiteOperator( "PT" ) );
+        System.out.println( "Success The Site Operator Search Test in Portuguese" );
+        
         
         /***********************/
         /*** English version ***/ 
@@ -35,6 +39,10 @@ public class AdvancedTest extends WebDriverTestBaseParalell {
         advPage =  index.goToAdvancedPage( );
         assertTrue("Failed The Advanced Search Test in English", advPage.checkAdvancedSearch( "EN" ) );
         System.out.println( "Success The Advanced Search Test in English" );
+        advPage =  index.goToAdvancedPage( );
+        assertTrue("Failed The Advanced Search Test in Portuguese", advPage.checkSiteOperator( "EN" ) );
+        System.out.println( "Success The Site Operator Search Test in English" );
+    
     }
     
 }

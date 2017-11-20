@@ -1,5 +1,7 @@
 package pt.fccn.mobile.arquivo.pages;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -15,6 +17,7 @@ public class AdvancedSearchPage {
 	private final String negTerm = "concerto";
 	private final String expressionTerm = "\"pavilhao da utopia\"";
 	private final String[ ] terms = new String[ ]{ "pavilhao da utopia", "pavilhao",  "da",  "utopia", "expo" , "98" };
+	private final String siteSearch = "www.arquivo.pt";
 	private final int timeout = 50;
 	
     public AdvancedSearchPage( WebDriver driver ) {
@@ -31,6 +34,106 @@ public class AdvancedSearchPage {
         System.out.println( "pageTile = " + pageTitle );
         
     }
+    
+    public boolean checkSiteOperator( String  language ) {
+    	System.out.println(  "[checkSiteOperator]" );
+    	String inputSearch 		= "//*[@id=\"adv_and\"]";
+    	String divExpandable 	= "//*[@id=\"conteudo-pesquisa\"]/form/div[4]";
+    	String inputSiteSearch 	= "//*[@id=\"site\"]"; 
+    	String buttonSearch 	= "//*[@id=\"btnSubmitBottom\"]";
+    	
+		try{
+			if( language.equals( "EN" ) ) {
+				switchLanguage( );
+			}
+			
+			if( searchSiteSearch( inputSearch , inputSiteSearch , divExpandable , buttonSearch ) )
+				return true;
+			else 
+				return false;
+			
+    	} catch( NoSuchElementException e ) {
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
+    }
+    
+	private boolean searchSiteSearch( String inputSearch, String inputSiteSearch, String divExpandable, String buttonSearch ) {
+		System.out.println( "[searchFullTextPT]" );
+         
+    	System.out.println( "Search for " + topicsToSearch );
+		WebElement elementSearch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated( 
+                				By.xpath( inputSearch ) ) );
+		elementSearch.clear( );
+		elementSearch.sendKeys( topicsToSearch );
+        
+	    WebElement divElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+	            .until(
+	            		ExpectedConditions.presenceOfElementLocated(
+	            				By.xpath( divExpandable ) ) );
+	    divElement.click( );
+	        
+	    sleepThread( );
+	    
+		System.out.println( "Search for site \"" + expressionTerm+ "\"" );
+        WebElement elementExpression = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated( 
+
+                			    				By.xpath( inputSiteSearch ) ) );
+        elementExpression.clear( );
+        elementExpression.sendKeys( siteSearch );
+        
+        WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+            .until(
+            		ExpectedConditions.presenceOfElementLocated(
+            				By.xpath( buttonSearch ) ) );
+        btnSubmitElement.click( );
+        
+        sleepThread( );
+       
+        if( !checkSiteResults( siteSearch ) )
+        	return false;
+
+        return true;
+	}
+		
+	private boolean checkSiteResults( String siteSearch ) {
+		System.out.println( "[AdvancedSearch][checkSiteResults]" );
+		String getURLResults = "//*[@id=\"resultados-lista\"]/ul/li/div[1]";
+		String domainSearch = expandURL( siteSearch.toLowerCase( ).trim( ) );
+		boolean checkURL = false;
+	    try{
+    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
+	                .until( ExpectedConditions
+	                        .visibilityOfAllElementsLocatedBy(
+	                        		      By.xpath( getURLResults )
+	                        )
+	        );
+    		
+    		System.out.println( "results size = " + results.size( ) );
+    		for( WebElement elem : results ) {
+    			String url = elem.getText( ).toLowerCase( ).trim( );
+    			String treatedURL = expandURL( url );
+				System.out.println( "[AdvancedSearch][checkSiteResults] domainSearch["+domainSearch+"] equals treatedURL["+treatedURL+"]" );
+				if( !domainSearch.equals( treatedURL ) ) 
+					checkURL = false;
+    		}
+	    	
+    		if( !checkURL )
+    			return false;
+    		else
+    			return true;
+    		
+	    } catch( NoSuchElementException e ){
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
+	}
     
     public boolean checkAdvancedSearch( String language ) {
     	System.out.println(  "[checkAdvancedSearch]" );
@@ -195,6 +298,65 @@ public class AdvancedSearchPage {
       	}
     }
     
+    
+    /**
+     * remove protocol and subdirectories in the url
+     * @param url
+     * @return
+     */
+	public String expandURL( String url ) {
+		 	String urlResult;
+		 	
+	    	if ( url.startsWith( "http://" ) ) 
+	    		urlResult = urlRemoveProtocol( "http://" , url );
+			else if ( url.startsWith( "https://" ) ) 
+				urlResult = urlRemoveProtocol( "https://" , url );
+			else 
+				urlResult = urlRemoveProtocol( "http://" , "http://".concat( url ) );
+			
+			if( urlResult == null || urlResult == "" )
+				return "";
+			
+			if( urlResult.startsWith( "www." ) ) 
+				urlResult = urlResult.replaceFirst( "www." , "" );
+			
+			urlResult = removeSubdirectories( urlResult );
+			
+	    	return urlResult;
+	}
+
+	/**
+	 * remove protocol in the url stIndexPage index = new IndexPage( driver );ring
+	 * @param protocol
+	 * @param url
+	 * @return
+	 */
+	public String urlRemoveProtocol( String protocol , String url ) {
+		String urlexpanded = "";
+		String siteHost = "";
+		try{
+			URL siteURL = new URL( url );
+			siteHost = siteURL.getHost( );
+			url = url.replace( siteHost, siteHost.toLowerCase( ) ); // hostname to lowercase
+			urlexpanded = url.substring( protocol.length( ) );
+			return urlexpanded; 
+		} catch ( MalformedURLException e ) {
+			return null;
+		}
+	}
+	
+	/**
+	 * remove subdirectorires in the url string
+	 * @param input
+	 * @return
+	 */
+	public static String removeSubdirectories( String input ) {
+		if( input == null || input.equals( "" ) ) return "";
+		int idx = input.indexOf( "/" );
+		if( idx == -1 ) return input;
+		return input.substring( 0 , idx );
+	}
+
     private void sleepThread( ) {
  		try {
  			Thread.sleep( 3000 );
