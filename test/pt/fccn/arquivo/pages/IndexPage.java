@@ -28,15 +28,13 @@ import org.openqa.selenium.NoSuchElementException;
 import java.lang.RuntimeException;
 
 import java.net.URL;
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
+import java.util.List;
+
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
 
+import pt.fccn.arquivo.tests.util.AnalyzeURLs;
 
 /**
  * @author Simao Fontes
@@ -57,6 +55,8 @@ public class IndexPage {
     private static final String titleTextPT = "Arquivo.pt: pesquisa sobre o passado";
     private static final String cssTermsConditions = "#terms-conditions";
     private boolean isPreProd=false;
+    private final int timeout = 50;
+    
     /**
      * Starts a new Index page
      */
@@ -258,9 +258,72 @@ public class IndexPage {
         System.out.println("Passed Anchor with caps: " + anchorText_cap);
 
         return true;
+        
+    }
     
-}
+    /**
+     * 
+     * @param language
+     * @return
+     */
+    public boolean checkFooterLinks( String language ) {
+		System.out.println( "[checkFooterLinks]" );
+    	String xpatha = "//*[@id=\"links\"]/div/div/ul/li/a"; //get footer links
+    	
+    	
+    	
+   		if( language.equals( "EN" ) ) 
+   			switchLanguage( );
 
+    	try{
+    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
+	                .until( ExpectedConditions
+	                        .visibilityOfAllElementsLocatedBy(
+	                        		      By.xpath( xpatha )
+	                        )
+	        );
+    		
+    		System.out.println( "[footer] results size = " + results.size( ) );
+    		for( WebElement elem : results ) {
+    			String url = elem.getAttribute( "href" );
+    			if( !url.startsWith( "http://www.facebook.com/" ) || 
+    					!url.startsWith( "https://www.facebook.com/" ) ){
+    				System.out.println( "Check footer link: " + url );
+    				if( !AnalyzeURLs.checkLink( url ) ) 
+    					return false;
+    			}
+    		}
+    		
+	    	return true;
+    	} catch( NoSuchElementException e ){
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
+    	
+    
+    }
+
+    /**
+     * Change to the English version
+     */
+     private void switchLanguage( ){
+     	String xpathEnglishVersion = "//*[@id=\"language\"]/div/ul[2]/li[2]/a";
+       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
+       		System.out.println( "Change language to English" );
+       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
+       		sleepThread( );
+       	}
+     }
+     
+     private void sleepThread( ) {
+ 		try {
+ 			Thread.sleep( 4000 );
+ 		} catch ( InterruptedException e ) {
+ 			e.printStackTrace( );
+ 		}
+ 	}
+     
 	/**
 	 * Get the anchor href of link matching xpath expression 
 	 * 
