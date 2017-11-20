@@ -19,7 +19,7 @@ public class FooterTest extends WebDriverTestBaseParalell {
 	}
 
 	@Test
-	//@Retry
+	@Retry
 	public void footerTest( )  {
 		System.out.print( "Running examples Test. \n");
 		IndexSobrePage index = null;
