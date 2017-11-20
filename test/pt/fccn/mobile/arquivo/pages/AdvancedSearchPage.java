@@ -61,7 +61,7 @@ public class AdvancedSearchPage {
     
 	private boolean searchSiteSearch( String inputSearch, String inputSiteSearch, String divExpandable, String buttonSearch ) {
 		System.out.println( "[searchSiteSearch]" );
-         
+        
     	System.out.println( "Search for " + topicsToSearch );
 		WebElement elementSearch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
@@ -104,7 +104,7 @@ public class AdvancedSearchPage {
 		System.out.println( "[AdvancedSearch][checkSiteResults]" );
 		String getURLResults = "//*[@id=\"resultados-lista\"]/ul/li/div[1]";
 		String domainSearch = expandURL( siteSearch.toLowerCase( ).trim( ) );
-		boolean checkURL = false;
+
 	    try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
 	                .until( ExpectedConditions
@@ -119,13 +119,10 @@ public class AdvancedSearchPage {
     			String treatedURL = expandURL( url );
 				System.out.println( "[AdvancedSearch][checkSiteResults] domainSearch["+domainSearch+"] equals treatedURL["+treatedURL+"]" );
 				if( !domainSearch.equals( treatedURL ) ) 
-					checkURL = false;
+					return false;
     		}
 	    	
-    		if( !checkURL )
-    			return false;
-    		else
-    			return true;
+    		return true;
     		
 	    } catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
