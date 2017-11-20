@@ -68,7 +68,7 @@ public class IndexPage {
           Thread.currentThread().interrupt();
         }  
         // Check that we're on the right page.
-        String pageTitle= driver.getTitle();
+        String pageTitle= driver.getTitle( );
         if (!(pageTitle.contentEquals(titleTextEN) || (pageTitle.contentEquals(titleTextPT)))){
             throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
         }
@@ -239,7 +239,7 @@ public class IndexPage {
      */
     public boolean searchbyURL( String query , String queryPT ) {
         
-        this.url = driver.getCurrentUrl();
+        this.url = driver.getCurrentUrl( );
         
         String xpath="//*[@id='8']/td[7]/a[@title='26 Novembro 2002  às 13:04']"; // historical link selected
         String anchorText = getVersionURL(query,xpath);
@@ -261,29 +261,28 @@ public class IndexPage {
     
 }
 
-/**
- * Get the anchor href of link matching xpath expression 
- * 
- */
-public String getVersionURL(String query,String xpath){
-        try{
-        	System.out.println( "[getVersionURL] query["+query+"] xpath["+xpath+"] url["+this.url+"]" );
-        	driver.get(this.url);
-        	WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-	            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));           
-	        txtSearchElement.clear();
-	        txtSearchElement.sendKeys(query);
-	        WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-	            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
-	        btnSubmitElement.click();
-	        WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-	            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-	        return dateAnchorElement.getAttribute("href");
-	    }catch(RuntimeException e ){ throw new IllegalStateException("Timed Out");}
-	     catch (Exception e ){
-	         	throw new IllegalStateException("Exception. Can't evaluate webpage title");
-	     }
-
-}
+	/**
+	 * Get the anchor href of link matching xpath expression 
+	 * 
+	 */
+	public String getVersionURL(String query,String xpath){
+	        try{
+	        	System.out.println( "[getVersionURL] query["+query+"] xpath["+xpath+"] url["+this.url+"]" );
+	        	driver.get(this.url);
+	        	WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+		            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));           
+		        txtSearchElement.clear();
+		        txtSearchElement.sendKeys(query);
+		        WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+		            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
+		        btnSubmitElement.click();
+		        WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+		            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+		        return dateAnchorElement.getAttribute("href");
+		    }catch(RuntimeException e ){ throw new IllegalStateException("Timed Out");}
+		     catch (Exception e ){
+		         	throw new IllegalStateException("Exception. Can't evaluate webpage title");
+		     }
+	}
 
 }

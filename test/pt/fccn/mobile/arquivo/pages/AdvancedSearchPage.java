@@ -35,7 +35,7 @@ public class AdvancedSearchPage {
     
     public boolean checkAdvancedSearch( String language ) {
     	
-    	System.out.println(  "[checkURLSearch]" );
+    	System.out.println(  "[checkAdvancedSearch]" );
     	String inputSearch = "//*[@id=\"adv_and\"]";
     	String inputExpression = "//*[@id=\"adv_phr\"]";
     	String inputNeg = "//*[@id=\"adv_not\"]";
@@ -65,7 +65,7 @@ public class AdvancedSearchPage {
     
     
 	private boolean searchFullTextPT( String inputSearch , String inputExpression , String inputNeg , String buttonSearch ) {
-		System.out.println( "[searchPT]" );
+		System.out.println( "[searchFullTextPT]" );
          
     	System.out.println( "Search for " + topicsToSearch );
 		WebElement elementSearch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -185,6 +185,7 @@ public class AdvancedSearchPage {
     * Change to the English version
     */
     private void switchLanguage( ){
+    	System.out.println( "[switchLanguage]" );
     	String xpathEnglishVersion = "//*[@id=\"languageSelection\"]";
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "EN" ) ) {
       		System.out.println( "Change language to English" );
