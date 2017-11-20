@@ -38,7 +38,7 @@ public class AdvancedSearchPage {
     	String inputExpression = "//*[@id=\"adv_phr\"]";
     	String inputNeg = "//*[@id=\"adv_not\"]";
     	String buttonSearch = "//*[@id=\"btnSubmitBottom\"]";
-    	
+
 		try{
 			if( language.equals( "EN" ) ) {
 				switchLanguage( );
@@ -116,7 +116,7 @@ public class AdvancedSearchPage {
                 				By.xpath( inputSearch ) ) );
 		elementSearch.clear( );
 		elementSearch.sendKeys( topicsToSearch );
-        
+		
 		System.out.println( "Search for expression \"" + expressionTerm+ "\"" );
         WebElement elementExpression = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
@@ -197,7 +197,7 @@ public class AdvancedSearchPage {
     
     private void sleepThread( ) {
  		try {
- 			Thread.sleep( 4000 );
+ 			Thread.sleep( 3000 );
  		} catch ( InterruptedException e ) {
  			e.printStackTrace( );
  		}
