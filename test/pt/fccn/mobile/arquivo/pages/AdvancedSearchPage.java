@@ -1,6 +1,5 @@
 package pt.fccn.mobile.arquivo.pages;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -15,7 +14,7 @@ public class AdvancedSearchPage {
 	private final String topicsToSearch = "expo 98";
 	private final String negTerm = "concerto";
 	private final String expressionTerm = "\"pavilhao da utopia\"";
-	private final String[ ] terms = new String[ ]{ "pavilhao da utopia" , "expo" , "98" };
+	private final String[ ] terms = new String[ ]{ "pavilhao da utopia", "pavilhao",  "da",  "utopia", "expo" , "98" };
 	private final int timeout = 50;
 	
     public AdvancedSearchPage( WebDriver driver ) {
@@ -118,6 +117,7 @@ public class AdvancedSearchPage {
 		elementSearch.clear( );
 		elementSearch.sendKeys( topicsToSearch );
         
+		System.out.println( "Search for expression \"" + expressionTerm+ "\"" );
         WebElement elementExpression = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
                 		ExpectedConditions.presenceOfElementLocated( 
@@ -125,6 +125,7 @@ public class AdvancedSearchPage {
         elementExpression.clear( );
         elementExpression.sendKeys( expressionTerm );
         
+        System.out.println( "Search for denial operator -" + negTerm );
         WebElement elementNeg = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
                 		ExpectedConditions.presenceOfElementLocated( 
@@ -167,13 +168,12 @@ public class AdvancedSearchPage {
     				System.out.println( "[AdvancedSearch][checkResults] term["+term.toLowerCase( ).trim( )+"] equals boldText["+boldText+"]" );
     				if( term.toLowerCase( ).trim( ).equals( boldText ) ) 
     					checkTerm = true;
-    			} 			
+    			} 	
+    			if( !checkTerm )
+    				return false;
     		}
 	    	
-    		if( !checkTerm )
-    			return false;
-    		else 
-    			return true;
+    		return true;
     		
 	    } catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );

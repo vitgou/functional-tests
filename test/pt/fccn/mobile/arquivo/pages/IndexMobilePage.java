@@ -285,13 +285,12 @@ public class IndexMobilePage {
     			for( String term : terms ){
     				if( term.toLowerCase( ).trim( ).equals( boldText ) ) 
     					checkTerm = true;
-    			} 			
+    			}
+    			if( !checkTerm ) 
+    				return false;
     		}
 	    	
-    		if( !checkTerm )
-    			return false;
-    		else 
-    			return true;
+    		return true;
     		
 	    } catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
