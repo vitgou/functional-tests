@@ -38,7 +38,7 @@ public class AdvancedSearchPage {
     public boolean checkSiteOperator( String  language ) {
     	System.out.println(  "[checkSiteOperator]" );
     	String inputSearch 		= "//*[@id=\"adv_and\"]";
-    	String divExpandable 	= "//*[@id=\"conteudo-pesquisa\"]/form/div[4]";
+    	String divExpandable 	= "//*[@id=\"domains\"]/legend/i";
     	String inputSiteSearch 	= "//*[@id=\"site\"]"; 
     	String buttonSearch 	= "//*[@id=\"btnSubmitBottom\"]";
     	
@@ -60,7 +60,7 @@ public class AdvancedSearchPage {
     }
     
 	private boolean searchSiteSearch( String inputSearch, String inputSiteSearch, String divExpandable, String buttonSearch ) {
-		System.out.println( "[searchFullTextPT]" );
+		System.out.println( "[searchSiteSearch]" );
          
     	System.out.println( "Search for " + topicsToSearch );
 		WebElement elementSearch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -78,12 +78,11 @@ public class AdvancedSearchPage {
 	        
 	    sleepThread( );
 	    
-		System.out.println( "Search for site \"" + expressionTerm+ "\"" );
+		System.out.println( "Search for site \"" + siteSearch+ "\"" );
         WebElement elementExpression = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
                 		ExpectedConditions.presenceOfElementLocated( 
-
-                			    				By.xpath( inputSiteSearch ) ) );
+                				By.xpath( inputSiteSearch ) ) );
         elementExpression.clear( );
         elementExpression.sendKeys( siteSearch );
         
