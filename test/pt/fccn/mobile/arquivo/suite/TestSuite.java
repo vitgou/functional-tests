@@ -13,7 +13,8 @@ import pt.fccn.mobile.arquivo.tests.URLSearchTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( { FullTextSearchTest.class , URLSearchTest.class , AdvancedTest.class } )
+@SuiteClasses( {  AdvancedTest.class } )
+//TODO FullTextSearchTest.class , URLSearchTest.class
 public class TestSuite {
 
 }

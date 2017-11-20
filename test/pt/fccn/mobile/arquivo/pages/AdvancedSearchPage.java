@@ -34,7 +34,6 @@ public class AdvancedSearchPage {
     }
     
     public boolean checkAdvancedSearch( String language ) {
-    	
     	System.out.println(  "[checkAdvancedSearch]" );
     	String inputSearch = "//*[@id=\"adv_and\"]";
     	String inputExpression = "//*[@id=\"adv_phr\"]";
@@ -75,13 +74,15 @@ public class AdvancedSearchPage {
 		elementSearch.clear( );
 		elementSearch.sendKeys( topicsToSearch );
         
+		System.out.println( "Search for expression \"" + expressionTerm+ "\"" );
         WebElement elementExpression = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
                 		ExpectedConditions.presenceOfElementLocated( 
                 				By.xpath( inputExpression ) ) );
         elementExpression.clear( );
         elementExpression.sendKeys( expressionTerm );
-        
+ 
+        System.out.println( "Search for denial operator -" + negTerm );
         WebElement elementNeg = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
                 		ExpectedConditions.presenceOfElementLocated( 
@@ -107,7 +108,7 @@ public class AdvancedSearchPage {
 	}
 	
 	private boolean searchFullTextEN( String inputSearch , String inputExpression , String inputNeg , String buttonSearch ) {
-		System.out.println( "[searchEN]" );
+		System.out.println( "[AdvancedTest][searchEN]" );
         
     	System.out.println( "Search for " + topicsToSearch );
 		WebElement elementSearch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -131,7 +132,6 @@ public class AdvancedSearchPage {
         elementNeg.clear( );
         elementNeg.sendKeys( negTerm );
         
-        
         sleepThread( );
         
         WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
@@ -149,7 +149,7 @@ public class AdvancedSearchPage {
 	}
 	
 	private boolean checkResults( String[ ] terms ) {
-		System.out.println( "[checkResults]" );
+		System.out.println( "[AdvancedSearch][checkResults]" );
 		String getResumeResults = "//*[@id=\"resultados-lista\"]/ul/li/span[1]/em";
 		boolean checkTerm = false;
 	    try{
@@ -164,6 +164,7 @@ public class AdvancedSearchPage {
     		for( WebElement elem : results ) {
     			String boldText = elem.getText( ).toLowerCase( ).trim( );
     			for( String term : terms ){
+    				System.out.println( "[AdvancedSearch][checkResults] term["+term.toLowerCase( ).trim( )+"] equals boldText["+boldText+"]" );
     				if( term.toLowerCase( ).trim( ).equals( boldText ) ) 
     					checkTerm = true;
     			} 			
