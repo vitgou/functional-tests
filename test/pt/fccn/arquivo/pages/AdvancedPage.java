@@ -177,7 +177,7 @@ public class AdvancedPage {
 	                        )
 	        );
 	        
-	        for( WebElement elem : results ) {  //*[@id="resultados-lista"]/ul/li[1]/span[3]
+	        for( WebElement elem : results ) {  
 	    		System.out.println( "span["+ elem.getText( ) +"]" );
 	    		String text = elem.getText( );
 	    		if( text == null || text == "" ) {
