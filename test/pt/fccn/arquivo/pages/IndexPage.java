@@ -45,7 +45,7 @@ public class IndexPage {
     private final WebDriver driver;
     private static final String pageURLCheck = "index.jsp";
     private String url =null;
-    private static final String searchBox = "txtSearch";
+    private static final String searchBox = "txtSearch"; 
     private static final String searchButton = "btnSubmit";
     private static final String highlightId = "ver-destaques";
     private static final String linkTextEN = "English";
@@ -56,6 +56,10 @@ public class IndexPage {
     private static final String cssTermsConditions = "#terms-conditions";
     private boolean isPreProd=false;
     private final int timeout = 50;
+    private final String[ ] multipleTerms = new String[ ]{ "\"protocolo de coprodução portugal brasil instituto cinema\"", 
+    														"\"Os incêndios e a desertificação de Portugal florestal\"",
+    														"tempo 4 de julho de 2012" };
+    
     
     /**
      * Starts a new Index page
@@ -98,7 +102,7 @@ public class IndexPage {
         WebElement searchButtonElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
             .until(ExpectedConditions.presenceOfElementLocated(By.id(searchButton)));    
         searchButtonElement.submit();
-
+        
         return new SearchPage(driver,isPreProd);
     }
     
@@ -109,6 +113,73 @@ public class IndexPage {
         return factory.newDocumentBuilder().parse(new URL(url).openStream());
     }
 
+    public boolean searchMultipleTerms( String language ) {
+    	System.out.println( "[searchMultipleTerms]" );
+    	
+    	if( language.equals( "EN" ) ) {
+    		switchLanguage();
+    	}
+    	
+        for( String term : multipleTerms ) {
+        	System.out.println( "Search for " + term );
+    		WebElement inputElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                    .until(
+                    		ExpectedConditions.presenceOfElementLocated( 
+                    				By.id( searchBox ) ) );
+            inputElement.clear( );
+            inputElement.sendKeys( term );
+            
+            WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated(
+                				By.id( searchButton ) ) );
+            btnSubmitElement.click( );
+            
+            sleepThread( );
+            
+            String[ ] terms = term.split( " " );
+            if( !checkResults( terms ) )  
+            	return false;
+        }
+
+    	return true;
+    	
+    }
+    
+
+	private boolean checkResults( String[ ] terms ) { //*[@id="resultados-lista"]
+		System.out.println( "[checkResults]" );
+		String getResumeResults = "//*[@id=\"resultados-lista\"]/ul/li/span[2]/em";
+		boolean checkTerm = false;
+	    try{
+    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
+	                .until( ExpectedConditions
+	                        .visibilityOfAllElementsLocatedBy(
+	                        		      By.xpath( getResumeResults )
+	                        )
+	        );
+    		
+    		System.out.println( "results size = " + results.size( ) );
+    		for( WebElement elem : results ) {
+    			String boldText = elem.getText( ).toLowerCase( ).trim( );
+    			for( String term : terms ){
+    				System.out.println( "[IndexPage][checkResults] term[" + term.replace( "\"" , "" ).toLowerCase( ).trim( ) + "] equals boldText[" + boldText + "]" );
+    				if( term.replace( "\"" , "" ).toLowerCase( ).trim( ).equals( boldText ) ) 
+    					checkTerm = true;
+    			}
+    			if( !checkTerm ) 
+    				return false;
+    		}
+	    	
+    		return true;
+    		
+	    } catch( NoSuchElementException e ){
+            System.out.println( "Error in checkOPSite" );
+            e.printStackTrace( );
+            return false;
+    	}
+	}
+    
     /**
      * Searches for a string in the interface
      * @param searchTerms String of terms to search for

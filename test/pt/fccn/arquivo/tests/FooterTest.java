@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.AdvancedPage;
 import pt.fccn.arquivo.pages.IndexPage;
+import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 /**
@@ -23,9 +24,8 @@ public class FooterTest extends WebDriverTestBaseParalell{
     /**
      * Tests Advanced search page
      */
-	String term = "Pesquisa Avançada — Arquivo.pt";
     @Test
-    //@Retry
+    @Retry
     public void footerTest( ) {
     	System.out.print( "Running AdvancedTest. \n" );
         IndexPage index = new IndexPage( driver );
@@ -34,8 +34,8 @@ public class FooterTest extends WebDriverTestBaseParalell{
         assertTrue("Failed The Footer Links Test in Portuguese", index.checkFooterLinks( "PT" ) );
         System.out.println( "Success The Footer Links Test in Portuguese" );
        
-        assertTrue("Failed The Footer Links Test in English", index.checkFooterLinks( "PT" ) );
-        System.out.println( "Success The Footer Links Test in Portuguese" );
+        assertTrue("Failed The Footer Links Test in English", index.checkFooterLinks( "EN" ) );
+        System.out.println( "Success The Footer Links Test in English" );
       
     }
 	

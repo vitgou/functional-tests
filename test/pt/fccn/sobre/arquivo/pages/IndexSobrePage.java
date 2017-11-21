@@ -610,9 +610,7 @@ public class IndexSobrePage {
     	String xpathbtn 	= "//*[@id=\"wp_editor_widget-17\"]/div/div[2]/div/span/a";
     	
     	List< String > searchTerms = readFromFileToList( "FooterLinks.txt" );
-    	
     	try{
-
     		for( String term : searchTerms ) {
         		WebElement input = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
         	            .until(
@@ -627,25 +625,18 @@ public class IndexSobrePage {
         	            				By.xpath( xpathbtn )
         	            				)
         	            		); 
-        		
-    			input.clear( );
+        		input.clear( );
     			input.sendKeys( term );
     			btnsearch.click( );
     			sleepThread( );
-    			
-    			
-    			
     		}
     		
-    		
-	    	return true;
+    		return true;
     	} catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
             e.printStackTrace( );
             return false;
     	}
-    	
-    	
     	
     }
     
