@@ -17,14 +17,14 @@ public class SearchMultipleTermsQueryServer  extends WebDriverTestBaseParalell{
 	
     @Test
     @Retry
-    public void footerTest( ) {
-    	System.out.print( "Running AdvancedTest. \n" );
+    public void searchMultipleTermsQueryServer( ) {
+    	System.out.print( "Running SearchMultipleTermsQueryServer. \n" );
         IndexPage index = new IndexPage( driver );
         Ispre_prod = index.setPreProd( pre_prod );
         
         assertTrue("Failed The Search Multiple Terms Test in Portuguese", index.searchMultipleTerms( "PT" ) );
         System.out.println( "Success The Search Multiple Terms Test in Portuguese" );
-       
+        index.goToIndex( ); 
         assertTrue("Failed The Search Multiple Terms Test in English", index.searchMultipleTerms( "EN" ) );
         System.out.println( "Success The Search Multiple Terms Test in English" );
       

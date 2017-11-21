@@ -112,12 +112,21 @@ public class IndexPage {
         factory.setNamespaceAware(true);
         return factory.newDocumentBuilder().parse(new URL(url).openStream());
     }
-
+    
+    public void goToIndex(  ) {
+    	String xpathLogo = "//*[@id=\"logo\"]/a";
+        WebElement btnlogoElement = ( new WebDriverWait( driver, timeout ) ) 
+                .until(
+                		ExpectedConditions.presenceOfElementLocated(
+                				By.xpath( xpathLogo ) ) );
+        btnlogoElement.click( );	
+    }
+    
     public boolean searchMultipleTerms( String language ) {
     	System.out.println( "[searchMultipleTerms]" );
     	
     	if( language.equals( "EN" ) ) {
-    		switchLanguage();
+    		switchLanguage( );
     	}
     	
         for( String term : multipleTerms ) {
@@ -143,7 +152,6 @@ public class IndexPage {
         }
 
     	return true;
-    	
     }
     
 
