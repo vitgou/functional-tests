@@ -124,7 +124,7 @@ public class IndexPage {
     
     public boolean searchMultipleTerms( String language ) {
     	System.out.println( "[searchMultipleTerms]" );
-    	
+    	String xpathNumberOfResults = "//*[@id=\"resultados\"]";
     	if( language.equals( "EN" ) ) {
     		switchLanguage( );
     	}
@@ -146,8 +146,8 @@ public class IndexPage {
             
             sleepThread( );
             
-            String[ ] terms = term.split( " " );
-            if( !checkResults( terms ) )  
+            //String[ ] terms = term.split( " " );
+            if( driver.findElements( By.xpath( xpathNumberOfResults ) ).size( ) <= 0 )  
             	return false;
         }
 
