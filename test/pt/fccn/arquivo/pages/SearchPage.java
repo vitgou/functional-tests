@@ -69,8 +69,7 @@ public class SearchPage {
             throw new IllegalStateException("This is not the results search page\n URL of current page: " + driver.getCurrentUrl());
         }
         if (ispre_prod){
-        	
-   			this.server_name=driver.getCurrentUrl().replace("search.jsp?l=pt&query=fccn","");
+        	this.server_name=driver.getCurrentUrl().replace("search.jsp?l=pt&query=fccn","");
         }
         
     }

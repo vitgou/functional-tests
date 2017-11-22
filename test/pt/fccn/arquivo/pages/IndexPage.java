@@ -126,7 +126,7 @@ public class IndexPage {
     public boolean searchMultipleTerms( String language ) {
     	System.out.println( "[searchMultipleTerms]" );
     	String xpathNumberOfResults = "//*[@id=\"resultados\"]";
-    	if( language.equals( "English" ) ) {
+    	if( language.equals( "EN" ) ) {
     		switchLanguage( );
     	}
     	
@@ -387,11 +387,11 @@ public class IndexPage {
      * Change to the English version
      */
      public void switchLanguage( ){
-     	String xpathEnglishVersion = "//*[@id=\"language\"]/div/ul[2]/li[2]/a";
+     	String xpathEnglishVersion = "//*[@id=\"language\"]/div/ul[2]/li/a";
        	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
        		System.out.println( "Change language to English" );
        		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
-       		sleepThread( );
+       		sleepThread( ); 
        	}
      }
      
