@@ -126,10 +126,14 @@ public class SearchPage {
     public boolean spellcheckerCorrect( ) {
     	System.out.println( "[SpellCheckerCorrect]" );
 
-    	if( driver.findElements( By.xpath( "//*[@id=\"second-column\"]/div[2]/span/a" ) ).size( ) <= 0 )  
-        	return true;
-        else
+    	if( driver.findElements( By.xpath( "//*[@id=\"second-column\"]/div[2]/span/a" ) ).size( ) <= 0 ) {
+    		System.out.println( "spellCheckCorrect true" );
+    		return true;
+    	} else {
+    		String text = driver.findElement( By.xpath( "//*[@id=\"second-column\"]/div[2]/span/a" ) ).getText( );
+    		System.out.println( "spellCheckCorrect false text = " + text );
         	return false;
+        }
     	
     }    
     
