@@ -125,7 +125,6 @@ public class SearchPage {
      */
     public boolean spellcheckerCorrect( ) {
     	System.out.println( "[SpellCheckerCorrect]" );
-
     	if( driver.findElements( By.xpath( "//*[@id=\"second-column\"]/div[2]/span/a" ) ).size( ) <= 0 ) {
     		System.out.println( "spellCheckCorrect true" );
     		return true;
@@ -134,10 +133,8 @@ public class SearchPage {
     		System.out.println( "spellCheckCorrect false text = " + text );
         	return false;
         }
-    	
     }    
-    
-    
+
     /**
      * Verify that the term exists in as a search result
      * @param query Term that was searched

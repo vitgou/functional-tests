@@ -52,7 +52,7 @@ public class IndexPage {
     private String termsandconditionstitleTextPT = "Termos e Condições";
     private static final String linkTextPT = "Português";
     private static final String titleTextEN = "Arquivo.pt - the Portuguese Web Archive: search pages from the past";
-    private static final String titleTextPT = "Arquivo.pt: pesquisa sobre o passado";
+    private static final String titleTextPT = "Arquivo.pt: pesquise páginas do passado";
     private static final String cssTermsConditions = "#terms-conditions";
     private boolean isPreProd=false;
     private final int timeout = 50;
@@ -74,7 +74,8 @@ public class IndexPage {
         // Check that we're on the right page.
         String pageTitle= driver.getTitle( );
         if (!(pageTitle.contentEquals(titleTextEN) || (pageTitle.contentEquals(titleTextPT)))){
-            throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
+            System.out.println( "This is not the index page\n Title of current page: " + pageTitle );
+        	throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
         }
     }
     
@@ -95,15 +96,15 @@ public class IndexPage {
      * @return result page for query
      */
     public SearchPage search(String searchTerms){
-        WebElement searchBoxElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.id(searchBox)));        
-        searchBoxElement.clear();
-        searchBoxElement.sendKeys(searchTerms);
-        WebElement searchButtonElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.id(searchButton)));    
-        searchButtonElement.submit();
+        WebElement searchBoxElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until( ExpectedConditions.presenceOfElementLocated( By.id( searchBox ) ) );        
+        searchBoxElement.clear( );
+        searchBoxElement.sendKeys( searchTerms );
+        WebElement searchButtonElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
+            .until( ExpectedConditions.presenceOfElementLocated( By.id( searchButton ) ) );    
+        searchButtonElement.submit( );
         
-        return new SearchPage(driver,isPreProd);
+        return new SearchPage( driver, isPreProd );
     }
     
 
@@ -125,7 +126,7 @@ public class IndexPage {
     public boolean searchMultipleTerms( String language ) {
     	System.out.println( "[searchMultipleTerms]" );
     	String xpathNumberOfResults = "//*[@id=\"resultados\"]";
-    	if( language.equals( "EN" ) ) {
+    	if( language.equals( "English" ) ) {
     		switchLanguage( );
     	}
     	
