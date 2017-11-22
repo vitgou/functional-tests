@@ -16,7 +16,7 @@ public class SpellcheckerTest extends WebDriverTestBaseParalell {
 	}
 
 	@Test
-    //@Retry
+    @Retry
     public void spellcheckerTest( ) {
     	System.out.print( "Running SpellcheckerTest. \n" );
         IndexPage index = new IndexPage( driver );

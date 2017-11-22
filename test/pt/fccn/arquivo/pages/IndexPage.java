@@ -55,7 +55,7 @@ public class IndexPage {
     private static final String titleTextPT = "Arquivo.pt: pesquise páginas do passado";
     private static final String cssTermsConditions = "#terms-conditions";
     private boolean isPreProd=false;
-    private final int timeout = 50;
+    private final int timeout = 80;
     private final String[ ] multipleTerms = new String[ ]{ "\"protocolo de coprodução portugal brasil instituto cinema\"", 
     														"\"Os incêndios e a desertificação de Portugal florestal\"",
     														"tempo 4 de julho de 2012" };
@@ -274,8 +274,9 @@ public class IndexPage {
      * @return the image
      */
     public boolean isSponsorGovImageCorrect (){
-        WebElement imagefccn = driver.findElement(By.xpath( "//*[@id=\"fccn\"]" ));
-        WebElement imageSponsor = driver.findElement(By.xpath("//*[@id=\"empresa\"]/div/a[2]/img"));
+    	
+        WebElement imagefccn = driver.findElement(By.xpath( "//*[@id=\"wp_editor_widget-10\"]/div/div[1]/a/img" ));
+        WebElement imageSponsor = driver.findElement(By.xpath("//*[@id=\"wp_editor_widget-10\"]/div/div[2]/a/img"));
         String srcFccn 		= imagefccn.getAttribute("src");
         String srcSponsor 	= imageSponsor.getAttribute("src");
         return srcFccn.endsWith("logo-fccn.png") && srcSponsor.endsWith("10-Digital_PT_4C_H_FC_MCTES_opt-e1491300980870.png");
@@ -347,7 +348,7 @@ public class IndexPage {
      */
     public boolean checkFooterLinks( String language ) {
 		System.out.println( "[checkFooterLinks]" );
-    	String xpatha = "//*[@id=\"links\"]/div/div/ul/li/a"; //get footer links
+    	String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
     	
     	
     	
@@ -397,7 +398,7 @@ public class IndexPage {
      
      private void sleepThread( ) {
  		try {
- 			Thread.sleep( 4000 );
+ 			Thread.sleep( 6000 );
  		} catch ( InterruptedException e ) {
  			e.printStackTrace( );
  		}
