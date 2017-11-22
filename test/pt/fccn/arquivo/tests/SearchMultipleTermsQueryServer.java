@@ -18,7 +18,7 @@ public class SearchMultipleTermsQueryServer  extends WebDriverTestBaseParalell{
     @Test
     @Retry
     public void searchMultipleTermsQueryServer( ) {
-    	System.out.print( "Running SearchMultipleTermsQueryServer. \n" );
+    	System.out.println( "Running SearchMultipleTermsQueryServer. \n" );
         IndexPage index = new IndexPage( driver );
         Ispre_prod = index.setPreProd( pre_prod );
         
@@ -27,7 +27,6 @@ public class SearchMultipleTermsQueryServer  extends WebDriverTestBaseParalell{
         index.goToIndex( ); 
         assertTrue("Failed The Search Multiple Terms Test in English", index.searchMultipleTerms( "EN" ) );
         System.out.println( "Success The Search Multiple Terms Test in English" );
-      
     }
 	
 

@@ -118,7 +118,20 @@ public class SearchPage {
     	  return true;
     }
     
-    
+    /**
+     * Verify that the spellchecker no suggests a correct query (#30 issue github)
+     * @param query the test query for the spellchecker
+     * @return 
+     */
+    public boolean spellcheckerCorrect( ) {
+    	System.out.println( "[SpellCheckerCorrect]" );
+
+    	if( driver.findElements( By.xpath( "//*[@id=\"second-column\"]/div[2]/span/a" ) ).size( ) <= 0 )  
+        	return true;
+        else
+        	return false;
+    	
+    }    
     
     
     /**

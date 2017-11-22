@@ -25,13 +25,12 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Simao Fontes
  *
  */
-@RunWith(Suite.class)
+@RunWith( Suite.class )
 /*@SuiteClasses({ TestSearchOneTerm.class,HighlightsTest.class, 
         TermsAndConditionsTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class,UrlsearchTest.class, ReplayTest.class })*/
 // HighlightsTest.class 
-@SuiteClasses({ TestSearchOneTerm.class, ReplayTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class, UrlsearchTest.class, FooterTest.class, SearchMultipleTermsQueryServer.class }) 
+@SuiteClasses({ TestSearchOneTerm.class, ReplayTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class, UrlsearchTest.class, FooterTest.class, SearchMultipleTermsQueryServer.class, SpellcheckerTest.class }) 
 //TODO refactoring TermsAndConditionsTest.class
-
 public class AllTests {
 
 }

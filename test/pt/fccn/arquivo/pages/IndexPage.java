@@ -146,7 +146,6 @@ public class IndexPage {
             
             sleepThread( );
             
-            //String[ ] terms = term.split( " " );
             if( driver.findElements( By.xpath( xpathNumberOfResults ) ).size( ) <= 0 )  
             	return false;
         }
@@ -386,7 +385,7 @@ public class IndexPage {
     /**
      * Change to the English version
      */
-     private void switchLanguage( ){
+     public void switchLanguage( ){
      	String xpathEnglishVersion = "//*[@id=\"language\"]/div/ul[2]/li[2]/a";
        	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
        		System.out.println( "Change language to English" );
