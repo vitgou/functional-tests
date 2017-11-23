@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Map;
 
 public class AnalyzeURLs {
@@ -168,6 +169,7 @@ public class AnalyzeURLs {
 	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
 	    		// get the cookie if need, for login
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
+	    		newUrl = URLEncoder.encode( newUrl ,"UTF-8");
 	    		
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
@@ -175,10 +177,10 @@ public class AnalyzeURLs {
 				con.setRequestMethod( "HEAD" );
 	    		con.setRequestProperty( "Cookie", cookies );
 	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
-	    		con.addRequestProperty( "User-Agent", "Mozilla" );
+	    		con.addRequestProperty( "User-Agent", "Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0" );
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
-
+	    		
 	    		URLName = newUrl;
 	    		System.out.println( "Link["+URLName+"] Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
 	    		redirect = checkRedirect( status );
