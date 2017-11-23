@@ -32,10 +32,11 @@ import pt.fccn.saw.selenium.Retry;
 public class TestSponsorImage extends WebDriverTestBaseParalell {
     public TestSponsorImage(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
-    } 
+    }
+    
     @Test
     @Retry
-    public void testSponsorImage() {
+    public void testSponsorImage( ) {
     	System.out.print("Running TestSponsorImage. \n");
         IndexPage index = new IndexPage(driver);
         assertTrue("The image from the gov sponsor is incorrect.",

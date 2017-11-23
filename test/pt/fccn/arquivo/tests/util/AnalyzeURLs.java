@@ -180,11 +180,11 @@ public class AnalyzeURLs {
 	    		status = con.getResponseCode( );
 
 	    		URLName = newUrl;
-	    		System.out.println( "Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
+	    		System.out.println( "Link["+URLName+"] Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
 	    		redirect = checkRedirect( status );
 	    		con.disconnect( );
 	    	}
-	    	
+	    	System.out.println( "return status-code["+status+"]" );
 	    	return checkOk( status );
 	
 	    } catch ( MalformedURLException e ) {

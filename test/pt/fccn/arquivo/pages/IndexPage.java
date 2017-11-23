@@ -350,9 +350,7 @@ public class IndexPage {
 		System.out.println( "[checkFooterLinks]" );
     	String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
     	
-    	
-    	
-   		if( language.equals( "EN" ) ) 
+    	if( language.equals( "EN" ) ) 
    			switchLanguage( );
 
     	try{
@@ -380,7 +378,6 @@ public class IndexPage {
             e.printStackTrace( );
             return false;
     	}
-    	
     
     }
 
