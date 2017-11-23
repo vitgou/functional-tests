@@ -35,7 +35,7 @@ public class TestSponsorImage extends WebDriverTestBaseParalell {
     } 
     @Test
     @Retry
-    public void test() {
+    public void testSponsorImage() {
     	System.out.print("Running TestSponsorImage. \n");
         IndexPage index = new IndexPage(driver);
         assertTrue("The image from the gov sponsor is incorrect.",
