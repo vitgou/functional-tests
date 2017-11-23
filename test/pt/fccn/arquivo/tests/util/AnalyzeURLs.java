@@ -167,16 +167,14 @@ public class AnalyzeURLs {
 	    		// get redirect url from "location" header field
 	    		String newUrl = con.getHeaderField( "Location" );
 	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
-	    		// get the cookie if need, for login
-	    		String cookies = con.getHeaderField( "Set-Cookie" );
-	    		newUrl = URLEncoder.encode( newUrl ,"UTF-8");
 	    		
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
-	    		con.setRequestProperty( "Cookie", cookies );
 	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
+	    		con.setRequestProperty( "Accept-Charset" , "UTF-8" );
+	    		con.setRequestProperty( "Content-Type" , "application/x-www-form-urlencoded;charset=UTF-8" );
 	    		con.addRequestProperty( "User-Agent", "Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0" );
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
