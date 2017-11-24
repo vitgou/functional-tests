@@ -34,10 +34,6 @@ public class IndexMobilePage {
         // Check that we're on the right page.
         String pageTitle= driver.getTitle( );
         System.out.println( "pageTile = " + pageTitle );
-        //if (!(pageTitle.contentEquals(titleTextEN) || (pageTitle.contentEquals(titleTextPT))) ){
-        if( "ola".equals( "adeus" ) ) {
-            throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
-        }
     }
     
     public void testPrint( ) {
