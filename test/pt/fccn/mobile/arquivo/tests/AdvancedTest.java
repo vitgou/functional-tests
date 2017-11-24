@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import pt.fccn.mobile.arquivo.pages.AdvancedSearchPage;
 import pt.fccn.mobile.arquivo.pages.IndexMobilePage;
+import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 public class AdvancedTest extends WebDriverTestBaseParalell {
@@ -17,7 +18,8 @@ public class AdvancedTest extends WebDriverTestBaseParalell {
 	
 	String term = "Pesquisa Avançada — Arquivo.pt";
     @Test
-    public void SearchAdvancedTest( ) {
+    @Retry
+    public void searchAdvancedTest( ) {
     	System.out.print( "[Mobile] Running SearchAdvancedTest URL. \n");
 		IndexMobilePage index = null;
 		index = new IndexMobilePage( driver );

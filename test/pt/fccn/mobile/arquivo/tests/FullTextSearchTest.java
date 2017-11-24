@@ -19,8 +19,8 @@ public class FullTextSearchTest extends WebDriverTestBaseParalell {
 	}
 	
 	@Test
-	//@Retry
-	public void searchingTest( )  {
+	@Retry
+	public void fullTextSearchTest( )  {
 		System.out.print( "[Mobile] Running SearchTest Test. \n");
 		IndexMobilePage index = null;
 		index = new IndexMobilePage( driver );

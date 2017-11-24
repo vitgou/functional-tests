@@ -14,8 +14,8 @@ public class URLSearchTest extends WebDriverTestBaseParalell {
 	}
 	
 	@Test
-	//@Retry
-	public void searchingTest( )  {
+	@Retry
+	public void uRLSearchTest( )  {
 		System.out.print( "[Mobile] Running URL SearchTest Test. \n");
 		IndexMobilePage index = null;
 		index = new IndexMobilePage( driver );
