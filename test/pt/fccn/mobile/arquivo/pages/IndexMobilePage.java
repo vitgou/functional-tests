@@ -17,7 +17,7 @@ public class IndexMobilePage {
     private String url =null;
     private String[ ] topicsToSearch = new String[ ]{ "Antonio Costa" , "livros" , "Simone de Beauvoir" };
     private String[ ] URLToSearch = new String[ ]{ "cienciaHoje.pt" , "uc.pt" };
-    private final int timeout = 50;
+    private final int timeout = 60;
     private boolean isPreProd=false;
     /**
      * Starts a new Index page
