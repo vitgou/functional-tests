@@ -102,7 +102,7 @@ public class AdvancedSearchPage {
 		
 	private boolean checkSiteResults( String siteSearch ) {
 		System.out.println( "[AdvancedSearch][checkSiteResults]" );
-		String getURLResults = "//*[@id=\"resultados-lista\"]/ul/li/div[1]";
+		String getURLResults = "//*[@id=\"resultados-lista\"]/ul/li/div[1]/div/a";
 		String domainSearch = expandURL( siteSearch.toLowerCase( ).trim( ) );
 
 	    try{
