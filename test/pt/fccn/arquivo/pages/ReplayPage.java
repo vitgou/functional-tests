@@ -462,9 +462,9 @@ public class ReplayPage {
 
         String expectedemailTitle = prop.getProperty("mailTitle");
 
-        if(emailHref.equals(expectedemailHref)  && 
-           emailonClick.contains(expectedemailonClick) &&
-           emailTitle.equals(expectedemailTitle)){
+        if(emailHref.toLowerCase( ).equals(expectedemailHref.toLowerCase( ))  && 
+           emailonClick.toLowerCase( ).contains(expectedemailonClick.toLowerCase( )) &&
+           emailTitle.toLowerCase( ).equals(expectedemailTitle.toLowerCase( ) )){
           return true;
         }
         else{
