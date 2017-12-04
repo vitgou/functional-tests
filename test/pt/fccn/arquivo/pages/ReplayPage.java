@@ -100,7 +100,8 @@ public class ReplayPage {
     private String baseScreenshotURL;
 
     public ReplayPage(WebDriver driver, boolean isPreProd) {
-        this.driver = driver;
+        System.out.println( "[ReplayPage]" );
+    	this.driver = driver;
         //driver.manage().window().setSize(new Dimension(1280, 768)); 
         br = null;
         pageUrl = driver.getCurrentUrl();
@@ -109,7 +110,7 @@ public class ReplayPage {
         baseScreenshotURL = serverName + "screenshot/?url=";
         logoURLPTExpected = searchURL+"/?l=pt";
         prop = new Properties();
-    
+        System.out.println( "[ReplayPage] read properties" );
         try {
           
 
@@ -122,7 +123,7 @@ public class ReplayPage {
             br = new BufferedReader(new FileReader(filenamePreProd));
           else
             br = new BufferedReader(new FileReader(filenameProd)); 
-
+          System.out.println( "[ReplayPage] read testURLs" );
           while ((currentLine = br.readLine()) != null) {
             String[] parts = currentLine.split("\t");
             /*parts[0] is the timestamp/url */

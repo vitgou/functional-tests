@@ -162,7 +162,7 @@ public class Arcproxyinspection {
 	 */
 	private String  getIdTitle (String server, String id,String[] Url){		
 		try{
-			WebDriverWait wait = new WebDriverWait(driver, 25);
+			WebDriverWait wait = new WebDriverWait(driver, 65);
 			if (!this.isPredProd){
 				System.out.println("URL: " + server+Url[0].substring(7)+"wayback/"+id );
 				driver.get("http://"+server+Url[0].substring(7)+"wayback/"+id);

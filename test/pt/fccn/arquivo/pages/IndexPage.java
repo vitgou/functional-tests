@@ -55,9 +55,8 @@ public class IndexPage {
     private static final String titleTextPT = "Arquivo.pt: pesquise páginas do passado";
     private static final String cssTermsConditions = "#terms-conditions";
     private boolean isPreProd=false;
-    private final int timeout = 80;
+    private final int timeout = 90;
     private final String[ ] multipleTerms = new String[ ]{ "\"protocolo de coprodução portugal brasil instituto cinema\"", 
-    														"\"Os incêndios e a desertificação de Portugal florestal\"",
     														"tempo 4 de julho de 2012" };
     
     
