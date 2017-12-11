@@ -29,8 +29,9 @@ import org.junit.runners.Suite.SuiteClasses;
 /*@SuiteClasses({ TestSearchOneTerm.class,HighlightsTest.class, 
         TermsAndConditionsTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class,UrlsearchTest.class, ReplayTest.class })*/
 // HighlightsTest.class 
-@SuiteClasses({ TestSearchOneTerm.class, ReplayTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class, UrlsearchTest.class, FooterTest.class, SearchMultipleTermsQueryServer.class, SpellcheckerTest.class }) 
-//TODO refactoring TermsAndConditionsTest.class
+@SuiteClasses({ TestSearchOneTerm.class, ReplayTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class, UrlsearchTest.class, FooterTest.class, SpellcheckerTest.class }) 
+//TODO refactoring TermsAndConditionsTest.class 
+//TODO SearchMultipleTermsQueryServer.class
 public class AllTests {
 
 }
