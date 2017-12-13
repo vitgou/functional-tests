@@ -63,7 +63,8 @@ public class IndexSobrePage {
         String pageTitle= driver.getTitle( );
         Charset.forName( "UTF-8" ).encode( pageTitle );
         System.out.println( "Page title = " + pageTitle + " == " + prop.getProperty( "title_pt" ) );
-        if ( !( pageTitle.contentEquals( prop.getProperty( "title_pt" ) ) || (pageTitle.contentEquals("title_en") ) ) ){
+        if ( !( pageTitle.toLowerCase( ).contains( prop.getProperty( "title_pt" ).toLowerCase( ) ) )  || 
+        		!( pageTitle.toLowerCase( ).contains( prop.getProperty( "title_en" ).toLowerCase( ) ) )){
             throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
         }
     }
