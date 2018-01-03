@@ -39,6 +39,7 @@ public class AdvancedTest extends WebDriverTestBaseParalell{
      */
 	String term = "Pesquisa Avançada — Arquivo.pt";
     @Test
+    @Retry
     public void AdvancedTest( ) {
     	System.out.print( "Running AdvancedTest. \n" );
         IndexPage index = new IndexPage( driver );

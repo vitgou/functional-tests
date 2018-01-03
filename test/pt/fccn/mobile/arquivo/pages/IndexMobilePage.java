@@ -15,7 +15,7 @@ public class IndexMobilePage {
     // Webdriver that handles page interractions
     private final WebDriver driver;
     private String url =null;
-    private String[ ] topicsToSearch = new String[ ]{ "Antonio Costa" , "livros" , "Simone de Beauvoir" };
+    private String[ ] topicsToSearch = new String[ ]{ "Antonio Costa"  , "Simone de Beauvoir" };
     private String[ ] URLToSearch = new String[ ]{ "cienciaHoje.pt" , "uc.pt" };
     private final int timeout = 75;
     private boolean isPreProd=false;

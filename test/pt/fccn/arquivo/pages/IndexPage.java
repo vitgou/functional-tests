@@ -193,16 +193,18 @@ public class IndexPage {
      * @return result page for query
      */
     public OpenSearchPage opensearch(String searchTerms,boolean isPredprod){
-        Document doc = null;
+        System.out.println( "[TestSearchOneTermOpenSearch] [opensearch]" );
+    	Document doc = null;
         try
         {
             String[] Url = driver.getCurrentUrl().split(".pt");
             DocumentBuilderFactory f = 
                     DocumentBuilderFactory.newInstance();
             DocumentBuilder b = f.newDocumentBuilder();
+            System.out.println( "[TestSearchOneTermOpenSearch] [opensearch] URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
             doc = b.parse(Url[0]+".pt/opensearch?query="+searchTerms);
             doc.getDocumentElement().normalize();
-            System.out.println("URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
+            System.out.println("[TestSearchOneTermOpenSearch] [opensearch] URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
             /*driver.get(Url[0]+".pt/opensearch?query="+searchTerms);*/      
                         
             /*

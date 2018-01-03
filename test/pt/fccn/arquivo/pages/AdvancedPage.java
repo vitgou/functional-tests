@@ -42,7 +42,7 @@ public class AdvancedPage {
     private final String listOfResultsTag = "resultados-lista";
     private String results_withWWW=null;
     private String results_withoutWWW=null;
-    private final int timeout = 50;
+    private final int timeout = 75;
     private static final int waitingPeriod = 3000; //Time to load the Web page in miliseconds
     // Patern to detect if there are results
     
