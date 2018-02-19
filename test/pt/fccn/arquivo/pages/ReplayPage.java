@@ -267,9 +267,9 @@ public class ReplayPage {
      */
     public boolean printOk(String currentURL){
       try{
-    	//*[@id="printOption"]
-        String printHref = driver.findElement(By.xpath("//*[@id=\"printOption\"]")).getAttribute("href");
-        String printTitle = driver.findElement(By.xpath("//*[@id=\"printOption\"]")).getAttribute("title");
+    	//*[@id="printLi"]
+        String printHref = driver.findElement(By.xpath("//li[@id=\"printLi\"]/a")).getAttribute("href");
+        String printTitle = driver.findElement(By.xpath("//li[@id=\"printLi\"]/a")).getAttribute("title");
         
         String expectedprintHref= "javascript:getImageToPrint(\""+ encodeURIComponent(serverName + "noFrame/replay/" + currentURL)+ "\")";
         String expectedprintTitle=prop.getProperty("printTitle");
@@ -301,6 +301,7 @@ public class ReplayPage {
      */
     public boolean facebookOk(String currentURL){
       try{
+    	//*[@id="facebook_share"]/a
         String faceClass = driver.findElement(By.xpath("//li[@class=\"facebook\"]/a")).getAttribute("class");
         String faceTitle = driver.findElement(By.xpath("//li[@class=\"facebook\"]/a")).getAttribute("title");
         
