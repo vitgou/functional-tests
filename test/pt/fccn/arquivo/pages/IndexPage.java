@@ -386,7 +386,7 @@ public class IndexPage {
      * Change to the English version
      */
      public void switchLanguage( ){
-     	String xpathEnglishVersion = "//*[@id=\"language\"]";
+     	String xpathEnglishVersion = "//*[@id=\"changeLanguage\"]";
        	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
        		System.out.println( "Change language to English" );
        		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );

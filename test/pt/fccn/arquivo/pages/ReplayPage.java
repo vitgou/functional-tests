@@ -267,8 +267,9 @@ public class ReplayPage {
      */
     public boolean printOk(String currentURL){
       try{
-        String printHref = driver.findElement(By.xpath("//a[@id=\"a_print\"]")).getAttribute("href");
-        String printTitle = driver.findElement(By.xpath("//a[@id=\"a_print\"]")).getAttribute("title");
+    	//*[@id="printOption"]
+        String printHref = driver.findElement(By.xpath("//[@id=\"printOption\"]")).getAttribute("href");
+        String printTitle = driver.findElement(By.xpath("//[@id=\"printOption\"]")).getAttribute("title");
         
         String expectedprintHref= "javascript:getImageToPrint(\""+ encodeURIComponent(serverName + "noFrame/replay/" + currentURL)+ "\")";
         String expectedprintTitle=prop.getProperty("printTitle");
