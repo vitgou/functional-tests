@@ -173,7 +173,7 @@ public class ReplayPage {
         				+ "email["+emailOk(currentURL)+"] tableOfVersion["+tableOfVersionsOk(currentURL)+"] "
         					+ " logo["+logoOk(currentURL)+"] checkLefMenu["+checkLeftMenu(currentURL)+"]" );
         if(!replayBarURLsOk(currentURL) ||  
-           /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
+           /*!screenshotOk(currentURL) || !printOk(currentURL) ||*/
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
            !emailOk(currentURL) ||
            !tableOfVersionsOk(currentURL) || !logoOk(currentURL) ||
@@ -264,10 +264,10 @@ public class ReplayPage {
 
     /**
      * Check if the print href and title are correct
+     * TODO:: Update this new version popup
      */
     public boolean printOk(String currentURL){
       try{
-    	//*[@id="printLi"]
         String printHref = driver.findElement(By.xpath("//li[@id=\"printLi\"]/a")).getAttribute("href");
         String printTitle = driver.findElement(By.xpath("//li[@id=\"printLi\"]/a")).getAttribute("title");
         
