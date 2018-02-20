@@ -13,9 +13,9 @@ import pt.fccn.mobile.arquivo.tests.URLSearchTest;
  *
  */
 @RunWith( Suite.class )
-@SuiteClasses( { URLSearchTest.class } )
+@SuiteClasses( { AdvancedTest.class } )
 //Error , AdvancedTest.class
-//Success FullTextSearchTest.class
+//Success FullTextSearchTest.class , URLSearchTest.class
 public class TestSuite {
 
 }
