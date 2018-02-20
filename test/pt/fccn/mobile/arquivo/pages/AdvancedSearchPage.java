@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -138,8 +139,8 @@ public class AdvancedSearchPage {
     	String inputSearch = "//*[@id=\"adv_and\"]"; //*[@id="adv_and"]
     	String inputExpression = "//*[@id=\"adv_phr\"]"; //*[@id="adv_phr"]
     	String inputNeg = "//*[@id=\"adv_not\"]"; //*[@id="adv_not"]
-    	String buttonSearch = "//*[@id=\"btnSubmitBottom\"]";
-
+    	String buttonSearch = "//*[@id=\"btnSubmitBottom\"]"; //*[@id="btnSubmitBottom"]
+    	
 		try{
 			WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	            .until(
@@ -199,6 +200,10 @@ public class AdvancedSearchPage {
         
         sleepThread( );
         
+        JavascriptExecutor jsx = (JavascriptExecutor)driver;
+        jsx.executeScript("window.scrollBy(0,450)", "");
+        
+        
         WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
@@ -241,6 +246,9 @@ public class AdvancedSearchPage {
         elementNeg.sendKeys( negTerm );
         
         sleepThread( );
+        
+        JavascriptExecutor jsx = (JavascriptExecutor)driver;
+        jsx.executeScript("window.scrollBy(0,450)", "");
         
         WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
