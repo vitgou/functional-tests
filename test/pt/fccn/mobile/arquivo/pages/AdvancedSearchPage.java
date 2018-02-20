@@ -258,7 +258,7 @@ public class AdvancedSearchPage {
 	
 	private boolean checkResults( String[ ] terms ) {
 		System.out.println( "[AdvancedSearch][checkResults]" );
-		String getResumeResults = "//*[@id=\"resultados-lista\"]/ul/li/span[1]/em";
+		String getResumeResults = "//*[@id=\"resultados-lista\"]/ul/li[1]/div[2]/span/em";
 		boolean checkTerm = false;
 	    try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
