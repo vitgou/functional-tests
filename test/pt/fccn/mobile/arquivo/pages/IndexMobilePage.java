@@ -265,7 +265,7 @@ public class IndexMobilePage {
 	
 	private boolean checkResults( String[ ] terms ) {
 		System.out.println( "[checkResults]" );
-		String getResumeResults = "//*[@id=\"resultados-lista\"]/ul/li/span[1]/em";
+		String getResumeResults = "//*[@id=\"resultados-lista\"]/ul/li[1]/div[2]/span/em";
 		boolean checkTerm = false;
 	    try{
     		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
@@ -308,8 +308,15 @@ public class IndexMobilePage {
     * Change to the English version
     */
     private void switchLanguage( ){
-    	String xpathEnglishVersion = "//*[@id=\"languageSelection\"]";
-      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "EN" ) ) {
+    	String xpathEnglishVersion = "//*[@id=\"changeLanguage\"]";
+    	String xpathMenu =  "//*[@id=\"menuButton\"]";
+        WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated(
+                				By.xpath( xpathMenu ) ) );
+            btnSubmitElement.click( );
+            
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).trim( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
       		sleepThread( );
