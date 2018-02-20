@@ -47,7 +47,7 @@ public class IndexMobilePage {
     public AdvancedSearchPage goToAdvancedPage( ) {
     	
     	String xpathButton = "//*[@id=\"menuButton\"]";
-    	String xpathAdvancedSearchMenu = "//*[@id=\"mainMenu\"]/a[2]";
+    	String xpathAdvancedSearchMenu = "/html/body/div/div/div[2]/a[2]";
     	try{
             System.out.println( "Start goToAdvancedPage( ) method" );
             WebElement menuButton = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/

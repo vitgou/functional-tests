@@ -15,7 +15,7 @@ public class AdvancedSearchPage {
 	private final WebDriver driver;
 	private final String topicsToSearch = "expo 98";
 	private final String negTerm = "concerto";
-	private final String expressionTerm = "\"pavilhao da utopia\"";
+	private final String expressionTerm = "pavilhao da utopia";
 	private final String[ ] terms = new String[ ]{ "pavilhao da utopia", "pavilhao",  "da",  "utopia", "expo" , "98" };
 	private final String siteSearch = "www.arquivo.pt";
 	private final int timeout = 50;
@@ -133,12 +133,20 @@ public class AdvancedSearchPage {
     
     public boolean checkAdvancedSearch( String language ) {
     	System.out.println(  "[checkAdvancedSearch]" );
-    	String inputSearch = "//*[@id=\"adv_and\"]";
-    	String inputExpression = "//*[@id=\"adv_phr\"]";
-    	String inputNeg = "//*[@id=\"adv_not\"]";
+    	String xpathExpandableDiv = "//*[@id=\"conteudo-pesquisa\"]/form/div[1]";
+    	
+    	String inputSearch = "//*[@id=\"adv_and\"]"; //*[@id="adv_and"]
+    	String inputExpression = "//*[@id=\"adv_phr\"]"; //*[@id="adv_phr"]
+    	String inputNeg = "//*[@id=\"adv_not\"]"; //*[@id="adv_not"]
     	String buttonSearch = "//*[@id=\"btnSubmitBottom\"]";
 
 		try{
+			WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+	            .until(
+	            		ExpectedConditions.presenceOfElementLocated(
+	            				By.xpath( xpathExpandableDiv ) ) );
+	        btnSubmitElement.click( );
+			
 			if( language.equals( "EN" ) ) {
 				switchLanguage( );
 				if( searchFullTextEN( inputSearch , inputExpression , inputNeg , buttonSearch ) )
