@@ -200,14 +200,13 @@ public class AdvancedSearchPage {
         
         sleepThread( );
         
-        JavascriptExecutor jsx = (JavascriptExecutor)driver;
-        jsx.executeScript("window.scrollBy(0,450)", "");
-        
-        
         WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
             				By.xpath( buttonSearch ) ) );
+        
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btnSubmitElement);
+        
         btnSubmitElement.click( );
         
         sleepThread( );
@@ -246,15 +245,14 @@ public class AdvancedSearchPage {
         elementNeg.sendKeys( negTerm );
         
         sleepThread( );
-        
-        JavascriptExecutor jsx = (JavascriptExecutor)driver;
-        jsx.executeScript("window.scrollBy(0,450)", "");
-        
+                
         WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
             				By.xpath( buttonSearch ) ) );
         btnSubmitElement.click( );
+        
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btnSubmitElement);
         
         sleepThread( );
        
@@ -371,7 +369,7 @@ public class AdvancedSearchPage {
 
     private void sleepThread( ) {
  		try {
- 			Thread.sleep( 3000 );
+ 			Thread.sleep( 5000 );
  		} catch ( InterruptedException e ) {
  			e.printStackTrace( );
  		}
