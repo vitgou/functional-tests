@@ -38,17 +38,18 @@ public class AdvancedSearchPage {
     
     public boolean checkSiteOperator( String  language ) {
     	System.out.println(  "[checkSiteOperator]" );
-    	String inputSearch 		= "//*[@id=\"adv_and\"]";
-    	String divExpandable 	= "//*[@id=\"domains\"]/legend/i";
-    	String inputSiteSearch 	= "//*[@id=\"site\"]"; 
-    	String buttonSearch 	= "//*[@id=\"btnSubmitBottom\"]";
-    	
+    	String divExpandable 		= "//*[@id=\"conteudo-pesquisa\"]/form/div[1]";
+    	String inputSearch 			= "//*[@id=\"adv_and\"]";
+    	String divExpandableSite 	= "//*[@id=\"conteudo-pesquisa\"]/form/div[4]";
+    	String inputSiteSearch 		= "//*[@id=\"site\"]"; 
+    	String buttonSearch 		= "//*[@id=\"btnSubmitBottom\"]";
+
 		try{
 			if( language.equals( "EN" ) ) {
 				switchLanguage( );
 			}
 			
-			if( searchSiteSearch( inputSearch , inputSiteSearch , divExpandable , buttonSearch ) )
+			if( searchSiteSearch( divExpandable , inputSearch , inputSiteSearch , divExpandableSite , buttonSearch ) )
 				return true;
 			else 
 				return false;
@@ -60,21 +61,30 @@ public class AdvancedSearchPage {
     	}
     }
     
-	private boolean searchSiteSearch( String inputSearch, String inputSiteSearch, String divExpandable, String buttonSearch ) {
+	private boolean searchSiteSearch( String divExpandable , String inputSearch, String inputSiteSearch, String divExpandableSite, String buttonSearch ) {
 		System.out.println( "[searchSiteSearch]" );
         
-    	System.out.println( "Search for " + topicsToSearch );
-		WebElement elementSearch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+    	System.out.println( "SiteSearch for " + topicsToSearch );
+		
+        WebElement divExpandableElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated(
+                				By.xpath( divExpandable ) ) );
+        divExpandableElement.click( );
+        
+        System.out.println( "Site	-> 0" );
+    	WebElement elementSearch = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
                 		ExpectedConditions.presenceOfElementLocated( 
                 				By.xpath( inputSearch ) ) );
 		elementSearch.clear( );
 		elementSearch.sendKeys( topicsToSearch );
+		
 		System.out.println( "Site	-> 1" );
 	    WebElement divElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	            .until(
 	            		ExpectedConditions.presenceOfElementLocated(
-	            				By.xpath( divExpandable ) ) );
+	            				By.xpath( divExpandableSite ) ) );
 	    divElement.click( );
 	        
 	    sleepThread( );
@@ -300,8 +310,15 @@ public class AdvancedSearchPage {
     */
     private void switchLanguage( ){
     	System.out.println( "[switchLanguage]" );
-    	String xpathEnglishVersion = "//*[@id=\"languageSelection\"]";
-      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "EN" ) ) {
+    	String xpathEnglishVersion = "//*[@id=\"changeLanguage\"]";
+    	String xpathMenu =  "//*[@id=\"menuButton\"]";
+        WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
+                .until(
+                		ExpectedConditions.presenceOfElementLocated(
+                				By.xpath( xpathMenu ) ) );
+            btnSubmitElement.click( );
+            
+      	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).trim( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
       		sleepThread( );
