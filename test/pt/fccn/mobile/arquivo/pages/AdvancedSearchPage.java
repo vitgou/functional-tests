@@ -70,7 +70,7 @@ public class AdvancedSearchPage {
                 				By.xpath( inputSearch ) ) );
 		elementSearch.clear( );
 		elementSearch.sendKeys( topicsToSearch );
-        
+		System.out.println( "Site	-> 1" );
 	    WebElement divElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
 	            .until(
 	            		ExpectedConditions.presenceOfElementLocated(
@@ -78,7 +78,7 @@ public class AdvancedSearchPage {
 	    divElement.click( );
 	        
 	    sleepThread( );
-	    
+	    System.out.println( "Site	-> 2" );
 		System.out.println( "Search for site \"" + siteSearch+ "\"" );
         WebElement elementExpression = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
@@ -86,7 +86,7 @@ public class AdvancedSearchPage {
                 				By.xpath( inputSiteSearch ) ) );
         elementExpression.clear( );
         elementExpression.sendKeys( siteSearch );
-        
+        System.out.println( "Site	-> 3" );
         WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
@@ -94,10 +94,10 @@ public class AdvancedSearchPage {
         btnSubmitElement.click( );
         
         sleepThread( );
-       
+       /*
         if( !checkSiteResults( siteSearch ) )
         	return false;
-
+*/
         return true;
 	}
 		
