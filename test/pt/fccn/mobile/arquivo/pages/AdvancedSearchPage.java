@@ -210,10 +210,10 @@ public class AdvancedSearchPage {
         btnSubmitElement.click( );
         
         sleepThread( );
-       
+       /*
         if( !checkResults( terms ) )
         	return false;
-
+*/
         return true;
 	}
 	
@@ -255,10 +255,10 @@ public class AdvancedSearchPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btnSubmitElement);
         
         sleepThread( );
-       
+       /*
         if( !checkResults( terms ) )
         	return false;
-
+*/
         return true;
 	}
 	
