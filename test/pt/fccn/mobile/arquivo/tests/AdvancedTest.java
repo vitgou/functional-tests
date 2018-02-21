@@ -18,7 +18,7 @@ public class AdvancedTest extends WebDriverTestBaseParalell {
 	
 	String term = "Pesquisa Avançada — Arquivo.pt";
     @Test
-    @Retry
+    //@Retry
     public void searchAdvancedTest( ) {
     	System.out.print( "[Mobile] Running SearchAdvancedTest URL. \n");
 		IndexMobilePage index = null;

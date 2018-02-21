@@ -237,7 +237,7 @@ public class AdvancedSearchPage {
                 				By.xpath( inputSearch ) ) );
 		elementSearch.clear( );
 		elementSearch.sendKeys( topicsToSearch );
-		
+        
 		System.out.println( "Search for expression \"" + expressionTerm+ "\"" );
         WebElement elementExpression = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
@@ -254,21 +254,23 @@ public class AdvancedSearchPage {
         elementNeg.clear( );
         elementNeg.sendKeys( negTerm );
         
+        
         sleepThread( );
-                
+        
         WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
             .until(
             		ExpectedConditions.presenceOfElementLocated(
             				By.xpath( buttonSearch ) ) );
-        btnSubmitElement.click( );
         
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btnSubmitElement);
+        
+        btnSubmitElement.click( );
         
         sleepThread( );
        /*
         if( !checkResults( terms ) )
         	return false;
-		*/
+*/
         return true;
 	}
 	
