@@ -319,7 +319,7 @@ public class AdvancedSearchPage {
                 		ExpectedConditions.presenceOfElementLocated(
                 				By.xpath( xpathMenu ) ) );
             btnSubmitElement.click( );
-            
+        System.out.println( "[switchLanguage] getText = " + driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).trim( ) );    
       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).trim( ).equals( "English" ) ) {
       		System.out.println( "Change language to English" );
       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
