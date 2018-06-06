@@ -168,7 +168,7 @@ public class ReplayPage {
         }  
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
         
-        System.out.println( "[replayBarTest][inspectURLs] Bar["+replayBarURLsOk(currentURL)+"] print["+printOk(currentURL)+"] "
+        System.out.println( "[replayBarTest][inspectURLs] Bar["+replayBarURLsOk(currentURL)+"] "
         		+ "facebook["+facebookOk(currentURL)+"] twitter["+twitterOk(currentURL)+"] "
         				+ "email["+emailOk(currentURL)+"] tableOfVersion["+tableOfVersionsOk(currentURL)+"] "
         					+ " logo["+logoOk(currentURL)+"] checkLefMenu["+checkLeftMenu(currentURL)+"]" );
