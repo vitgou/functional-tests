@@ -112,12 +112,10 @@ public class ReplayPage {
         prop = new Properties();
         System.out.println( "[ReplayPage] read properties" );
         try {
-          
-
-            inputPt = new BufferedReader(new InputStreamReader(new FileInputStream("pt.properties"), "UTF8"));
-            inputEn = new BufferedReader(new InputStreamReader(new FileInputStream("en.properties"), "UTF8"));
-            prop.load(inputPt);
-            // start with properties in PT
+          inputPt = new BufferedReader(new InputStreamReader(new FileInputStream("pt.properties"), "UTF8"));
+          inputEn = new BufferedReader(new InputStreamReader(new FileInputStream("en.properties"), "UTF8"));
+          prop.load(inputPt);
+          // start with properties in PT
           String currentLine;
           if(isPreProd)
             br = new BufferedReader(new FileReader(filenamePreProd));
@@ -385,11 +383,11 @@ public class ReplayPage {
         String hours = currentURL.substring(8,10);
         String minutes = currentURL.substring(10,12);  
 
-        System.out.println("Year: " + year);
+        /*System.out.println("Year: " + year);
         System.out.println("Month: " + monthStr);
         System.out.println("Day: " + day);
         System.out.println("Hours: " + hours);
-        System.out.println("Minutes: " + minutes);     
+        System.out.println("Minutes: " + minutes); */    
         
         // Check the year in the left menu and check if it is open
         String yearClass = driver.findElement(By.xpath("//a[@id=\""+year+"\"]")).getAttribute("class");
