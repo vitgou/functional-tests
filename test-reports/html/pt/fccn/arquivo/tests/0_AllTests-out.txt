@@ -1,23 +1,215 @@
-Run test in saucelabs
-Running testSearchOneTerm. 
-Run test in saucelabs
-Running HighlightsTest. 
-Run test in saucelabs
-Running TermsAndConditionsTest. 
-Run test in saucelabs
-Running TestSponsorImage. 
-Run test in saucelabs
-Running TestSearchOneTermOpenSearch. 
-Run test in saucelabs
-Running TestArcproxy. 
-Run test in saucelabs
-Running AdvancedTest. 
-Run test in saucelabs
-Running ReplayTest. 
-Inspecting URLS language: PT
-URL: http://www.sapo.pt/
-Expected URL: www.sapo.pt/
-Found URL: http://www.sapo.pt/
-Run test in saucelabs
-Running UrlsearchTest. 
+JSON: null
+You did not specify browsers, testing with firefox and chrome...
+JSON: null
+You did not specify browsers, testing with firefox and chrome...
+JSON: null
+You did not specify browsers, testing with firefox and chrome...
+JSON: null
+You did not specify browsers, testing with firefox and chrome...
+JSON: null
+You did not specify browsers, testing with firefox and chrome...
+JSON: null
+You did not specify browsers, testing with firefox and chrome...
+JSON: null
+You did not specify browsers, testing with firefox and chrome...
+JSON: null
+You did not specify browsers, testing with firefox and chrome...
+OS: Windows 7
+OS: Windows 8.1
+Version: 46
+Version: 41
+Browser: firefox
+Browser: chrome
+Device: null
+Device: null
+Orientation: null
+Orientation: null
+Evaluating retry ...
+Evaluating retry ...
+Screen Resolution: no
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+OS: Windows 7
+Version: 41
+Browser: chrome
+OS: Windows 8.1
+Version: 46
+Browser: firefox
+Device: null
+Device: null
+Orientation: null
+Orientation: null
+Evaluating retry ...
+Evaluating retry ...
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+OS: Windows 7
+OS: Windows 8.1
+Version: 46
+Browser: firefox
+Version: 41
+Device: null
+Browser: chrome
+Orientation: null
+Device: null
+Orientation: null
+Evaluating retry ...
+Evaluating retry ...
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+OS: Windows 7
+Version: 41
+OS: Windows 8.1
+Version: 46
+Browser: firefox
+Device: null
+Orientation: null
+Browser: chrome
+Device: null
+Orientation: null
+Evaluating retry ...
+Evaluating retry ...
+Screen Resolution: no
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+OS: Windows 7
+OS: Windows 8.1
+Version: 46
+Version: 41
+Browser: firefox
+Browser: chrome
+Device: null
+Device: null
+Orientation: null
+Orientation: null
+Evaluating retry ...
+Evaluating retry ...
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+OS: Windows 7
+Version: 41
+OS: Windows 8.1
+Version: 46
+Browser: firefox
+Device: null
+Orientation: null
+Browser: chrome
+Device: null
+Orientation: null
+Evaluating retry ...
+Evaluating retry ...
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+OS: Windows 7
+Version: 41
+OS: Windows 8.1
+Version: 46
+Browser: firefox
+Device: null
+Orientation: null
+Browser: chrome
+Device: null
+Orientation: null
+Evaluating retry ...
+Evaluating retry ...
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+OS: Windows 7
+Version: 41
+Browser: chrome
+Device: null
+OS: Windows 8.1
+Version: 46
+Orientation: null
+Browser: firefox
+Device: null
+Orientation: null
+Evaluating retry ...
+Evaluating retry ...
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Screen Resolution: no
+https://null:null@ondemand.saucelabs.com:443/wd/hub
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'p26.arquivo.pt', ip: '10.0.5.28', os.name: 'Linux', os.arch: 'amd64', os.version: '2.6.32-573.18.1.el6.x86_64', java.version: '1.7.0_71'
+Driver info: driver.version: RemoteWebDriver)
 
