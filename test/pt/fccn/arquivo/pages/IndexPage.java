@@ -365,9 +365,9 @@ public class IndexPage {
     		System.out.println( "[footer] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
-    			if( !url.startsWith( "http://www.facebook.com/" ) || 
-    					!url.startsWith( "https://www.facebook.com/" ) ||
-                        !url.startsWith("https://github.com/") ){
+    			if( !url.startsWith( "http://www.facebook.com/" ) &&
+    				!url.startsWith( "https://www.facebook.com/" ) &&
+                    !url.startsWith("https://github.com/") ){
     				System.out.println( "Check footer link: " + url );
     				if( !AnalyzeURLs.checkLink( url ) ) 
     					return false;
