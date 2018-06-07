@@ -610,8 +610,9 @@ public class ReplayPage {
     * Changes the Language of the Page, to the value given in lang string (PT or EN)
     */
     public void switchLanguage(String lang){
-
+      System.out.println("Switch language function");
       if(driver.findElement(By.xpath("//a[@id=\"changeLanguage\"]")).getText().equals(lang)){
+        System.out.println("Switching language");
         driver.findElement(By.id("changeLanguage")).click(); //change the language
         try {
           Thread.sleep(waitingPeriod);  //wait for page to load

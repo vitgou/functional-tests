@@ -49,6 +49,6 @@ public class ReplayTest extends WebDriverTestBaseParalell{
     	System.out.print("Running ReplayTest. \n");
         ReplayPage replay = new ReplayPage(driver, isPreProd);      
         assertTrue("Failed The Replay Tests in Portuguese", replay.inspectURLs("PT"));
-        //assertTrue("Failed The Replay Tests in English", replay.inspectURLs("EN"));
+        assertTrue("Failed The Replay Tests in English", replay.inspectURLs("EN"));
     }
 }
