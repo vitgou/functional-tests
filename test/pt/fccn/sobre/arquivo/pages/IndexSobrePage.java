@@ -588,8 +588,9 @@ public class IndexSobrePage {
     		System.out.println( "[footer] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
-    			if( !url.startsWith( "http://www.facebook.com/" ) || 
-    					!url.startsWith( "https://www.facebook.com/" ) ){
+    			if( !url.startsWith( "http://www.facebook.com/" ) &&
+    				!url.startsWith( "https://www.facebook.com/" ) &&
+                    !url.startsWith("https") /*TODO:: Check also https links*/){
     				System.out.println( "Check footer link: " + url );
     				if( !AnalyzeURLs.checkLink( url ) ) 
     					return false;
