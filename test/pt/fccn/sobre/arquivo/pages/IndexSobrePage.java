@@ -539,7 +539,8 @@ public class IndexSobrePage {
     			String text = elem.getText( );
     			Charset.forName( "UTF-8" ).encode( text );
     			if( url.startsWith( "http://www.facebook.com/" ) || 
-    					url.startsWith( "https://www.facebook.com/" ) ){
+    				url.startsWith( "https://www.facebook.com/" ) ||
+                    url.startsWith("https") ){ /*TODO:: https inspect link version*/
     				if( !textTolink.get( text ).equals( url ) ) {
     					System.out.println( "Wrong link ["+textTolink.get( text ).trim( )+"] != ["+url+"]" );
     					return false;
