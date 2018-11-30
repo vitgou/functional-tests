@@ -52,7 +52,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/websocket-client-9.2.13.v20150730.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/websocket-common-9.2.13.v20150730.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xalan-2.7.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xml-apis-1.4.01.jar"/>
 	<classpathentry exported="true" kind="lib" path="server/selenium-server-standalone-2.35.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="server/selenium-server-standalone-2.42.2.jar"/>
@@ -60,5 +59,11 @@
 	<classpathentry exported="true" kind="lib" path="server/selenium-server-standalone-2.47.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="server/selenium-server-standalone-2.48.2.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/json-20131018.jar"/>
+	<classpathentry kind="lib" path="lib/json-20160810.jar"/>
+	<classpathentry kind="lib" path="lib/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/sauce_java_common-2.1.20.jar"/>
+	<classpathentry kind="lib" path="lib/sauce_junit-2.1.20.jar"/>
+	<classpathentry kind="lib" path="lib/saucerest-1.0.22.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
