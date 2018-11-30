@@ -38,16 +38,16 @@ import com.google.common.base.Function;
  */
 public class AdvancedPage {
     private final WebDriver driver;
-    private final String pageURLCheck = "advanced.jsp"; 
+    private final String pageURLCheck = "advanced.jsp";
     private final String listOfResultsTag = "resultados-lista";
     private String results_withWWW=null;
     private String results_withoutWWW=null;
     private final int timeout = 75;
     private static final int waitingPeriod = 3000; //Time to load the Web page in miliseconds
     // Patern to detect if there are results
-    
+
     // Tags for searching
-    
+
     /**
      * Create a new AdvancedPage from navigation
      * @param driver
@@ -55,7 +55,7 @@ public class AdvancedPage {
     public AdvancedPage(WebDriver driver){
         this.driver= driver;
         this.driver.manage().timeouts().implicitlyWait( 30, TimeUnit.SECONDS );
-        
+
         // Check that we're on the right page.
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
@@ -63,7 +63,7 @@ public class AdvancedPage {
             throw new IllegalStateException("This is not the results search page\n URL of current page: " + driver.getCurrentUrl());
         }
     }
-    
+
     /**
      * Verify that the title of the search page contains the term searched.
      * @param term term that was searched in the system
@@ -72,21 +72,21 @@ public class AdvancedPage {
     public boolean titleIsCorrect(String query){
         if (driver.getTitle().contains(query) && !query.isEmpty())
             return true;// times out after 5 seconds
-        
+
         else
             return false;
     }
-    
+
     /**
      * Verify that advanced search returns the first page of sapo
      * @return true if it contains sapo.pt from 1996 on result list
      */
     public boolean existsInResults(boolean isPreProd) {
         String title = null;
-        
+
         try {
         	WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("adv_and")));             
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("adv_and")));
             advAnd.clear();
             advAnd.sendKeys("sapo");
             WebElement siteElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
@@ -98,24 +98,24 @@ public class AdvancedPage {
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmitTop")));
             btnSubmitElement.click();
             this.sleep( 2 );
-    
+
             WebElement listOfResults = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                .until(ExpectedConditions.elementToBeClickable(By.id(listOfResultsTag))); 
-           
+                .until(ExpectedConditions.elementToBeClickable(By.id(listOfResultsTag)));
+
             title = listOfResults.findElement( By.cssSelector( "#resultados-lista > ul > li:nth-child(1) > span.url" ) ).getText( );
-            results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados\"]")).getText();
+            results_withWWW=listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]")).getText();
             if (!title.contains("sapo.pt") || title==null){
                 System.out.println("Unexpected Title, missing SAPO");
-                return false;            
+                return false;
             }
-        } catch (Exception e) { 
+        } catch (Exception e) {
             System.out.println("Some Error Finding Elements in existsInResults");
             e.printStackTrace( );
             return false;
         }
         return true;
     }
-    
+
     /**
      * Check if the advanced search by URL with or without www. returns the same results
      * For instance, sapo.pt and www.sapo.pt have to return the same number of results
@@ -125,9 +125,9 @@ public class AdvancedPage {
         try{
             WebElement listOfResults=null;
             System.out.println( "[searhURL]" );
-            //listOfResults = searchQuery( "sapo site:sapo.pt" ); 
+            //listOfResults = searchQuery( "sapo site:sapo.pt" );
             WebElement advAnd = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                    .until( ExpectedConditions.presenceOfElementLocated( By.id( "txtSearch" ) ) );             
+                    .until( ExpectedConditions.presenceOfElementLocated( By.id( "txtSearch" ) ) );
             advAnd.clear( );
             advAnd.sendKeys( "sapo site:sapo.pt" );
             WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
@@ -135,23 +135,23 @@ public class AdvancedPage {
             btnSubmitElement.click( );
             this.sleep( 2 );
      		listOfResults = ( new WebDriverWait( driver, timeout  ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-             .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
-     		
+             .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) );
+
             if( listOfResults == null )
             	return false;
-            
-            results_withoutWWW = listOfResults.findElement( By.xpath( "//*[@id=\"resultados\"]" ) ).getText();
-            if ( results_withoutWWW.equals( results_withWWW ) )
+
+            results_withoutWWW = listOfResults.findElement( By.xpath( "//*[@id=\"resultados-lista\"]" ) ).getText();
+            if ( results_withoutWWW.equals( results_withWWW ) && results_withWWW.length() > 0 )
                 return true;
 
-            return false; 
+            return false;
         }catch ( Exception e ){
             System.out.println( "Error searching URL" );
             e.printStackTrace( );
             return false;
         }
     }
-     
+
     /**
      * Check if advanced search by URL with site operator
      * @return
@@ -163,7 +163,7 @@ public class AdvancedPage {
     	try{
 	    	//WebElement results = searchQuery( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" );
 	        WebElement advAnd = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-	                .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));             
+	                .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));
 	        advAnd.clear();
 	        advAnd.sendKeys( "2001 \"Vasco Matos Trigo\" site:programas.rtp.pt" ); //"2001 \"Vasco Matos Trigo\" site:programas.rtp.pt"
 	        WebElement btnSubmitElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
@@ -176,8 +176,8 @@ public class AdvancedPage {
 	                        		      By.xpath( xpathSpan )
 	                        )
 	        );
-	        
-	        for( WebElement elem : results ) {  
+
+	        for( WebElement elem : results ) {
 	    		System.out.println( "span["+ elem.getText( ) +"]" );
 	    		String text = elem.getText( );
 	    		if( text == null || text == "" ) {
@@ -190,7 +190,7 @@ public class AdvancedPage {
 	    			return false;
 	    		}
 	    	}
-	        
+
 	    	return true;
     	} catch( Exception e ){
             System.out.println("Error in checkOPSite");
@@ -198,7 +198,7 @@ public class AdvancedPage {
             return false;
     	}
     }
-    
+
     /**
      * Search for the term in the Arquivo.pt page
      * @param term
@@ -210,17 +210,17 @@ public class AdvancedPage {
              driver.findElement( By.id( "txtSearch" ) ).sendKeys( term );
              driver.findElement( By.id( "btnSubmit" ) ).click( );
              WebElement listOfResults = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-                     .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) ); 
-             
+                     .until( ExpectedConditions.elementToBeClickable( By.id( listOfResultsTag ) ) );
+
              return listOfResults;
-             
+
          }catch ( Exception e ){
              System.out.println( "Error searching URL" );
              e.printStackTrace( );
              return null;
          }
     }
-    
+
     /**
      * remove protocol and subdirectories in the url
      * @param url
@@ -228,25 +228,25 @@ public class AdvancedPage {
      */
 	public String expandURL( String url ) {
 		 	String urlResult;
-		 	
-	    	if ( url.startsWith( "http://" ) ) 
+
+	    	if ( url.startsWith( "http://" ) )
 	    		urlResult = urlRemoveProtocol( "http://" , url );
-			else if ( url.startsWith( "https://" ) ) 
+			else if ( url.startsWith( "https://" ) )
 				urlResult = urlRemoveProtocol( "https://" , url );
-			else 
+			else
 				urlResult = urlRemoveProtocol( "http://" , "http://".concat( url ) );
-			
+
 			if( urlResult == null || urlResult == "" )
 				return "";
-			
-			if( urlResult.startsWith( "www." ) ) 
+
+			if( urlResult.startsWith( "www." ) )
 				urlResult = urlResult.replaceFirst( "www." , "" );
-			
+
 			urlResult = removeSubdirectories( urlResult );
-			
+
 	    	return urlResult;
 	}
-	 
+
 	/**
 	 * remove subdirectorires in the url string
 	 * @param input
@@ -258,7 +258,7 @@ public class AdvancedPage {
 		if( idx == -1 ) return input;
 		return input.substring( 0 , idx );
 	}
-	
+
 	/**
 	 * remove protocol in the url stIndexPage index = new IndexPage( driver );ring
 	 * @param protocol
@@ -273,12 +273,12 @@ public class AdvancedPage {
 			siteHost = siteURL.getHost( );
 			url = url.replace( siteHost, siteHost.toLowerCase( ) ); // hostname to lowercase
 			urlexpanded = url.substring( protocol.length( ) );
-			return urlexpanded; 
+			return urlexpanded;
 		} catch ( MalformedURLException e ) {
 			return null;
 		}
 	}
-    
+
 	public void sleep( int seconds ) {
 	    try {
 	        Thread.sleep( seconds * 1000 );
@@ -286,5 +286,5 @@ public class AdvancedPage {
 
 	    }
 	}
-    
+
 }
