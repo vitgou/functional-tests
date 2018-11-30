@@ -21,7 +21,7 @@ package pt.fccn.saw.selenium;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import java.util.NoSuchElementException;
-
+import java.util.Optional;
 
 import pt.fccn.saw.selenium.RetryRule;
 
@@ -69,16 +69,15 @@ import com.saucelabs.common.SauceOnDemandSessionIdProvider;
  * This test read system properties to know which browser to test or,
  * if tests are te be run remotely, it also read login information and
  * the browser, browser version and OS combination to be used.
- * 
+ *
  * The WebDriver tests provide the more precise results without the
  * restrictions present in selenium due to browers' security models.
  */
 @Ignore
 @RunWith(ConcurrentParameterized.class)
 public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider{
-    public String username = System.getenv("SAUCE_USERNAME");
-    public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
-
+    public String username = Optional.ofNullable(System.getProperty("test.remote.access.user")).orElse(System.getenv("SAUCE_USERNAME"));
+    public String accesskey = Optional.ofNullable(System.getProperty("test.remote.access.key")).orElse(System.getenv("SAUCE_ACCESS_KEY"));
 
     public static String seleniumURI;
 
@@ -184,18 +183,18 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         else{
             JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");
             for (int i = 0; i < browsersJSONArray.length(); i++) {
-              //TODO:: find names of extra properties for mobile Devices such as orientation and device name  
-              JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);  
+              //TODO:: find names of extra properties for mobile Devices such as orientation and device name
+              JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);
               String browserOS = browserConfigs.getString("os");
               String browserPlatform= browserConfigs.getString("platform");
               String browserName= browserConfigs.getString("browser");
               String browserVersion = browserConfigs.getString("browser-version");
               String device = null;
-              String deviceOrientation = null; 
+              String deviceOrientation = null;
               try{
                 device = browserConfigs.getString("device");
                 deviceOrientation = browserConfigs.getString("device-orientation");
-              }catch(JSONException e){/* Intentionally empty */}  
+              }catch(JSONException e){/* Intentionally empty */}
               browsers.add(new String[]{browserOS, browserVersion, browserName, device, deviceOrientation});
             }
         }
@@ -208,7 +207,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
       //  browsers.add(new String[]{"OSX 10.8", "6", "safari", null, null});
 
         return browsers;
-    }    
+    }
 
 
     /**
@@ -275,12 +274,12 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
     @After
     public void tearDown() throws Exception {
         driver.quit();
-        
+
     }
 
     /**
      * Creates a Local WebDriver given a string with the web browser name.
-     * 
+     *
      * @param browser The browser name for the WebDriver initialization
      * @return The initialized Local WebDriver
      */
@@ -299,15 +298,15 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
             driver = new OperaDriver();
         } else if (browser.contains("remote-chrome")) {
             DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); 
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
         } else if (browser.contains("remote-firefox")) {
             DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); 
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
             driver.get("http://www.google.com");
         } else {
             // OH NOEZ! I DOAN HAZ DAT BROWSR!
             System.err.println("Cannot find suitable browser driver for ["+ browser +"]");
-        }		
+        }
         return driver;
     }
 
@@ -375,8 +374,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
     @Override
     public String getSessionId() {
         return sessionId;
-    }    
-    
+    }
+
     /**
      * Checks if an element is present in the page
      */

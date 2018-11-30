@@ -45,13 +45,11 @@ import org.w3c.dom.Element;
  */
 public class SearchPage {
     private final WebDriver driver;
-    private final String numberOfResultsTag = "resultados";
+    private final String numberOfResultsTag = "conteudo-pesquisa-erro";
     private final String listOfResultsTag = "resultados-lista";
     private final String resultTextTag = "resumo";
     private final String pageURLCheck = "search.jsp";
-    // Patern to detect if there are results
-    private Pattern noResultsPattern = Pattern.compile("\\d Resultados");
-    
+
     // Tags for searching
     private final String resultLinkXpath = "//div[@id='" + listOfResultsTag + "']/ul/li/h2/a";
     private boolean ispre_prod=false;
@@ -64,30 +62,30 @@ public class SearchPage {
         this.driver= driver;
         // Check that we're on the right page.
         this.ispre_prod=Ispre_prod;
-      
+
         if (!((new WebDriverWait(driver, 25)).until(ExpectedConditions.urlContains(pageURLCheck)))) {
             throw new IllegalStateException("This is not the results search page\n URL of current page: " + driver.getCurrentUrl());
         }
         if (ispre_prod){
         	this.server_name=driver.getCurrentUrl().replace("search.jsp?l=pt&query=fccn","");
         }
-        
+
     }
-    
+
     /**
      * Verify that the title of the search page contains the term searched.
      * @param term term that was searched in the system
      * @return true if term is in the title of the page
      */
     public boolean titleIsCorrect(String query){
-    	
+
         if (driver.getTitle().contains(query) && !query.isEmpty()){
         	return true;
         }
         else
             return false;
     }
-    
+
     /**
      * Verify that the spellchecker suggests a query
      * @param query the test query for the spellchecker
@@ -95,32 +93,32 @@ public class SearchPage {
      */
     public boolean spellcheckerOK(String query) {
         WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));    
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));
 
         txtSearchElement.clear();
         txtSearchElement.sendKeys(query);
 
         WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));    
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
 
     	  btnSubmitElement.click();
-    	  
+
         WebElement spellCheckerElement = (new WebDriverWait(driver, 25))
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"second-column\"]/div[2]/span/a")));  
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"second-column\"]/div[1]/span/a")));
 
     	  String spellCheckerTest = spellCheckerElement.getText();
 
     	  if(!spellCheckerTest.equals("teste")){
     		  System.out.print("Spellchecker is not working on properly");
-    		  return false;	
+    		  return false;
     	  }
     	  return true;
     }
-    
+
     /**
      * Verify that the spellchecker no suggests a correct query (#30 issue github)
      * @param query the test query for the spellchecker
-     * @return 
+     * @return
      */
     public boolean spellcheckerCorrect( ) {
     	System.out.println( "[SpellCheckerCorrect]" );
@@ -132,7 +130,7 @@ public class SearchPage {
     		System.out.println( "spellCheckCorrect false text = " + text );
         	return false;
         }
-    }    
+    }
 
     /**
      * Verify that the term exists in as a search result
@@ -141,26 +139,31 @@ public class SearchPage {
      */
     public boolean existsInResults(String query)  {
         boolean result = false;
-        
-        String resultsTags = driver.findElement(By.id(numberOfResultsTag)).getText();
-        Matcher m = noResultsPattern.matcher(resultsTags);
-            if (m.matches()){
+
+        try {
+	        WebElement searchErrorTag = driver.findElement(By.id(numberOfResultsTag));
+	        String noResultsTag = searchErrorTag.findElement(By.tagName("h2")).getText();
+
+            if (noResultsTag.equals("Não foram encontrados resultados para a sua pesquisa:")){
                 System.out.print("No results for this query");
                 return false;
             }
-        
+        } catch (NoSuchElementException e) {
+            System.out.print("It should have some results");
+        }
+
         WebElement listOfResults = driver.findElement(By.id(listOfResultsTag));
-        String resultTitle = listOfResults.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[3]/ul/li")).getText();
+        String resultTitle = listOfResults.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul")).getText();
         if (resultTitle.toLowerCase().contains(query))
             result = true;
         else
             if (listOfResults.findElement(By.className(resultTextTag)).getText().contains(query)){
                 result = true;
-             
+
             }
         return result;
     }
-    
+
     /**
      * Verify that the term exists in as a search result
      * @param query Term that was searched
@@ -171,11 +174,11 @@ public class SearchPage {
         .until(ExpectedConditions.presenceOfElementLocated(By.id(listOfResultsTag)));
 
     	WebElement firstResult = (new WebDriverWait(driver, 25))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")));  
+        .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/h2")));
 
     	return firstResult.getText();
     }
-    
+
     /**
      * Returns the first result from the query
      * @return returns the archived page from the first result of a query
@@ -187,18 +190,18 @@ public class SearchPage {
     }
     /**
      * Inspect that the replay bar is working
-   	 * @param 
+   	 * @param
    	 * @param id
    	 * @return
    	 * +"wayback/wayback/20120825003419/http://blogs.sapo.pt/"
    	 */
    	 public boolean  testReplayBar (){
-   		 
+
    		WebElement replay_bar =null;
    		ArchivedPage getfirstResult=null;
-   		
+
    		if(!ispre_prod){
-   			
+
    			getfirstResult=firstResult();
    			driver.get(driver.getCurrentUrl());
    		}
@@ -210,8 +213,8 @@ public class SearchPage {
 			}
 
    		}
-   		
-   		//This could happen when a page is offline, for that it can not find the replay_bar with the date		
+
+   		//This could happen when a page is offline, for that it can not find the replay_bar with the date
    		try{
    			replay_bar = driver.findElement(By.xpath("//*[@id=\"replay_iframe\"]"));
         //System.out.print("Replay_bar= "+replay_bar.getAttribute("src"));
@@ -219,11 +222,11 @@ public class SearchPage {
    			//System.out.print("Replay bar not found. "+this.getClass().getName());
    			return false;
    		}
-   			
+
    			if (replay_bar.getAttribute("src") != null)
    					return true;
-   			
+
    		return false;
    	}
-  
+
 }
