@@ -36,12 +36,14 @@ public class RetryRule implements TestRule {
                         base.evaluate();
                         return;
                     } catch (Throwable t) {
+                    	t.printStackTrace();
+
                         if (retryCount.get() > 0 && description.getAnnotation(Retry.class)!= null) {
                             caughtThrowable = t;
                             System.err.println(description.getDisplayName() +
                                     ": Failed, " +
                                     retryCount.toString() +
-                                    "retries remain");
+                                    " retries remain");
                         } else {
                             throw caughtThrowable;
                         }

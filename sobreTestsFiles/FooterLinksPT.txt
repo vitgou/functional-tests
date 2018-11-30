@@ -1,24 +1,24 @@
-O que é o Arquivo.pt?,http://preprod.sobre.arquivo.pt/pt/ajuda/o-que-e-o-arquivo-pt/
-Publicações,http://preprod.sobre.arquivo.pt/pt/publicacoes/
-Exemplos de páginas preservadas,http://preprod.sobre.arquivo.pt/pt/exemplos
-Área de imprensa,http://preprod.sobre.arquivo.pt/pt/imprensa
+O que é o Arquivo.pt?,https://preprod.sobre.arquivo.pt/pt/ajuda/o-que-e-o-arquivo-pt/
+Publicações,https://preprod.sobre.arquivo.pt/pt/publicacoes/
+Exemplos de páginas preservadas,https://preprod.sobre.arquivo.pt/pt/exemplos
+Área de imprensa,https://preprod.sobre.arquivo.pt/pt/imprensa
 Código-aberto & APIs,https://github.com/arquivo/pwa-technologies/wiki
-Termos e Condições,http://preprod.sobre.arquivo.pt/pt/termos-e-condicoes/
+Termos e Condições,https://preprod.sobre.arquivo.pt/pt/termos-e-condicoes/
 Subscrever lista de email,https://groups.google.com/forum/#!forum/divulgarquivopt/join
-Últimas novidades,http://preprod.sobre.arquivo.pt/pt/noticias/
+Últimas novidades,https://preprod.sobre.arquivo.pt/pt/noticias/
 Twitter,https://twitter.com/ArquivoWeb_PT
 Facebook,https://www.facebook.com/Arquivo.pt
-Subscreva RSS,http://preprod.sobre.arquivo.pt/pt/rss
-Vídeos,http://preprod.sobre.arquivo.pt/pt/publicacoes/videos/
-Sugira site,http://preprod.sobre.arquivo.pt/pt/sugerir/
-Material de Divulgação,http://preprod.sobre.arquivo.pt/pt/imprensa/material-de-divulgacao/
-Crie sites preserváveis,http://preprod.sobre.arquivo.pt/pt/recomendacoes/
-Forneça conteúdos históricos,http://preprod.sobre.arquivo.pt/pt/fornecimento-de-conteudos-historicos-da-web-portuguesa/
-Investigação e Desenvolvimento,http://preprod.sobre.arquivo.pt/pt/id/
-Pesquisa,http://preprod.sobre.arquivo.pt/pt/ajuda/pesquisa/
-Pesquisa avançada,http://preprod.sobre.arquivo.pt/pt/ajuda/pesquisa-avancada/
-Acesso,http://preprod.sobre.arquivo.pt/pt/ajuda/acesso-a-conteudos-arquivados/
-Recolha,http://preprod.sobre.arquivo.pt/pt/ajuda/recolha-e-arquivo-de-conteudos/
-Perguntas frequentes,http://preprod.sobre.arquivo.pt/pt/ajuda/
-Formações,http://preprod.sobre.arquivo.pt/pt/formacao/
-Contacto,http://preprod.sobre.arquivo.pt/pt/contacto/
+Subscreva RSS,https://preprod.sobre.arquivo.pt/pt/rss
+Vídeos,https://preprod.sobre.arquivo.pt/pt/publicacoes/videos/
+Sugira site,https://preprod.sobre.arquivo.pt/pt/sugerir/
+Material de Divulgação,https://preprod.sobre.arquivo.pt/pt/imprensa/material-de-divulgacao/
+Crie sites preserváveis,https://preprod.sobre.arquivo.pt/pt/recomendacoes/
+Forneça conteúdos históricos,https://preprod.sobre.arquivo.pt/pt/fornecimento-de-conteudos-historicos-da-web-portuguesa/
+Investigação e Desenvolvimento,https://preprod.sobre.arquivo.pt/pt/id/
+Pesquisa,https://preprod.sobre.arquivo.pt/pt/ajuda/pesquisa/
+Pesquisa avançada,https://preprod.sobre.arquivo.pt/pt/ajuda/pesquisa-avancada/
+Acesso,https://preprod.sobre.arquivo.pt/pt/ajuda/acesso-a-conteudos-arquivados/
+Recolha,https://preprod.sobre.arquivo.pt/pt/ajuda/recolha-e-arquivo-de-conteudos/
+Perguntas frequentes,https://preprod.sobre.arquivo.pt/pt/ajuda/
+Formações,https://preprod.sobre.arquivo.pt/pt/formacao/
+Contacto,https://preprod.sobre.arquivo.pt/pt/contacto/

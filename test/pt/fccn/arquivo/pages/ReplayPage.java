@@ -53,14 +53,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.io.BufferedInputStream;  
-import java.io.File;  
-import java.io.FileOutputStream;  
-import java.io.IOException;  
-import java.net.MalformedURLException;  
-import java.net.URL;  
-import java.nio.channels.Channels;  
-import java.nio.channels.ReadableByteChannel;  
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.TreeMap;
 import java.util.Set;
 
@@ -68,7 +68,7 @@ import java.util.Set;
 
 /**
  * @author Fernando Melo
- * 
+ *
  */
 
 
@@ -92,7 +92,7 @@ public class ReplayPage {
     private static final String activeDay = "active-day";
     private String serverName  ="";
     private BufferedReader br;
-    private String pageUrl =""; 
+    private String pageUrl ="";
     private String [] tokens;
     private Properties prop;
     private BufferedReader inputPt = null;
@@ -102,11 +102,11 @@ public class ReplayPage {
     public ReplayPage(WebDriver driver, boolean isPreProd) {
         System.out.println( "[ReplayPage]" );
     	this.driver = driver;
-        //driver.manage().window().setSize(new Dimension(1280, 768)); 
+        //driver.manage().window().setSize(new Dimension(1280, 768));
         br = null;
         pageUrl = driver.getCurrentUrl();
         tokens = pageUrl.split("/");
-        serverName = "http://"+tokens[2]+"/";
+        serverName = "https://"+tokens[2]+"/";
         baseScreenshotURL = serverName + "screenshot/?url=";
         logoURLPTExpected = searchURL+"/?l=pt";
         prop = new Properties();
@@ -120,7 +120,7 @@ public class ReplayPage {
           if(isPreProd)
             br = new BufferedReader(new FileReader(filenamePreProd));
           else
-            br = new BufferedReader(new FileReader(filenameProd)); 
+            br = new BufferedReader(new FileReader(filenameProd));
           System.out.println( "[ReplayPage] read testURLs" );
           while ((currentLine = br.readLine()) != null) {
             String[] parts = currentLine.split("\t");
@@ -141,7 +141,7 @@ public class ReplayPage {
     }
 
     /**
-     * Do the Replay Tests for our set of URLS 
+     * Do the Replay Tests for our set of URLS
      */
     public boolean inspectURLs(String language){
       System.out.println("Inspecting URLS language: " + language);
@@ -152,10 +152,10 @@ public class ReplayPage {
         }catch(IOException e){
           System.out.println("Error Loading English Properties");
           return false;
-        }  
+        }
       }
-      
-      Set<String> keys = testURLs.keySet();    
+
+      Set<String> keys = testURLs.keySet();
       for(String currentURL:keys){
         try{
           goToCurrentURL(currentURL, testURLs.get(currentURL));
@@ -163,14 +163,14 @@ public class ReplayPage {
           e.printStackTrace();
           System.out.println("Error jumping to url: " + currentURL);
           return false;
-        }  
+        }
         switchLanguage(language); // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
-        
+
         System.out.println( "[replayBarTest][inspectURLs] Bar["+replayBarURLsOk(currentURL)+"] "
         		+ "facebook["+facebookOk(currentURL)+"] twitter["+twitterOk(currentURL)+"] "
         				+ "email["+emailOk(currentURL)+"] tableOfVersion["+tableOfVersionsOk(currentURL)+"] "
         					+ " logo["+logoOk(currentURL)+"] checkLefMenu["+checkLeftMenu(currentURL)+"]" );
-        if(!replayBarURLsOk(currentURL) ||  
+        if(!replayBarURLsOk(currentURL) ||
            /*!screenshotOk(currentURL) || !printOk(currentURL) ||*/
            !facebookOk(currentURL) || !twitterOk(currentURL) ||
            !emailOk(currentURL) ||
@@ -190,13 +190,13 @@ public class ReplayPage {
       String maximzedURL ="";
       String minimizedURL ="";
       String urlWithoutDate = "";
-      try{        
+      try{
         urlWithoutDate = currentURL.substring(15);
         urlWithoutDate =truncateURL(urlWithoutDate);
         maximzedURL = driver.findElement(By.xpath("//a[@id=\"update1\"]")).getText();
 
         //WebElement minimizeMaximizeElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-        //    .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id=\"minimizeOrMaximize\"]"))); 
+        //    .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id=\"minimizeOrMaximize\"]")));
         //minimizeMaximizeElement.click();
 
         System.out.println("URL: "+ maximzedURL);
@@ -232,14 +232,14 @@ public class ReplayPage {
       try{
         String screenshotURL = driver.findElement(By.xpath("//a[@id=\"a_screenshot\"]")).getAttribute("href");
         String screenshotTitle = driver.findElement(By.xpath("//a[@id=\"a_screenshot\"]")).getAttribute("title");
-        
+
         String expectedscreenshotURL= baseScreenshotURL + encodeURIComponent(serverName + "noFrame/replay/" + currentURL);
         String expectedscreenshotTitle=prop.getProperty("screenTitle");
 
-        if(screenshotURL.equals(expectedscreenshotURL) && 
+        if(screenshotURL.equals(expectedscreenshotURL) &&
            screenshotTitle.equals(expectedscreenshotTitle)){
           //if URL and Title are ok lets download the screenshot
-            downloadFileFromURLUsingNIO(  "./screenshot.png",  screenshotURL);  
+            downloadFileFromURLUsingNIO(  "./screenshot.png",  screenshotURL);
             if(checkFileSize("./screenshot.png")) return true;
               return false;
         }
@@ -249,7 +249,7 @@ public class ReplayPage {
           System.out.println("Found this Screenshot Title: " + screenshotTitle);
           System.out.println("Expected this Screenshot Title: " + expectedscreenshotTitle);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the screenshot element");
@@ -257,8 +257,8 @@ public class ReplayPage {
       }catch (Exception e){
         System.out.println("Some problem downloading the screenshot");
         return false;
-      } 
-    }   
+      }
+    }
 
     /**
      * Check if the print href and title are correct
@@ -268,11 +268,11 @@ public class ReplayPage {
       try{
         String printHref = driver.findElement(By.xpath("//li[@id=\"printLi\"]/a")).getAttribute("href");
         String printTitle = driver.findElement(By.xpath("//li[@id=\"printLi\"]/a")).getAttribute("title");
-        
+
         String expectedprintHref= "javascript:getImageToPrint(\""+ encodeURIComponent(serverName + "noFrame/replay/" + currentURL)+ "\")";
         String expectedprintTitle=prop.getProperty("printTitle");
 
-        if(printHref.equals(expectedprintHref) && 
+        if(printHref.equals(expectedprintHref) &&
            printTitle.equals(expectedprintTitle)){
           return true;
         }
@@ -282,7 +282,7 @@ public class ReplayPage {
           System.out.println("Found this Print Title: " + printTitle);
           System.out.println("Expected this Print Title: " + expectedprintTitle);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the print element");
@@ -291,8 +291,8 @@ public class ReplayPage {
         System.out.println("Should not have reached here");
         e.printStackTrace();
         return false;
-      } 
-    }  
+      }
+    }
 
     /**
      * Check if the Facebook class and title are correct
@@ -302,11 +302,11 @@ public class ReplayPage {
     	//*[@id="facebook_share"]/a
         String faceClass = driver.findElement(By.xpath("//li[@class=\"facebook\"]/a")).getAttribute("class");
         String faceTitle = driver.findElement(By.xpath("//li[@class=\"facebook\"]/a")).getAttribute("title");
-        
+
         String expectedfaceClass= "addthis_button_facebook";
         String expectedfaceTitle=prop.getProperty("faceTitle");
 
-        if(faceClass.startsWith(expectedfaceClass) && 
+        if(faceClass.startsWith(expectedfaceClass) &&
            faceTitle.equals(expectedfaceTitle)){
           return true;
         }
@@ -316,7 +316,7 @@ public class ReplayPage {
           System.out.println("Found this Facebook Title: " + faceTitle);
           System.out.println("Expected this Facebook Title: " + expectedfaceTitle);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the facebook element");
@@ -325,8 +325,8 @@ public class ReplayPage {
         System.out.println("Should not have reached here");
         e.printStackTrace();
         return false;
-      } 
-    }  
+      }
+    }
 
     /**
      * Check if the Facebook class and title are correct
@@ -335,11 +335,11 @@ public class ReplayPage {
       try{
         String twitterClass = driver.findElement(By.xpath("//li[@class=\"twitter\"]/a")).getAttribute("class");
         String twitterTitle = driver.findElement(By.xpath("//li[@class=\"twitter\"]/a")).getAttribute("title");
-        
+
         String expectedtwitterClass= "addthis_button_twitter";
         String expectedtwitterTitle=prop.getProperty("twitterTitle");
 
-        if(twitterClass.contains(expectedtwitterClass) && 
+        if(twitterClass.contains(expectedtwitterClass) &&
            twitterTitle.equals(expectedtwitterTitle)){
           return true;
         }
@@ -349,7 +349,7 @@ public class ReplayPage {
           System.out.println("Found this Twitter Title: " + twitterTitle);
           System.out.println("Expected this Twitter Title: " + expectedtwitterTitle);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the twitter element");
@@ -358,8 +358,8 @@ public class ReplayPage {
         System.out.println("Should not have reached here");
         e.printStackTrace();
         return false;
-      } 
-    } 
+      }
+    }
 
 
 
@@ -370,9 +370,9 @@ public class ReplayPage {
      * Check Left Menu that contains the list of versions for the URL
      */
     public boolean checkLeftMenu(String currentURL){
-      try{ 
-        String urlNoDate = currentURL.substring(15);    
-        String timestamp = currentURL.substring(0,14); //complete timestamp in the 14 digit format 
+      try{
+        String urlNoDate = currentURL.substring(15);
+        String timestamp = currentURL.substring(0,14); //complete timestamp in the 14 digit format
         String year = currentURL.substring(0,4);
         String monthstr = currentURL.substring(4,6);
         int monthInt = Integer.parseInt(monthstr);
@@ -381,14 +381,14 @@ public class ReplayPage {
         String daystr = currentURL.substring(6,8);
         int day = Integer.parseInt(daystr);
         String hours = currentURL.substring(8,10);
-        String minutes = currentURL.substring(10,12);  
+        String minutes = currentURL.substring(10,12);
 
         /*System.out.println("Year: " + year);
         System.out.println("Month: " + monthStr);
         System.out.println("Day: " + day);
         System.out.println("Hours: " + hours);
-        System.out.println("Minutes: " + minutes); */    
-        
+        System.out.println("Minutes: " + minutes); */
+
         // Check the year in the left menu and check if it is open
         String yearClass = driver.findElement(By.xpath("//a[@id=\""+year+"\"]")).getAttribute("class");
         String yearText = driver.findElement(By.xpath("//a[@id=\""+year+"\"]")).getText();
@@ -402,13 +402,13 @@ public class ReplayPage {
         String hoursMinutesURL = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("onclick");
         hoursMinutesURL = hoursMinutesURL.replaceAll(",%20", ", ");
         String hoursClass = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getAttribute("class");
-        String hoursMinutesText = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getText(); 
-        String expectedURL = "jumpToVersion('"+urlNoDate+"', '"+timestamp+"')";       
+        String hoursMinutesText = driver.findElement(By.xpath("//a[@id=\"a_"+timestamp+"\"]")).getText();
+        String expectedURL = "jumpToVersion('"+urlNoDate+"', '"+timestamp+"')";
 
        if(yearText.equals(year) && yearClass.equals(activeItem) &&
            monthText.equals(monthStr) && monthClass.equals(activeItem) &&
            dayText.equals(""+day) && dayClass.equals(activeItem) &&
-           hoursMinutesText.equals(hours+":"+minutes) && 
+           hoursMinutesText.equals(hours+":"+minutes) &&
            hoursClass.equals(activeDay)&&
            hoursMinutesURL.contains(expectedURL)){
           return true;
@@ -430,7 +430,7 @@ public class ReplayPage {
           System.out.println("Expected this versionURL: "+ expectedURL);
 
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find at least one of the following elements: year, year_monthstr, year_monthstr_daystr, or a_timestamp");
@@ -439,8 +439,8 @@ public class ReplayPage {
         System.out.println("Should not have reached here");
         e.printStackTrace();
         return false;
-      } 
-    }   
+      }
+    }
 
     /**
      * Check if the Email title, onclick and href are correct
@@ -458,11 +458,11 @@ public class ReplayPage {
         String currentTimestamp = currentURL.substring(0,14);
         String dateFormatted = getDateFormatted(currentTimestamp);
         System.out.println("Expected Date: " + dateFormatted);
-        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A"+ dateFormatted +"%0D%0A %0D%0A' + window.location )"; 
+        String expectedemailonClick = "this.href = this.href.replace(\'[sub]\',document.title + \'%0D%0A"+ dateFormatted +"%0D%0A %0D%0A' + window.location )";
 
         String expectedemailTitle = prop.getProperty("mailTitle");
 
-        if(emailHref.toLowerCase( ).equals(expectedemailHref.toLowerCase( ))  && 
+        if(emailHref.toLowerCase( ).equals(expectedemailHref.toLowerCase( ))  &&
            emailonClick.toLowerCase( ).contains(expectedemailonClick.toLowerCase( )) &&
            emailTitle.toLowerCase( ).equals(expectedemailTitle.toLowerCase( ) )){
           return true;
@@ -473,9 +473,9 @@ public class ReplayPage {
           System.out.println("Found this Email onclick: " + emailonClick );
           System.out.println("Expected containing this Email onclick: " + expectedemailonClick);
           System.out.println("Found this Email title: " + emailTitle);
-          System.out.println("Expected this Email title: " + expectedemailTitle );          
+          System.out.println("Expected this Email title: " + expectedemailTitle );
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find email anchor");
@@ -484,15 +484,15 @@ public class ReplayPage {
         System.out.println("Should not have reached here");
         e.printStackTrace();
         return false;
-      } 
-    }   
+      }
+    }
     /**
      * input: timestamp in the 14 digit format such as 20000823154833
      * output: 23 Agosto, 2000
     */
     public String getDateFormatted(String timestamp){
-      String [] months = prop.getProperty("months").split("#");   
-           
+      String [] months = prop.getProperty("months").split("#");
+
       String year = timestamp.substring(0,4);
       String month = timestamp.substring(4,6);
       int monthInt = Integer.parseInt(month);
@@ -512,7 +512,7 @@ public class ReplayPage {
       try{
         String tableOfVersionsHref = driver.findElement(By.xpath("//a[@id=\"versionsTable\"]")).getAttribute("href");
         String tableOfVersionsTitle = driver.findElement(By.xpath("//a[@id=\"versionsTable\"]")).getAttribute("title");
-        
+
         String urlNoDate = currentURL.substring(15);
 
         String expectedtableOfVersionsHref = serverName+"search.jsp?l="+ prop.getProperty("lang")+"&query="+ urlNoDate+"&btnSubmit=Pesquisar";
@@ -523,12 +523,12 @@ public class ReplayPage {
           return true;
         }
         else{
-          System.out.println("Found this Table of Versions href: " + tableOfVersionsHref);
-          System.out.println("Expected this Table of Versions href: " + expectedtableOfVersionsHref );
-          System.out.println("Found this Table of Versions title: " + tableOfVersionsTitle);
-          System.out.println("Expected this Table of Versions title: " + expectedtableOfVersionsTitle );          
+          System.out.println("Found this Table of Versions href:     " + tableOfVersionsHref);
+          System.out.println("Expected this Table of Versions href:  " + expectedtableOfVersionsHref );
+          System.out.println("Found this Table of Versions title:    " + tableOfVersionsTitle);
+          System.out.println("Expected this Table of Versions title: " + expectedtableOfVersionsTitle );
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the Table of Versions Anchor");
@@ -537,8 +537,8 @@ public class ReplayPage {
         System.out.println("Should not have reached here");
         e.printStackTrace();
         return false;
-      } 
-    } 
+      }
+    }
 
 
     /**
@@ -565,9 +565,9 @@ public class ReplayPage {
           System.out.println("Found this Logo Alt: " + logoAlt);
           System.out.println("Expected this Logo Alt: " + expectedlogoAlt);
           System.out.println("Found This Logo Src: " + logoSrc);
-          System.out.println("Expected this Logo Src: " + expectedlogoSrc);          
+          System.out.println("Expected this Logo Src: " + expectedlogoSrc);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the Logo Anchor or the Logo Image");
@@ -576,8 +576,8 @@ public class ReplayPage {
         System.out.println("Should not have reached here");
         e.printStackTrace();
         return false;
-      } 
-    } 
+      }
+    }
 
 
 
@@ -590,7 +590,7 @@ public class ReplayPage {
       if(!(new WebDriverWait(driver, 180)) /* Wait Up to 180 seconds for page to load*/
           .until(ExpectedConditions.titleContains(expectedTitle))){
         throw new Exception("Failed loading current URL: " + currentURL);
-      }          
+      }
     }
 
     public String truncateURL(String url){
@@ -598,7 +598,7 @@ public class ReplayPage {
           url = url.substring(8,url.length());
         }else if (url.startsWith("http://")){
           url = url.substring(7,url.length());
-        }             
+        }
       if (url.length() > 40){
         return url.substring(0,26) + "..." + url.substring((url.length() - 11),url.length()) ;
       }
@@ -618,44 +618,44 @@ public class ReplayPage {
           Thread.sleep(waitingPeriod);  //wait for page to load
         } catch(InterruptedException ex) {
           Thread.currentThread().interrupt();
-        }  
+        }
       } //else You are already in the desired language
     }
 
 
- private static void downloadFileFromURLUsingNIO(String fileName,String fileUrl) throws IOException {  
+ private static void downloadFileFromURLUsingNIO(String fileName,String fileUrl) throws IOException {
     System.out.println("Download Starting");
-    URL url = new URL(fileUrl);  
-    ReadableByteChannel rbc = Channels.newChannel(url.openStream());  
-    FileOutputStream fOutStream = new FileOutputStream(fileName);  
-    fOutStream.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);  
-    fOutStream.close();  
-    rbc.close(); 
+    URL url = new URL(fileUrl);
+    ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+    FileOutputStream fOutStream = new FileOutputStream(fileName);
+    fOutStream.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+    fOutStream.close();
+    rbc.close();
     System.out.println("Download Successful");
  }
 
  private static boolean checkFileSize(String pathToFile){
 
     File file =new File(pathToFile);
-    
+
     if(file.exists()){
-      
+
       double bytes = file.length();
       double kilobytes = (bytes / 1024);
-      
+
       System.out.println("kilobytes : " + kilobytes);
       if(kilobytes > 200) return true;
       else{
         System.out.println("File too small to Be Ok Less or Equal to 200Kb");
         return false;
-      }  
+      }
 
     }else{
        System.out.println("File does not exist!");
        return false;
     }
 
- }  
+ }
 
 
 
@@ -663,7 +663,7 @@ public class ReplayPage {
    * Encodes the passed String as UTF-8 using an algorithm that's compatible
    * with JavaScript's <code>encodeURIComponent</code> function. Returns
    * <code>null</code> if the String is <code>null</code>.
-   * 
+   *
    * @param s The String to be encoded
    * @return the encoded String
    */
@@ -689,7 +689,7 @@ public class ReplayPage {
     }
 
     return result;
-  }  
-    
+  }
+
 
 }
