@@ -43,10 +43,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * @author Hugo Viana
  *
  *
- *Functionality: 
+ *Functionality:
  * inspecting Arcproxy are proper performed, which meaning that all links are well linked.
  * Configuration file with index linked located on ROOT with monitored_indexes name
- * This test was made taking in consideration that p41 is the pre-prodution server and p58 and p62 is the prodution environment 
+ * This test was made taking in consideration that p41 is the pre-prodution server and p58 and p62 is the prodution environment
  */
 /**
  * @author nutchwax
@@ -65,7 +65,7 @@ public class Arcproxyinspection {
 	 * Create a new Arcproxy navigation
 	 * @param driver
 	 */
-	public Arcproxyinspection(WebDriver driver, boolean isPredProd){	
+	public Arcproxyinspection(WebDriver driver, boolean isPredProd){
 		this.driver= driver;
 		this.isPredProd=isPredProd;
 
@@ -102,8 +102,8 @@ public class Arcproxyinspection {
 			else{
 				reader = new BufferedReader(new FileReader(filename_pre_prod));
 			}
-	
-			
+
+
 				while ((id = reader.readLine()) != null)
 				{
 					if(!inspectDate ){
@@ -113,7 +113,7 @@ public class Arcproxyinspection {
 						System.out.println("Date p58: " + date_p58);
 						DateList.add(date_p58); //Contains every dates of web content fetched from the file
 						title_p62=getIdTitle(broker_p62, id,Url);
-						date_p62=getIdDate(broker_p62,id);				
+						date_p62=getIdDate(broker_p62,id);
 						if (date_p58 !=null && date_p62 !=null && !isPredProd){
 							//If occurs same pages with different titles or dates
 							if (!date_p58.equals(date_p62) && !title_p58.equals(title_p62)){
@@ -127,10 +127,10 @@ public class Arcproxyinspection {
 								System.out.print("Offline collection: "+ id +"");
 								reader.close();
 								result = false;
-								throw new IllegalStateException("The collection which contains " +id+ 
+								throw new IllegalStateException("The collection which contains " +id+
 					                     "is offline");
 							}
-							
+
 							else
 								result = true;
 						}
@@ -149,9 +149,9 @@ public class Arcproxyinspection {
 			System.out.print(reader +" :"+this.getClass().getName()+"\nThere was problems opening configuration ");
 			return false;
 		}
-			
+
 			return result;
-		
+
 	}
 
 	/**
@@ -160,18 +160,18 @@ public class Arcproxyinspection {
 	 * @param Url - Driver URL
 	 * @return
 	 */
-	private String  getIdTitle (String server, String id,String[] Url){		
+	private String  getIdTitle (String server, String id,String[] Url){
 		try{
 			WebDriverWait wait = new WebDriverWait(driver, 65);
 			if (!this.isPredProd){
-				System.out.println("URL: " + server+Url[0].substring(7)+"wayback/"+id );
-				driver.get("http://"+server+Url[0].substring(7)+"wayback/"+id);
+				System.out.println("URL: " + server+Url[0].substring(8)+"wayback/"+id );
+				driver.get("https://"+server+Url[0].substring(8)+"wayback/"+id);
 			}
 			else{
-				System.out.println("URL: " + Url[0].substring(7)+"wayback/"+id);
-				driver.get("http://"+Url[0].substring(7)+"wayback/"+id);
+				System.out.println("URL: " + Url[0].substring(8)+"wayback/"+id);
+				driver.get("https://"+Url[0].substring(8)+"wayback/"+id);
 			}
-			
+
 			//wait until title was loaded
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
 			System.out.println("[Arcproxyinspect] [getTitle] " + driver.getTitle());
@@ -187,19 +187,19 @@ public class Arcproxyinspection {
 	private String  getIdDate (String server, String id){
 		WebElement replay_bar_with_date =null;
 		String date=null;
-		
-		
-		//This could happen when a page is offline, in that case it can not find the replay_bar with the date		
+
+
+		//This could happen when a page is offline, in that case it can not find the replay_bar with the date
 		try {
 			replay_bar_with_date =  driver.findElement(By.xpath("//*[@id=\"replay_iframe\"]"));
-			
+
 		} catch ( org.openqa.selenium.NoSuchElementException e) {
 			//System.out.print("\nReplay bar not injected. "+id+"\n");
 			return null;
 		}
 		date =replay_bar_with_date.getAttribute("src");
-		
-		
+
+
 
 
 		return date.split("/")[4]; //Get the date form the entire URL
