@@ -1,0 +1,466 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pt.arquivo</groupId>
+	<artifactId>functional-tests</artifactId>
+	<version>2.0-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+	<name>Functional Tests</name>
+	<description>
+		Recursive tests developed with selenium framework for Arquivo.pt
+	</description>
+	<inceptionYear>2016</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>See LICENSE.txt for more information.</comments>
+		</license>
+	</licenses>
+	<organization>
+		<name>Arquivo.pt</name>
+		<url>https://www.arquivo.pt/</url>
+	</organization>
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/arquivo/pwa-technologies/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>jenkins</system>
+		<url>http://p26.arquivo.pt:8081/jenkins/</url>
+	</ciManagement>
+
+	<prerequisites>
+		<maven>2.0.9</maven>
+	</prerequisites>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.james</groupId>
+			<artifactId>apache-mime4j</artifactId>
+			<version>0.6</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.beanshell</groupId>
+			<artifactId>bsh</artifactId>
+			<version>2.0b4</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>commons-el</groupId>
+			<artifactId>commons-el</artifactId>
+			<version>1.0</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<version>1.3</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.cssparser</groupId>
+			<artifactId>cssparser</artifactId>
+			<version>0.9.16</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>18.0</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>1.3</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.18</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit-core-js</artifactId>
+			<version>2.17</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.1</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.3</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>tomcat</groupId>
+			<artifactId>jasper-compiler</artifactId>
+			<version>5.5.15</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>tomcat</groupId>
+			<artifactId>jasper-compiler-jdt</artifactId>
+			<version>5.5.15</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>tomcat</groupId>
+			<artifactId>jasper-runtime</artifactId>
+			<version>5.5.15</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.48</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.jetty</groupId> -->
+		<!-- <artifactId>jetty-continuation</artifactId> -->
+		<!-- <version>9.2.13.v20150730</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.jetty</groupId> -->
+		<!-- <artifactId>jetty-http</artifactId> -->
+		<!-- <version>9.2.13.v20150730</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.jetty</groupId> -->
+		<!-- <artifactId>jetty-io</artifactId> -->
+		<!-- <version>9.2.13.v20150730</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.jetty</groupId> -->
+		<!-- <artifactId>jetty-jmx</artifactId> -->
+		<!-- <version>9.2.13.v20150730</version> -->
+		<!-- </dependency> -->
+		<!-- <artifactId>jetty-security-9.2.13.v20150730</artifactId> -->
+		<!-- <artifactId>jetty-server-9.2.13.v20150730</artifactId> -->
+		<!-- <artifactId>jetty-servlet-9.2.13.v20150730</artifactId> -->
+		<!-- <artifactId>jetty-servlets-9.2.13.v20150730</artifactId> -->
+		<!-- <dependency> -->
+		<!-- <groupId></groupId> -->
+		<!-- <artifactId>jetty-util-9.2.13.v20150730</artifactId> -->
+		<!-- <version></version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>4.1.0</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna-platform</artifactId>
+			<version>4.1.0</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.22</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>3.5.7.Final</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>1.2.1</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.w3c.css</groupId>
+			<artifactId>sac</artifactId>
+			<version>1.3</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.saucelabs</groupId>
+			<artifactId>sauce_java_common</artifactId>
+			<version>2.1.20</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.saucelabs</groupId>
+			<artifactId>sauce_junit</artifactId>
+			<version>2.1.20</version>
+			<!-- <scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.saucelabs</groupId>
+			<artifactId>saucerest</artifactId>
+			<version>1.0.22</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.48.2</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>serializer</artifactId>
+			<version>2.7.2</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.testng</groupId> -->
+		<!-- <artifactId>testng</artifactId> -->
+		<!-- <version>6.9.6</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.jetty.websocket</groupId> -->
+		<!-- <artifactId>websocket-api</artifactId> -->
+		<!-- <version>9.2.13.v20150730</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.jetty.websocket</groupId> -->
+		<!-- <artifactId>websocket-client</artifactId> -->
+		<!-- <version>9.2.13.v20150730</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.jetty.websocket</groupId> -->
+		<!-- <artifactId>websocket-common</artifactId> -->
+		<!-- <version>9.2.13.v20150730</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.2</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>repository</id>
+			<name>Repository</name>
+			<!--Pass as command-line system property to maven -->
+			<url>${repository.url}</url>
+		</repository>
+		<site>
+			<id>website</id>
+			<name>Website</name>
+			<!--Pass as command-line system property to maven -->
+			<url>${website.url}/projects/${project.artifactId}</url>
+		</site>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.saucelabs.maven.plugin</groupId>
+				<artifactId>sauce-connect-plugin</artifactId>
+				<version>2.1.25</version>
+				<configuration>
+					<sauceUsername>${remote.saucelabs.user}</sauceUsername>
+					<sauceAccessKey>${remote.saucelabs.key}</sauceAccessKey>
+					<!--<options>-i testing</options> -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-sauceconnect</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start-sauceconnect</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-sauceconnect</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop-sauceconnect</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Exclude all tests, because they're integration tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+					<excludes>
+						<exclude>**/*.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<!-- Configure integration tests plugin. In future replace the 'Test'
+				suffix with 'IT' -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<environmentVariables>
+						<SAUCE_USERNAME>${remote.saucelabs.user}</SAUCE_USERNAME>
+						<SAUCE_ACCESS_KEY>${remote.saucelabs.key}</SAUCE_ACCESS_KEY>
+					</environmentVariables>
+					<systemPropertyVariables>
+						<test.project.name>${project.name} ${testcase}</test.project.name>
+						<test.url>${test.url}</test.url>
+						<test.resolution>${test.resolution}</test.resolution>
+						<test.os>${test.os}</test.os>
+						<test.browser>${test.browser}</test.browser>
+						<test.browser.version>${test.browser.version}</test.browser.version>
+						<test.remote.access.user>${remote.saucelabs.user}</test.remote.access.user>
+						<test.remote.access.key>${remote.saucelabs.key}</test.remote.access.key>
+						<test.runRemote>true</test.runRemote>
+					</systemPropertyVariables>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<downloadJavadocs>true</downloadJavadocs>
+					<downloadSources>true</downloadSources>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<build.timestamp>${maven.build.timestamp}</build.timestamp>
+
+		<test.url>${env.SELENIUM_TEST_URL}</test.url>
+		<test.resolution>1280x1024</test.resolution>
+		<test.os>${env.SELENIUM_BROWSER_OS}</test.os>
+		<test.browser>${env.SELENIUM_BROWSER}</test.browser>
+		<test.browser.version>
+			${env.SELENIUM_BROWSER_VERSION}</test.browser.version>
+
+	</properties>
+
+</project>

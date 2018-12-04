@@ -1,3 +1,6 @@
 build
 bin
 test-reports
+target
+.classpath
+.project
