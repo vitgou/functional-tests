@@ -78,6 +78,7 @@ import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider{
     public String username = Optional.ofNullable(System.getProperty("test.remote.access.user")).orElse(System.getenv("SAUCE_USERNAME"));
     public String accesskey = Optional.ofNullable(System.getProperty("test.remote.access.key")).orElse(System.getenv("SAUCE_ACCESS_KEY"));
+    private String port = System.getProperty("test.remote.access.port");
 
     public static String seleniumURI;
 
@@ -243,11 +244,11 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         }*/
         capabilities.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
 
-        System.out.println("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:4445" +"/wd/hub");
+        System.out.println("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub");
 
         SauceHelpers.addSauceConnectTunnelId(capabilities);
         this.driver = new RemoteWebDriver(
-                new URL("http://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:4445" +"/wd/hub"),
+                new URL("http://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub"),
                 capabilities);
         this.driver.get(testURL);
 
