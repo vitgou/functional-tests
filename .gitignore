@@ -5,3 +5,6 @@ target
 .classpath
 .project
 .settings
+functional-tests.iml
+functional-tests.ipr
+functional-tests.iws
