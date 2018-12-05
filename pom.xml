@@ -295,34 +295,50 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>createTunnel</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.saucelabs.maven.plugin</groupId>
+						<artifactId>sauce-connect-plugin</artifactId>
+						<version>2.1.25</version>
+						<configuration>
+							<sauceUsername>${remote.saucelabs.user}</sauceUsername>
+							<sauceAccessKey>${remote.saucelabs.key}</sauceAccessKey>
+							<!--<options>-i testing</options> -->
+						</configuration>
+						<executions>
+							<execution>
+								<id>start-sauceconnect</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>start-sauceconnect</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop-sauceconnect</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop-sauceconnect</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>com.saucelabs.maven.plugin</groupId>
-				<artifactId>sauce-connect-plugin</artifactId>
-				<version>2.1.25</version>
-				<configuration>
-					<sauceUsername>${remote.saucelabs.user}</sauceUsername>
-					<sauceAccessKey>${remote.saucelabs.key}</sauceAccessKey>
-					<!--<options>-i testing</options> -->
-				</configuration>
-				<executions>
-					<execution>
-						<id>start-sauceconnect</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start-sauceconnect</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>stop-sauceconnect</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop-sauceconnect</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>build-helper-maven-plugin</artifactId> 
+				<version>3.0.0</version> <executions> <execution> <id>reserve-network-port</id> 
+				<goals> <goal>reserve-network-port</goal> </goals> <phase>generate-sources</phase> 
+				<configuration> <minPortNumber>4446</minPortNumber> <maxPortNumber>4500</maxPortNumber> 
+				<randomPort>true</randomPort> <portNames> <portName>remote.saucelabs.port</portName> 
+				</portNames> </configuration> </execution> </executions> </plugin> -->
 			<!-- Exclude all tests, because they're integration tests -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -334,7 +350,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<!-- Configure integration tests plugin. In future replace the 'Test'
+			<!-- Configure integration tests plugin. In future replace the 'Test' 
 				suffix with 'IT' -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -395,6 +411,8 @@
 		<test.browser>${env.SELENIUM_BROWSER}</test.browser>
 		<test.browser.version>
 			${env.SELENIUM_BROWSER_VERSION}</test.browser.version>
+		<remote.saucelabs.key>${env.SAUCE_ACCESS_KEY}</remote.saucelabs.key>
+		<remote.saucelabs.user>${env.SAUCE_USERNAME}</remote.saucelabs.user>
 
 	</properties>
 
