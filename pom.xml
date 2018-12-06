@@ -330,7 +330,7 @@
 					<options>--pidfile /tmp/sc_${remote.saucelabs.port.scproxy}.pid
 						--logfile /tmp/sc_${remote.saucelabs.port.scproxy}.log
 						--scproxy-port ${remote.saucelabs.port.scproxy} --se-port ${remote.saucelabs.port.se} 
-						-i maven-remote.saucelabs.port.se-${env.HOSTNAME}</options>
+						-i maven-${env.HOSTNAME}-${remote.saucelabs.port.se}</options>
 				</configuration>
 				<executions>
 					<execution>
