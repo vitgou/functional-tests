@@ -4,10 +4,13 @@ Recursive tests developed with selenium framework for Arquivo.pt
 
 Functional Tests
 
-Generate eclipse .project and .classpath files run
 
- $ mvn eclipse:clean eclipse:eclipse
+ Generate eclipse .project and .classpath files, similar for idea.
+```bash
+ mvn eclipse:clean eclipse:eclipse
+```
 
 Execute the tests
-
- $ mvn clean verify -Dit.test=pt.fccn.arquivo.tests.AllTests -Dtest.url=https://preprod.arquivo.pt -Dremote.saucelabs.user=xxxx -Dremote.saucelabs.key=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Dtest.resolution=1280x1024
+```bash
+ mvn clean verify -Dit.test=pt.fccn.arquivo.tests.AllTests -Dtest.url=https://preprod.arquivo.pt -Dremote.saucelabs.user=xxxx -Dremote.saucelabs.key=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Dtest.resolution=1280x1024
+```
