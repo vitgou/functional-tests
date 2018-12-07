@@ -8,8 +8,8 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 public class AnalyzeURLs {
-	
-	
+
+
 	/**
 	 * Check if link exists
 	 * @param URLName
@@ -20,33 +20,35 @@ public class AnalyzeURLs {
 	    boolean redirect = false;
 		try {
 	    	System.out.println( "[linkExists] url[" + URLName + "]" );
-	    	
+
 	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
-	    	
+
 	    	// normally, 3xx is redirect
 	    	int status = con.getResponseCode( );
 	    	System.out.println( "Status-code = " + status );
 	  	    redirect = checkRedirect( status );
 	    	System.out.println( "[linkExists] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
 	    	con.disconnect( );
-	    	
+
 	    	while( redirect ) {
 	    		// get redirect url from "location" header field
 	    		String newUrl = con.getHeaderField( "Location" );
 	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
 	    		// get the cookie if need, for login
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
-	    		
+
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
-	    		con.setRequestProperty( "Cookie", cookies );
+				if (cookies != null && !cookies.isEmpty()) {
+					con.setRequestProperty( "Cookie", cookies );
+				}
 	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    		con.addRequestProperty( "User-Agent", "Mozilla" );
 	    		con.addRequestProperty( "Referer", "google.com" );
@@ -57,9 +59,9 @@ public class AnalyzeURLs {
 	    		redirect = checkRedirect( status );
 	    		con.disconnect( );
 	    	}
-	    	
+
 	    	return status;
-	
+
 	    } catch ( MalformedURLException e ) {
 	    	System.out.println( "MalformedURLException e = " + e.getMessage( ) );
 			return -1;
@@ -67,9 +69,9 @@ public class AnalyzeURLs {
 			System.out.println( "IOException e = " + e.getMessage( ) );
 			return -1;
 		}
-	    
+
 	}
-	
+
 	/**
 	 * Check if link exists
 	 * @param URLName
@@ -79,36 +81,36 @@ public class AnalyzeURLs {
 	    boolean redirect = false;
 		try {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
-	    	
+
 	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
-	    	
+
 	    	// normally, 3xx is redirect
 	    	int status = con.getResponseCode( );
 	    	System.out.println( "Status-code = " + status );
 	    	redirect = checkRedirect( status );
-	    	
+
 	    	System.out.println( "[Footer] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
 	    	con.disconnect( );
-	    	
+
 	    	while( redirect ) {
 	    		// get redirect url from "location" header field
 	    		String newUrl = con.getHeaderField( "Location" );
 	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
 	    		// get the cookie if need, for login
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
-	    		
+
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 	    		con.setRequestProperty( "Cookie", cookies );
 
-		    	
+
 		    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    		con.addRequestProperty( "User-Agent", "Mozilla" );
 	    		con.addRequestProperty( "Referer", "google.com" );
@@ -119,14 +121,14 @@ public class AnalyzeURLs {
 	    		redirect = checkRedirect( status );
 	    		con.disconnect( );
 	    	}
-	    	
+
 	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
-	    		
+
 	    	if( status == HttpURLConnection.HTTP_OK && textTolink.get( text ).trim( ).equals( URLName.trim( ) ) )
 	    		return true;
 	    	else
 	    		return false;
-	
+
 	    } catch ( MalformedURLException e ) {
 	    	System.out.println( "MalformedURLException e = " + e.getMessage( ) );
 			return false;
@@ -134,10 +136,10 @@ public class AnalyzeURLs {
 			System.out.println( "IOException e = " + e.getMessage( ) );
 			return false;
 		}
-	    
+
 	}
-	
-	
+
+
 	/**
 	 * Check if link exists
 	 * @param URLName
@@ -148,26 +150,26 @@ public class AnalyzeURLs {
 	    boolean redirect = false;
 		try {
 	    	System.out.println( "[linkExists] url[" + URLName + "]" );
-	    	
+
 	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
 	    	con.addRequestProperty( "User-Agent", "Mozilla" );
 	    	con.addRequestProperty( "Referer", "google.com" );
-	    	
+
 	    	// normally, 3xx is redirect
 	    	int status = con.getResponseCode( );
 	    	System.out.println( "Status-code = " + status );
 	  	    redirect = checkRedirect( status );
 	    	System.out.println( "[linkExists] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
 	    	con.disconnect( );
-	    	
+
 	    	while( redirect ) {
 	    		// get redirect url from "location" header field
 	    		String newUrl = con.getHeaderField( "Location" );
 	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
-	    		
+
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
@@ -178,7 +180,7 @@ public class AnalyzeURLs {
 	    		con.addRequestProperty( "User-Agent", "Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0" );
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
-	    		
+
 	    		URLName = newUrl;
 	    		System.out.println( "Link["+URLName+"] Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
 	    		redirect = checkRedirect( status );
@@ -186,7 +188,7 @@ public class AnalyzeURLs {
 	    	}
 	    	System.out.println( "return status-code["+status+"]" );
 	    	return checkOk( status );
-	
+
 	    } catch ( MalformedURLException e ) {
 	    	System.out.println( "MalformedURLException e = " + e.getMessage( ) );
 			return false;
@@ -194,12 +196,12 @@ public class AnalyzeURLs {
 			System.out.println( "IOException e = " + e.getMessage( ) );
 			return false;
 		}
-	    
+
 	}
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 * @param status
 	 * @return
 	 */
@@ -212,15 +214,15 @@ public class AnalyzeURLs {
     	}
 		return false;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param status
 	 * @return
 	 */
 	public static boolean checkOk( int status ){
-		return ( status == HttpURLConnection.HTTP_OK ); 
+		return ( status == HttpURLConnection.HTTP_OK );
 	}
-	
-	
+
+
 }
