@@ -104,12 +104,12 @@ public class SearchPage {
     	  btnSubmitElement.click();
 
         WebElement spellCheckerElement = (new WebDriverWait(driver, 25))
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"second-column\"]/div[1]/span/a")));
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"second-column\"]/div[2]/span/a")));
 
     	  String spellCheckerTest = spellCheckerElement.getText();
 
     	  if(!spellCheckerTest.equals("teste")){
-    		  System.out.print("Spellchecker is not working on properly");
+    		  System.out.println("Spellchecker is not working on properly");
     		  return false;
     	  }
     	  return true;
