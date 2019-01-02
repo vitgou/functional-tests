@@ -2,7 +2,6 @@ package pt.fccn.arquivo.tests;
 
 import static org.junit.Assert.*;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
 import org.junit.Test;
 import pt.fccn.arquivo.pages.*;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;

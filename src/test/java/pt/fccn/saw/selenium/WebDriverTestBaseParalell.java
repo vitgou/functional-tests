@@ -258,17 +258,6 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         System.out.println(message);
     }
 
-
-    /**
-     * This method is run before each test.
-     * It sets the browsers to the starting test url
-     */
-    @Before
-    public void preTest() {
-        //for(WebDriver d: drivers)
-        driver.get(testURL);
-    }
-
     /**
      * Releases the resources used for the tests, i.e.,
      * It closes the WebDriver.
