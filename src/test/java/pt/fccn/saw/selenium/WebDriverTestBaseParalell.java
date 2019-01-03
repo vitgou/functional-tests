@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import pt.fccn.saw.selenium.RetryRule;
 
@@ -50,7 +51,9 @@ import org.openqa.selenium.remote.CapabilityType;
 import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONArray;
@@ -141,7 +144,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
    //protected static  String pre_prod="p24";
     protected static boolean Ispre_prod=false;
 
-    private StringBuffer verificationErrors = new StringBuffer();
+    private List<Throwable> verificationErrors = new ArrayList<Throwable>();
 
     public WebDriverTestBaseParalell(String os, String version, String browser, String deviceName, String deviceOrientation) {
         super();
@@ -265,14 +268,17 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
      * It closes the WebDriver.
      */
     @After
-    public void tearDown() throws Exception {
-        driver.quit();
+	public void tearDown() throws Exception {
+		driver.quit();
 
-		String verificationErrorString = verificationErrors.toString();
-		if (!verificationErrorString.isEmpty()) {
-			fail(verificationErrorString);
+		if (!verificationErrors.isEmpty()) {
+			String errorMessageForAllErrors = verificationErrors.stream() //
+					.map(e -> e.getLocalizedMessage()) //
+					.collect(Collectors.joining(System.lineSeparator()));
+			Throwable firstError = verificationErrors.iterator().next();
+			throw new AssertionError(errorMessageForAllErrors, firstError);
 		}
-    }
+	}
 
     /**
      * Creates a Local WebDriver given a string with the web browser name.
@@ -397,7 +403,10 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 		try {
 			r.run();
 		} catch (Throwable e) {
-			verificationErrors.append(e.getLocalizedMessage());
+			// print now the stack trace, because at the end could be a list of errors.
+			e.printStackTrace();
+			
+			verificationErrors.add(e);
 		}
 	}
 }
