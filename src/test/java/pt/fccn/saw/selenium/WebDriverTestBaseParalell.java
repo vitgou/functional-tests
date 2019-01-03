@@ -177,9 +177,9 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         JSONObject browsersJSONObject = new JSONObject("{browsers:"+browsersJSON+"}");
 
         if(browsersJSON == null){
-            System.out.println("You did not specify browsers, testing with firefox and chrome...");
-            browsers.add(new String[]{"Windows 7", "41", "chrome", null, null});
-            browsers.add(new String[]{"Windows 8.1", "46", "firefox", null, null});
+            System.out.println("You did not specify browsers, testing with latest firefox and chrome...");
+            browsers.add(new String[]{"Windows 7", "latest", "chrome", null, null});
+            browsers.add(new String[]{"Windows 8.1", "latest", "firefox", null, null});
         }
         else{
             JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");

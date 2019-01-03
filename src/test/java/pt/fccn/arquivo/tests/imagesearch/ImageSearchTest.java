@@ -50,7 +50,7 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 	public void setUp() throws Exception {
 		super.setUp();
 		Timeouts timeouts = driver.manage().timeouts();
-		timeouts.pageLoadTimeout(25, TimeUnit.SECONDS);
+//		timeouts.pageLoadTimeout(25, TimeUnit.SECONDS);
 		timeouts.implicitlyWait(5, TimeUnit.SECONDS);
 		timeouts.setScriptTimeout(5, TimeUnit.SECONDS);
 	}
