@@ -3,14 +3,12 @@ package pt.fccn.sobre.arquivo.tests;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Test;
 
 import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
-import pt.fccn.sobre.arquivo.pages.CommonQuestionsPage;
 import pt.fccn.sobre.arquivo.pages.ExamplesPage;
 import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
 

@@ -19,8 +19,6 @@ package pt.fccn.arquivo.tests;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.pages.TermsAndConditionsPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;

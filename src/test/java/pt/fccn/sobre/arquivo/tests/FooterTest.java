@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
-import pt.fccn.sobre.arquivo.pages.ExamplesPage;
 import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
 
 public class FooterTest extends WebDriverTestBaseParalell {

@@ -20,33 +20,16 @@ package pt.fccn.arquivo.pages;
 
 
 
-import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.io.StringReader;
-import java.sql.Driver;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.CharacterData;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
-import net.sourceforge.htmlunit.corejs.javascript.ast.NewExpression;
 
 
 /**

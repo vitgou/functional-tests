@@ -19,13 +19,10 @@
 package pt.fccn.saw.selenium;
 
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import pt.fccn.saw.selenium.RetryRule;
-
-import java.util.ArrayList;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -36,8 +33,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.*;
-
 import com.saucelabs.common.SauceOnDemandAuthentication;
 
 
@@ -51,10 +46,8 @@ import org.openqa.selenium.remote.CapabilityType;
 import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
 
-import java.net.URL;
 import java.util.LinkedList;
 
-import org.json.*;
 import org.json.JSONException;
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.pages.OpenSearchPage;
-import pt.fccn.arquivo.pages.SearchPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import pt.fccn.saw.selenium.Retry;
 

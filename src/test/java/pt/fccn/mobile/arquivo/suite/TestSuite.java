@@ -4,7 +4,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import pt.fccn.mobile.arquivo.tests.AdvancedTest;
 import pt.fccn.mobile.arquivo.tests.FullTextSearchTest;
 import pt.fccn.mobile.arquivo.tests.URLSearchTest;
 

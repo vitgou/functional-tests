@@ -18,8 +18,6 @@ import pt.fccn.sobre.arquivo.pages.NewsPage;
 import pt.fccn.sobre.arquivo.pages.PresentationsPage;
 import pt.fccn.sobre.arquivo.pages.PublicationsPage;
 import pt.fccn.sobre.arquivo.pages.ReportsPage;
-import pt.fccn.sobre.arquivo.pages.SiteMapPage;
-import pt.fccn.sobre.arquivo.pages.VideoPage;
 
 public class NavigationTest  extends WebDriverTestBaseParalell {
 

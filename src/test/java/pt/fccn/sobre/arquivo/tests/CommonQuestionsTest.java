@@ -7,11 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-
-import pt.fccn.arquivo.pages.AdvancedPage;
-import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.arquivo.pages.ReplayPage;
 import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import pt.fccn.sobre.arquivo.pages.CommonQuestionsPage;

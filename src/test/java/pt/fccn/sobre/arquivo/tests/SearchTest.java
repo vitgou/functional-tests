@@ -11,7 +11,6 @@ import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
 import pt.fccn.sobre.arquivo.pages.SearchPage;
-import pt.fccn.sobre.arquivo.pages.SiteMapPage;
 
 public class SearchTest extends WebDriverTestBaseParalell {
 
