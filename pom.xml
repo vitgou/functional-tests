@@ -36,10 +36,6 @@
 		<url>http://p26.arquivo.pt:8081/jenkins/</url>
 	</ciManagement>
 
-	<prerequisites>
-		<maven>2.0.9</maven>
-	</prerequisites>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -253,7 +249,6 @@
 					<downloadSources>true</downloadSources>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 
