@@ -18,14 +18,18 @@
 
 package pt.fccn.saw.selenium;
 
+import static org.junit.Assert.fail;
+
 import java.net.URL;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 import pt.fccn.saw.selenium.RetryRule;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -129,8 +133,6 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
     protected WebDriver driver;
     //protected static ArrayList<WebDriver> drivers;
 
-
-
     protected static String screenResolution;
     protected static String testURL;
     protected static String browserVersion;
@@ -139,6 +141,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
    //protected static  String pre_prod="p24";
     protected static boolean Ispre_prod=false;
 
+    private StringBuffer verificationErrors = new StringBuffer();
 
     public WebDriverTestBaseParalell(String os, String version, String browser, String deviceName, String deviceOrientation) {
         super();
@@ -161,9 +164,9 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
      * in the String array are used as part of the invocation of the test constructor
      */
     @ConcurrentParameterized.Parameters
-    public static LinkedList browsersStrings() {
+    public static LinkedList<String[]> browsersStrings() {
         String  browsersJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
-        LinkedList browsers = new LinkedList();
+        LinkedList<String[]> browsers = new LinkedList<String[]>();
 
         System.out.println("JSON: " + browsersJSON);
 
@@ -180,7 +183,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
               //TODO:: find names of extra properties for mobile Devices such as orientation and device name
               JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);
               String browserOS = browserConfigs.getString("os");
-              String browserPlatform= browserConfigs.getString("platform");
+//              String browserPlatform= browserConfigs.getString("platform");
               String browserName= browserConfigs.getString("browser");
               String browserVersion = browserConfigs.getString("browser-version");
               String device = null;
@@ -249,6 +252,12 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
         String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", this.sessionId, methodName);
         System.out.println(message);
+        
+		Timeouts timeouts = driver.manage().timeouts();
+		// it isn't working on latest firefox
+//		timeouts.pageLoadTimeout(25, TimeUnit.SECONDS);
+		timeouts.implicitlyWait(5, TimeUnit.SECONDS);
+		timeouts.setScriptTimeout(5, TimeUnit.SECONDS);
     }
 
     /**
@@ -259,6 +268,10 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
     public void tearDown() throws Exception {
         driver.quit();
 
+		String verificationErrorString = verificationErrors.toString();
+		if (!verificationErrorString.isEmpty()) {
+			fail(verificationErrorString);
+		}
     }
 
     /**
@@ -371,4 +384,20 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
             return false;
         }
     }
+    
+	protected void run(String errorMessage, Runnable r) {
+		try {
+			r.run();
+		} catch (Throwable t) {
+			throw new Error(errorMessage, t);
+		}
+	}
+
+	protected void appendError(Runnable r) {
+		try {
+			r.run();
+		} catch (Throwable e) {
+			verificationErrors.append(e.getLocalizedMessage());
+		}
+	}
 }

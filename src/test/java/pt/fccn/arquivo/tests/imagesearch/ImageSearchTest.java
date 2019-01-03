@@ -1,15 +1,12 @@
 package pt.fccn.arquivo.tests.imagesearch;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver.Timeouts;
 
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
@@ -27,50 +24,22 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 		super(os, version, browser, deviceName, deviceOrientation);
 	}
 
-	private StringBuffer verificationErrors = new StringBuffer();
-
-	private void block(String errorMessage, Runnable r) {
-		try {
-			r.run();
-		} catch (Throwable t) {
-			throw new Error(errorMessage, t);
-		}
-	}
-
-	private void appendError(Runnable r) {
-		try {
-			r.run();
-		} catch (Throwable e) {
-			verificationErrors.append(e.getLocalizedMessage());
-		}
-	}
-
-	@Override
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-		Timeouts timeouts = driver.manage().timeouts();
-//		timeouts.pageLoadTimeout(25, TimeUnit.SECONDS);
-		timeouts.implicitlyWait(5, TimeUnit.SECONDS);
-		timeouts.setScriptTimeout(5, TimeUnit.SECONDS);
-	}
-
 	@Test
 	public void testImageSearchOneTerm() throws Exception {
 
-		block("Search FCCN term", () -> {
+		run("Search FCCN term", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
 			driver.findElement(By.id("txtSearch")).sendKeys("fccn");
 			driver.findElement(By.id("btnSubmit")).click();
 		});
 
-		block("Search images instead of text", () -> driver.findElement(By.linkText("Imagens")).click());
+		run("Search images instead of text", () -> driver.findElement(By.linkText("Imagens")).click());
 
-		block("Click/open first image on search results to open modal",
+		run("Click/open first image on search results to open modal",
 				() -> driver.findElement(By.xpath("//*[@id=\"imageResults0\"]/h2/button/img")).click());
 
 		appendError(() -> {
-			assertTrue("First image details / its modal isn't displayed after clicking on it",
+			assertTrue("First image details should be shown after clicking on it",
 					driver.findElement(By.xpath("//*[@id=\"imgTitleLabel0\"]/a")).isDisplayed());
 		});
 
@@ -110,7 +79,7 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 					driver.findElement(By.xpath("//*[@id=\"testViewer0\"]/div[2]/div/div[2]/div/h2[3]")).getText());
 		});
 
-		block("Click on show image details button on image modal", () -> {
+		run("Click on show image details button on image modal", () -> {
 			driver.findElement(By.id("showDetails")).click();
 		});
 
@@ -174,23 +143,13 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 					containsString("IA"));
 		});
 
-		block("Close image details modal", () -> {
+		run("Close image details modal", () -> {
 			driver.findElement(By.id("detailsDialogClose")).click();
 		});
 
-		block("Close image first modal", () -> {
+		run("Close image first modal", () -> {
 			driver.findElement(By.xpath("//*[@id=\"testViewer0\"]/button[1]")).click();
 		});
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		super.tearDown();
-
-		String verificationErrorString = verificationErrors.toString();
-		if (!verificationErrorString.isEmpty()) {
-			fail(verificationErrorString);
-		}
 	}
 
 }
