@@ -21,6 +21,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import pt.fccn.arquivo.tests.imagesearch.ImageAdvancedSearchTest;
+import pt.fccn.arquivo.tests.imagesearch.ImageSearchDirectUrlTest;
 import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
 
 /**
@@ -31,7 +33,7 @@ import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
 /*@SuiteClasses({ TestSearchOneTerm.class,HighlightsTest.class, 
         TermsAndConditionsTest.class, TestSponsorImage.class, TestSearchOneTermOpenSearch.class,TestArcproxy.class,AdvancedTest.class,UrlsearchTest.class, ReplayTest.class })*/
 // HighlightsTest.class 
-@SuiteClasses({ TestSearchOneTerm.class, ReplayTest.class, TestSponsorImage.class,TestArcproxy.class,AdvancedTest.class, UrlsearchTest.class, FooterTest.class, SpellcheckerTest.class, ImageSearchTest.class }) 
+@SuiteClasses({ TestSearchOneTerm.class, ReplayTest.class, TestSponsorImage.class,TestArcproxy.class,AdvancedTest.class, UrlsearchTest.class, FooterTest.class, SpellcheckerTest.class, ImageSearchTest.class, ImageSearchDirectUrlTest.class, ImageAdvancedSearchTest.class }) 
 //TODO refactoring TermsAndConditionsTest.class 
 //TODO SearchMultipleTermsQueryServer.class
 //TODO TestSearchOneTermOpenSearch.class
