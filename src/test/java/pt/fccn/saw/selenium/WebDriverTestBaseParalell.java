@@ -18,11 +18,9 @@
 
 package pt.fccn.saw.selenium;
 
-import static org.junit.Assert.fail;
 
 import java.net.URL;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -76,8 +74,6 @@ import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 @Ignore
 @RunWith(ConcurrentParameterized.class)
 public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider{
-    public String username = Optional.ofNullable(System.getProperty("test.remote.access.user")).orElse(System.getenv("SAUCE_USERNAME"));
-    public String accesskey = Optional.ofNullable(System.getProperty("test.remote.access.key")).orElse(System.getenv("SAUCE_ACCESS_KEY"));
     private String port = System.getProperty("test.remote.access.port");
 
     public static String seleniumURI;
@@ -87,7 +83,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
      * Constructs a {@link SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
      * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
      */
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(username, accesskey);
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication();
 
     /**
      * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
@@ -135,6 +131,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
     protected WebDriver driver;
     //protected static ArrayList<WebDriver> drivers;
+    
+    private List<Throwable> verificationErrors = new ArrayList<Throwable>();
 
     protected static String screenResolution;
     protected static String testURL;
@@ -143,8 +141,6 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
     protected static  String pre_prod="preprod";
    //protected static  String pre_prod="p24";
     protected static boolean Ispre_prod=false;
-
-    private List<Throwable> verificationErrors = new ArrayList<Throwable>();
 
     public WebDriverTestBaseParalell(String os, String version, String browser, String deviceName, String deviceOrientation) {
         super();
@@ -243,13 +239,13 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         }*/
         capabilities.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
 
-        System.out.println("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub");
-
         SauceHelpers.addSauceConnectTunnelId(capabilities);
-        this.driver = new RemoteWebDriver(
-                new URL("http://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub"),
-                capabilities);
-        this.driver.get(testURL);
+        
+        URL url = new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub");
+        System.out.println(url);
+        
+		this.driver = new RemoteWebDriver(url, capabilities);
+		this.driver.get(testURL);
 
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
