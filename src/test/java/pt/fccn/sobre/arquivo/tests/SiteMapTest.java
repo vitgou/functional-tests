@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
-import pt.fccn.sobre.arquivo.pages.CommonQuestionsPage;
 import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
 import pt.fccn.sobre.arquivo.pages.SiteMapPage;
 

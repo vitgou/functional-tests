@@ -14,3 +14,8 @@ Execute the tests
 ```bash
  mvn clean verify -Dit.test=pt.fccn.arquivo.tests.AllTests -Dtest.url=https://preprod.arquivo.pt -Dremote.saucelabs.user=xxxx -Dremote.saucelabs.key=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Dtest.resolution=1280x1024
 ```
+
+To debug tests add the argument:
+```bash
+-Dmaven.failsafe.debug
+```

@@ -18,17 +18,17 @@
 
 package pt.fccn.saw.selenium;
 
+
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import pt.fccn.saw.selenium.RetryRule;
 
-import java.util.ArrayList;
-
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -36,8 +36,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.*;
-
 import com.saucelabs.common.SauceOnDemandAuthentication;
 
 
@@ -51,10 +49,10 @@ import org.openqa.selenium.remote.CapabilityType;
 import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
 
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
-import org.json.*;
 import org.json.JSONException;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -76,8 +74,6 @@ import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 @Ignore
 @RunWith(ConcurrentParameterized.class)
 public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider{
-    public String username = Optional.ofNullable(System.getProperty("test.remote.access.user")).orElse(System.getenv("SAUCE_USERNAME"));
-    public String accesskey = Optional.ofNullable(System.getProperty("test.remote.access.key")).orElse(System.getenv("SAUCE_ACCESS_KEY"));
     private String port = System.getProperty("test.remote.access.port");
 
     public static String seleniumURI;
@@ -87,7 +83,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
      * Constructs a {@link SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
      * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
      */
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(username, accesskey);
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication();
 
     /**
      * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
@@ -135,8 +131,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
     protected WebDriver driver;
     //protected static ArrayList<WebDriver> drivers;
-
-
+    
+    private List<Throwable> verificationErrors = new ArrayList<Throwable>();
 
     protected static String screenResolution;
     protected static String testURL;
@@ -145,7 +141,6 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
     protected static  String pre_prod="preprod";
    //protected static  String pre_prod="p24";
     protected static boolean Ispre_prod=false;
-
 
     public WebDriverTestBaseParalell(String os, String version, String browser, String deviceName, String deviceOrientation) {
         super();
@@ -168,18 +163,18 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
      * in the String array are used as part of the invocation of the test constructor
      */
     @ConcurrentParameterized.Parameters
-    public static LinkedList browsersStrings() {
+    public static LinkedList<String[]> browsersStrings() {
         String  browsersJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
-        LinkedList browsers = new LinkedList();
+        LinkedList<String[]> browsers = new LinkedList<String[]>();
 
         System.out.println("JSON: " + browsersJSON);
 
         JSONObject browsersJSONObject = new JSONObject("{browsers:"+browsersJSON+"}");
 
         if(browsersJSON == null){
-            System.out.println("You did not specify browsers, testing with firefox and chrome...");
-            browsers.add(new String[]{"Windows 7", "41", "chrome", null, null});
-            browsers.add(new String[]{"Windows 8.1", "46", "firefox", null, null});
+            System.out.println("You did not specify browsers, testing with latest firefox and chrome...");
+            browsers.add(new String[]{"Windows 7", "latest", "chrome", null, null});
+            browsers.add(new String[]{"Windows 8.1", "latest", "firefox", null, null});
         }
         else{
             JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");
@@ -187,7 +182,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
               //TODO:: find names of extra properties for mobile Devices such as orientation and device name
               JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);
               String browserOS = browserConfigs.getString("os");
-              String browserPlatform= browserConfigs.getString("platform");
+//              String browserPlatform= browserConfigs.getString("platform");
               String browserName= browserConfigs.getString("browser");
               String browserVersion = browserConfigs.getString("browser-version");
               String device = null;
@@ -244,29 +239,24 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         }*/
         capabilities.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
 
-        System.out.println("https://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub");
-
         SauceHelpers.addSauceConnectTunnelId(capabilities);
-        this.driver = new RemoteWebDriver(
-                new URL("http://" + username+ ":" + accesskey + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub"),
-                capabilities);
-        this.driver.get(testURL);
+        
+        URL url = new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub");
+        System.out.println(url);
+        
+		this.driver = new RemoteWebDriver(url, capabilities);
+		this.driver.get(testURL);
 
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
         String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", this.sessionId, methodName);
         System.out.println(message);
-    }
-
-
-    /**
-     * This method is run before each test.
-     * It sets the browsers to the starting test url
-     */
-    @Before
-    public void preTest() {
-        //for(WebDriver d: drivers)
-        driver.get(testURL);
+        
+		Timeouts timeouts = driver.manage().timeouts();
+		// it isn't working on latest firefox
+//		timeouts.pageLoadTimeout(25, TimeUnit.SECONDS);
+		timeouts.implicitlyWait(5, TimeUnit.SECONDS);
+		timeouts.setScriptTimeout(5, TimeUnit.SECONDS);
     }
 
     /**
@@ -274,10 +264,17 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
      * It closes the WebDriver.
      */
     @After
-    public void tearDown() throws Exception {
-        driver.quit();
+	public void tearDown() throws Exception {
+		driver.quit();
 
-    }
+		if (!verificationErrors.isEmpty()) {
+			String errorMessageForAllErrors = verificationErrors.stream() //
+					.map(e -> e.getLocalizedMessage()) //
+					.collect(Collectors.joining(System.lineSeparator()));
+			Throwable firstError = verificationErrors.iterator().next();
+			throw new AssertionError(errorMessageForAllErrors, firstError);
+		}
+	}
 
     /**
      * Creates a Local WebDriver given a string with the web browser name.
@@ -389,4 +386,23 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
             return false;
         }
     }
+    
+	protected void run(String errorMessage, Runnable r) {
+		try {
+			r.run();
+		} catch (Throwable t) {
+			throw new Error(errorMessage, t);
+		}
+	}
+
+	protected void appendError(Runnable r) {
+		try {
+			r.run();
+		} catch (Throwable e) {
+			// print now the stack trace, because at the end could be a list of errors.
+			e.printStackTrace();
+			
+			verificationErrors.add(e);
+		}
+	}
 }

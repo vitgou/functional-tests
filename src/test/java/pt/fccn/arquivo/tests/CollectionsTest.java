@@ -27,7 +27,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Locale;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import static org.junit.Assert.*;

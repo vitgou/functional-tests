@@ -1,11 +1,8 @@
 package pt.fccn.arquivo.tests;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
-import pt.fccn.arquivo.pages.AdvancedPage;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;

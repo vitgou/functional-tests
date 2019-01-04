@@ -20,7 +20,6 @@ package pt.fccn.arquivo.tests.older;
 
 import java.util.Map;
 import java.util.TreeMap;
-import pt.fccn.arquivo.tests.util.QueryResultPair;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 import org.junit.Ignore;

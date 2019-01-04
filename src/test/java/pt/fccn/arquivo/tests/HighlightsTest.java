@@ -25,9 +25,6 @@ import pt.fccn.arquivo.pages.HighlightsPage;
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import pt.fccn.saw.selenium.Retry;
-import org.openqa.selenium.WebDriver;
-
-import java.util.ArrayList;
 
 /**
  * @author Simao Fontes

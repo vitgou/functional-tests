@@ -20,7 +20,6 @@ package pt.fccn.bon.test;
 
 import pt.fccn.saw.selenium.SeleniumTestBase;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  * A example of a test class using HtmlUnitDriver.

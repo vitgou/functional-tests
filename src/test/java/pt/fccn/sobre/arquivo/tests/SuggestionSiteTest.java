@@ -11,7 +11,6 @@ import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import pt.fccn.sobre.arquivo.pages.CollaboratePage;
 import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
-import pt.fccn.sobre.arquivo.pages.NewsPage;
 import pt.fccn.sobre.arquivo.pages.SuggestionPage;
 
 public class SuggestionSiteTest extends WebDriverTestBaseParalell{

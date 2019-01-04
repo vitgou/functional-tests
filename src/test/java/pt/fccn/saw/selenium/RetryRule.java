@@ -1,9 +1,7 @@
 package pt.fccn.saw.selenium;
 
-import org.junit.rules.MethodRule;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
-import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -28,7 +26,7 @@ public class RetryRule implements TestRule {
             @Override
             public void evaluate() throws Throwable {
                 System.out.println("Evaluating retry ...");
-                Throwable caughtThrowable = null;
+                Throwable firstCaughtThrowable = null;
 
                 // implement retry logic here
                 while (retryCount.getAndDecrement() > 0) {
@@ -37,15 +35,18 @@ public class RetryRule implements TestRule {
                         return;
                     } catch (Throwable t) {
                     	t.printStackTrace();
+                    	
+                    	if (firstCaughtThrowable == null) {
+                    		firstCaughtThrowable = t;
+                    	}
 
                         if (retryCount.get() > 0 && description.getAnnotation(Retry.class)!= null) {
-                            caughtThrowable = t;
                             System.err.println(description.getDisplayName() +
                                     ": Failed, " +
                                     retryCount.toString() +
                                     " retries remain");
                         } else {
-                            throw caughtThrowable;
+                            throw firstCaughtThrowable;
                         }
                     }
                 }

@@ -1,6 +1,5 @@
 package pt.fccn.rcaap.test;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import pt.fccn.saw.selenium.WebDriverTestBase;
