@@ -45,21 +45,20 @@ public class IndexPage {
     private final WebDriver driver;
     private static final String pageURLCheck = "index.jsp";
     private String url =null;
-    private static final String searchBox = "txtSearch"; 
+    private static final String searchBox = "txtSearch";
     private static final String searchButton = "btnSubmit";
     private static final String highlightId = "ver-destaques";
     private static final String linkTextEN = "English";
-    private String termsandconditionstitleTextPT = "Termos e Condições";
     private static final String linkTextPT = "Português";
     private static final String titleTextEN = "Arquivo.pt - the Portuguese Web Archive: search pages from the past";
     private static final String titleTextPT = "Arquivo.pt: pesquise páginas do passado";
     private static final String cssTermsConditions = "#terms-conditions";
     private boolean isPreProd=false;
     private final int timeout = 90;
-    private final String[ ] multipleTerms = new String[ ]{ "\"protocolo de coprodução portugal brasil instituto cinema\"", 
+    private final String[ ] multipleTerms = new String[ ]{ "\"protocolo de coprodução portugal brasil instituto cinema\"",
     														"tempo 4 de julho de 2012" };
-    
-    
+
+
     /**
      * Starts a new Index page
      */
@@ -69,7 +68,7 @@ public class IndexPage {
           Thread.sleep(5000);                 //wait for page to load
         } catch(InterruptedException ex) {
           Thread.currentThread().interrupt();
-        }  
+        }
         // Check that we're on the right page.
         String pageTitle= driver.getTitle( );
         if (!(pageTitle.contentEquals(titleTextEN) || (pageTitle.contentEquals(titleTextPT)))){
@@ -77,7 +76,7 @@ public class IndexPage {
         	throw new IllegalStateException("This is not the index page\n Title of current page: " + pageTitle);
         }
     }
-    
+
     /**
      * @param pre_prod
      * @return
@@ -88,7 +87,7 @@ public class IndexPage {
          }
          return isPreProd;
     }
-    
+
     /**
      * Searches for a string in the interface
      * @param searchTerms String of terms to search for
@@ -96,63 +95,63 @@ public class IndexPage {
      */
     public SearchPage search(String searchTerms){
         WebElement searchBoxElement = (new WebDriverWait(driver, timeout)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until( ExpectedConditions.presenceOfElementLocated( By.id( searchBox ) ) );        
+            .until( ExpectedConditions.presenceOfElementLocated( By.id( searchBox ) ) );
         searchBoxElement.clear( );
         searchBoxElement.sendKeys( searchTerms );
         WebElement searchButtonElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until( ExpectedConditions.presenceOfElementLocated( By.id( searchButton ) ) );    
+            .until( ExpectedConditions.presenceOfElementLocated( By.id( searchButton ) ) );
         searchButtonElement.submit( );
-        
+
         return new SearchPage( driver, isPreProd );
     }
-    
+
 
     private static Document loadTestDocument(String url) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         return factory.newDocumentBuilder().parse(new URL(url).openStream());
     }
-    
+
     public void goToIndex(  ) {
     	String xpathLogo = "//*[@id=\"logo\"]/a";
-        WebElement btnlogoElement = ( new WebDriverWait( driver, timeout ) ) 
+        WebElement btnlogoElement = ( new WebDriverWait( driver, timeout ) )
                 .until(
                 		ExpectedConditions.presenceOfElementLocated(
                 				By.xpath( xpathLogo ) ) );
-        btnlogoElement.click( );	
+        btnlogoElement.click( );
     }
-    
+
     public boolean searchMultipleTerms( String language ) {
     	System.out.println( "[searchMultipleTerms]" );
     	String xpathNumberOfResults = "//*[@id=\"resultados\"]";
     	if( language.equals( "EN" ) ) {
     		switchLanguage( );
     	}
-    	
+
         for( String term : multipleTerms ) {
         	System.out.println( "Search for " + term );
     		WebElement inputElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                     .until(
-                    		ExpectedConditions.presenceOfElementLocated( 
+                    		ExpectedConditions.presenceOfElementLocated(
                     				By.id( searchBox ) ) );
             inputElement.clear( );
             inputElement.sendKeys( term );
-            
+
             WebElement btnSubmitElement = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
                 .until(
                 		ExpectedConditions.presenceOfElementLocated(
                 				By.id( searchButton ) ) );
             btnSubmitElement.click( );
-            
+
             sleepThread( );
-            
-            if( driver.findElements( By.xpath( xpathNumberOfResults ) ).size( ) <= 0 )  
+
+            if( driver.findElements( By.xpath( xpathNumberOfResults ) ).size( ) <= 0 )
             	return false;
         }
 
     	return true;
     }
-    
+
 
 	private boolean checkResults( String[ ] terms ) { //*[@id="resultados-lista"]
 		System.out.println( "[checkResults]" );
@@ -165,28 +164,28 @@ public class IndexPage {
 	                        		      By.xpath( getResumeResults )
 	                        )
 	        );
-    		
+
     		System.out.println( "results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String boldText = elem.getText( ).toLowerCase( ).trim( );
     			for( String term : terms ){
     				System.out.println( "[IndexPage][checkResults] term[" + term.replace( "\"" , "" ).toLowerCase( ).trim( ) + "] equals boldText[" + boldText + "]" );
-    				if( term.replace( "\"" , "" ).toLowerCase( ).trim( ).equals( boldText ) ) 
+    				if( term.replace( "\"" , "" ).toLowerCase( ).trim( ).equals( boldText ) )
     					checkTerm = true;
     			}
-    			if( !checkTerm ) 
+    			if( !checkTerm )
     				return false;
     		}
-	    	
+
     		return true;
-    		
+
 	    } catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
             e.printStackTrace( );
             return false;
     	}
 	}
-    
+
     /**
      * Searches for a string in the interface
      * @param searchTerms String of terms to search for
@@ -198,15 +197,15 @@ public class IndexPage {
         try
         {
             String[] Url = driver.getCurrentUrl().split(".pt");
-            DocumentBuilderFactory f = 
+            DocumentBuilderFactory f =
                     DocumentBuilderFactory.newInstance();
             DocumentBuilder b = f.newDocumentBuilder();
             System.out.println( "[TestSearchOneTermOpenSearch] [opensearch] URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
             doc = b.parse(Url[0]+".pt/opensearch?query="+searchTerms);
             doc.getDocumentElement().normalize();
             System.out.println("[TestSearchOneTermOpenSearch] [opensearch] URL: " + Url[0]+".pt/opensearch?query="+searchTerms);
-            /*driver.get(Url[0]+".pt/opensearch?query="+searchTerms);*/      
-                        
+            /*driver.get(Url[0]+".pt/opensearch?query="+searchTerms);*/
+
             /*
             NodeList nList = doc.getElementsByTagName("item");
             for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -222,21 +221,21 @@ public class IndexPage {
         }catch(Exception e){System.out.println("Error loading XML: " + e);}
         return new OpenSearchPage(driver,isPredprod,doc);
     }
-    
-    
+
+
     /**
      * Change language of the page to english
-     * @throws Exception 
+     * @throws Exception
      */
     public void langToEnglish() throws Exception{
-        try{         
-             WebElement langElem = driver.findElement(By.linkText(linkTextEN));             
+        try{
+             WebElement langElem = driver.findElement(By.linkText(linkTextEN));
              langElem.click();
              try {
                 Thread.sleep(5000);                 //wait for page to load
              } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
-             }              
+             }
              String pageTitle = driver.getTitle();
              if (!titleTextEN.contentEquals(pageTitle))
                  throw new IllegalStateException("Expected Title: "+ titleTextEN + "\nFound Title: " + pageTitle);
@@ -244,7 +243,7 @@ public class IndexPage {
             System.out.println("Problems changing language to English");
             e.printStackTrace();
             throw new Exception( e );
-        }     
+        }
     }
     /**
      * Click the Highlights page
@@ -254,28 +253,13 @@ public class IndexPage {
         highligthLink.click();
         return new HighlightsPage(driver);
     }
-    
-    /**
-     * Return the terms and conditions page
-     * @return terms and conditions page
-     */
-    public TermsAndConditionsPage getTermsAndConditionsPage(){    
 
-        WebElement termsandconditionstitleTextPTElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='links']/div/div[1]/ul/li[6]/a")));  
-        termsandconditionstitleTextPTElement.click();
-
-        
-
-        return new TermsAndConditionsPage(driver);
-    }
-    
     /**
      * Return the image source from sponsor
      * @return the image
      */
     public boolean isSponsorGovImageCorrect(){
-    	
+
         WebElement imagefccn = driver.findElement(By.xpath( "//*[@id=\"wp_editor_widget-10\"]/div/div[1]/a/img" ));
         WebElement imageSponsor = driver.findElement(By.xpath("//*[@id=\"wp_editor_widget-10\"]/div/div[2]/a/img"));
         String srcFccn 		= imagefccn.getAttribute("src");
@@ -284,13 +268,13 @@ public class IndexPage {
     }
     /**
      * Click the Highlights page
-     * @throws Exception 
+     * @throws Exception
      */
     public AdvancedPage goToAdvancedPage() throws Exception{
         try{
             System.out.println("Start goToAdvancedPage() method");
             WebElement advancedLink = (new WebDriverWait(driver, 25)) /* Wait Up to 120 seconds should throw RunTimeExcpetion*/
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"pesquisa-avancada\"]")));            
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"pesquisa-avancada\"]")));
             advancedLink.click();
              System.out.println("Finished goToAdvancedPage() method");
         }catch(NoSuchElementException e){
@@ -299,18 +283,18 @@ public class IndexPage {
         } catch (Exception e){
             System.out.println("Unexpected Error. Unable to go to AdvancedPage");
             throw new Exception( e );
-        }                  
+        }
         return new AdvancedPage(driver);
     }
-    
+
     /**
      * Click the Highlights page
      */
     public Arcproxyinspection arcProxy(Boolean isPreProd){
-        
+
         return new Arcproxyinspection(driver,isPreProd);
     }
-    
+
     /**
      * Make a search by URL and inspect if the hostname is not case-sensitive
      * for instance, fccn.pt and fccn.PT are the same
@@ -319,9 +303,9 @@ public class IndexPage {
      * @return
      */
     public boolean searchbyURL( String query , String queryPT ) {
-        
+
         this.url = driver.getCurrentUrl( );
-        
+
         String xpath="//*[@id='8']/td[7]/a[@title='26 Novembro 2002  às 13:04']"; // historical link selected
         String anchorText = getVersionURL(query,xpath);
         String anchorText_cap=getVersionURL(queryPT,xpath);
@@ -339,19 +323,19 @@ public class IndexPage {
         System.out.println("Passed Anchor with caps: " + anchorText_cap);
 
         return true;
-        
+
     }
-    
+
     /**
-     * 
+     *
      * @param language
      * @return
      */
     public boolean checkFooterLinks( String language ) {
 		System.out.println( "[checkFooterLinks]" );
     	String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
-    	
-    	if( language.equals( "EN" ) ) 
+
+    	if( language.equals( "EN" ) )
    			switchLanguage( );
 
     	try{
@@ -361,27 +345,27 @@ public class IndexPage {
 	                        		      By.xpath( xpatha )
 	                        )
 	        );
-    		
+
     		System.out.println( "[footer] results size = " + results.size( ) );
     		for( WebElement elem : results ) {
     			String url = elem.getAttribute( "href" );
     			if( !url.startsWith( "http://www.facebook.com/" ) &&
-    				!url.startsWith( "https://www.facebook.com/" ) && 
+    				!url.startsWith( "https://www.facebook.com/" ) &&
                     !url.startsWith("https://github.com/") &&
                     !url.contains("recomendations") /*Temporary fix remove this after new release*/ ){
     				System.out.println( "Check footer link: " + url );
-    				if( !AnalyzeURLs.checkLink( url ) ) 
+    				if( !AnalyzeURLs.checkLink( url ) )
     					return false;
     			}
     		}
-    		
+
 	    	return true;
     	} catch( NoSuchElementException e ){
             System.out.println( "Error in checkOPSite" );
             e.printStackTrace( );
             return false;
     	}
-    
+
     }
 
     /**
@@ -392,10 +376,10 @@ public class IndexPage {
        	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
        		System.out.println( "Change language to English" );
        		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
-       		sleepThread( ); 
+       		sleepThread( );
        	}
      }
-     
+
      private void sleepThread( ) {
  		try {
  			Thread.sleep( 6000 );
@@ -403,21 +387,21 @@ public class IndexPage {
  			e.printStackTrace( );
  		}
  	}
-     
+
 	/**
-	 * Get the anchor href of link matching xpath expression 
-	 * 
+	 * Get the anchor href of link matching xpath expression
+	 *
 	 */
 	public String getVersionURL(String query,String xpath){
 	        try{
 	        	System.out.println( "[getVersionURL] query["+query+"] xpath["+xpath+"] url["+this.url+"]" );
 	        	driver.get(this.url);
 	        	WebElement txtSearchElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-		            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));           
+		            .until(ExpectedConditions.presenceOfElementLocated(By.id("txtSearch")));
 		        txtSearchElement.clear();
 		        txtSearchElement.sendKeys(query);
 		        WebElement btnSubmitElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
-		            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));   
+		            .until(ExpectedConditions.presenceOfElementLocated(By.id("btnSubmit")));
 		        btnSubmitElement.click();
 		        WebElement dateAnchorElement = (new WebDriverWait(driver, 25)) /* Wait Up to 25 seconds should throw RunTimeExcpetion*/
 		            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
