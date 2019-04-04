@@ -21,6 +21,7 @@ package pt.fccn.saw.selenium;
 
 import java.net.URL;
 import java.util.NoSuchElementException;
+import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -131,7 +132,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
     protected WebDriver driver;
     //protected static ArrayList<WebDriver> drivers;
-    
+
     private List<Throwable> verificationErrors = new ArrayList<Throwable>();
 
     protected static String screenResolution;
@@ -240,10 +241,10 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
         capabilities.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
 
         SauceHelpers.addSauceConnectTunnelId(capabilities);
-        
+
         URL url = new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + /*seleniumURI*/ "@127.0.0.1:" + port +"/wd/hub");
         System.out.println(url);
-        
+
 		this.driver = new RemoteWebDriver(url, capabilities);
 		this.driver.get(testURL);
 
@@ -251,12 +252,14 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
         String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", this.sessionId, methodName);
         System.out.println(message);
-        
+
 		Timeouts timeouts = driver.manage().timeouts();
 		// it isn't working on latest firefox
 //		timeouts.pageLoadTimeout(25, TimeUnit.SECONDS);
 		timeouts.implicitlyWait(5, TimeUnit.SECONDS);
 		timeouts.setScriptTimeout(5, TimeUnit.SECONDS);
+
+		System.out.println(String.format("Start running test: %s\n", this.getClass().getSimpleName()));
     }
 
     /**
@@ -274,6 +277,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 			Throwable firstError = verificationErrors.iterator().next();
 			throw new AssertionError(errorMessageForAllErrors, firstError);
 		}
+
+		System.out.println(String.format("End running test: %s\n", this.getClass().getSimpleName()));
 	}
 
     /**
@@ -386,10 +391,17 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
             return false;
         }
     }
-    
+
 	protected void run(String errorMessage, Runnable r) {
 		try {
 			r.run();
+		} catch (Throwable t) {
+			throw new Error(errorMessage, t);
+		}
+	}
+	protected <T> T run(String errorMessage, Callable<T> c) {
+		try {
+			return (T) c.call();
 		} catch (Throwable t) {
 			throw new Error(errorMessage, t);
 		}
@@ -401,7 +413,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 		} catch (Throwable e) {
 			// print now the stack trace, because at the end could be a list of errors.
 			e.printStackTrace();
-			
+
 			verificationErrors.add(e);
 		}
 	}

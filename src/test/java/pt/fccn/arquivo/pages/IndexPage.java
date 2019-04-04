@@ -19,22 +19,21 @@ package pt.fccn.arquivo.pages;
 
 
 
+import java.net.URL;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.NoSuchElementException;
-import java.lang.RuntimeException;
-
-import java.net.URL;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 
-import pt.fccn.arquivo.tests.util.AnalyzeURLs;
+import pt.fccn.arquivo.tests.util.SwitchLanguage;
 
 /**
  * @author Simao Fontes
@@ -125,7 +124,7 @@ public class IndexPage {
     	System.out.println( "[searchMultipleTerms]" );
     	String xpathNumberOfResults = "//*[@id=\"resultados\"]";
     	if( language.equals( "EN" ) ) {
-    		switchLanguage( );
+    		SwitchLanguage.switchEnglishLanguage( driver );
     	}
 
         for( String term : multipleTerms ) {
@@ -326,59 +325,6 @@ public class IndexPage {
 
     }
 
-    /**
-     *
-     * @param language
-     * @return
-     */
-    public boolean checkFooterLinks( String language ) {
-		System.out.println( "[checkFooterLinks]" );
-    	String xpatha = "//*[@id=\"footer-widgets\"]/div/div/div/aside/ul/li/a"; //get footer links
-
-    	if( language.equals( "EN" ) )
-   			switchLanguage( );
-
-    	try{
-    		List< WebElement > results = ( new WebDriverWait( driver, timeout ) )
-	                .until( ExpectedConditions
-	                        .visibilityOfAllElementsLocatedBy(
-	                        		      By.xpath( xpatha )
-	                        )
-	        );
-
-    		System.out.println( "[footer] results size = " + results.size( ) );
-    		for( WebElement elem : results ) {
-    			String url = elem.getAttribute( "href" );
-    			if( !url.startsWith( "http://www.facebook.com/" ) &&
-    				!url.startsWith( "https://www.facebook.com/" ) &&
-                    !url.startsWith("https://github.com/") &&
-                    !url.contains("recomendations") /*Temporary fix remove this after new release*/ ){
-    				System.out.println( "Check footer link: " + url );
-    				if( !AnalyzeURLs.checkLink( url ) )
-    					return false;
-    			}
-    		}
-
-	    	return true;
-    	} catch( NoSuchElementException e ){
-            System.out.println( "Error in checkOPSite" );
-            e.printStackTrace( );
-            return false;
-    	}
-
-    }
-
-    /**
-     * Change to the English version
-     */
-     public void switchLanguage( ){ //*[@id="changeLanguage"]
-     	String xpathEnglishVersion = "//*[@id=\"changeLanguage\"]";
-       	if( driver.findElement( By.xpath( xpathEnglishVersion ) ).getText( ).equals( "English" ) ) {
-       		System.out.println( "Change language to English" );
-       		driver.findElement( By.xpath( xpathEnglishVersion ) ).click( );
-       		sleepThread( );
-       	}
-     }
 
      private void sleepThread( ) {
  		try {
