@@ -18,14 +18,13 @@ import pt.fccn.saw.selenium.Retry;
 public class TestArcproxy extends WebDriverTestBaseParalell{
     public TestArcproxy(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
-    } 	
+    }
 	@Test
 	@Retry
 	public void TestArcproxy() {
 		System.out.print("Running TestArcproxy. \n");
 		IndexPage index = new IndexPage(driver);
-		Ispre_prod=index.setPreProd(pre_prod);
-		Arcproxyinspection arcproxy = index.arcProxy(Ispre_prod);
+		Arcproxyinspection arcproxy = index.arcProxy(isPreProd);
 
 		try {
 			assertTrue("There are problems in the coherence of ArcProxy ",arcproxy.inspectArcproxy(false));

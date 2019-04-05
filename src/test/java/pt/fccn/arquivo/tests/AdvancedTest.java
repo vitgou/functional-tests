@@ -33,7 +33,7 @@ import pt.fccn.saw.selenium.Retry;
 public class AdvancedTest extends WebDriverTestBaseParalell{
     public AdvancedTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
-    }     
+    }
     /**
      * Tests Advanced search page
      */
@@ -43,18 +43,17 @@ public class AdvancedTest extends WebDriverTestBaseParalell{
     public void AdvancedTest( ) {
     	System.out.print( "Running AdvancedTest. \n" );
         IndexPage index = new IndexPage( driver );
-        Ispre_prod = index.setPreProd( pre_prod );
         System.out.println( "Going to the Advanced Page" );
         AdvancedPage advancedPage = null;
-        try{   
+        try{
         	advancedPage = index.goToAdvancedPage( );
         } catch( Exception e ) {
         	fail("Exception -> AdvancedTest");
         }
-        System.out.print( "Running 1st Assertion. \n" );	
+        System.out.print( "Running 1st Assertion. \n" );
         assertTrue( "The page displayed has not got the title text being displayed", advancedPage.titleIsCorrect( term ) );
         System.out.print( "Running 2nd Assertion. \n" );
-        assertTrue( "The page  is not online", advancedPage.existsInResults ( Ispre_prod ) );
+        assertTrue( "The page  is not online", advancedPage.existsInResults ( isPreProd ) );
         System.out.print( "Running 3rd Assertion. \n" );
         assertTrue( "Problems searching with url's on advanced search", advancedPage.searchURL( ) );
         System.out.println( "Running 4rd Assertion.\n" );

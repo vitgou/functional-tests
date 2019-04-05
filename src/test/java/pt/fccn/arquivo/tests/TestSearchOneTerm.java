@@ -13,16 +13,15 @@ public class TestSearchOneTerm extends WebDriverTestBaseParalell {
      */
     public TestSearchOneTerm(String os, String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
-    }    
+    }
     @Test
     @Retry
     public void testSearchOneTerm() {
-    	
+
         String term = "fccn";
         String testerSpellChecker="theste";
         IndexPage index = new IndexPage(driver);
-        Ispre_prod=index.setPreProd(pre_prod);
-        if (Ispre_prod){
+        if (isPreProd){
         	System.out.print("\nTesting Pre-Prod Environment\n");
         }
         System.out.print("Running testSearchOneTerm. \n");

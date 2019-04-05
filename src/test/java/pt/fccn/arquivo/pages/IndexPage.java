@@ -77,17 +77,6 @@ public class IndexPage {
     }
 
     /**
-     * @param pre_prod
-     * @return
-     */
-    public boolean setPreProd(String pre_prod){
-         if (driver.getCurrentUrl().contains(pre_prod)){
-            this.isPreProd=true;
-         }
-         return isPreProd;
-    }
-
-    /**
      * Searches for a string in the interface
      * @param searchTerms String of terms to search for
      * @return result page for query

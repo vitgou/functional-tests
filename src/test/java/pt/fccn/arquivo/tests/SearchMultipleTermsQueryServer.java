@@ -14,20 +14,19 @@ public class SearchMultipleTermsQueryServer  extends WebDriverTestBaseParalell{
 			String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
 	}
-	
+
     @Test
     @Retry
     public void searchMultipleTermsQueryServer( ) {
     	System.out.println( "Running SearchMultipleTermsQueryServer. \n" );
         IndexPage index = new IndexPage( driver );
-        Ispre_prod = index.setPreProd( pre_prod );
-        
+
         assertTrue("Failed The Search Multiple Terms Test in Portuguese", index.searchMultipleTerms( "PT" ) );
         System.out.println( "Success The Search Multiple Terms Test in Portuguese" );
-        index.goToIndex( ); 
+        index.goToIndex( );
         assertTrue("Failed The Search Multiple Terms Test in English", index.searchMultipleTerms( "EN" ) );
         System.out.println( "Success The Search Multiple Terms Test in English" );
     }
-	
+
 
 }

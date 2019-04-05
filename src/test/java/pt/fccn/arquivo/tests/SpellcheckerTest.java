@@ -21,7 +21,6 @@ public class SpellcheckerTest extends WebDriverTestBaseParalell {
     public void spellcheckerTest( ) {
     	System.out.print( "Running SpellcheckerTest. \n" );
         IndexPage index = new IndexPage( driver );
-        Ispre_prod = index.setPreProd( pre_prod );
         String term = "recuperação do chiado";
 
         SearchPage searchResults = index.search( term );
