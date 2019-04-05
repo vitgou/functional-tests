@@ -340,15 +340,16 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 	 * Jump to the current URL wait some time to load the Webpage
 	 */
 	public void goToCurrentURL(String currentURL, String expectedTitle) {
-		driver.get(serverName + "wayback/" + currentURL);
+		String url = serverName + "wayback/" + currentURL;
+		driver.get(url);
 
 		try {
 			if (!(new WebDriverWait(driver, 180)) /* Wait Up to 180 seconds for page to load */
 					.until(ExpectedConditions.titleContains(expectedTitle))) {
-				throw new RuntimeException("Failed loading current URL: " + currentURL);
+				throw new RuntimeException("Failed loading current URL: " + url);
 			}
 		} catch (TimeoutException ie) {
-			throw new RuntimeException("Failed loading current URL: " + currentURL, ie);
+			throw new RuntimeException("Failed loading current URL: " + url, ie);
 		}
 	}
 
