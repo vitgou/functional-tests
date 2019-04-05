@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.pages.SearchPage;
+import pt.fccn.arquivo.tests.util.SwitchLanguage;
 import pt.fccn.saw.selenium.Retry;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
@@ -20,19 +21,18 @@ public class SpellcheckerTest extends WebDriverTestBaseParalell {
     public void spellcheckerTest( ) {
     	System.out.print( "Running SpellcheckerTest. \n" );
         IndexPage index = new IndexPage( driver );
-        Ispre_prod = index.setPreProd( pre_prod );
         String term = "recuperação do chiado";
-        
+
         SearchPage searchResults = index.search( term );
         assertTrue("Failed The SpellChecker Test in Portuguese", searchResults.spellcheckerCorrect(  ) );
         System.out.println( "Success The SpellChecker Test in Portuguese" );
-        
-        index.switchLanguage( );
+
+        SwitchLanguage.switchEnglishLanguage( driver );
         searchResults = index.search( term );
         assertTrue("Failed The SpellChecker Test in English", searchResults.spellcheckerCorrect(  ) );
-        System.out.println( "Success The SpellChecker Test in English" ); 
+        System.out.println( "Success The SpellChecker Test in English" );
     }
-	
-    
-    
+
+
+
 }
