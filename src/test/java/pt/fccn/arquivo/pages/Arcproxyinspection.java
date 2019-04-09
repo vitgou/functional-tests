@@ -46,8 +46,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class Arcproxyinspection {
 	private final WebDriver driver;
-	private String filename_prod= "monitored_indexes"; // files which contains webepage to be fetch for prodution
-	private String filename_pre_prod= "monitored_indexes_pre_prod"; //files which contains webepage to be fetch for pre-prodution
+	private String filename_prod= "monitored_indexes.txt"; // files which contains webepage to be fetch for prodution
+	private String filename_pre_prod= "monitored_indexes_pre_prod.txt"; //files which contains webepage to be fetch for pre-prodution
 	private String broker_p58 ="p58.";
 	private String broker_p62 ="p62.";
 	private static List<String> DateList = new ArrayList<String>();
@@ -88,12 +88,7 @@ public class Arcproxyinspection {
 		boolean result=true;
 		try
 		{
-			if (!this.isPredProd){
-				reader = new BufferedReader(new FileReader(filename_prod));
-			}
-			else{
-				reader = new BufferedReader(new FileReader(filename_pre_prod));
-			}
+			reader = new BufferedReader(new FileReader(this.getClass().getResource("/" + (this.isPredProd ? filename_pre_prod : filename_prod)).getFile()));
 
 
 				while ((id = reader.readLine()) != null)

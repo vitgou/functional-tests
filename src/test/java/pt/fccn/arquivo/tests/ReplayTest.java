@@ -92,7 +92,6 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 		for (Entry<String, String> entry : testURLs.entrySet()) {
 			String currentURL = entry.getKey();
 			String textToCheck = entry.getValue();
-//			goToCurrentURL(currentURL, expectedTitleContains);
 			String url = serverName + "wayback/" + currentURL;
 			driver.get(url);
 
@@ -342,23 +341,6 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 		appendError(() -> assertEquals("Check Logo Src", expectedlogoSrc, logoSrc));
 	}
 
-	/**
-	 * Jump to the current URL wait some time to load the Webpage
-	 */
-	public void goToCurrentURL(String currentURL, String expectedTitle) {
-		String url = serverName + "wayback/" + currentURL;
-		driver.get(url);
-
-		try {
-			if (!(new WebDriverWait(driver, 180)) /* Wait Up to 180 seconds for page to load */
-					.until(ExpectedConditions.titleContains(expectedTitle))) {
-				throw new RuntimeException("Failed loading current URL: " + url);
-			}
-		} catch (TimeoutException ie) {
-			throw new RuntimeException("Failed loading current URL: " + url, ie);
-		}
-	}
-
 	public String truncateURL(String url) {
 		if (url.startsWith("https://")) {
 			url = url.substring(8, url.length());
@@ -456,15 +438,12 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 		prop = new Properties();
 		System.out.println("[ReplayPage] read properties");
 		try {
-			inputPt = new BufferedReader(new InputStreamReader(new FileInputStream("pt.properties"), "UTF8"));
-			inputEn = new BufferedReader(new InputStreamReader(new FileInputStream("en.properties"), "UTF8"));
+			inputPt = new BufferedReader(new InputStreamReader(new FileInputStream(this.getClass().getResource("/pt.properties").getFile()), "UTF8"));
+			inputEn = new BufferedReader(new InputStreamReader(new FileInputStream(this.getClass().getResource("/en.properties").getFile()), "UTF8"));
 			prop.load(inputPt);
 			// start with properties in PT
 			String currentLine;
-			if (isPreProd)
-				br = new BufferedReader(new FileReader(filenamePreProd));
-			else
-				br = new BufferedReader(new FileReader(filenameProd));
+			br = new BufferedReader(new FileReader(this.getClass().getResource("/" + (this.isPreProd ? filenamePreProd : filenameProd)).getFile()));
 			System.out.println("[ReplayPage] read testURLs");
 			while ((currentLine = br.readLine()) != null) {
 
