@@ -54,7 +54,8 @@ public class MemorialTest extends WebDriverTestBaseParalell {
 	@Test
 	public void testMemorialSites() throws Exception {
 		ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-		MemorialTestConfigYAMLFile configsy = mapper.readValue(new File("memorial_config.yaml"),
+		MemorialTestConfigYAMLFile configsy = mapper.readValue(
+				new File(this.getClass().getResource("/memorial_config.yaml").getFile()),
 				MemorialTestConfigYAMLFile.class);
 
 		Arrays.asList(configsy.getConfigs()).forEach(config -> {
