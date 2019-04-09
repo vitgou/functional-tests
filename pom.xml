@@ -185,6 +185,7 @@
 				<configuration>
 					<sauceUsername>${remote.saucelabs.user}</sauceUsername>
 					<sauceAccessKey>${remote.saucelabs.key}</sauceAccessKey>
+					<!-- WARN: do not format the followin line (!) -->
 					<options>--pidfile /tmp/sc_${remote.saucelabs.port.scproxy}.pid --logfile /tmp/sc_${remote.saucelabs.port.scproxy}.log --scproxy-port ${remote.saucelabs.port.scproxy} --se-port ${remote.saucelabs.port.se} -i maven-${env.HOSTNAME}-${remote.saucelabs.port.se}</options>
 				</configuration>
 				<executions>
