@@ -1,0 +1,22 @@
+configs:
+-  url: http://www.umic.pt/
+   redirectPageText: UMIC
+#buttonXpath: //a[contains(@class,'myButton')]
+   buttonXpath: html/body/div/div/a
+   waybackUrl: /wayback/20170822151328/http://www.umic.pt/
+   waybackText: Realizou-se em 20-22 de Fevereiro de 2012
+-  url: http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
+   redirectPageText: UMIC
+   buttonXpath: html/body/div/div/a
+   waybackUrl: /wayback/20170822161210/http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
+   waybackText: lançada em 2006 envolvendo parcerias com instituições universitárias
+-  url: http://www.english.umic.pt/
+   redirectPageText: Knowledge Society Agency
+   buttonXpath: html/body/div/div/a
+   waybackUrl: /wayback/20170831175908/http://www.english.umic.pt/
+   waybackText: use of Information and Communication Technologies
+-  url: http://www.english.umic.pt/index.php?option=com_content&task=section&id=12&Itemid=111
+   redirectPageText: Knowledge Society Agency
+   buttonXpath: html/body/div/div/a
+   waybackUrl: /wayback/20170831190707/http://www.english.umic.pt/index.php?option=com_content&task=section&id=12&Itemid=111
+   waybackText: Making all basic public services available online
