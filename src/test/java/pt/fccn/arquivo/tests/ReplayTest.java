@@ -44,6 +44,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pt.fccn.arquivo.tests.util.ReplayUtils;
 import pt.fccn.arquivo.tests.util.SwitchLanguage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
@@ -90,8 +91,12 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 
 		for (Entry<String, String> entry : testURLs.entrySet()) {
 			String currentURL = entry.getKey();
-			String expectedTitleContains = entry.getValue();
-			goToCurrentURL(currentURL, expectedTitleContains);
+			String textToCheck = entry.getValue();
+//			goToCurrentURL(currentURL, expectedTitleContains);
+			String url = serverName + "wayback/" + currentURL;
+			driver.get(url);
+
+			run("Verify text on replay page", () -> ReplayUtils.checkTextOnReplayPage(driver, textToCheck));
 
 			SwitchLanguage.switchLanguage(driver, language); // Can be optimized to only change TO PT on the first URL,
 																// and all others have
@@ -105,6 +110,7 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 			appendError(() -> tableOfVersionsOk(currentURL));
 			appendError(() -> logoOk(currentURL));
 			appendError(() -> checkLeftMenu(currentURL));
+
 		}
 		return true;
 	}
