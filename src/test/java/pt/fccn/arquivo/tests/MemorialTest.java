@@ -123,7 +123,8 @@ public class MemorialTest extends WebDriverTestBaseParalell {
 		}
 
 		public String getButtonXpath() {
-			return buttonXpath;
+			// //a[contains(@class,'myButton')]
+			return buttonXpath != null ? buttonXpath : "html/body/div/div/a";
 		}
 
 		public void setButtonXpath(String buttonXpath) {
