@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.File;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -54,8 +55,9 @@ public class MemorialTest extends WebDriverTestBaseParalell {
 	@Test
 	public void testMemorialSites() throws Exception {
 		ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+
 		MemorialTestConfigYAMLFile configsy = mapper.readValue(
-				new File(this.getClass().getResource("/memorial_config.yaml").getFile()),
+				new InputStreamReader(ClassLoader.getSystemResourceAsStream("memorial_config.yaml")),
 				MemorialTestConfigYAMLFile.class);
 
 		Arrays.asList(configsy.getConfigs()).forEach(config -> {
