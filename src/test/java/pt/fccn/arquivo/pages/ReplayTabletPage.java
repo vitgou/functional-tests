@@ -90,7 +90,7 @@ public class ReplayTabletPage {
             prop.load(inputPt);
             // start with properties in PT
           String currentURL;
-          br = new BufferedReader(new FileReader(this.getClass().getResource("/" + (this.isPreProd ? filenamePreProd : filenameProd)).getFile()));
+          br = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(this.isPreProd ? filenamePreProd : filenameProd)));
 
           while ((currentURL = br.readLine()) != null) {
             testURLs.add(currentURL);
