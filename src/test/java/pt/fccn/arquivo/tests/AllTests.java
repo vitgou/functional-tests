@@ -50,7 +50,11 @@ import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
 
 		ImageSearchDirectUrlTest.class,
 
-		ImageAdvancedSearchTest.class })
+		ImageAdvancedSearchTest.class,
+
+		MemorialTest.class
+
+})
 //TODO refactoring TermsAndConditionsTest.class
 //TODO SearchMultipleTermsQueryServer.class
 public class AllTests {

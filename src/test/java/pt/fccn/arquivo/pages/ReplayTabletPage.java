@@ -17,32 +17,30 @@
  */
 package pt.fccn.arquivo.pages;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.NoSuchElementException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
-import java.io.FileInputStream;
-import java.util.Properties;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.io.FileOutputStream;  
-import java.nio.channels.Channels;  
-import java.nio.channels.ReadableByteChannel;  
+import org.openqa.selenium.WebDriver;
 
 
 
 /**
  * @author Fernando Melo
- * 
+ *
  */
 
 
@@ -66,7 +64,7 @@ public class ReplayTabletPage {
     private static final String activeDay = "active-day";
     private String serverName  ="";
     private BufferedReader br;
-    private String pageUrl =""; 
+    private String pageUrl ="";
     private String [] tokens;
     private Properties prop;
     private BufferedReader inputPt = null;
@@ -75,7 +73,7 @@ public class ReplayTabletPage {
 
     public ReplayTabletPage(WebDriver driver, boolean isPreProd) {
         this.driver = driver;
-        //driver.manage().window().setSize(new Dimension(1280, 768)); 
+        //driver.manage().window().setSize(new Dimension(1280, 768));
         br = null;
         pageUrl = driver.getCurrentUrl();
         tokens = pageUrl.split("/");
@@ -83,19 +81,16 @@ public class ReplayTabletPage {
         baseScreenshotURL = serverName + "screenshot/?url=";
         logoURLPTExpected = searchURL+"/?l=pt";
         prop = new Properties();
-    
-        try {
-          
 
-            inputPt = new BufferedReader(new InputStreamReader(new FileInputStream("pt.properties"), "UTF8"));
-            inputEn = new BufferedReader(new InputStreamReader(new FileInputStream("en.properties"), "UTF8"));
+        try {
+
+
+            inputPt = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("pt.properties"), "UTF8"));
+            inputEn = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("en.properties"), "UTF8"));
             prop.load(inputPt);
             // start with properties in PT
           String currentURL;
-          if(isPreProd)
-            br = new BufferedReader(new FileReader(filenamePreProd));
-          else
-            br = new BufferedReader(new FileReader(filenameProd)); 
+          br = new BufferedReader(new FileReader(this.getClass().getResource("/" + (this.isPreProd ? filenamePreProd : filenameProd)).getFile()));
 
           while ((currentURL = br.readLine()) != null) {
             testURLs.add(currentURL);
@@ -113,7 +108,7 @@ public class ReplayTabletPage {
     }
 
     /**
-     * Do the Replay Tests for our set of URLS 
+     * Do the Replay Tests for our set of URLS
      */
     public boolean inspectURLs(String language){
       System.out.println("Inspecting URLS language: " + language);
@@ -124,7 +119,7 @@ public class ReplayTabletPage {
         }catch(IOException e){
           System.out.println("Error Loading English Properties");
           return false;
-        }  
+        }
       }
 
       for(String currentURL:testURLs){
@@ -142,7 +137,7 @@ public class ReplayTabletPage {
 		} // Can be optimized to only change TO PT on the first URL, and all others have to be in PT too
         System.out.println("Switched the language!");
         if( /*!screenshotOk(currentURL) ||*/ !printOk(currentURL) ||
-           !facebookOk(currentURL) || 
+           !facebookOk(currentURL) ||
            !twitterOk(currentURL) ||
            !emailOk(currentURL) ||
            !logoOk(currentURL))
@@ -164,14 +159,14 @@ public class ReplayTabletPage {
       try{
         String screenshotURL = driver.findElement(By.xpath("//a[@id=\"a_screenshot\"]")).getAttribute("href");
         String screenshotTitle = driver.findElement(By.xpath("//a[@id=\"a_screenshot\"]")).getAttribute("title");
-        
+
         String expectedscreenshotURL= baseScreenshotURL + encodeURIComponent(serverName + "noFrame/replay/" + currentURL);
         String expectedscreenshotTitle=prop.getProperty("screenTitle");
 
-        if(screenshotURL.equals(expectedscreenshotURL) && 
+        if(screenshotURL.equals(expectedscreenshotURL) &&
            screenshotTitle.equals(expectedscreenshotTitle)){
           //if URL and Title are ok lets download the screenshot
-            downloadFileFromURLUsingNIO(  "./screenshot.png",  screenshotURL);  
+            downloadFileFromURLUsingNIO(  "./screenshot.png",  screenshotURL);
             if(checkFileSize("./screenshot.png")) return true;
               return false;
         }
@@ -181,7 +176,7 @@ public class ReplayTabletPage {
           System.out.println("Found this Screenshot Title: " + screenshotTitle);
           System.out.println("Expected this Screenshot Title: " + expectedscreenshotTitle);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the screenshot element");
@@ -189,8 +184,8 @@ public class ReplayTabletPage {
       }catch (Exception e){
         System.out.println("Some problem downloading the screenshot");
         return false;
-      } 
-    }   
+      }
+    }
 
     /**
      * Check if the print href and title are correct
@@ -199,11 +194,11 @@ public class ReplayTabletPage {
       try{
         String printHref = driver.findElement(By.xpath("//a[@id=\"a_print\"]")).getAttribute("href");
         String printTitle = driver.findElement(By.xpath("//a[@id=\"a_print\"]")).getAttribute("title");
-        
+
         String expectedprintHref= "javascript:getImageToPrint(\""+ encodeURIComponent(serverName + "noFrame/replay/" + currentURL)+ "\")";
         String expectedprintTitle=prop.getProperty("printTitle");
 
-        if(printHref.equals(expectedprintHref) && 
+        if(printHref.equals(expectedprintHref) &&
            printTitle.equals(expectedprintTitle)){
           return true;
         }
@@ -213,7 +208,7 @@ public class ReplayTabletPage {
           System.out.println("Found this Print Title: " + printTitle);
           System.out.println("Expected this Print Title: " + expectedprintTitle);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the print element");
@@ -222,8 +217,8 @@ public class ReplayTabletPage {
         System.out.println("Error in the PrintOk");
         System.out.println("Should not have reached here");
         return false;
-      } 
-    }  
+      }
+    }
 
     /**
      * Check if the Facebook class and title are correct
@@ -232,11 +227,11 @@ public class ReplayTabletPage {
       try{
         String faceClass = driver.findElement(By.xpath("//li[@class=\"facebook\"]/a")).getAttribute("class");
         String faceTitle = driver.findElement(By.xpath("//li[@class=\"facebook\"]/a")).getAttribute("title");
-        
+
         String expectedfaceClass= "addthis_button_facebook";
         String expectedfaceTitle=prop.getProperty("faceTitle");
 
-        if(faceClass.startsWith(expectedfaceClass) && 
+        if(faceClass.startsWith(expectedfaceClass) &&
            faceTitle.equals(expectedfaceTitle)){
           return true;
         }
@@ -246,7 +241,7 @@ public class ReplayTabletPage {
           System.out.println("Found this Facebook Title: " + faceTitle);
           System.out.println("Expected this Facebook Title: " + expectedfaceTitle);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the facebook element");
@@ -256,8 +251,8 @@ public class ReplayTabletPage {
         System.out.println("Should not have reached here");
 
         return false;
-      } 
-    }  
+      }
+    }
 
     /**
      * Check if the Facebook class and title are correct
@@ -266,11 +261,11 @@ public class ReplayTabletPage {
       try{
         String twitterClass = driver.findElement(By.xpath("//li[@class=\"twitter\"]/a")).getAttribute("class");
         String twitterTitle = driver.findElement(By.xpath("//li[@class=\"twitter\"]/a")).getAttribute("title");
-        
+
         String expectedtwitterClass= "addthis_button_twitter";
         String expectedtwitterTitle=prop.getProperty("twitterTitle");
 
-        if(twitterClass.startsWith(expectedtwitterClass) && 
+        if(twitterClass.startsWith(expectedtwitterClass) &&
            twitterTitle.equals(expectedtwitterTitle)){
           return true;
         }
@@ -280,7 +275,7 @@ public class ReplayTabletPage {
           System.out.println("Found this Twitter Title: " + twitterTitle);
           System.out.println("Expected this Twitter Title: " + expectedtwitterTitle);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the twitter element");
@@ -289,8 +284,8 @@ public class ReplayTabletPage {
         System.out.println("Error Testing Twitter");
         System.out.println("Should not have reached here");
         return false;
-      } 
-    } 
+      }
+    }
 
     /**
      * Check if the Email title, onclick and href are correct
@@ -305,7 +300,7 @@ public class ReplayTabletPage {
         String expectedemailonClick = "this.href = this.href.replace('[sub]',window.location)";
         String expectedemailTitle = prop.getProperty("mailTitle");
 
-        if(emailHref.equals(expectedemailHref)  && 
+        if(emailHref.equals(expectedemailHref)  &&
            emailonClick.startsWith(expectedemailonClick) &&
            emailTitle.equals(expectedemailTitle)){
           return true;
@@ -315,20 +310,20 @@ public class ReplayTabletPage {
           System.out.println("Expected this Email href: " + expectedemailHref );
           System.out.println("Found this Email onclick: " + emailonClick );
           System.out.println("Found this Email title: " + emailTitle);
-          System.out.println("Expected this Email title: " + expectedemailTitle );          
+          System.out.println("Expected this Email title: " + expectedemailTitle );
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find email anchor");
           return false;
       }catch (Exception e){
-        System.out.println("Error testing email");        
+        System.out.println("Error testing email");
         System.out.println("Should not have reached here");
 
         return false;
-      } 
-    }   
+      }
+    }
 
     /**
      * Check if the Logo exists and href is correct
@@ -353,9 +348,9 @@ public class ReplayTabletPage {
           System.out.println("Found this Logo Alt: " + logoAlt);
           System.out.println("Expected this Logo Alt: " + expectedlogoAlt);
           System.out.println("Found This Logo Src: " + logoSrc);
-          System.out.println("Expected this Logo Src: " + expectedlogoSrc);          
+          System.out.println("Expected this Logo Src: " + expectedlogoSrc);
           return false;
-        }     
+        }
 
       }catch(NoSuchElementException e){
           System.out.println("Could not find the Logo Anchor or the Logo Image");
@@ -364,15 +359,15 @@ public class ReplayTabletPage {
         System.out.println("Error Checking Logo");
         System.out.println("Should not have reached here");
         return false;
-      } 
-    } 
+      }
+    }
 
 
 
     /**
      * Jump to the current URL
      * wait some time to load the Webpage
-     * @throws Exception 
+     * @throws Exception
      */
     public void goToCurrentURL(String currentURL) throws Exception{
       try{
@@ -386,7 +381,7 @@ public class ReplayTabletPage {
         System.out.println("Some error going to the current URL");
         e.printStackTrace();
         throw new Exception( e );
-      }      
+      }
     }
 
     public String truncateURL(String url){
@@ -394,7 +389,7 @@ public class ReplayTabletPage {
           url = url.substring(8,url.length());
         }else if (url.startsWith("http://")){
           url = url.substring(7,url.length());
-        }             
+        }
       if (url.length() > 40){
         return url.substring(0,26) + "..." + url.substring((url.length() - 11),url.length()) ;
       }
@@ -404,7 +399,7 @@ public class ReplayTabletPage {
 
     /**
     * Changes the Language of the Page, to the value given in lang string (PT or EN)
-     * @throws Exception 
+     * @throws Exception
     */
     public void switchLanguage(String lang) throws Exception{
       try{
@@ -412,8 +407,8 @@ public class ReplayTabletPage {
             Thread.sleep(10000);  //wait for page to load
           } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
-          }          
-        System.out.println("SwitchingLang: " + driver.getCurrentUrl());        
+          }
+        System.out.println("SwitchingLang: " + driver.getCurrentUrl());
         if(driver.findElement(By.xpath("//a[@id=\"changeLanguage\"]")).getText().equals(lang)){
           System.out.println("Going to change the language.");
           driver.findElement(By.id("changeLanguage")).click(); //change the language
@@ -422,7 +417,7 @@ public class ReplayTabletPage {
             Thread.sleep(waitingPeriod);  //wait for page to load
           } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
-          }  
+          }
         } //else You are already in the desired language
       }catch (Exception e){
         System.out.println("Error switching language to: " + lang);
@@ -432,39 +427,39 @@ public class ReplayTabletPage {
     }
 
 
- private static void downloadFileFromURLUsingNIO(String fileName,String fileUrl) throws IOException {  
+ private static void downloadFileFromURLUsingNIO(String fileName,String fileUrl) throws IOException {
     System.out.println("Download Starting");
-    URL url = new URL(fileUrl);  
-    ReadableByteChannel rbc = Channels.newChannel(url.openStream());  
-    FileOutputStream fOutStream = new FileOutputStream(fileName);  
-    fOutStream.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);  
-    fOutStream.close();  
-    rbc.close(); 
+    URL url = new URL(fileUrl);
+    ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+    FileOutputStream fOutStream = new FileOutputStream(fileName);
+    fOutStream.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+    fOutStream.close();
+    rbc.close();
     System.out.println("Download Successful");
  }
 
  private static boolean checkFileSize(String pathToFile){
 
     File file =new File(pathToFile);
-    
+
     if(file.exists()){
-      
+
       double bytes = file.length();
       double kilobytes = (bytes / 1024);
-      
+
       System.out.println("kilobytes : " + kilobytes);
       if(kilobytes > 200) return true;
       else{
         System.out.println("File too small to Be Ok Less or Equal to 200Kb");
         return false;
-      }  
+      }
 
     }else{
        System.out.println("File does not exist!");
        return false;
     }
 
- }  
+ }
 
 
 
@@ -472,7 +467,7 @@ public class ReplayTabletPage {
    * Encodes the passed String as UTF-8 using an algorithm that's compatible
    * with JavaScript's <code>encodeURIComponent</code> function. Returns
    * <code>null</code> if the String is <code>null</code>.
-   * 
+   *
    * @param s The String to be encoded
    * @return the encoded String
    */
@@ -498,6 +493,6 @@ public class ReplayTabletPage {
     }
 
     return result;
-  }  
-    
+  }
+
 }

@@ -9,31 +9,18 @@ import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 import pt.fccn.saw.selenium.Retry;
 
+public class TestArcproxy extends WebDriverTestBaseParalell {
+	public TestArcproxy(String os, String version, String browser, String deviceName, String deviceOrientation) {
+		super(os, version, browser, deviceName, deviceOrientation);
+	}
 
-
-/**
- * @author nutchwax
- *
- */
-public class TestArcproxy extends WebDriverTestBaseParalell{
-    public TestArcproxy(String os, String version, String browser, String deviceName, String deviceOrientation) {
-            super(os, version, browser, deviceName, deviceOrientation);
-    }
 	@Test
 	@Retry
-	public void TestArcproxy() {
-		System.out.print("Running TestArcproxy. \n");
+	public void testArcproxy() {
 		IndexPage index = new IndexPage(driver);
 		Arcproxyinspection arcproxy = index.arcProxy(isPreProd);
 
-		try {
-			assertTrue("There are problems in the coherence of ArcProxy ",arcproxy.inspectArcproxy(false));
-			assertTrue("The date of archived pages are not the same before perfomed ",arcproxy.inspectArcproxy(true));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		assertTrue("There are problems in the coherence of ArcProxy ", arcproxy.inspectArcproxy(false));
+		assertTrue("The date of archived pages are not the same before perfomed ", arcproxy.inspectArcproxy(true));
 	}
 }
-
-

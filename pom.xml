@@ -51,10 +51,11 @@
 			${env.SELENIUM_BROWSER_VERSION}</test.browser.version>
 		<remote.saucelabs.key>${env.SAUCE_ACCESS_KEY}</remote.saucelabs.key>
 		<remote.saucelabs.user>${env.SAUCE_USERNAME}</remote.saucelabs.user>
-		
+
 		<selenium.version>2.52.0</selenium.version>
+		<jackson.version>2.9.8</jackson.version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.json</groupId>
@@ -135,7 +136,21 @@
 			<version>${selenium.version}</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-yaml</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.apache.commons</groupId>
+	        <artifactId>commons-lang3</artifactId>
+	        <version>3.8.1</version>
+	    </dependency>
 	</dependencies>
 
 	<build>
@@ -170,10 +185,8 @@
 				<configuration>
 					<sauceUsername>${remote.saucelabs.user}</sauceUsername>
 					<sauceAccessKey>${remote.saucelabs.key}</sauceAccessKey>
-					<options>--pidfile /tmp/sc_${remote.saucelabs.port.scproxy}.pid
-						--logfile /tmp/sc_${remote.saucelabs.port.scproxy}.log
-						--scproxy-port ${remote.saucelabs.port.scproxy} --se-port ${remote.saucelabs.port.se} 
-						-i maven-${env.HOSTNAME}-${remote.saucelabs.port.se}</options>
+					<!-- WARN: do not format the followin line (!) -->
+					<options>--pidfile /tmp/sc_${remote.saucelabs.port.scproxy}.pid --logfile /tmp/sc_${remote.saucelabs.port.scproxy}.log --scproxy-port ${remote.saucelabs.port.scproxy} --se-port ${remote.saucelabs.port.se} -i maven-${env.HOSTNAME}-${remote.saucelabs.port.se}</options>
 				</configuration>
 				<executions>
 					<execution>
@@ -204,7 +217,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<!-- Configure integration tests plugin. In future replace the 'Test' 
+			<!-- Configure integration tests plugin. In future replace the 'Test'
 				suffix with 'IT' -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

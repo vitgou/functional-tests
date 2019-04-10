@@ -22,9 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -39,11 +37,9 @@ import java.util.TreeMap;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pt.fccn.arquivo.tests.util.ReplayUtils;
 import pt.fccn.arquivo.tests.util.SwitchLanguage;
 import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
@@ -90,8 +86,11 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 
 		for (Entry<String, String> entry : testURLs.entrySet()) {
 			String currentURL = entry.getKey();
-			String expectedTitleContains = entry.getValue();
-			goToCurrentURL(currentURL, expectedTitleContains);
+			String textToCheck = entry.getValue();
+			String url = serverName + "wayback/" + currentURL;
+			driver.get(url);
+
+			run("Verify text on replay page", () -> ReplayUtils.checkTextOnReplayPage(driver, textToCheck));
 
 			SwitchLanguage.switchLanguage(driver, language); // Can be optimized to only change TO PT on the first URL,
 																// and all others have
@@ -105,6 +104,7 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 			appendError(() -> tableOfVersionsOk(currentURL));
 			appendError(() -> logoOk(currentURL));
 			appendError(() -> checkLeftMenu(currentURL));
+
 		}
 		return true;
 	}
@@ -336,22 +336,6 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 		appendError(() -> assertEquals("Check Logo Src", expectedlogoSrc, logoSrc));
 	}
 
-	/**
-	 * Jump to the current URL wait some time to load the Webpage
-	 */
-	public void goToCurrentURL(String currentURL, String expectedTitle) {
-		driver.get(serverName + "wayback/" + currentURL);
-
-		try {
-			if (!(new WebDriverWait(driver, 180)) /* Wait Up to 180 seconds for page to load */
-					.until(ExpectedConditions.titleContains(expectedTitle))) {
-				throw new RuntimeException("Failed loading current URL: " + currentURL);
-			}
-		} catch (TimeoutException ie) {
-			throw new RuntimeException("Failed loading current URL: " + currentURL, ie);
-		}
-	}
-
 	public String truncateURL(String url) {
 		if (url.startsWith("https://")) {
 			url = url.substring(8, url.length());
@@ -449,15 +433,12 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 		prop = new Properties();
 		System.out.println("[ReplayPage] read properties");
 		try {
-			inputPt = new BufferedReader(new InputStreamReader(new FileInputStream("pt.properties"), "UTF8"));
-			inputEn = new BufferedReader(new InputStreamReader(new FileInputStream("en.properties"), "UTF8"));
+			inputPt = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("/pt.properties"), "UTF8"));
+			inputEn = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("/en.properties"), "UTF8"));
 			prop.load(inputPt);
 			// start with properties in PT
 			String currentLine;
-			if (isPreProd)
-				br = new BufferedReader(new FileReader(filenamePreProd));
-			else
-				br = new BufferedReader(new FileReader(filenameProd));
+			br = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(this.isPreProd ? filenamePreProd : filenameProd)));
 			System.out.println("[ReplayPage] read testURLs");
 			while ((currentLine = br.readLine()) != null) {
 
