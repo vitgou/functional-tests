@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.pages.SearchPage;
+import pt.fccn.arquivo.selenium.Retry;
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 import pt.fccn.arquivo.tests.util.SwitchLanguage;
-import pt.fccn.saw.selenium.Retry;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 public class SpellcheckerTest extends WebDriverTestBaseParalell {
 

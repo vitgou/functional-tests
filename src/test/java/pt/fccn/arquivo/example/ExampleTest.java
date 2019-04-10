@@ -1,8 +1,11 @@
-package pt.fccn.saw;
+package pt.fccn.arquivo.example;
 
 import org.openqa.selenium.*;
+
+import pt.fccn.arquivo.selenium.WebDriverTestBase;
+
 import org.junit.*;
-import pt.fccn.saw.selenium.WebDriverTestBase;
+
 import static org.junit.Assert.*;
 
 public class ExampleTest extends WebDriverTestBase {

@@ -26,11 +26,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Locale;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+
 import org.junit.Test;
 import org.openqa.selenium.*;
+
+import pt.fccn.arquivo.selenium.Retry;
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
+
 import static org.junit.Assert.*;
-import pt.fccn.saw.selenium.Retry;
 /**
  * A class for testing Archived Collections.
  * This class has tests that are applied to each archived collection to

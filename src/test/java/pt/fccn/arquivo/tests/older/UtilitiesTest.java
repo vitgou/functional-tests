@@ -20,11 +20,13 @@ package pt.fccn.arquivo.tests.older;
 
 import java.util.Map;
 import java.util.TreeMap;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.*;
+
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
+
 import static org.junit.Assert.*;
 
 /**

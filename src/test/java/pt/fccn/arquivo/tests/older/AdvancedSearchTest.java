@@ -19,8 +19,9 @@
 package pt.fccn.arquivo.tests.older;
 
 import java.util.ArrayList;
+
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 import pt.fccn.arquivo.tests.util.QueryResultPair;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 import org.junit.Ignore;
 import org.junit.Test;

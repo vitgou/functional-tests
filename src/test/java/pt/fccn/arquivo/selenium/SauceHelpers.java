@@ -1,4 +1,4 @@
-package pt.fccn.saw.selenium;
+package pt.fccn.arquivo.selenium;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 

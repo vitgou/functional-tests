@@ -1,4 +1,4 @@
-package pt.fccn.saw.selenium;
+package pt.fccn.arquivo.selenium;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

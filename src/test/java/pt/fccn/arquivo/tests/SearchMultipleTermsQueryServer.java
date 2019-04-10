@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.saw.selenium.Retry;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+import pt.fccn.arquivo.selenium.Retry;
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 public class SearchMultipleTermsQueryServer  extends WebDriverTestBaseParalell{
 

@@ -39,9 +39,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 import pt.fccn.arquivo.tests.util.ReplayUtils;
 import pt.fccn.arquivo.tests.util.SwitchLanguage;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 /**
  *

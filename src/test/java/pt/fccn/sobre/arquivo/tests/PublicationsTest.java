@@ -7,8 +7,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import pt.fccn.saw.selenium.Retry;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
+import pt.fccn.arquivo.selenium.Retry;
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
 import pt.fccn.sobre.arquivo.pages.PublicationsPage;
 

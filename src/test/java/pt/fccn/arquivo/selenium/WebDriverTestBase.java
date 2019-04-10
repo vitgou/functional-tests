@@ -13,7 +13,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package pt.fccn.saw.selenium;
+package pt.fccn.arquivo.selenium;
 
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
