@@ -17,26 +17,24 @@
  */
 package pt.fccn.arquivo.pages;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.NoSuchElementException;
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
-import java.io.FileInputStream;
-import java.util.Properties;
 import java.io.File;
-import java.io.InputStreamReader;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 
 
 
@@ -87,8 +85,8 @@ public class ReplayTabletPage {
         try {
 
 
-            inputPt = new BufferedReader(new InputStreamReader(new FileInputStream("pt.properties"), "UTF8"));
-            inputEn = new BufferedReader(new InputStreamReader(new FileInputStream("en.properties"), "UTF8"));
+            inputPt = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("pt.properties"), "UTF8"));
+            inputEn = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("en.properties"), "UTF8"));
             prop.load(inputPt);
             // start with properties in PT
           String currentURL;

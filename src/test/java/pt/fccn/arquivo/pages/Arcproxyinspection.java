@@ -21,6 +21,7 @@ package pt.fccn.arquivo.pages;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.RuntimeException;
@@ -88,7 +89,7 @@ public class Arcproxyinspection {
 		boolean result=true;
 		try
 		{
-			reader = new BufferedReader(new FileReader(this.getClass().getResource("/" + (this.isPredProd ? filename_pre_prod : filename_prod)).getFile()));
+			reader = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(this.isPredProd ? filename_pre_prod : filename_prod)));
 
 
 				while ((id = reader.readLine()) != null)

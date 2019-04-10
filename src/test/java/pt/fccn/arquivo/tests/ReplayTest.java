@@ -22,9 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -39,10 +37,7 @@ import java.util.TreeMap;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pt.fccn.arquivo.tests.util.ReplayUtils;
 import pt.fccn.arquivo.tests.util.SwitchLanguage;
@@ -438,12 +433,12 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 		prop = new Properties();
 		System.out.println("[ReplayPage] read properties");
 		try {
-			inputPt = new BufferedReader(new InputStreamReader(new FileInputStream(this.getClass().getResource("/pt.properties").getFile()), "UTF8"));
-			inputEn = new BufferedReader(new InputStreamReader(new FileInputStream(this.getClass().getResource("/en.properties").getFile()), "UTF8"));
+			inputPt = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("/pt.properties"), "UTF8"));
+			inputEn = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("/en.properties"), "UTF8"));
 			prop.load(inputPt);
 			// start with properties in PT
 			String currentLine;
-			br = new BufferedReader(new FileReader(this.getClass().getResource("/" + (this.isPreProd ? filenamePreProd : filenameProd)).getFile()));
+			br = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(this.isPreProd ? filenamePreProd : filenameProd)));
 			System.out.println("[ReplayPage] read testURLs");
 			while ((currentLine = br.readLine()) != null) {
 
