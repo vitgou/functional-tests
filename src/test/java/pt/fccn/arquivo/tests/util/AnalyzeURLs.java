@@ -146,11 +146,13 @@ public class AnalyzeURLs {
 	 * @return
 	 */
 	public static boolean checkLink( String URLName ) {
+		String url = URLName.startsWith("//") ? "http:" + URLName : URLName;
+
 	    boolean redirect = false;
 		try {
-	    	System.out.println( "[linkExists] url[" + URLName + "]" );
+	    	System.out.println( "[linkExists] url[" + url + "]" );
 
-	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
+	    	HttpURLConnection con = ( HttpURLConnection ) new URL( url ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -161,13 +163,13 @@ public class AnalyzeURLs {
 	    	int status = con.getResponseCode( );
 	    	System.out.println( "Status-code = " + status );
 	  	    redirect = checkRedirect( status );
-	    	System.out.println( "[linkExists] url[" + URLName + "] Status-code = " + con.getResponseCode( ) );
+	    	System.out.println( "[linkExists] url[" + url + "] Status-code = " + con.getResponseCode( ) );
 	    	con.disconnect( );
 
 	    	while( redirect ) {
 	    		// get redirect url from "location" header field
 	    		String newUrl = con.getHeaderField( "Location" );
-	    		System.out.println( "Redirect: true url["+URLName+"] newurl["+newUrl+"]" );
+	    		System.out.println( "Redirect: true url["+url+"] newurl["+newUrl+"]" );
 
 	    		// open the new connection again
 				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
@@ -180,8 +182,8 @@ public class AnalyzeURLs {
 	    		con.addRequestProperty( "Referer", "google.com" );
 	    		status = con.getResponseCode( );
 
-	    		URLName = newUrl;
-	    		System.out.println( "Link["+URLName+"] Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
+	    		url = newUrl;
+	    		System.out.println( "Link["+url+"] Novo redirect status = " + status + " message = " + con.getResponseMessage( ) );
 	    		redirect = checkRedirect( status );
 	    		con.disconnect( );
 	    	}
