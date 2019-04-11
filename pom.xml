@@ -38,6 +38,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
@@ -87,7 +89,6 @@
 			<version>1.4.01</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-api</artifactId>
@@ -155,6 +156,15 @@
 
 	<build>
 		<plugins>
+			<!-- Trying to fix encoding problems on jenkins -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+				    <encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- Reserve some free ports to saucelabs given a range -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -178,6 +188,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Connect to saucelabs using a tunnel -->
 			<plugin>
 				<groupId>com.saucelabs.maven.plugin</groupId>
 				<artifactId>sauce-connect-plugin</artifactId>
@@ -212,6 +223,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M1</version>
 				<configuration>
+					<argLine>-Dfile.encoding=UTF-8</argLine>
 					<excludes>
 						<exclude>**/*.java</exclude>
 					</excludes>
@@ -253,6 +265,7 @@
 					</includes>
 				</configuration>
 			</plugin>
+			<!-- Force download dependencies javadocs and sources when generating eclipse's classpath -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
