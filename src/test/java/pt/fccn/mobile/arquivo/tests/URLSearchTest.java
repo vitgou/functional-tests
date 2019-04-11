@@ -4,9 +4,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import pt.fccn.arquivo.selenium.Retry;
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 import pt.fccn.mobile.arquivo.pages.IndexMobilePage;
-import pt.fccn.saw.selenium.Retry;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 public class URLSearchTest extends WebDriverTestBaseParalell {
 

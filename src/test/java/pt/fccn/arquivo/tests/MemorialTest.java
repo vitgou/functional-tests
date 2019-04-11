@@ -15,8 +15,8 @@ import org.openqa.selenium.By;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 import pt.fccn.arquivo.tests.util.ReplayUtils;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 /**
  * Regression memorial sites test.

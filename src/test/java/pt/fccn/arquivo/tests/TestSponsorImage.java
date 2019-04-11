@@ -22,8 +22,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import pt.fccn.arquivo.pages.IndexPage;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
-import pt.fccn.saw.selenium.Retry;
+import pt.fccn.arquivo.selenium.Retry;
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 /**
  * @author Simao Fontes

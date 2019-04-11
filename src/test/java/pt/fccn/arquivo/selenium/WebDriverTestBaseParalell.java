@@ -16,15 +16,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package pt.fccn.saw.selenium;
+package pt.fccn.arquivo.selenium;
 
 import java.net.URL;
 import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-
-import pt.fccn.saw.selenium.RetryRule;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -38,8 +36,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 
-import pt.fccn.saw.selenium.SauceHelpers;
-
 import org.junit.*;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
@@ -47,6 +43,9 @@ import org.openqa.selenium.remote.CapabilityType;
 
 import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
+
+import pt.fccn.arquivo.selenium.RetryRule;
+import pt.fccn.arquivo.selenium.SauceHelpers;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

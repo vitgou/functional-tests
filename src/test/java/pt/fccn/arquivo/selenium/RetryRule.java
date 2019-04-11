@@ -1,4 +1,4 @@
-package pt.fccn.saw.selenium;
+package pt.fccn.arquivo.selenium;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 import pt.fccn.mobile.arquivo.pages.AdvancedSearchPage;
 import pt.fccn.mobile.arquivo.pages.IndexMobilePage;
-import pt.fccn.saw.selenium.WebDriverTestBaseParalell;
 
 public class AdvancedTest extends WebDriverTestBaseParalell {
 
