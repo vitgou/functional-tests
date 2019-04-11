@@ -223,7 +223,6 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M1</version>
 				<configuration>
-					<argLine>-Dfile.encoding=UTF-8</argLine>
 					<excludes>
 						<exclude>**/*.java</exclude>
 					</excludes>
@@ -244,6 +243,8 @@
 					</execution>
 				</executions>
 				<configuration>
+					<!-- force encoding -->
+					<argLine>-Dfile.encoding=UTF-8</argLine>
 					<environmentVariables>
 						<SAUCE_USERNAME>${remote.saucelabs.user}</SAUCE_USERNAME>
 						<SAUCE_ACCESS_KEY>${remote.saucelabs.key}</SAUCE_ACCESS_KEY>
