@@ -156,14 +156,6 @@
 
 	<build>
 		<plugins>
-			<!-- Trying to fix encoding problems on jenkins -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-				    <encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
 			<!-- Reserve some free ports to saucelabs given a range -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
