@@ -177,9 +177,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
 		if (browsersJSON == null) {
 			System.out.println("You did not specify browsers, testing with latest firefox and chrome...");
-			browsers.add(new String[] { "Windows 7", "latest", "chrome", null, null });
-			// temporary fix until saucelabs fix latest firefox
-			browsers.add(new String[] { "Windows 8.1", "50", "firefox", null, null });
+			browsers.add(new String[] { "Windows 8.1", "latest", "chrome", null, null });
+//			browsers.add(new String[] { "Windows 10", "latest", "firefox", null, null });
 		} else {
 			JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");
 			for (int i = 0; i < browsersJSONArray.length(); i++) {
@@ -187,7 +186,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 				// and device name
 				JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);
 				String browserOS = browserConfigs.getString("os");
-//              String browserPlatform= browserConfigs.getString("platform");
+//				String browserPlatform = browserConfigs.getString("platform");
 				String browserName = browserConfigs.getString("browser");
 				String browserVersion = browserConfigs.getString("browser-version");
 				String device = null;
@@ -234,8 +233,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 		if (deviceOrientation != null)
 			capabilities.setCapability("device-orientation", deviceOrientation);
 
-//        capabilities.setCapability(CapabilityType.PLATFORM, os);
-		capabilities.setCapability(CapabilityType.PLATFORM, "ANY");
+		capabilities.setCapability(CapabilityType.PLATFORM, os);
+//		capabilities.setCapability(CapabilityType.PLATFORM, "ANY");
 
 		String methodName = name.getMethodName() + " " + browser + " " + version;
 		capabilities.setCapability("name", methodName);
