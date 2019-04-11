@@ -52,7 +52,9 @@ import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
 
 		ImageAdvancedSearchTest.class,
 
-		MemorialTest.class
+		MemorialTest.class,
+
+		ContaMeHistoriasTest.class,
 
 })
 //TODO refactoring TermsAndConditionsTest.class
