@@ -433,8 +433,8 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 		prop = new Properties();
 		System.out.println("[ReplayPage] read properties");
 		try {
-			inputPt = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("/pt.properties"), "UTF8"));
-			inputEn = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("/en.properties"), "UTF8"));
+			inputPt = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("pt.properties"), "UTF8"));
+			inputEn = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("en.properties"), "UTF8"));
 			prop.load(inputPt);
 			// start with properties in PT
 			String currentLine;
