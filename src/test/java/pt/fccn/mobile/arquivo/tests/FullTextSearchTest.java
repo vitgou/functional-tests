@@ -1,6 +1,7 @@
 package pt.fccn.mobile.arquivo.tests;
 
 import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import pt.fccn.arquivo.selenium.Retry;

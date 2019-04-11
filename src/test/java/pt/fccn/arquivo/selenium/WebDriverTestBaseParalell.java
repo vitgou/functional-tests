@@ -19,43 +19,40 @@
 package pt.fccn.arquivo.selenium;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.rules.TestName;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.By;
+
 import com.saucelabs.common.SauceOnDemandAuthentication;
-
-import org.junit.*;
-import org.junit.rules.TestName;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.remote.CapabilityType;
-
+import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
-
-import pt.fccn.arquivo.selenium.RetryRule;
-import pt.fccn.arquivo.selenium.SauceHelpers;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
 //import org.json.*;
 

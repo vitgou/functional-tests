@@ -18,16 +18,17 @@
 
 package pt.fccn.arquivo.tests.older;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import java.util.Map;
 import java.util.TreeMap;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
 
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
-
-import static org.junit.Assert.*;
 
 /**
  * A class for tests related to the Advanced Search page.

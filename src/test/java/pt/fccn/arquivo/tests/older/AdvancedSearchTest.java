@@ -18,15 +18,17 @@
 
 package pt.fccn.arquivo.tests.older;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
 
-import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
-import pt.fccn.arquivo.tests.util.QueryResultPair;
+import java.util.ArrayList;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.openqa.selenium.*;
-import static org.junit.Assert.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
+import pt.fccn.arquivo.tests.util.QueryResultPair;
 
 /**
  * A class for tests related to the Advanced Search page.

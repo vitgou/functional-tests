@@ -1,12 +1,11 @@
 package pt.fccn.arquivo.example;
 
-import org.openqa.selenium.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
 
 import pt.fccn.arquivo.selenium.WebDriverTestBase;
-
-import org.junit.*;
-
-import static org.junit.Assert.*;
 
 public class ExampleTest extends WebDriverTestBase {
 	@Test
