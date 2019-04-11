@@ -304,7 +304,7 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 
 		String urlNoDate = currentURL.substring(15);
 
-		String expectedtableOfVersionsHref = serverName + "search.jsp?l=" + prop.getProperty("lang") + "&query="
+		String expectedtableOfVersionsHref = "/search.jsp?l=" + prop.getProperty("lang") + "&query="
 				+ urlNoDate + "&btnSubmit=Pesquisar";
 		String expectedtableOfVersionsTitle = prop.getProperty("versionsStoredTable");
 
