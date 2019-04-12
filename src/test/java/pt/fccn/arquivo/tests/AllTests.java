@@ -56,6 +56,8 @@ import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
 
 		ContaMeHistoriasTest.class,
 
+		TestCollections.class,
+
 })
 //TODO refactoring TermsAndConditionsTest.class
 //TODO SearchMultipleTermsQueryServer.class

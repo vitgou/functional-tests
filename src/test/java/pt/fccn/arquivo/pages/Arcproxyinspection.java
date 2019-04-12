@@ -37,7 +37,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *Functionality:
  * inspecting Arcproxy are proper performed, which meaning that all links are well linked.
  * Configuration file with index linked located on ROOT with monitored_indexes name
- * This test was made taking in consideration that p41 is the pre-prodution server and p58 and p62 is the prodution environment
+ * This test was made taking in consideration that p41 is the pre-prodution server and p85 and p89 is the prodution environment
  */
 /**
  * @author nutchwax
@@ -47,8 +47,8 @@ public class Arcproxyinspection {
 	private final WebDriver driver;
 	private String filename_prod= "monitored_indexes.txt"; // files which contains webepage to be fetch for prodution
 	private String filename_pre_prod= "monitored_indexes_pre_prod.txt"; //files which contains webepage to be fetch for pre-prodution
-	private String broker_p58 ="p58.";
-	private String broker_p62 ="p62.";
+	private String broker_p85 ="p85.";
+	private String broker_p89 ="p89.";
 	private static List<String> DateList = new ArrayList<String>();
 	private boolean isPredProd=false;
 
@@ -72,16 +72,16 @@ public class Arcproxyinspection {
 		BufferedReader reader=null;
 		String id=null;
 		String[] Url = driver.getCurrentUrl().split("/index.jsp");
-		String title_p58=null;
-		String date_p58=null;
-		String title_p62=null;
-		String date_p62=null;
+		String title_p85=null;
+		String date_p85=null;
+		String title_p89=null;
+		String date_p89=null;
 
 
-		//to test for a new server different than p58 or p62
+		//to test for a new server different than p85 or p89
 		if (this.isPredProd){
-			this.broker_p58 ="";
-			this.broker_p62 ="";
+			this.broker_p85 ="";
+			this.broker_p89 ="";
 		}
 		int i =0;
 		boolean result=true;
@@ -93,23 +93,23 @@ public class Arcproxyinspection {
 				while ((id = reader.readLine()) != null)
 				{
 					if(!inspectDate ){
-						title_p58=getIdTitle(broker_p58, id,Url);
-						date_p58=getIdDate(broker_p58,id);
-						System.out.println("Title p58: "+title_p58);
-						System.out.println("Date p58: " + date_p58);
-						DateList.add(date_p58); //Contains every dates of web content fetched from the file
-						title_p62=getIdTitle(broker_p62, id,Url);
-						date_p62=getIdDate(broker_p62,id);
-						if (date_p58 !=null && date_p62 !=null && !isPredProd){
+						title_p85=getIdTitle(broker_p85, id,Url);
+						date_p85=getIdDate(broker_p85,id);
+						System.out.println("Title p85: "+title_p85);
+						System.out.println("Date p85: " + date_p85);
+						DateList.add(date_p85); //Contains every dates of web content fetched from the file
+						title_p89=getIdTitle(broker_p89, id,Url);
+						date_p89=getIdDate(broker_p89,id);
+						if (date_p85 !=null && date_p89 !=null && !isPredProd){
 							//If occurs same pages with different titles or dates
-							if (!date_p58.equals(date_p62) && !title_p58.equals(title_p62)){
+							if (!date_p85.equals(date_p89) && !title_p85.equals(title_p89)){
 								System.out.print("Inconsistence collection: "+ id +"");
 								reader.close();
 								result = false;
 								throw new IllegalStateException("Inconsistence collection: "+ id +"");
 							}
 							//If the collection is offline
-							if (date_p58 ==null || date_p62==null){
+							if (date_p85 ==null || date_p89==null){
 								System.out.print("Offline collection: "+ id +"");
 								reader.close();
 								result = false;
@@ -141,7 +141,7 @@ public class Arcproxyinspection {
 	}
 
 	/**
-	 * @param server - must contain server p58. or p62.
+	 * @param server - must contain server p85. or p89.
 	 * @param id - index id
 	 * @param Url - Driver URL
 	 * @return
@@ -166,7 +166,7 @@ public class Arcproxyinspection {
 	}
 
 	/**
-	 * @param server - must contains server either p58. or p62.
+	 * @param server - must contains server either p85. or p89.
 	 * @param id
 	 * @return
 	 */
@@ -180,7 +180,7 @@ public class Arcproxyinspection {
 			replay_bar_with_date =  driver.findElement(By.xpath("//*[@id=\"replay_iframe\"]"));
 
 		} catch ( org.openqa.selenium.NoSuchElementException e) {
-			//System.out.print("\nReplay bar not injected. "+id+"\n");
+			System.err.println("Replay bar not injected. "+id);
 			return null;
 		}
 		date =replay_bar_with_date.getAttribute("src");

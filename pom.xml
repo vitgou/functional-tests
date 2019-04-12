@@ -180,34 +180,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- Connect to saucelabs using a tunnel -->
-			<plugin>
-				<groupId>com.saucelabs.maven.plugin</groupId>
-				<artifactId>sauce-connect-plugin</artifactId>
-				<version>2.1.25</version>
-				<configuration>
-					<sauceUsername>${remote.saucelabs.user}</sauceUsername>
-					<sauceAccessKey>${remote.saucelabs.key}</sauceAccessKey>
-					<!-- WARN: do not format the followin line (!) -->
-					<options>--pidfile /tmp/sc_${remote.saucelabs.port.scproxy}.pid --logfile /tmp/sc_${remote.saucelabs.port.scproxy}.log --scproxy-port ${remote.saucelabs.port.scproxy} --se-port ${remote.saucelabs.port.se} -i maven-${env.HOSTNAME}-${remote.saucelabs.port.se}</options>
-				</configuration>
-				<executions>
-					<execution>
-						<id>start-sauceconnect</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start-sauceconnect</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>stop-sauceconnect</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop-sauceconnect</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 
 			<!-- Exclude all tests, because they're integration tests -->
 			<plugin>
@@ -270,5 +242,49 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<!-- If "-Dremote.saucelabs.user=XXXX" is passed on argument create the sauce labs tunnel -->
+			<id>sauce-labs-tunnel</id>
+			<activation>
+				<property>
+					<name>remote.saucelabs.user</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Connect to saucelabs using a tunnel -->
+					<plugin>
+						<groupId>com.saucelabs.maven.plugin</groupId>
+						<artifactId>sauce-connect-plugin</artifactId>
+						<version>2.1.25</version>
+						<configuration>
+							<sauceUsername>${remote.saucelabs.user}</sauceUsername>
+							<sauceAccessKey>${remote.saucelabs.key}</sauceAccessKey>
+							<!-- WARN: do not format the followin line (!) -->
+							<options>--pidfile /tmp/sc_${remote.saucelabs.port.scproxy}.pid --logfile /tmp/sc_${remote.saucelabs.port.scproxy}.log --scproxy-port ${remote.saucelabs.port.scproxy} --se-port ${remote.saucelabs.port.se} -i maven-${env.HOSTNAME}-${remote.saucelabs.port.se}</options>
+						</configuration>
+						<executions>
+							<execution>
+								<id>start-sauceconnect</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>start-sauceconnect</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop-sauceconnect</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop-sauceconnect</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>

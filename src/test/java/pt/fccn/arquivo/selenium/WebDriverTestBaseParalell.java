@@ -19,13 +19,9 @@
 package pt.fccn.arquivo.selenium;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,6 +50,8 @@ import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
 
+import pt.fccn.arquivo.util.AppendableErrorsBaseTest;
+
 //import org.json.*;
 
 /**
@@ -67,7 +65,7 @@ import com.saucelabs.junit.SauceOnDemandTestWatcher;
  */
 @Ignore
 @RunWith(ConcurrentParameterized.class)
-public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider {
+public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implements SauceOnDemandSessionIdProvider {
 	private String port = System.getProperty("test.remote.access.port");
 
 	public static String seleniumURI;
@@ -129,8 +127,6 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
 	protected WebDriver driver;
 	// protected static ArrayList<WebDriver> drivers;
-
-	private List<Throwable> verificationErrors = new ArrayList<Throwable>();
 
 	protected static String screenResolution;
 	protected static String testURL;
@@ -280,16 +276,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 	@After
 	public void tearDown() throws Exception {
 		driver.quit();
-
-		if (!verificationErrors.isEmpty()) {
-			String errorMessageForAllErrors = verificationErrors.stream() //
-					.map(e -> e.getLocalizedMessage()) //
-					.collect(Collectors.joining(System.lineSeparator()));
-			Throwable firstError = verificationErrors.iterator().next();
-			throw new AssertionError(errorMessageForAllErrors, firstError);
-		}
-
-		System.out.println(String.format("End running test: %s\n", this.getClass().getSimpleName()));
+		super.tearDown();
 	}
 
 	/**
@@ -408,30 +395,4 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 		}
 	}
 
-	protected void run(String errorMessage, Runnable r) {
-		try {
-			r.run();
-		} catch (Throwable t) {
-			throw new Error(errorMessage, t);
-		}
-	}
-
-	protected <T> T run(String errorMessage, Callable<T> c) {
-		try {
-			return (T) c.call();
-		} catch (Throwable t) {
-			throw new Error(errorMessage, t);
-		}
-	}
-
-	protected void appendError(Runnable r) {
-		try {
-			r.run();
-		} catch (Throwable e) {
-			// print now the stack trace, because at the end could be a list of errors.
-			e.printStackTrace();
-
-			verificationErrors.add(e);
-		}
-	}
 }
