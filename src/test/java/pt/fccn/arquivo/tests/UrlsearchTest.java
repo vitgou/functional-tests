@@ -17,10 +17,9 @@
  */
 package pt.fccn.arquivo.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
 
 import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.selenium.Retry;

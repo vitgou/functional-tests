@@ -19,12 +19,10 @@
 package pt.fccn.arquivo.pages;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.RuntimeException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

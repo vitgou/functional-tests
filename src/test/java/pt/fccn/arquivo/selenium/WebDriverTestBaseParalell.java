@@ -19,43 +19,40 @@
 package pt.fccn.arquivo.selenium;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.rules.TestName;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.By;
+
 import com.saucelabs.common.SauceOnDemandAuthentication;
-
-import org.junit.*;
-import org.junit.rules.TestName;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.remote.CapabilityType;
-
+import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
-
-import pt.fccn.arquivo.selenium.RetryRule;
-import pt.fccn.arquivo.selenium.SauceHelpers;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
 //import org.json.*;
 
@@ -180,9 +177,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 
 		if (browsersJSON == null) {
 			System.out.println("You did not specify browsers, testing with latest firefox and chrome...");
-			browsers.add(new String[] { "Windows 7", "latest", "chrome", null, null });
-			// temporary fix until saucelabs fix latest firefox
-			browsers.add(new String[] { "Windows 8.1", "50", "firefox", null, null });
+			browsers.add(new String[] { "Windows 8.1", "latest", "chrome", null, null });
+//			browsers.add(new String[] { "Windows 10", "latest", "firefox", null, null });
 		} else {
 			JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");
 			for (int i = 0; i < browsersJSONArray.length(); i++) {
@@ -190,7 +186,7 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 				// and device name
 				JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);
 				String browserOS = browserConfigs.getString("os");
-//              String browserPlatform= browserConfigs.getString("platform");
+//				String browserPlatform = browserConfigs.getString("platform");
 				String browserName = browserConfigs.getString("browser");
 				String browserVersion = browserConfigs.getString("browser-version");
 				String device = null;
@@ -237,8 +233,8 @@ public class WebDriverTestBaseParalell implements SauceOnDemandSessionIdProvider
 		if (deviceOrientation != null)
 			capabilities.setCapability("device-orientation", deviceOrientation);
 
-//        capabilities.setCapability(CapabilityType.PLATFORM, os);
-		capabilities.setCapability(CapabilityType.PLATFORM, "ANY");
+		capabilities.setCapability(CapabilityType.PLATFORM, os);
+//		capabilities.setCapability(CapabilityType.PLATFORM, "ANY");
 
 		String methodName = name.getMethodName() + " " + browser + " " + version;
 		capabilities.setCapability("name", methodName);

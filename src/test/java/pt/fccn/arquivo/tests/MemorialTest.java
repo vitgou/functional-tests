@@ -3,7 +3,6 @@ package pt.fccn.arquivo.tests;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.io.File;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
