@@ -10,6 +10,8 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -74,8 +76,10 @@ public class MemorialTest extends WebDriverTestBaseParalell {
 						driver.findElement(By.xpath("/html")).getText(), containsString(config.getRedirectPageText()));
 			});
 
+			// click() didn't work consistently on every browser, so the solution was to use
+			// sendkeys method!
 			run("Click on button to redirect to Arquivo.pt",
-					() -> driver.findElement(By.xpath(config.getButtonXpath())).click());
+					() -> driver.findElement(By.id("redirectButton")).sendKeys(Keys.RETURN));
 
 			run("Check some text on wayback page",
 					() -> ReplayUtils.checkTextOnReplayPage(driver, config.getWaybackText()));
@@ -126,7 +130,7 @@ public class MemorialTest extends WebDriverTestBaseParalell {
 
 		public String getButtonXpath() {
 			// //a[contains(@class,'myButton')]
-			return buttonXpath != null ? buttonXpath : "html/body/div/div/a";
+			return buttonXpath != null ? buttonXpath : "//*[@id=\"redirectButton\"]";
 		}
 
 		public void setButtonXpath(String buttonXpath) {
