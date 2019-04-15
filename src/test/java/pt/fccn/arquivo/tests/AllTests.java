@@ -50,7 +50,8 @@ import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
 
 		ImageAdvancedSearchTest.class,
 
-		MemorialTest.class,
+		// it was removed because it didn't run correctly on IE 11
+		//MemorialTest.class,
 
 		ContaMeHistoriasTest.class,
 
