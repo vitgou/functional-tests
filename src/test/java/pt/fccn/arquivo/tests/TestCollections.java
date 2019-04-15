@@ -329,8 +329,8 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionEAWP8() {
-		test(new TestCollectionConfig().collectionId("EAWP8").timestamp("20160107222240")
-				.url("http://commit.eucen.eu/robots.txt"));
+		test(new TestCollectionConfig().collectionId("EAWP8").timestamp("20160107165730")
+				.url("http://efeito.net/p.registrarfccn"));
 	}
 
 	@Test
