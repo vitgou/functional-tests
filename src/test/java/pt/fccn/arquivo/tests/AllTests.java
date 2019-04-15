@@ -36,8 +36,6 @@ import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
 
 		TestSponsorImage.class,
 
-		TestArcproxy.class,
-
 		AdvancedTest.class,
 
 		UrlsearchTest.class,
