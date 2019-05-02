@@ -83,3 +83,11 @@ configs:
    waybackUrl: /wayback/20180511135909/http://empregabilidadedigital.pt/
    waybackText: Portugal está entre os países com a menor proporção de trabalhadores nas áreas
 
+-  url: http://visibilidade.net
+   redirectPageText: O site visibilidade.net foi desativado
+   waybackUrl: /wayback/20180628131252/http://visibilidade.net/tutorial/index.html
+   waybackText: Este site contem informação relacionada com publicação e divulgação na web
+-  url: http://visibilidade.net/tutorial/index.html
+   redirectPageText: O site visibilidade.net foi desativado
+   waybackUrl: /wayback/20180628131252/http://visibilidade.net/tutorial/index.html
+   waybackText: Através de vários artigos acerca da visibilidade da informação publicada na web, este espaço pretende esclarecer os nossos leitores mais interessados
