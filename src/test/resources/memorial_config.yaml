@@ -5,7 +5,7 @@ configs:
    waybackText: Realizou-se em 20-22 de Fevereiro de 2012
 -  url: http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
    redirectPageText: UMIC
-   waybackUrl: /wayback/20170822161210/http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
+   waybackUrl: /wayback/20170831105224/http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
    waybackText: lançada em 2006 envolvendo parcerias com instituições universitárias
 
 -  url: http://www.english.umic.pt/
@@ -28,11 +28,11 @@ configs:
 
 -  url: http://www.gridcomputing.pt/
    redirectPageText: O site www.gridcomputing.pt foi desativado.
-   waybackUrl: /wayback/20171213063635/http://www.gridcomputing.pt/
+   waybackUrl: /wayback/20170803133931/http://www.gridcomputing.pt/
    waybackText: Computação Grid
 -  url: http://www.gridcomputing.pt/index.php?option=com_content&task=view&id=79&Itemid=82
    redirectPageText: O site www.gridcomputing.pt foi desativado.
-   waybackUrl: /wayback/20171213071016/http://www.gridcomputing.pt/index.php?option=com_content&task=view&id=79&Itemid=82
+   waybackUrl: /wayback/20170803153116/http://www.gridcomputing.pt/index.php?option=com_content&task=view&id=79&Itemid=82
    waybackText: DEI-UC
 
 -  url: http://www.e-u.pt/
@@ -83,3 +83,11 @@ configs:
    waybackUrl: /wayback/20180511135909/http://empregabilidadedigital.pt/
    waybackText: Portugal está entre os países com a menor proporção de trabalhadores nas áreas
 
+-  url: http://visibilidade.net
+   redirectPageText: O site visibilidade.net foi desativado
+   waybackUrl: /wayback/20180628131252/http://visibilidade.net/tutorial/index.html
+   waybackText: Este site contem informação relacionada com publicação e divulgação na web
+-  url: http://visibilidade.net/tutorial/index.html
+   redirectPageText: O site visibilidade.net foi desativado
+   waybackUrl: /wayback/20180628131252/http://visibilidade.net/tutorial/index.html
+   waybackText: Através de vários artigos acerca da visibilidade da informação publicada na web, este espaço pretende esclarecer os nossos leitores mais interessados
