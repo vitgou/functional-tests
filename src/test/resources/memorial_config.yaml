@@ -85,7 +85,7 @@ configs:
 
 -  url: http://visibilidade.net
    redirectPageText: O site visibilidade.net foi desativado
-   waybackUrl: /wayback/20180628131252/http://visibilidade.net
+   waybackUrl: /wayback/20180628130711/http://visibilidade.net
    waybackText: Este site contem informação relacionada com publicação e divulgação na web
 -  url: http://visibilidade.net/tutorial/index.html
    redirectPageText: O site visibilidade.net foi desativado
