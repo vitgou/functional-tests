@@ -98,9 +98,9 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 			appendError(() -> replayBarURLsOk(currentURL));
 			appendError(() -> screenshotOk(currentURL));
 			appendError(() -> printOk(currentURL));
-			appendError(() -> facebookOk(currentURL));
-			appendError(() -> twitterOk(currentURL));
-			appendError(() -> emailOk(currentURL));
+//			appendError(() -> facebookOk(currentURL));
+//			appendError(() -> twitterOk(currentURL));
+//			appendError(() -> emailOk(currentURL));
 			appendError(() -> tableOfVersionsOk(currentURL));
 			appendError(() -> logoOk(currentURL));
 			appendError(() -> checkLeftMenu(currentURL));
