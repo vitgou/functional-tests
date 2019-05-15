@@ -1,7 +1,7 @@
 configs:
 -  url: http://www.umic.pt/
    redirectPageText: UMIC
-   waybackUrl: /wayback/20170822151328/http://www.umic.pt/
+   waybackUrl: /wayback/20170831104506/http://www.umic.pt/
    waybackText: Realizou-se em 20-22 de Fevereiro de 2012
 -  url: http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
    redirectPageText: UMIC
@@ -28,7 +28,7 @@ configs:
 
 -  url: http://www.gridcomputing.pt/
    redirectPageText: O site www.gridcomputing.pt foi desativado.
-   waybackUrl: /wayback/20170803133931/http://www.gridcomputing.pt/
+   waybackUrl: /wayback/20170803133931/http://www.gridcomputing.pt
    waybackText: Computação Grid
 -  url: http://www.gridcomputing.pt/index.php?option=com_content&task=view&id=79&Itemid=82
    redirectPageText: O site www.gridcomputing.pt foi desativado.
@@ -85,7 +85,7 @@ configs:
 
 -  url: http://visibilidade.net
    redirectPageText: O site visibilidade.net foi desativado
-   waybackUrl: /wayback/20180628131252/http://visibilidade.net/tutorial/index.html
+   waybackUrl: /wayback/20180628130711/http://visibilidade.net
    waybackText: Este site contem informação relacionada com publicação e divulgação na web
 -  url: http://visibilidade.net/tutorial/index.html
    redirectPageText: O site visibilidade.net foi desativado
