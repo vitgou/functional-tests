@@ -502,6 +502,32 @@ public class TestCollections extends AppendableErrorsBaseTest {
 				.url("https://www.wmo.int/pages/prog/arep/gaw/ozone/nrt_plots.html"));
 	}
 
+	@Test
+	@Retry
+	public void testCollectionEAWP16() {
+		test(new TestCollectionConfig().collectionId("EAWP16").timestamp("20170927112019")
+				.url("http://blogs.sapo.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP17() {
+		test(new TestCollectionConfig().collectionId("EAWP17").timestamp("20171010134435").url("http://www.sapo.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP18() {
+		test(new TestCollectionConfig().collectionId("EAWP18").timestamp("20171003132227")
+				.url("https://usabilidade.gov.pt/sobre-o-portal"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP21() {
+		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314195500").url("https://www.sapo.pt/"));
+	}
+
 	private void test(TestCollectionConfig config) {
 		for (String server : SERVERS) {
 			String testUrl = config.getTestURL(server);
