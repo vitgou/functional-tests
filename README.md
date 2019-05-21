@@ -19,3 +19,9 @@ To debug tests add the argument:
 ```bash
 -Dmaven.failsafe.debug
 ```
+
+To run the test collection that don't use saucelabs run:
+```bash
+ mvn clean verify -Dit.test=pt.fccn.arquivo.tests.TestCollections
+```
+
