@@ -528,6 +528,12 @@ public class TestCollections extends AppendableErrorsBaseTest {
 		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314195500").url("https://www.sapo.pt/"));
 	}
 
+	@Test
+	@Retry
+	public void testCollectionFAWP27() {
+		test(new TestCollectionConfig().collectionId("FAWP27").timestamp("20161217054847").url("http://correiodafeira.pt/jornalcf/wp-content/uploads/2016/07/conceicao-alvim-e-miguel-ferraz6-150x150.jpg"));
+	}
+
 	private void test(TestCollectionConfig config) {
 		for (String server : SERVERS) {
 			String testUrl = config.getTestURL(server);
