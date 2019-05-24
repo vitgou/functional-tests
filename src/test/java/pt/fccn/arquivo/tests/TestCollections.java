@@ -522,11 +522,12 @@ public class TestCollections extends AppendableErrorsBaseTest {
 				.url("https://usabilidade.gov.pt/sobre-o-portal"));
 	}
 
-	@Test
-	@Retry
-	public void testCollectionEAWP21() {
-		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314195500").url("https://www.sapo.pt/"));
-	}
+	// Not in production
+//	@Test
+//	@Retry
+//	public void testCollectionEAWP21() {
+//		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314195500").url("https://www.sapo.pt/"));
+//	}
 
 	@Test
 	@Retry
