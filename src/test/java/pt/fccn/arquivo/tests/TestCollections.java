@@ -280,7 +280,7 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionFAWP14() {
-		test(new TestCollectionConfig().collectionId("FAWP10").timestamp("20130801191854")
+		test(new TestCollectionConfig().collectionId("FAWP14").timestamp("20130801191854")
 				.url("http://www.jornaldamealhada.com/multimedia/show.aspx?idioma=pt&idcont=1656"));
 	}
 
