@@ -535,6 +535,24 @@ public class TestCollections extends AppendableErrorsBaseTest {
 		test(new TestCollectionConfig().collectionId("FAWP27").timestamp("20161217054847").url("http://correiodafeira.pt/jornalcf/wp-content/uploads/2016/07/conceicao-alvim-e-miguel-ferraz6-150x150.jpg"));
 	}
 
+	@Test
+	@Retry
+	public void testCollectionRAQ2017() {
+		test(new TestCollectionConfig().collectionId("RAQ2017").timestamp("20170831104506").url("http://www.umic.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionRAQ2018() {
+		test(new TestCollectionConfig().collectionId("RAQ2018").timestamp("20180504071206").url("http://cla.fccn.pt"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionRAQ2019() {
+		test(new TestCollectionConfig().collectionId("RAQ2019").timestamp("20190315160356").url("http://www.mundonaescola.pt/"));
+	}
+
 	private void test(TestCollectionConfig config) {
 		for (String server : SERVERS) {
 			String testUrl = config.getTestURL(server);
