@@ -522,6 +522,13 @@ public class TestCollections extends AppendableErrorsBaseTest {
 				.url("https://usabilidade.gov.pt/sobre-o-portal"));
 	}
 
+	@Test
+	@Retry
+	public void testCollectionEAWP20() {
+		test(new TestCollectionConfig().collectionId("EAWP20").timestamp("20181205181352")
+				.url("https://www.independent.co.uk/voices/michael-flynn-avoids-prison-sentence-mueller-investigation-russia-collusion-donald-trump-american-a8668351.html"));
+	}
+
 	// Not in production
 //	@Test
 //	@Retry
