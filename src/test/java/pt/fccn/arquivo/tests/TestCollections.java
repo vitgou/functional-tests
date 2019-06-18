@@ -532,7 +532,7 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionEAWP21() {
-		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314195500").url("https://www.sapo.pt/"));
+		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314163830").url("https://commons.wikimedia.org/wiki/Category:World_War_I"));
 	}
 
 	@Test
