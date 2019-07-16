@@ -91,3 +91,12 @@ configs:
    redirectPageText: O site visibilidade.net foi desativado
    waybackUrl: /wayback/20180628131252/http://visibilidade.net/tutorial/index.html
    waybackText: Através de vários artigos acerca da visibilidade da informação publicada na web, este espaço pretende esclarecer os nossos leitores mais interessados
+
+-  url: http://www.mundonaescola.pt/
+   redirectPageText: O site www.mundonaescola.pt foi desativado
+   waybackUrl: /wayback/20190315160356/http://www.mundonaescola.pt
+   waybackText: O programa O Mundo na Escola focou o tema da ciência
+-  url: http://www.mundonaescola.pt/?page_id=129
+   redirectPageText: O site www.mundonaescola.pt foi desativado
+   waybackUrl: /wayback/20190315160428/http://www.mundonaescola.pt/?page_id=129
+   waybackText: A Física no dia-a-dia
