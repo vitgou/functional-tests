@@ -93,10 +93,10 @@ configs:
    waybackText: Através de vários artigos acerca da visibilidade da informação publicada na web, este espaço pretende esclarecer os nossos leitores mais interessados
 
 -  url: http://www.mundonaescola.pt/
-   redirectPageText: O site www.mundonaescola.pt foi desativado
+   redirectPageText: O Mundo na Escola foi um programa de divulgação científica criado pelo Ministério da Educação e Ciência que funcionou entre abril de 2012 e novembro de 2015 com o objetivo de aproximar os profissionais das várias áreas do saber da comunidade escolar.
    waybackUrl: /wayback/20190315160356/http://www.mundonaescola.pt
    waybackText: O programa O Mundo na Escola focou o tema da ciência
 -  url: http://www.mundonaescola.pt/?page_id=129
-   redirectPageText: O site www.mundonaescola.pt foi desativado
+   redirectPageText: O Mundo na Escola foi um programa de divulgação científica criado pelo Ministério da Educação e Ciência que funcionou entre abril de 2012 e novembro de 2015 com o objetivo de aproximar os profissionais das várias áreas do saber da comunidade escolar.
    waybackUrl: /wayback/20190315160428/http://www.mundonaescola.pt/?page_id=129
    waybackText: A Física no dia-a-dia
