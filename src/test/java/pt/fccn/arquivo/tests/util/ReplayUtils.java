@@ -22,9 +22,9 @@ public class ReplayUtils {
 		// enter inner replay frame
 //		new WebDriverWait(driver, 180).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("replay_iframe"));
 		driver.switchTo().frame("replay_iframe");
-
-		if (textOnReplayPageCheck != null && textOnReplayPageCheck.length() > 0) {
-			new WebDriverWait(driver, 180).until(
+		System.out.println("Texto do iframe: " + driver.findElement(By.xpath("//")).getText() );
+		if (textOnReplayPageCheck != null && textOnReplayPageCheck.length() > 0) {			
+			new WebDriverWait(driver, 180).until(					
 					ExpectedConditions.textToBePresentInElementLocated(By.xpath("//"), textOnReplayPageCheck));
 		}
 		driver.switchTo().defaultContent();
