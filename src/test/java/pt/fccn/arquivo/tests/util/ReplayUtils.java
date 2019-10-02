@@ -25,7 +25,7 @@ public class ReplayUtils {
 
 		if (textOnReplayPageCheck != null && textOnReplayPageCheck.length() > 0) {
 			new WebDriverWait(driver, 180).until(
-					ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html"), textOnReplayPageCheck));
+					ExpectedConditions.textToBePresentInElementLocated(By.xpath("//"), textOnReplayPageCheck));
 		}
 		driver.switchTo().defaultContent();
 	}
