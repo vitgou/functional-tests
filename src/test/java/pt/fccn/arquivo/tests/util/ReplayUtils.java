@@ -21,11 +21,13 @@ public class ReplayUtils {
 	public static void checkTextOnReplayPage(WebDriver driver, String textOnReplayPageCheck) {
 		// enter inner replay frame
 //		new WebDriverWait(driver, 180).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("replay_iframe"));
-		driver.switchTo().frame(driver.findElement(By.id("replay_iframe")));
+		/*driver.switchTo().frame(driver.findElement(By.id("replay_iframe")));*/
 		//driver.switchTo().frame("replay_iframe");
 		if (textOnReplayPageCheck != null && textOnReplayPageCheck.length() > 0) {			
-			new WebDriverWait(driver, 180).until(					
-					ExpectedConditions.textToBePresentInElementLocated(By.xpath("html"), textOnReplayPageCheck));
+			/*new WebDriverWait(driver, 180).until(					
+					ExpectedConditions.textToBePresentInElementLocated(By.xpath("html"), textOnReplayPageCheck));*/
+			new WebDriverWait(driver, 120).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("replay_iframe")));
+			WebElement element = new WebDriverWait(driver, 120).until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html"), textOnReplayPageCheck));					
 		}
 		driver.switchTo().defaultContent();
 	}
