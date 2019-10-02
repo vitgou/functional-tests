@@ -22,10 +22,10 @@ public class ReplayUtils {
 		// enter inner replay frame
 //		new WebDriverWait(driver, 180).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("replay_iframe"));
 		driver.switchTo().frame("replay_iframe");
-		System.out.println("Texto do iframe: " + driver.findElement(By.xpath("//")).getText() );
+		System.out.println("Texto do iframe: " + driver.findElement(By.cssSelector("html")).getText() );
 		if (textOnReplayPageCheck != null && textOnReplayPageCheck.length() > 0) {			
 			new WebDriverWait(driver, 180).until(					
-					ExpectedConditions.textToBePresentInElementLocated(By.xpath("//"), textOnReplayPageCheck));
+					ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("html"), textOnReplayPageCheck));
 		}
 		driver.switchTo().defaultContent();
 	}
