@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
@@ -37,6 +39,11 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 
 		run("Search images instead of text", () -> driver.findElement(By.id("BotaoImagens")).click());
 
+		/*Scroll down until the image we want to click is visible*/
+		Actions actions = new Actions(driver);
+		actions.moveToElement(driver.findElement(By.id("imageResults1")));
+		actions.perform();		
+		
 		run("Click/open one image on search results to open modal",
 				() -> driver.findElement(By.id("imageResults1")).click());
 
