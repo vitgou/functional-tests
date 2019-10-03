@@ -88,77 +88,77 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 					driver.findElement(By.xpath("//*[@id=\"card1\"]/ion-card-content[2]/ion-list/ion-item[3]/h5")).getText());
 		});
 
-		run("Click on show image details button on image modal", () -> {
-			driver.findElement(By.xpath("//*[@id=\"card1\"]/ion-row[1]/ion-col[2]/ion-button")).click();
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail page contains page url",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a")).getText(),
-					containsString("http://www.iscac.pt/index.php"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail page contains page timestamp",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[1]/ion-list/ion-item[2]/h5")).getText(),
-					containsString("20161110202424"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail page contains page title",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[1]/ion-list/ion-item[3]/h5")).getText(),
-					containsString("ISCAC o teu futuro passa por aqui!"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail image elements contains original src",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[1]/h5/a")).getText(),
-					containsString("http://www.iscac.pt/files/footericones/01330444039.png"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail image elements contains timestamp",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[2]/h5")).getText(),
-					containsString("20160817110504"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail image elements contains image title",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[3]/h5")).getText(),
-					containsString("FCCN"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail image elements contains resolution value",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[4]/h5")).getText(),
-					containsString("70 x 60 pixels"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail image elements contains mimetype value",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[5]/h5")).getText(),
-					containsString("png"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail image elements contains safe value",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[6]/h5")).getText(),
-					containsString("0.996"));
-		});
-
-		appendError(() -> {
-			assertThat("Check image detail about collection contains expected collection value",
-					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[3]/ion-list/ion-item/h5")).getText(),
-					containsString("AWP22"));
-		});
-
-		run("Close image details modal", () -> {
-			driver.findElement(By.id("closeCard1")).click();
-		});
-
-		run("Close image first modal", () -> {
-			driver.findElement(By.id("close1")).click();
-		});
+//		run("Click on show image details button on image modal", () -> {
+//			driver.findElement(By.xpath("//*[@id=\"card1\"]/ion-row[1]/ion-col[2]/ion-button")).click();
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail page contains page url",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a")).getText(),
+//					containsString("http://www.iscac.pt/index.php"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail page contains page timestamp",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[1]/ion-list/ion-item[2]/h5")).getText(),
+//					containsString("20161110202424"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail page contains page title",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[1]/ion-list/ion-item[3]/h5")).getText(),
+//					containsString("ISCAC o teu futuro passa por aqui!"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail image elements contains original src",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[1]/h5/a")).getText(),
+//					containsString("http://www.iscac.pt/files/footericones/01330444039.png"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail image elements contains timestamp",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[2]/h5")).getText(),
+//					containsString("20160817110504"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail image elements contains image title",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[3]/h5")).getText(),
+//					containsString("FCCN"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail image elements contains resolution value",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[4]/h5")).getText(),
+//					containsString("70 x 60 pixels"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail image elements contains mimetype value",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[5]/h5")).getText(),
+//					containsString("png"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail image elements contains safe value",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[2]/ion-list/ion-item[6]/h5")).getText(),
+//					containsString("0.996"));
+//		});
+//
+//		appendError(() -> {
+//			assertThat("Check image detail about collection contains expected collection value",
+//					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[3]/ion-list/ion-item/h5")).getText(),
+//					containsString("AWP22"));
+//		});
+//
+//		run("Close image details modal", () -> {
+//			driver.findElement(By.id("closeCard1")).click();
+//		});
+//
+//		run("Close image first modal", () -> {
+//			driver.findElement(By.id("close1")).click();
+//		});
 	}
 
 }
