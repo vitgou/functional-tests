@@ -88,7 +88,7 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 		appendError(() -> {
 			assertThat("Check image detail page contains page url",
 					driver.findElement(By.xpath("//*[@id=\"detailsCard1\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a")).getText(),
-					containsString("http://www.iscac.pt/index.php?m=5_26&amp;lang=PT&amp;curso=911&amp;uc=2183&amp;branch=0&amp;plan=1&amp;group=0&amp;year=1"));
+					containsString("http://www.iscac.pt/index.php"));
 		});
 
 		appendError(() -> {
