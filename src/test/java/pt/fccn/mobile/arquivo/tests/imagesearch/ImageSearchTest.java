@@ -46,7 +46,8 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 		
 		run("Click/open one image on search results to open modal",
 				() -> driver.findElement(By.id("imageResults1")).click());
-
+		/*Sleeping for 10 seconds - test*/
+		Thread.sleep(10000);
 		appendError(() -> {
 			assertTrue("First image details should be shown after clicking on it",
 					driver.findElement(By.xpath("//*[@id=\"card1\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a")).isDisplayed());
