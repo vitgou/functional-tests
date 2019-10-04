@@ -42,14 +42,13 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 		
 		JavascriptExecutor je = (JavascriptExecutor) driver;		 
 		je.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.id("imageResults1")));		
-		/*Scroll down until the image we want to click is visible*/
-		//Actions actions = new Actions(driver);
-		//actions.moveToElement(driver.findElement(By.id("imageResults1")));
-		//actions.perform();		
 		
 		run("Click/open one image on search results to open modal",
 				() -> driver.findElement(By.id("imageResults0")).click());
-		/*Sleeping for 10 seconds - test*/
+		/*Sleeping for 25 seconds - maybe there is a better way to wait for the image viewer
+		 * TODO:: figure out why it is taking so long for image viewer to be opened
+		 * TODO:: improve performance? 
+		 */
 		Thread.sleep(25000);
 		appendError(() -> {
 			assertTrue("First image details should be shown after clicking on it",
@@ -61,21 +60,21 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a")).getText());
 		});
 
-//		appendError(() -> {
-//			assertEquals("Check image original link on opened modal",
-//					"www.iscac.pt/files/footeric...444039.png",
-//					driver.findElement(By.xpath("//*[@id=\"card1\"]/ion-card-content[1]/ion-list/ion-item[2]/h5")).getText());
-//		});
-//
-//		appendError(() -> {
-//			assertEquals("Check image type and size on opened modal", "png 70 x 60",
-//					driver.findElement(By.xpath("//*[@id=\"card1\"]/ion-card-content[1]/ion-list/ion-item[3]/h5")).getText());
-//		});
-//
-//		appendError(() -> {
-//			assertEquals("Check image date on opened modal", "17 Agosto, 2016",
-//					driver.findElement(By.xpath("//*[@id=\"card1\"]/ion-card-content[1]/ion-list/ion-item[4]/h5")).getText());
-//		});
+		appendError(() -> {
+			assertEquals("Check image original link on opened modal",
+					"wiki.di.uminho.pt/twiki/pub...I/fccn.jpg",
+					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[2]/h5")).getText());
+		});
+
+		appendError(() -> {
+			assertEquals("Check image type and size on opened modal", "jpeg 319 x 69",
+					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[3]/h5")).getText());
+		});
+
+		appendError(() -> {
+			assertEquals("Check image date on opened modal", "7 Julho, 2007",
+					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[4]/h5")).getText());
+		});
 //
 //		appendError(() -> {
 //			assertEquals("Check page anchor text", "ISCAC o teu futuro passa por aqui!",
