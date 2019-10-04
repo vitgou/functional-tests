@@ -75,6 +75,12 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 			assertEquals("Check image date on opened modal", "7 Julho, 2007",
 					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[4]/h5")).getText());
 		});
+		/*
+		 * TODO:: check page attributes in image viewer card (may need scroll to bottom of card
+		 * TODO:: click in "View details" - may need scroll to top of card
+		 * TODO:: check details attributes
+		 * TODO:: close view details and close image card
+		 * */
 //
 //		appendError(() -> {
 //			assertEquals("Check page anchor text", "ISCAC o teu futuro passa por aqui!",
