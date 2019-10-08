@@ -559,6 +559,13 @@ public class TestCollections extends AppendableErrorsBaseTest {
 		test(new TestCollectionConfig().collectionId("RAQ2019").timestamp("20190315160356").url("http://www.mundonaescola.pt/"));
 	}
 
+	@Test
+	@Retry
+	public void testCollectionFAWP28() {
+		test(new TestCollectionConfig().collectionId("FAWP28").timestamp("20170128032423").url("https://www.airbnb.co.ve/rooms/16908431"));
+	}
+
+
 	private void test(TestCollectionConfig config) {
 		for (String server : SERVERS) {
 			String testUrl = config.getTestURL(server);
