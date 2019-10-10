@@ -34,7 +34,7 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 	@Test
 	public void testImageSearchOneTerm() throws Exception {
 		
-		WebDriverWait wait = new WebDriverWait(driver, 5);
+		//WebDriverWait wait = new WebDriverWait(driver, 5);
 		
 		run("Search FCCN term", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
@@ -54,14 +54,13 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 		 * TODO:: figure out why it is taking so long for image viewer to be opened
 		 * TODO:: improve performance? 
 		 */
-		//Thread.sleep(25000);
+		Thread.sleep(25000);
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//*[@id=\\\"card0\\\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a")));
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//*[@id=\\\"card0\\\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a")));
-		
-		/*appendError(() -> {
+		appendError(() -> {
 			assertTrue("First image details should be shown after clicking on it",
 				driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a")).isDisplayed());
-		});*/
+		});
 
 		appendError(() -> {
 			assertEquals("Check image name on opened modal", "FCCN",
