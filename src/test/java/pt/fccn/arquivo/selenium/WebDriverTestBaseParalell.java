@@ -165,17 +165,15 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 	@ConcurrentParameterized.Parameters
 	public static LinkedList<String[]> browsersStrings() {
 		String browsersJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
+		System.out.println("SAUCE_ONDEMAND_BROWSERS: " + browsersJSON);
+
 		LinkedList<String[]> browsers = new LinkedList<String[]>();
-
-		System.out.println("JSON: " + browsersJSON);
-
-		JSONObject browsersJSONObject = new JSONObject("{browsers:" + browsersJSON + "}");
-
 		if (browsersJSON == null) {
 			System.out.println("You did not specify browsers, testing with latest firefox and chrome...");
 			browsers.add(new String[] { "Windows 8.1", "latest", "chrome", null, null });
 			browsers.add(new String[] { "Windows 10", "latest", "firefox", null, null });
 		} else {
+			JSONObject browsersJSONObject = new JSONObject("{browsers:" + browsersJSON + "}");
 			JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");
 			for (int i = 0; i < browsersJSONArray.length(); i++) {
 				// TODO:: find names of extra properties for mobile Devices such as orientation

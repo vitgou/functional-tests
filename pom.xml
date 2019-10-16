@@ -46,13 +46,27 @@
 		<build.timestamp>${maven.build.timestamp}</build.timestamp>
 
 		<test.url>${env.SELENIUM_TEST_URL}</test.url>
-		<test.resolution>1280x1024</test.resolution>
 		<test.os>${env.SELENIUM_BROWSER_OS}</test.os>
 		<test.browser>${env.SELENIUM_BROWSER}</test.browser>
 		<test.browser.version>
 			${env.SELENIUM_BROWSER_VERSION}</test.browser.version>
 		<remote.saucelabs.key>${env.SAUCE_ACCESS_KEY}</remote.saucelabs.key>
 		<remote.saucelabs.user>${env.SAUCE_USERNAME}</remote.saucelabs.user>
+
+		<!--  default configuration for a desktop running on sauce labs -->
+		<test.resolution>1280x1024</test.resolution>
+        <browsers.json>
+        	[{
+	          "os":"Windows 8.1",
+	          "browser":"chrome",
+	          "browser-version":"latest",
+	        },
+	        {
+	          "os":"Windows 10",
+	          "browser":"firefox",
+	          "browser-version":"latest",
+	        }]
+	    </browsers.json>
 
 		<selenium.version>2.52.0</selenium.version>
 	</properties>
@@ -211,6 +225,7 @@
 					<environmentVariables>
 						<SAUCE_USERNAME>${remote.saucelabs.user}</SAUCE_USERNAME>
 						<SAUCE_ACCESS_KEY>${remote.saucelabs.key}</SAUCE_ACCESS_KEY>
+						<SAUCE_ONDEMAND_BROWSERS>${browsers.json}</SAUCE_ONDEMAND_BROWSERS>
 					</environmentVariables>
 					<systemPropertyVariables>
 						<test.project.name>${project.name} ${testcase}</test.project.name>
@@ -243,6 +258,59 @@
 	</build>
 
 	<profiles>
+	    <profile>
+	        <activation>
+	            <activeByDefault>false</activeByDefault>
+	            <property>
+	            	<name>mobile</name>
+	            </property>
+	        </activation>
+	        <id>browsers-mobile</id>
+	        <properties>
+	            <browsers.json>[
+	            {
+	              "os":"android",
+	              "platform":"android",
+	              "browser":"android",
+	              "browser-version":"6.0",
+	              "long-name":"Android Emulator",
+	              "long-version":"6.0.",
+	              "device":"Android Emulator",
+	              "device-orientation":"portrait"
+	            },
+	            {
+	              "os":"iphone",
+	              "platform":"iphone",
+	              "browser":"iphone",
+	              "browser-version":"11.2",
+	              "long-name":"iPhone 7 Simulator",
+	              "long-version":"11.2.",
+	              "device":"iPhone 7 Simulator",
+	              "device-orientation":"portrait"
+	            }]</browsers.json>
+	            <test.resolution>1024x768</test.resolution>
+	        </properties>
+	    </profile>
+
+	    <profile>
+	        <activation>
+	            <activeByDefault>false</activeByDefault>
+	            <property>
+	            	<name>IE</name>
+	            </property>
+	        </activation>
+	        <id>browsers-ie</id>
+	        <properties>
+	            <browsers.json>[{
+	              "os":"Windows 10",
+	              "platform":"Windows 10",
+	              "browser":"internet explorer",
+	              "browser-version":"11",
+	            }]</browsers.json>
+	            <test.resolution>1920x1080</test.resolution>
+	        </properties>
+	    </profile>
+
 		<profile>
 			<!-- If "-Dremote.saucelabs.user=XXXX" is passed on argument create the sauce labs tunnel -->
 			<id>sauce-labs-tunnel</id>

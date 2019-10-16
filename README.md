@@ -6,7 +6,7 @@ Recursive tests developed with selenium framework for Arquivo.pt
 Functional Tests
 
 
- Generate eclipse .project and .classpath files, similar for idea.
+Generate eclipse .project and .classpath files, similar for idea.
 ```bash
  mvn eclipse:clean eclipse:eclipse
 ```
@@ -26,3 +26,12 @@ To run the test collection that don't use saucelabs run:
  mvn clean verify -Dit.test=pt.fccn.arquivo.tests.TestCollections
 ```
 
+Additionaly the maven has a couple of profiles to make it more easilly to run tests directly to a specific browser.
+For Internet Explorer:
+```
+-DIE
+```
+For mobile phones:
+```
+-Dmobile
+```
