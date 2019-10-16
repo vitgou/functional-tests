@@ -115,31 +115,6 @@
 
 	<build>
 		<plugins>
-			<!-- Reserve some free ports to saucelabs given a range -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<id>reserve-network-port</id>
-						<goals>
-							<goal>reserve-network-port</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							<minPortNumber>4446</minPortNumber>
-							<maxPortNumber>4500</maxPortNumber>
-							<randomPort>true</randomPort>
-							<portNames>
-								<portName>remote.saucelabs.port.se</portName>
-								<portName>remote.saucelabs.port.scproxy</portName>
-							</portNames>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
 			<!-- Exclude all tests, because they're integration tests -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -183,7 +158,7 @@
 						<test.remote.access.user>${remote.saucelabs.user}</test.remote.access.user>
 						<test.remote.access.key>${remote.saucelabs.key}</test.remote.access.key>
 						<test.runRemote>true</test.runRemote>
-						<test.remote.access.port>${remote.saucelabs.port.se}</test.remote.access.port>
+						<test.remote.access.port>${test.remote.access.port}</test.remote.access.port>
 					</systemPropertyVariables>
 					<includes>
 						<include>**/*.java</include>
@@ -205,13 +180,13 @@
 
 	<profiles>
 	    <profile>
+	    	<id>browsers-mobile</id>
 	        <activation>
-	            <activeByDefault>false</activeByDefault>
 	            <property>
-	            	<name>mobile</name>
+	            	<name>browsers</name>
+	            	<value>mobile</value>
 	            </property>
 	        </activation>
-	        <id>browsers-mobile</id>
 	        <properties>
 	            <test.browsers.json>[
 	            {
@@ -237,15 +212,14 @@
 	            <test.resolution>1024x768</test.resolution>
 	        </properties>
 	    </profile>
-
 	    <profile>
+	    	<id>browsers-IE</id>
 	        <activation>
-	            <activeByDefault>false</activeByDefault>
 	            <property>
-	            	<name>IE</name>
+	            	<name>browsers</name>
+	            	<value>IE</value>
 	            </property>
 	        </activation>
-	        <id>browsers-ie</id>
 	        <properties>
 	            <test.browsers.json>[{
 	              "os":"Windows 10",
@@ -256,15 +230,14 @@
 	            <test.resolution>1920x1080</test.resolution>
 	        </properties>
 	    </profile>
-
 	    <profile>
+	    	<id>browsers-desktop-windows</id>
 	        <activation>
-	            <activeByDefault>false</activeByDefault>
 	            <property>
-	            	<name>desktop</name>
+	            	<name>browsers</name>
+	            	<value>desktop-windows</value>
 	            </property>
 	        </activation>
-	        <id>browsers-desktop</id>
 	        <properties>
 	            <test.browsers.json>
 	        	[{
@@ -279,7 +252,27 @@
 		        }]</test.browsers.json>
 	    	</properties>
 	    </profile>
-
+	    <profile>
+	    	<id>browsers-desktop-linux</id>
+	    	<activation>
+	            <property>
+	            	<name>browsers</name>
+	            	<value>desktop-linux</value>
+	            </property>
+	        </activation>
+	        <properties>
+	            <test.browsers.json>
+	        	[{
+		          "os":"Linux",
+		          "browser":"chrome",
+		        },
+		        {
+		          "os":"Linux",
+		          "browser":"firefox",
+		        }]</test.browsers.json>
+	            <test.resolution>1024x768</test.resolution>
+	        </properties>
+	    </profile>
 		<profile>
 			<!-- If "-Dremote.saucelabs.user=XXXX" is passed on argument create the sauce labs tunnel -->
 			<id>sauce-labs-tunnel</id>
@@ -288,8 +281,35 @@
 					<name>remote.saucelabs.user</name>
 				</property>
 			</activation>
+			<properties>
+				<test.remote.access.port>${remote.saucelabs.port.se}</test.remote.access.port>
+			</properties>
 			<build>
 				<plugins>
+					<!-- Reserve some free ports to saucelabs given a range -->
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>reserve-network-port</id>
+								<goals>
+									<goal>reserve-network-port</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<minPortNumber>4446</minPortNumber>
+									<maxPortNumber>4500</maxPortNumber>
+									<randomPort>true</randomPort>
+									<portNames>
+										<portName>remote.saucelabs.port.se</portName>
+										<portName>remote.saucelabs.port.scproxy</portName>
+									</portNames>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 					<!-- Connect to saucelabs using a tunnel -->
 					<plugin>
 						<groupId>com.saucelabs.maven.plugin</groupId>
@@ -320,6 +340,18 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		<profile>
+			<!-- If "-Dremote.saucelabs.user=XXXX" is passed on argument create the sauce labs tunnel -->
+			<id>local-selenium-grid</id>
+			<activation>
+				<property>
+					<name>!remote.saucelabs.user</name>
+				</property>
+			</activation>
+			<properties>
+				<test.remote.access.port>4444</test.remote.access.port>
+			</properties>
 		</profile>
 	</profiles>
 

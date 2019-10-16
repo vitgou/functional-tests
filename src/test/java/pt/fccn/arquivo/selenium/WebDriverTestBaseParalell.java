@@ -18,6 +18,7 @@
 
 package pt.fccn.arquivo.selenium;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -84,7 +85,7 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 	 * succeeds or fails.
 	 */
 	@Rule
-	public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
+	public SauceOnDemandTestWatcher resultReportingTestWatcher = authentication.getUsername() != null && !authentication.getUsername().isEmpty() ? new SauceOnDemandTestWatcher(this, authentication) : null;
 
 	@Rule
 	public TestName name = new TestName() {
@@ -172,24 +173,19 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 			System.out.println("You did not specify browsers, testing with latest firefox and chrome...");
 			browsers.add(new String[] { "Windows 8.1", "latest", "chrome", null, null });
 			browsers.add(new String[] { "Windows 10", "latest", "firefox", null, null });
+//			browsers.add(new String[] { "Linux", null, "chrome", null, null });
+//			browsers.add(new String[] { "Linux", null, "firefox", null, null });
 		} else {
 			JSONObject browsersJSONObject = new JSONObject("{browsers:" + browsersJSON + "}");
 			JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");
 			for (int i = 0; i < browsersJSONArray.length(); i++) {
-				// TODO:: find names of extra properties for mobile Devices such as orientation
-				// and device name
 				JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);
 				String browserOS = browserConfigs.getString("os");
 //				String browserPlatform = browserConfigs.getString("platform");
 				String browserName = browserConfigs.getString("browser");
-				String browserVersion = browserConfigs.getString("browser-version");
-				String device = null;
-				String deviceOrientation = null;
-				try {
-					device = browserConfigs.getString("device");
-					deviceOrientation = browserConfigs.getString("device-orientation");
-				} catch (JSONException e) {
-					/* Intentionally empty */}
+				String browserVersion = browserConfigs.optString("browser-version");
+				String device = browserConfigs.optString("device", null);
+				String deviceOrientation = browserConfigs.optString("device-orientation", null);
 				browsers.add(new String[] { browserOS, browserVersion, browserName, device, deviceOrientation });
 			}
 		}
@@ -247,11 +243,7 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 
 		SauceHelpers.addSauceConnectTunnelId(capabilities);
 
-		URL url = new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey()
-				+ /* seleniumURI */ "@127.0.0.1:" + port + "/wd/hub");
-		System.out.println(url);
-
-		this.driver = new RemoteWebDriver(url, capabilities);
+		this.driver = new RemoteWebDriver(buildUrl(), capabilities);
 		this.driver.get(testURL);
 
 		this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
@@ -266,6 +258,31 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		timeouts.setScriptTimeout(5, TimeUnit.SECONDS);
 
 		System.out.println(String.format("Start running test: %s\n", this.getClass().getSimpleName()));
+	}
+
+	private URL buildUrl() throws MalformedURLException {
+		String username = authentication.getUsername();
+		String accessKey = authentication.getAccessKey();
+
+		StringBuilder urlBuilder = new StringBuilder();
+		urlBuilder.append("http://");
+		if (username != null && !username.isEmpty()) {
+			urlBuilder.append(username);
+			urlBuilder.append(":");
+		}
+		if (accessKey != null && !accessKey.isEmpty()) {
+			urlBuilder.append(accessKey);
+			urlBuilder.append("@");
+		}
+		urlBuilder.append("127.0.0.1:");
+		urlBuilder.append(port);
+		urlBuilder.append("/wd/hub");
+
+		URL url = new URL(urlBuilder.toString());
+
+		System.out.println(url);
+
+		return url;
 	}
 
 	/**
