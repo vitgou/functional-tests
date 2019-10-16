@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 /**
- * 
+ *
  * @author ivo.branco@fccn.pt
  *
  */
@@ -32,12 +32,12 @@ public class ImageSearchDirectUrlTest extends WebDriverTestBaseParalell {
 				+ "/images.jsp?l=en&size=all&type=&tools=off&safeSearch=on&query=fccn&btnSubmit=Search&dateStart=26%2F06%2F2007&dateEnd=27%2F06%2F2007";
 		driver.get(url);
 
-		WebElement resultsUl = driver.findElement(By.id("resultsUl"));
-		assertNotNull("Should exists an resultsUl after searching for images", resultsUl);
+		WebElement firstImage = driver.findElement(By.id("imageResults0"));
+		assertNotNull("Should exist at least one image", firstImage);
 
 		appendError(() -> {
-			List<WebElement> liList = resultsUl.findElements(By.xpath(".//li"));
-			assertEquals("Verify results count", 1, liList.size());
+			List<WebElement> photoDivList = driver.findElements(By.xpath("//*[@id=\"photos\"]/div"));
+			assertEquals("Verify results count", 1, photoDivList.size());
 		});
 
 		appendError(() -> assertThat("Check image original origin/domain",

@@ -53,9 +53,8 @@
 		<remote.saucelabs.key>${env.SAUCE_ACCESS_KEY}</remote.saucelabs.key>
 		<remote.saucelabs.user>${env.SAUCE_USERNAME}</remote.saucelabs.user>
 
-		<!--  default configuration for a desktop running on sauce labs -->
-		<test.resolution>1280x1024</test.resolution>
-		<selenium.version>3.9.1</selenium.version>
+		<test.resolution></test.resolution>
+		<selenium.version>3.141.59</selenium.version>
 		<test.browsers.json>${env.SAUCE_ONDEMAND_BROWSERS}</test.browsers.json>
 
 	</properties>
@@ -198,7 +197,8 @@
 	              "long-version":"6.0.",
 	              "device":"Android Emulator",
 	              "device-orientation":"portrait"
-	            },
+	            }
+	            ,
 	            {
 	              "os":"iphone",
 	              "platform":"iphone",
@@ -208,7 +208,32 @@
 	              "long-version":"11.2.",
 	              "device":"iPhone 7 Simulator",
 	              "device-orientation":"portrait"
-	            }]</test.browsers.json>
+	            }
+	            ]</test.browsers.json>
+	            <test.resolution>1024x768</test.resolution>
+	        </properties>
+	    </profile>
+	    <profile>
+	    	<id>browsers-android</id>
+	        <activation>
+	            <property>
+	            	<name>browsers</name>
+	            	<value>android</value>
+	            </property>
+	        </activation>
+	        <properties>
+	            <test.browsers.json>[
+	            {
+	              "os":"android",
+	              "platform":"android",
+	              "browser":"android",
+	              "browser-version":"6.0",
+	              "long-name":"Android Emulator",
+	              "long-version":"6.0.",
+	              "device":"Android Emulator",
+	              "device-orientation":"portrait"
+	            }
+	            ]</test.browsers.json>
 	            <test.resolution>1024x768</test.resolution>
 	        </properties>
 	    </profile>
@@ -250,6 +275,7 @@
 		          "browser":"firefox",
 		          "browser-version":"latest",
 		        }]</test.browsers.json>
+		        <test.resolution>1280x1024</test.resolution>
 	    	</properties>
 	    </profile>
 	    <profile>
