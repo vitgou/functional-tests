@@ -168,7 +168,7 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		System.out.println("SAUCE_ONDEMAND_BROWSERS: " + browsersJSON);
 
 		LinkedList<String[]> browsers = new LinkedList<String[]>();
-		if (browsersJSON == null) {
+		if (browsersJSON == null || browsersJSON.isEmpty()) {
 			System.out.println("You did not specify browsers, testing with latest firefox and chrome...");
 			browsers.add(new String[] { "Windows 8.1", "latest", "chrome", null, null });
 			browsers.add(new String[] { "Windows 10", "latest", "firefox", null, null });

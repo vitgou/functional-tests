@@ -55,20 +55,10 @@
 
 		<!--  default configuration for a desktop running on sauce labs -->
 		<test.resolution>1280x1024</test.resolution>
-        <browsers.json>
-        	[{
-	          "os":"Windows 8.1",
-	          "browser":"chrome",
-	          "browser-version":"latest",
-	        },
-	        {
-	          "os":"Windows 10",
-	          "browser":"firefox",
-	          "browser-version":"latest",
-	        }]
-	    </browsers.json>
-
 		<selenium.version>2.52.0</selenium.version>
+
+		<test.browsers.json>${env.SAUCE_ONDEMAND_BROWSERS}</test.browsers.json>
+
 	</properties>
 
 	<dependencies>
@@ -225,7 +215,7 @@
 					<environmentVariables>
 						<SAUCE_USERNAME>${remote.saucelabs.user}</SAUCE_USERNAME>
 						<SAUCE_ACCESS_KEY>${remote.saucelabs.key}</SAUCE_ACCESS_KEY>
-						<SAUCE_ONDEMAND_BROWSERS>${browsers.json}</SAUCE_ONDEMAND_BROWSERS>
+						<SAUCE_ONDEMAND_BROWSERS>${test.browsers.json}</SAUCE_ONDEMAND_BROWSERS>
 					</environmentVariables>
 					<systemPropertyVariables>
 						<test.project.name>${project.name} ${testcase}</test.project.name>
@@ -267,7 +257,7 @@
 	        </activation>
 	        <id>browsers-mobile</id>
 	        <properties>
-	            <browsers.json>[
+	            <test.browsers.json>[
 	            {
 	              "os":"android",
 	              "platform":"android",
@@ -287,7 +277,7 @@
 	              "long-version":"11.2.",
 	              "device":"iPhone 7 Simulator",
 	              "device-orientation":"portrait"
-	            }]</browsers.json>
+	            }]</test.browsers.json>
 	            <test.resolution>1024x768</test.resolution>
 	        </properties>
 	    </profile>
@@ -301,14 +291,37 @@
 	        </activation>
 	        <id>browsers-ie</id>
 	        <properties>
-	            <browsers.json>[{
+	            <test.browsers.json>[{
 	              "os":"Windows 10",
 	              "platform":"Windows 10",
 	              "browser":"internet explorer",
 	              "browser-version":"11",
-	            }]</browsers.json>
+	            }]</test.browsers.json>
 	            <test.resolution>1920x1080</test.resolution>
 	        </properties>
+	    </profile>
+
+	    <profile>
+	        <activation>
+	            <activeByDefault>false</activeByDefault>
+	            <property>
+	            	<name>desktop</name>
+	            </property>
+	        </activation>
+	        <id>browsers-desktop</id>
+	        <properties>
+	            <test.browsers.json>
+	        	[{
+		          "os":"Windows 8.1",
+		          "browser":"chrome",
+		          "browser-version":"latest",
+		        },
+		        {
+		          "os":"Windows 10",
+		          "browser":"firefox",
+		          "browser-version":"latest",
+		        }]</test.browsers.json>
+	    	</properties>
 	    </profile>
 
 		<profile>
