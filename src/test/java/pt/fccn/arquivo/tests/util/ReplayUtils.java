@@ -1,7 +1,11 @@
 package pt.fccn.arquivo.tests.util;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,10 +24,20 @@ public class ReplayUtils {
 	 * @param textOnReplayPageCheck
 	 */
 	public static void checkTextOnReplayPage(WebDriver driver, String textOnReplayPageCheck) {
-		driver.switchTo().frame("replay_iframe");
-		if (textOnReplayPageCheck != null && textOnReplayPageCheck.length() > 0) {			
-			new WebDriverWait(driver, 180).until(					
-					ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html"), textOnReplayPageCheck));
+		new WebDriverWait(driver, 180).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("replay_iframe"));
+		// driver.switchTo().frame("replay_iframe");
+		if (textOnReplayPageCheck != null && textOnReplayPageCheck.length() > 0) {
+
+			try {
+				new WebDriverWait(driver, 180).until(
+					ExpectedConditions.textToBePresentInElementLocated(By.tagName("body"), textOnReplayPageCheck));
+			} catch (WebDriverException e) {
+				System.out.println("ReplayUtils.checkTextOnReplayPage error when waiting text to be visible using fall back to check content is visible.");
+				driver.switchTo().defaultContent();
+
+				assertThat(driver.findElement(By.tagName("body")).getText(),
+						containsString(textOnReplayPageCheck));
+			}
 		}
 		driver.switchTo().defaultContent();
 	}
