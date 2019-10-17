@@ -45,6 +45,18 @@ public abstract class AppendableErrorsBaseTest {
 		}
 	}
 
+	protected void appendError(String errorMessage, Runnable r) {
+		try {
+			r.run();
+		} catch (Throwable e) {
+			// print now the stack trace, because at the end could be a list of errors.
+			e.printStackTrace();
+
+			verificationErrors.add(new Error(errorMessage, e));
+		}
+	}
+
+
 	protected void appendError(Runnable r) {
 		try {
 			r.run();
