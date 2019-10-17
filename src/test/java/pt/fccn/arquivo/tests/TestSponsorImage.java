@@ -17,31 +17,37 @@
  */
 package pt.fccn.arquivo.tests;
 
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.CoreMatchers.endsWith;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-import pt.fccn.arquivo.pages.IndexPage;
 import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 /**
  * @author Simao Fontes
+ * @author Ivo Branco - major rewrite
  *
  */
 public class TestSponsorImage extends WebDriverTestBaseParalell {
-    public TestSponsorImage(String os, String version, String browser, String deviceName, String deviceOrientation) {
-            super(os, version, browser, deviceName, deviceOrientation);
-    }
-    
-    @Test
-    @Retry
-    public void testSponsorImage( ) {
-    	System.out.print("Running TestSponsorImage. \n");
-        IndexPage index = new IndexPage(driver);
-        assertTrue("The image from the gov sponsor is incorrect.",
-                index.isSponsorGovImageCorrect());
-        
-    }
+	public TestSponsorImage(String os, String version, String browser, String deviceName, String deviceOrientation) {
+		super(os, version, browser, deviceName, deviceOrientation);
+	}
+
+	@Test
+	@Retry
+	public void testSponsorImage() {
+
+		WebElement fccnImageElement = driver.findElement(By.xpath("//*[@id=\"wp_editor_widget-10\"]/div/div[1]/a/img"));
+		assertThat("Check fccn image is present", fccnImageElement.getAttribute("src"), endsWith("logo-fccn.png"));
+
+		WebElement ministerImageElement = driver
+				.findElement(By.xpath("//*[@id=\"wp_editor_widget-10\"]/div/div[2]/a/img"));
+		assertThat("Check minister image is present", ministerImageElement.getAttribute("src"),
+				endsWith("10-Digital_PT_4C_H_FC_MCTES_cinza.png"));
+	}
 
 }
