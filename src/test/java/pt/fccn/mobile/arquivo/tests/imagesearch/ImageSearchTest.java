@@ -7,17 +7,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 /**
  *
- *
  * @author ivo.branco@fccn.pt
- * @author fernando.melo@fccn.pt
  *
  */
 
