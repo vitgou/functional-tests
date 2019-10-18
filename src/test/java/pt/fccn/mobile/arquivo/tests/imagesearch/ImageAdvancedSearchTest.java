@@ -46,14 +46,13 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 				() -> driver.findElement(By.id("advancedSearchButton")).click());
 
 		appendError(() -> {
-			assertEquals("Check", "fccn", driver.findElement(By.id("adv_and")).getAttribute("value"));
+			assertEquals("Check if search words maintain fccn term", "fccn",
+					driver.findElement(By.id("adv_and")).getAttribute("value"));
 		});
 
-		run("Open dates box", () -> {
-			// click on parent date element
-			driver.findElement(By.id("date")).findElement(By.xpath("./..")).click();
-			// may on date picker
-		});
+		run("Close words box", () -> driver.findElement(By.xpath("//*[@id=\"words\"]/legend")).click());
+
+		run("Open dates box", () -> driver.findElement(By.xpath("//*[@id=\"date\"]/legend")).click());
 
 		run("Open start date picker", () -> driver.findElement(By.id("dateStart_top")).click());
 
@@ -67,10 +66,12 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 			selectIonicDatePicker(1, 6, 2012);
 		});
 
-		run("Open images box", () -> {
-			// click on parent size element
-			driver.findElement(By.xpath("//*[@id=\"conteudo-pesquisa\"]/form/div[3]/legend/i")).click();
-		});
+		run("Close dates box", () -> driver.findElement(By.xpath("//*[@id=\"date\"]/legend")).click());
+
+		run("Open images box", () -> driver
+				.findElement(
+						By.xpath("//*[@id=\"formatType\"]/ancestor::div[contains(@class, 'expandable-div')]/legend"))
+				.click());
 
 		appendError("Open select size", () -> driver.findElement(By.id("size")).click());
 
@@ -82,9 +83,18 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		appendError("Set format type",
 				() -> driver.findElement(By.xpath("//ion-action-sheet/div/div/div[1]/button[3]")).click());
 
-		appendError("Open sites / domains box", () -> driver.findElement(By.id("domains")).click());
+		run("Close images box", () -> driver
+				.findElement(
+						By.xpath("//*[@id=\"formatType\"]/ancestor::div[contains(@class, 'expandable-div')]/legend"))
+				.click());
+
+		appendError("Open sites / domains box",
+				() -> driver.findElement(By.xpath("//*[@id=\"domains\"]/legend")).click());
 
 		appendError("Set site", () -> driver.findElement(By.id("site")).sendKeys("fccn.pt"));
+
+		appendError("Open sites / domains box",
+				() -> driver.findElement(By.xpath("//*[@id=\"domains\"]/legend")).click());
 
 		appendError("Click on search on arquivo.pt button", () -> driver.findElement(By.id("btnSubmitBottom")).click());
 
@@ -102,7 +112,8 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 				driver.findElement(By.xpath("//*[@id=\"imageResults0\"]/img")).getAttribute("src")));
 
 		appendError(() -> assertEquals("After advanced search check search term contains",
-				"fccn site:fccn.pt type:png size:sm ", driver.findElement(By.id("txtSearch")).getAttribute("value")));
+				"fccn site:fccn.pt type:png size:sm",
+				driver.findElement(By.id("txtSearch")).getAttribute("value").trim()));
 
 		// start date - from
 		appendError(() -> assertEquals("After advanced search check day start date contains", "31",
@@ -149,7 +160,7 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		if (currentIndex < targetIndex) {
 			range = IntStream.range(currentIndex, targetIndex).boxed();
 		} else {
-			range = IntStream.range(targetIndex-1, currentIndex).boxed().sorted(Collections.reverseOrder());
+			range = IntStream.range(targetIndex - 1, currentIndex).boxed().sorted(Collections.reverseOrder());
 		}
 		range.forEach(i -> {
 //			System.out.println("ionic select target picker " + i);
