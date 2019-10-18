@@ -15,15 +15,13 @@ import org.openqa.selenium.WebElement;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 /**
+ * Test the search of one term in the index interface.
  *
  * @author ivo.branco@fccn.pt
  *
  */
 public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 
-	/**
-	 * Test the search of one term in the index interface.
-	 */
 	public ImageAdvancedSearchTest(String os, String version, String browser, String deviceName,
 			String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
