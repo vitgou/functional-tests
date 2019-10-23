@@ -41,7 +41,7 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		});
 
 		run("Click on advanced search link to navigate to advanced search page",
-				() -> driver.findElement(By.id("advancedSearchButton")).click());
+				() -> waitUntilElementIsVisibleAndGet(By.id("advancedSearchButton")).click());
 
 		appendError(() -> {
 			assertEquals("Check if search words maintain fccn term", "fccn",
