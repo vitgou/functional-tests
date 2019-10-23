@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 /**
@@ -29,16 +30,19 @@ public class ImageSearchDirectUrlTest extends WebDriverTestBaseParalell {
 	}
 
 	@Test
+	@Retry
 	public void testImageSearchDirectUrlNoLanguage() throws Exception {
 		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL, Optional.empty());
 	}
 
 	@Test
+	@Retry
 	public void testImageSearchDirectUrlPt() throws Exception {
 		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL + "&l=pt", Optional.empty());
 	}
 
 	@Test
+	@Retry
 	public void testImageSearchDirectUrlEn() throws Exception {
 		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL + "&l=en", Optional.of("Images"));
 	}

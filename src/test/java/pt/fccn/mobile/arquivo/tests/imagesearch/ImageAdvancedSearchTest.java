@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 /**
@@ -28,6 +29,7 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 	}
 
 	@Test
+	@Retry
 	public void testImageAdvancedSearchPage() throws Exception {
 
 		run("Search FCCN term", () -> {
