@@ -18,6 +18,8 @@
 
 package pt.fccn.arquivo.selenium;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -126,10 +128,10 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 	protected RemoteWebDriver driver;
 	// protected static ArrayList<WebDriver> drivers;
 
-	protected static String screenResolution;
-	protected static String testURL;
-	protected static String browserVersion;
-	protected static String titleOfFirstResult;
+	protected String screenResolution;
+	protected String testURL;
+	protected String browserVersion;
+	protected String titleOfFirstResult;
 
 	@Deprecated
 	protected static String pre_prod = "preprod";
@@ -144,9 +146,10 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		this.browser = browser;
 		this.deviceName = deviceName;
 		this.deviceOrientation = deviceOrientation;
-		testURL = System.getProperty("test.url");
-		isPreProd = testURL.contains(pre_prod);
-		screenResolution = System.getProperty("test.resolution");
+		this.testURL = System.getProperty("test.url");
+		assertNotNull("test.url property is required", this.testURL);
+		this.isPreProd = this.testURL.contains(pre_prod);
+		this.screenResolution = System.getProperty("test.resolution");
 
 		System.out.println("OS: " + os);
 		System.out.println("Version: " + version);
