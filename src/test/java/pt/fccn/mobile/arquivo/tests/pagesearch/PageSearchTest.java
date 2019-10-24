@@ -22,7 +22,7 @@ public class PageSearchTest extends WebDriverTestBaseParalell {
 	@Test
 	@Retry
 	public void pageSearchTest() {
-		run("Search fccn.pt url", () -> {
+		run("Search fccn", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
 			driver.findElement(By.id("txtSearch")).sendKeys("fccn");
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
