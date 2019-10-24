@@ -4,16 +4,14 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 
-import java.util.Collections;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.time.LocalDate;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
+import pt.fccn.mobile.arquivo.utils.IonicDatePicker;
 
 /**
  * Test the search of one term in the index interface.
@@ -57,13 +55,13 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		run("Open start date picker", () -> driver.findElement(By.id("dateStart_top")).click());
 
 		run("Insert 31 may 2010 on start date picker", () -> {
-			selectIonicDatePicker(31, 5, 2010);
+			IonicDatePicker.changeTo(driver, LocalDate.of(2010, 5, 31));
 		});
 
 		run("Open end date picker", () -> driver.findElement(By.id("dateEnd_top")).click());
 
 		run("Insert 1 jun 2012 on end date picker", () -> {
-			selectIonicDatePicker(1, 6, 2012);
+			IonicDatePicker.changeTo(driver, LocalDate.of(2012, 6, 1));
 		});
 
 		run("Close dates box", () -> driver.findElement(By.xpath("//*[@id=\"date\"]/legend")).click());
@@ -134,38 +132,6 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 
 		appendError(() -> assertEquals("After advanced search check year end date contains", "2012",
 				driver.findElement(By.id("calendarYearRight")).getText()));
-	}
-
-	private void selectIonicDatePicker(int day, int month, int year) {
-		ionicSelectTargetPicker("//ion-picker//ion-picker-column[2]//button", month);
-		ionicSelectTargetPicker("//ion-picker//ion-picker-column[1]//button", day);
-		int targetYearIndex = Integer.valueOf(
-				driver.findElement(By.xpath("//ion-picker//ion-picker-column[3]//button[text()='" + year + "']"))
-						.getAttribute("opt-index"))
-				+ 1;
-		ionicSelectTargetPicker("//ion-picker//ion-picker-column[3]//button", targetYearIndex);
-
-		driver.findElement(By.xpath("//ion-picker//button[text()='OK']")).click();
-	}
-
-	private void ionicSelectTargetPicker(String buttonXpath, int targetIndex) {
-		WebElement currentSelectedElement = driver
-				.findElement(By.xpath(buttonXpath + "[contains(@class, 'picker-opt-selected')]"));
-		String indexAttribute = currentSelectedElement.getAttribute("opt-index");
-		Integer currentIndex = Integer.valueOf(indexAttribute);
-
-//		System.out.println("currentIndex " + currentIndex);
-//		System.out.println("targetIndex " + targetIndex);
-		Stream<Integer> range;
-		if (currentIndex < targetIndex) {
-			range = IntStream.range(currentIndex, targetIndex).boxed();
-		} else {
-			range = IntStream.range(targetIndex - 1, currentIndex).boxed().sorted(Collections.reverseOrder());
-		}
-		range.forEach(i -> {
-//			System.out.println("ionic select target picker " + i);
-			driver.findElement(By.xpath(buttonXpath + "[@opt-index='" + i + "']")).click();
-		});
 	}
 
 }
