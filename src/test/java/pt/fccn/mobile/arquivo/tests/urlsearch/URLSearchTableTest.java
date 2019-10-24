@@ -51,6 +51,7 @@ public class URLSearchTableTest extends WebDriverTestBaseParalell {
 		});
 
 		run("Check if first version match", () -> {
+			waitUntilElementIsVisibleAndGet(By.id("conteudo-versoes"));
 			List<WebElement> firstRow = driver.findElementsByXPath("//*[@id=\"1\" and @class=\"trTV\"]/td");
 			WebElement firstCell = firstRow.get(0);
 			WebElement anchor = firstCell.findElement(By.xpath(".//a"));
