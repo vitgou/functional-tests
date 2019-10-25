@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.time.LocalDate;
 
@@ -82,13 +81,12 @@ public class PageSearchLimitedDatesFromHomepageTest extends WebDriverTestBasePar
 			assertThat("Check first result version", we.getText(), containsString("13 Outubro, 1996"));
 		});
 
-		appendError("Check summary", () -> {
+		appendError("Check first result summary", () -> {
 			WebElement we = driver
 					.findElementByXPath("//*[@id=\"resultados-lista\"]/ul/li[1]//span[@class=\"resumo\"]");
 
 			assertThat("Check first result version", we.getText(), containsString("Av. Brasil"));
 		});
-
 	}
 
 }
