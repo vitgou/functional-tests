@@ -29,21 +29,18 @@ public class PageSearchLimitedDatesFromHomepageTest extends WebDriverTestBasePar
 
 	@Test
 	@Retry
-	public void pageSearchTest() {
+	public void pageSearchLimitedDatesFromHomepageTest() {
 		run("Put fccn on search box", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
 			driver.findElement(By.id("txtSearch")).sendKeys("fccn");
-			// driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
 
-		// TODO: change it to sliderCircleLeft on next deploy
-		run("Open from date picker", () -> driver.findElement(By.id("sliderCircleRight")).click());
+		run("Open from date picker", () -> driver.findElement(By.id("sliderCircleLeft")).click());
 		LocalDate fromDate = LocalDate.of(1996, 10, 12);
 		run("Insert " + fromDate.toString() + " on start date picker",
 				() -> IonicDatePicker.changeTo(driver, fromDate));
 
-		// TODO: change it to sliderCircleRight on next deploy
-		run("Open until date picker", () -> driver.findElement(By.id("sliderCircleLeft")).click());
+		run("Open until date picker", () -> driver.findElement(By.id("sliderCircleRight")).click());
 		LocalDate untilDate = LocalDate.of(1996, 10, 14);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
