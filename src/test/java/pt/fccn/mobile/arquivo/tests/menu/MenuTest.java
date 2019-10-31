@@ -14,4 +14,5 @@ public abstract class MenuTest extends WebDriverTestBaseParalell {
 		run("Open left menu", () -> driver.findElement(By.xpath("//*[@id=\"menuButton\"]/div")).click());
 		waitUntilElementIsVisibleAndGet(By.id("menuSwiperSlide"));
 	}
+
 }

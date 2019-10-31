@@ -1,4 +1,4 @@
-package pt.fccn.mobile.arquivo.tests.menu;
+package pt.fccn.mobile.arquivo.tests.replay.menu;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -12,38 +12,29 @@ import pt.fccn.arquivo.selenium.Retry;
  * @author Ivo Branco <ivo.branco@fccn.pt>
  *
  */
-public class MenuImagesAdvancedSearchTest extends MenuTest {
+public class MenuImagesNewSearchWaybackTest extends MenuWaybackTest {
 
 	private static final String WAYBACK_EXAMPLE = "/wayback/19961013145650/http://www.fccn.pt/";
 
-	public MenuImagesAdvancedSearchTest(String os, String version, String browser, String deviceName,
+	public MenuImagesNewSearchWaybackTest(String os, String version, String browser, String deviceName,
 			String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
 	}
 
 	@Test
 	@Retry
-	public void menuImagesAdvancedSearchHomepageTest() {
-		menuImagesAdvancedSearchTest();
-	}
-
-	@Test
-	@Retry
-	public void menuImagesAdvancedSearchHomepageWaybackTest() {
+	public void menuImagesNewSearchWaybackTest() {
 		driver.get(this.testURL + WAYBACK_EXAMPLE);
-		menuImagesAdvancedSearchTest();
-	}
-
-	private void menuImagesAdvancedSearchTest() {
 
 		openMenu();
 
 		run("Open images sub menu", () -> waitUntilElementIsVisibleAndGet(By.id("imagesMenu")).click());
 
-		run("Click new search button", () -> waitUntilElementIsVisibleAndGet(By.id("advancedImages")).click());
+		run("Click new search button",
+				() -> waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"imageOptions\"]/a/h4")).click());
 
 		appendError("Check if current url is the image search",
-				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/advancedImages.jsp")));
+				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/images.jsp")));
 	}
 
 }
