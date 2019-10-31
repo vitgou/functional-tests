@@ -14,6 +14,8 @@ import pt.fccn.arquivo.selenium.Retry;
  */
 public class MenuPagesNewSearchTest extends MenuTest {
 
+	private static final String WAYBACK_EXAMPLE = "/wayback/19961013145650/http://www.fccn.pt/";
+
 	public MenuPagesNewSearchTest(String os, String version, String browser, String deviceName,
 			String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
@@ -21,7 +23,18 @@ public class MenuPagesNewSearchTest extends MenuTest {
 
 	@Test
 	@Retry
-	public void menuPagesNewSearchTest() {
+	public void menuPagesNewSearchHomepageTest() {
+		menuPagesNewSearchTest();
+	}
+
+	@Test
+	@Retry
+	public void menuPagesNewSearchWaybackTest() {
+		driver.get(this.testURL + WAYBACK_EXAMPLE);
+		menuPagesNewSearchTest();
+	}
+
+	private void menuPagesNewSearchTest() {
 		openMenu();
 
 		run("Open pages sub menu", () -> waitUntilElementIsVisibleAndGet(By.id("pagesMenu")).click());

@@ -14,6 +14,8 @@ import pt.fccn.arquivo.selenium.Retry;
  */
 public class MenuImagesAdvancedSearchTest extends MenuTest {
 
+	private static final String WAYBACK_EXAMPLE = "/wayback/19961013145650/http://www.fccn.pt/";
+
 	public MenuImagesAdvancedSearchTest(String os, String version, String browser, String deviceName,
 			String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
@@ -21,7 +23,18 @@ public class MenuImagesAdvancedSearchTest extends MenuTest {
 
 	@Test
 	@Retry
-	public void menuImagesAdvancedSearchTest() {
+	public void menuImagesAdvancedSearchHomepageTest() {
+		menuImagesAdvancedSearchTest();
+	}
+
+	@Test
+	@Retry
+	public void menuImagesAdvancedSearchHomepageWaybackTest() {
+		driver.get(this.testURL + WAYBACK_EXAMPLE);
+		menuImagesAdvancedSearchTest();
+	}
+
+	private void menuImagesAdvancedSearchTest() {
 
 		openMenu();
 
