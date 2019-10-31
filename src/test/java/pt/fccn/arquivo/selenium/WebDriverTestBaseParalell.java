@@ -341,4 +341,13 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(by));
 		return driver.findElement(by);
 	}
+
+	public RemoteWebDriver getDriver() {
+		return driver;
+	}
+
+	public String getTestURL() {
+		return testURL;
+	}
+
 }

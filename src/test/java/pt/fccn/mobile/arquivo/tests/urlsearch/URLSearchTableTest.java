@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
+import pt.fccn.mobile.arquivo.utils.LocaleUtils;
 
 /**
  *
@@ -24,18 +25,19 @@ public class URLSearchTableTest extends WebDriverTestBaseParalell {
 
 	@Test
 	@Retry
-	public void urlSearchTablePTTest() {
-		urlSearchTableTest("pt", "fccn.pt", "Tabela", "13 Out");
+	public void urlSearchTableTestPT() {
+		LocaleUtils.changeLanguageToPT(this);
+		urlSearchTableTest("fccn.pt", "Tabela", "13 Out");
 	}
 
 	@Test
 	@Retry
-	public void urlSearchTableENTest() {
-		urlSearchTableTest("en", "fccn.pt", "Tabela", "13 Oct");
+	public void urlSearchTableTestEN() {
+		LocaleUtils.changeLanguageToPT(this);
+		urlSearchTableTest("fccn.pt", "Tabela", "13 Oct");
 	}
 
-	private void urlSearchTableTest(String language, String url, String tableText, String firstResultText) {
-		driver.get(testURL + "?l=" + language);
+	private void urlSearchTableTest(String url, String tableText, String firstResultText) {
 
 		run("Search fccn.pt url", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
