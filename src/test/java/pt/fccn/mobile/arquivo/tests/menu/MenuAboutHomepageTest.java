@@ -12,9 +12,9 @@ import pt.fccn.mobile.arquivo.utils.LocaleUtils;
  * @author Ivo Branco <ivo.branco@fccn.pt>
  *
  */
-public class MenuAboutHompeageTest extends MenuTest {
+public class MenuAboutHomepageTest extends MenuTest {
 
-	public MenuAboutHompeageTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+	public MenuAboutHomepageTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
 	}
 
