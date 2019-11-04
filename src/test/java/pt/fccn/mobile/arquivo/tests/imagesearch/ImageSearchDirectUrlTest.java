@@ -32,25 +32,25 @@ public class ImageSearchDirectUrlTest extends WebDriverTestBaseParalell {
 
 	@Test
 	@Retry
-	public void testImageSearchDirectUrlNoLanguage() throws Exception {
-		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL, Optional.empty());
+	public void imageSearchDirectUrlNoLanguageTest() throws Exception {
+		imageSearchDirectUrlTest(testURL + IMAGE_SEARCH_DIRECT_URL, Optional.empty());
 	}
 
 	@Test
 	@Retry
-	public void testImageSearchDirectUrlPt() throws Exception {
-		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL + "&" + LocaleUtils.languagePTUrlQueryParameter(),
+	public void imageSearchDirectUrlPTTest() throws Exception {
+		imageSearchDirectUrlTest(testURL + IMAGE_SEARCH_DIRECT_URL + "&" + LocaleUtils.languagePTUrlQueryParameter(),
 				Optional.of("Imagens"));
 	}
 
 	@Test
 	@Retry
-	public void testImageSearchDirectUrlEn() throws Exception {
-		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL + "&" + LocaleUtils.languageENUrlQueryParameter(),
+	public void imageSearchDirectUrlENTest() throws Exception {
+		imageSearchDirectUrlTest(testURL + IMAGE_SEARCH_DIRECT_URL + "&" + LocaleUtils.languageENUrlQueryParameter(),
 				Optional.of("Images"));
 	}
 
-	private void testImageSearchDirectUrl(String url, Optional<String> imageButtonText) {
+	private void imageSearchDirectUrlTest(String url, Optional<String> imageButtonText) {
 		driver.get(url);
 
 		WebElement firstImage = waitUntilElementIsVisibleAndGet(By.id("imageResults0"));
