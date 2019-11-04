@@ -31,8 +31,7 @@ public class PageSearchQuerySuggestionTest extends WebDriverTestBaseParalell {
 		});
 
 		assertThat("Verify if a suggestion is presented",
-				driver.findElement(By.xpath("//*[@id=\"second-column\"]/div[1]/span/a")).getText(),
-				containsString("teste"));
+				driver.findElement(By.xpath("//*[@class=\"suggestion\"]/a")).getText(), containsString("teste"));
 	}
 
 }
