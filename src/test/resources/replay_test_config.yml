@@ -1,0 +1,21 @@
+configs:
+-  timestamp: 19961013145650
+   url: http://www.fccn.pt/
+   xpath: /html/body/text()[1]
+   text: RCCN
+-  timestamp: 19961013171554
+   url: http://www.fccn.pt/index_i.html
+   xpath: /html/body/b[1]
+   text: Portuguese
+-  timestamp: 19961013145852
+   url: http://s700.uminho.pt:80/homepage-pt.html
+   xpath: /html/body/center[1]/h1
+   text: Portugal
+-  timestamp: 19961013202814
+   url: http://www.iscte.pt/
+   xpath: /html/body/center[2]/table/tbody/tr/td[1]/h1/center
+   text: ISCTE
+-  timestamp: 19961013171626
+   url: http://www.ist.utl.pt/
+   xpath: /html/body/p[1]/b
+   text: IST
