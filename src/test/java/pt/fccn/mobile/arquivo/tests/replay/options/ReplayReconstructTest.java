@@ -36,13 +36,13 @@ public class ReplayReconstructTest extends WebDriverTestBaseParalell {
 
 		run("Click reconstruct link", () -> waitUntilElementIsVisibleAndGet(By.id("a_reconstruct")).click());
 
-		run("Cancel reconstruct", () -> waitUntilElementIsVisibleAndGet(By.id("cancelPopup")).click());
+		run("Click cancel reconstruct", () -> waitUntilElementIsVisibleAndGet(By.id("cancelPopup")).click());
 
-		new WebDriverWait(driver, 20).until(ExpectedConditions.invisibilityOfElementLocated(By.id("cancelPopup")));
-
-		appendError("Check if cancel button really closes confirm reconstruct modal box",
-				() -> new WebDriverWait(driver, 20)
-						.until(ExpectedConditions.invisibilityOfElementLocated(By.id("uglipop_popbox"))));
+		run("Check if cancel button really closes confirm reconstruct modal box", () -> {
+			new WebDriverWait(driver, 20).until(ExpectedConditions.invisibilityOfElementLocated(By.id("cancelPopup")));
+			new WebDriverWait(driver, 20)
+					.until(ExpectedConditions.invisibilityOfElementLocated(By.id("uglipop_popbox")));
+		});
 
 		run("Click again on reconstruct link", () -> waitUntilElementIsVisibleAndGet(By.id("a_reconstruct")).click());
 

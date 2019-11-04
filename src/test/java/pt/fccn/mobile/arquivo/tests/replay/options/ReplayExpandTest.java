@@ -2,7 +2,6 @@ package pt.fccn.mobile.arquivo.tests.replay.options;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -31,22 +30,12 @@ public class ReplayExpandTest extends WebDriverTestBaseParalell {
 
 		run("Open replay right menu", () -> waitUntilElementIsVisibleAndGet(By.id("replayMenuButton")).click());
 
-		run("Click screenshot link", () -> waitUntilElementIsVisibleAndGet(By.id("expandPage")).click());
+		run("Click expand link", () -> waitUntilElementIsVisibleAndGet(By.id("expandPage")).click());
 
-//		Thread.sleep(2000);
-//
-//		String currentUrl = driver.getCurrentUrl();
-//		System.out.println("currentUrl " + currentUrl);
-//
-//		run("Check we go to correct page on no frame",
-//				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains(NOFRAME_EXAMPLE)));
+		run("Check we go to correct no frame url",
+				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains(NOFRAME_EXAMPLE)));
 
-		// don't check url because the following method returns incorrect value on
-		// android.
-		// driver.getCurrentUrl();
-
-		run("Check we go to correct page on no frame", () -> {
-//			WebElement e = driver.findElement(By.xpath("/html/body/center/h2"));
+		run("Check we go to correct no frame text", () -> {
 			new WebDriverWait(driver, 20).until(
 					ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html/body/center/h2"), "Nacional"));
 		});
