@@ -31,7 +31,7 @@ public class MenuPagesNewAvancedSearchWaybackTest extends MenuWaybackTest {
 		run("Open pages sub menu", () -> waitUntilElementIsVisibleAndGet(By.id("pagesMenu")).click());
 
 		run("Click new advanced search button",
-				() -> driver.findElement(By.xpath("//*[@id=\"advancedSearch\"]/h4")).click());
+				() -> driver.findElement(By.xpath("//*[@id=\"pageOptions\"]/a[2]/h4")).click());
 
 		appendError("Check if current url is the advanced search",
 				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/advanced.jsp")));
