@@ -1,6 +1,7 @@
 package pt.fccn.mobile.arquivo.tests.replay.menu;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -40,7 +41,8 @@ public class MenuAboutWaybackTest extends MenuWaybackTest {
 	private void menuAbout(String expectedUrl) {
 		openMenu();
 
-		run("Click about button", () -> driver.findElementByXPath("//*[@id=\"menuSwiperSlide\"]/a/h4").click());
+		run("Click about button",
+				() -> waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"swiperWrapper\"]/div[1]/a[3]/h4")).click());
 
 		appendError("Check if current url is the about page",
 				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains(expectedUrl)));

@@ -11,8 +11,10 @@ public abstract class MenuTest extends WebDriverTestBaseParalell {
 	}
 
 	protected void openMenu() {
-		run("Open left menu", () -> driver.findElement(By.xpath("//*[@id=\"menuButton\"]/div")).click());
-		waitUntilElementIsVisibleAndGet(By.id("menuSwiperSlide"));
+		run("Open left menu", () -> {
+			waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"menuButton\"]/div")).click();
+			waitUntilElementIsVisibleAndGet(By.id("menuSwiperSlide"));
+		});
 	}
 
 }

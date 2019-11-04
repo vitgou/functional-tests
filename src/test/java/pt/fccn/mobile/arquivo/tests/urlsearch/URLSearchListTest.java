@@ -33,7 +33,7 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 	@Retry
 	public void urlSearchListTestEN() {
 		LocaleUtils.changeLanguageToEN(this);
-		urlSearchListTest("fccn.pt", "Lista", "version");
+		urlSearchListTest("fccn.pt", "List", "version");
 	}
 
 	private void urlSearchListTest(String url, String listText, String versionLabel) {

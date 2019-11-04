@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 
 import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
+import pt.fccn.mobile.arquivo.utils.LocaleUtils;
 
 /**
  *
@@ -38,19 +39,21 @@ public class ImageSearchDirectUrlTest extends WebDriverTestBaseParalell {
 	@Test
 	@Retry
 	public void testImageSearchDirectUrlPt() throws Exception {
-		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL + "&l=pt", Optional.empty());
+		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL + "&" + LocaleUtils.languagePTUrlQueryParameter(),
+				Optional.of("Imagens"));
 	}
 
 	@Test
 	@Retry
 	public void testImageSearchDirectUrlEn() throws Exception {
-		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL + "&l=en", Optional.of("Images"));
+		testImageSearchDirectUrl(testURL + IMAGE_SEARCH_DIRECT_URL + "&" + LocaleUtils.languageENUrlQueryParameter(),
+				Optional.of("Images"));
 	}
 
 	private void testImageSearchDirectUrl(String url, Optional<String> imageButtonText) {
 		driver.get(url);
 
-		WebElement firstImage = driver.findElement(By.id("imageResults0"));
+		WebElement firstImage = waitUntilElementIsVisibleAndGet(By.id("imageResults0"));
 		assertNotNull("Should exist at least one image", firstImage);
 
 		appendError(() -> {

@@ -11,8 +11,10 @@ public abstract class MenuWaybackTest extends WebDriverTestBaseParalell {
 	}
 
 	protected void openMenu() {
-		run("Open left menu", () -> driver.findElement(By.id("menuButton")).click());
-		waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"swiperWrapper\"]/div[1]"));
+		run("Open left menu", () -> {
+			waitUntilElementIsVisibleAndGet(By.id("menuButton")).click();
+			waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"swiperWrapper\"]/div[1]"));
+		});
 	}
 
 }
