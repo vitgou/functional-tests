@@ -46,7 +46,7 @@ public class ReplayReconstructTest extends WebDriverTestBaseParalell {
 
 		run("Click again on reconstruct link", () -> waitUntilElementIsVisibleAndGet(By.id("a_reconstruct")).click());
 
-		run("Click reconstruct", () -> waitUntilElementIsVisibleAndGet(By.id("completePage")).click());
+		run("Confirm go to reconstruct page", () -> waitUntilElementIsVisibleAndGet(By.id("completePage")).click());
 
 		run("Check on memento timetravel page", () -> new WebDriverWait(driver, 200)
 				.until(or(visibilityOfElementLocated(By.id("scatterinfo")), urlToBe(MEMENTO_TIMETRAVEL))));
