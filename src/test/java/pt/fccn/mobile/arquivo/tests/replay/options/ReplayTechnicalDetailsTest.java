@@ -24,11 +24,11 @@ import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
  * @author Ivo Branco <ivo.branco@fccn.pt>
  *
  */
-public class ReplayTecnicalDetailsTest extends WebDriverTestBaseParalell {
+public class ReplayTechnicalDetailsTest extends WebDriverTestBaseParalell {
 
 	private static final String WAYBACK_EXAMPLE = "/wayback/19961013145650/http://www.fccn.pt/";
 
-	public ReplayTecnicalDetailsTest(String os, String version, String browser, String deviceName,
+	public ReplayTechnicalDetailsTest(String os, String version, String browser, String deviceName,
 			String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
 	}
@@ -87,7 +87,7 @@ public class ReplayTecnicalDetailsTest extends WebDriverTestBaseParalell {
 
 		});
 
-		driver.findElement(By.id("removeModal")).click();
+		appendError("Close technical detail modal", () -> driver.findElement(By.id("removeModal")).click());
 
 		appendError("Check that tecnical details modal is closed when clicking on close button",
 				() -> new WebDriverWait(driver, 20)
