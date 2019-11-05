@@ -29,7 +29,7 @@ configs:
    timestamp: 20150416112016
    waybackText: Update Battlefield Survey
    waybackTextXPath: //*[@id="post-29"]/div/p[3]/text()[1]
--  url: http://www.gridcomputing.pt/
+-  url: http://www.gridcomputing.pt
    redirectPageText: O site www.gridcomputing.pt foi desativado.
    timestamp: 20170803133931
    waybackText: Computação Grid
