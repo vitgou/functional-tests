@@ -63,12 +63,12 @@ configs:
    timestamp: 20180504070928
    waybackText: Conjunto de pequenas histórias onde aparece
    waybackTextXPath: /html/body/div/table[1]/tbody/tr[2]/td[2]/font/text()[2]
--  url: http://www.consultorioct.mctes.pt/
+-  url: http://www.consultorioct.mctes.pt
    redirectPageText: O site www.consultorioct.mctes.pt foi desativado.
    timestamp: 20180504071337
    waybackText: Durante a Semana da Ciência e da Tecnologia de 2001
    waybackTextXPath: /html/body/table[2]/tbody/tr/td[2]/table/tbody/tr/td/table/tbody/tr/td/p[1]/text()
--  url: http://cla.fccn.pt/
+-  url: http://cla.fccn.pt
    redirectPageText: O site cla.fccn.pt foi desativado.
    timestamp: 20180504071206
    waybackText: Ciência 2009 – Encontro com a Ciência em Portugal
