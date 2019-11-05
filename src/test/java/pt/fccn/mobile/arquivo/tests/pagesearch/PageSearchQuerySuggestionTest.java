@@ -23,7 +23,7 @@ public class PageSearchQuerySuggestionTest extends WebDriverTestBaseParalell {
 
 	@Test
 	@Retry
-	public void pageSearchTest() {
+	public void pageSearchQuerySuggestionTest() {
 		run("Search with testre", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
 			driver.findElement(By.id("txtSearch")).sendKeys("testre");

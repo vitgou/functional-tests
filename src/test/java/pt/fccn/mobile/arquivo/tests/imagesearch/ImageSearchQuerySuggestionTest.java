@@ -23,7 +23,7 @@ public class ImageSearchQuerySuggestionTest extends WebDriverTestBaseParalell {
 
 	@Test
 	@Retry
-	public void pageSearchTest() {
+	public void imageSearchQuerySuggestionTest() {
 		run("Search with testre", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
 			driver.findElement(By.id("txtSearch")).sendKeys("testre");
