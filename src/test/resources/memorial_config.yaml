@@ -53,7 +53,7 @@ configs:
 -  url: http://www.ligarportugal.pt/figuras/figura8.html
    redirectPageText: O site www.ligarportugal.pt foi desativado.
    timestamp: 20170806233220
--  url: http://jeremias.com.pt/
+-  url: http://jeremias.com.pt
    redirectPageText: O site jeremias.com.pt foi desativado.
    timestamp: 20180504070838
    waybackText: FCCN - Fundação para a Computação Científica Nacional
