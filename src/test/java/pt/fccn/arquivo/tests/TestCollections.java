@@ -169,7 +169,7 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Retry
 	public void testCollectionAWP17() {
 		test(new TestCollectionConfig().collectionId("AWP17").timestamp("20150413075000")
-				.url("http://cabeco-de-sao-tome.blidoo.pt"));
+				.url("http://cabeco-de-sao-tome.blidoo.pt/"));
 	}
 
 	@Test
@@ -550,7 +550,7 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionRAQ2018() {
-		test(new TestCollectionConfig().collectionId("RAQ2018").timestamp("20180504071206").url("http://cla.fccn.pt"));
+		test(new TestCollectionConfig().collectionId("RAQ2018").timestamp("20180504071206").url("http://cla.fccn.pt/"));
 	}
 
 	@Test
