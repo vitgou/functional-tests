@@ -169,7 +169,7 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Retry
 	public void testCollectionAWP17() {
 		test(new TestCollectionConfig().collectionId("AWP17").timestamp("20150413075000")
-				.url("http://cabeco-de-sao-tome.blidoo.pt"));
+				.url("http://cabeco-de-sao-tome.blidoo.pt/"));
 	}
 
 	@Test
@@ -280,7 +280,7 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionFAWP14() {
-		test(new TestCollectionConfig().collectionId("FAWP10").timestamp("20130801191854")
+		test(new TestCollectionConfig().collectionId("FAWP14").timestamp("20130801191854")
 				.url("http://www.jornaldamealhada.com/multimedia/show.aspx?idioma=pt&idcont=1656"));
 	}
 
@@ -501,6 +501,70 @@ public class TestCollections extends AppendableErrorsBaseTest {
 		test(new TestCollectionConfig().collectionId("EAWP13").timestamp("20161118131923")
 				.url("https://www.wmo.int/pages/prog/arep/gaw/ozone/nrt_plots.html"));
 	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP16() {
+		test(new TestCollectionConfig().collectionId("EAWP16").timestamp("20170927112019")
+				.url("http://blogs.sapo.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP17() {
+		test(new TestCollectionConfig().collectionId("EAWP17").timestamp("20171010134435").url("http://www.sapo.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP18() {
+		test(new TestCollectionConfig().collectionId("EAWP18").timestamp("20171003132227")
+				.url("https://usabilidade.gov.pt/sobre-o-portal"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP20() {
+		test(new TestCollectionConfig().collectionId("EAWP20").timestamp("20181205181352")
+				.url("https://www.independent.co.uk/voices/michael-flynn-avoids-prison-sentence-mueller-investigation-russia-collusion-donald-trump-american-a8668351.html"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP21() {
+		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314163830").url("https://commons.wikimedia.org/wiki/Category:World_War_I"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionFAWP27() {
+		test(new TestCollectionConfig().collectionId("FAWP27").timestamp("20161217054847").url("http://correiodafeira.pt/jornalcf/wp-content/uploads/2016/07/conceicao-alvim-e-miguel-ferraz6-150x150.jpg"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionRAQ2017() {
+		test(new TestCollectionConfig().collectionId("RAQ2017").timestamp("20170831104506").url("http://www.umic.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionRAQ2018() {
+		test(new TestCollectionConfig().collectionId("RAQ2018").timestamp("20180504071206").url("http://cla.fccn.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionRAQ2019() {
+		test(new TestCollectionConfig().collectionId("RAQ2019").timestamp("20190315160356").url("http://www.mundonaescola.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionFAWP28() {
+		test(new TestCollectionConfig().collectionId("FAWP28").timestamp("20170128032423").url("https://www.airbnb.co.ve/rooms/16908431"));
+	}
+
 
 	private void test(TestCollectionConfig config) {
 		for (String server : SERVERS) {

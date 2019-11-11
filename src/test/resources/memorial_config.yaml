@@ -1,93 +1,114 @@
 configs:
 -  url: http://www.umic.pt/
-   redirectPageText: UMIC
-   waybackUrl: /wayback/20170822151328/http://www.umic.pt/
+   timestamp: 20170831104506
+   waybackTextXPath: //*[@id="maincontent"]/div/div[1]/div/div/div/p[1]/text()[1]
    waybackText: Realizou-se em 20-22 de Fevereiro de 2012
 -  url: http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
    redirectPageText: UMIC
-   waybackUrl: /wayback/20170831105224/http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
+   timestamp: 20170831105224
+   waybackTextXPath: //*[@id="maincontent"]/p[1]/text()[2]
    waybackText: lançada em 2006 envolvendo parcerias com instituições universitárias
-
 -  url: http://www.english.umic.pt/
    redirectPageText: Knowledge Society Agency
-   waybackUrl: /wayback/20170831175908/http://www.english.umic.pt/
+   timestamp: 20170831175908
+   waybackTextXPath: //*[@id="textointroducao"]/p[3]/a
    waybackText: use of Information and Communication Technologies
 -  url: http://www.english.umic.pt/index.php?option=com_content&task=section&id=12&Itemid=111
    redirectPageText: Knowledge Society Agency
-   waybackUrl: /wayback/20170831190707/http://www.english.umic.pt/index.php?option=com_content&task=section&id=12&Itemid=111
+   timestamp: 20170831190707
    waybackText: Making all basic public services available online
-
+   waybackTextXPath: //*[@id="maincontent"]/ul[2]/li[1]
 -  url: http://icolc.fccn.pt/
    redirectPageText: O site icolc.fccn.pt foi desativado
-   waybackUrl: /wayback/20180831131331/https://icolcfccn.wordpress.com/
+   timestamp: 20180831131331
+   waybackUrl: https://icolcfccn.wordpress.com/
    waybackText: International Coalition of Library Consortia
+   waybackTextXPath: //*[@id="post-1"]/div/p[1]/text()
 -  url: http://icolc.fccn.pt/programme/
    redirectPageText: O site icolc.fccn.pt foi desativado
-   waybackUrl: /wayback/20150416112016/http://icolc.fccn.pt/programme/
+   timestamp: 20150416112016
    waybackText: Update Battlefield Survey
-
--  url: http://www.gridcomputing.pt/
+   waybackTextXPath: //*[@id="post-29"]/div/p[3]/text()[1]
+-  url: http://www.gridcomputing.pt
    redirectPageText: O site www.gridcomputing.pt foi desativado.
-   waybackUrl: /wayback/20170803133931/http://www.gridcomputing.pt/
+   timestamp: 20170803133931
    waybackText: Computação Grid
+   waybackTextXPath: //*[@id="mainbody"]/div/div[1]/div/div/div[2]/div/div/p/text()
 -  url: http://www.gridcomputing.pt/index.php?option=com_content&task=view&id=79&Itemid=82
    redirectPageText: O site www.gridcomputing.pt foi desativado.
-   waybackUrl: /wayback/20170803153116/http://www.gridcomputing.pt/index.php?option=com_content&task=view&id=79&Itemid=82
+   timestamp: 20170803153116
    waybackText: DEI-UC
-
+   waybackTextXPath: //*[@id="mainbody"]/div[2]/div/div/p[3]/text()
 -  url: http://www.e-u.pt/
    redirectPageText: O site www.e-u.pt foi desativado.
-   waybackUrl: /wayback/20171228124550/http://www.e-u.pt/
+   timestamp: 20171228124550
 -  url: http://www.e-u.pt/PresentationLayer/eU_homepage.html
    redirectPageText: O site www.e-u.pt foi desativado.
-   waybackUrl: /wayback/20171228114832/http://www.e-u.pt/PresentationLayer/eU_homepage.html
+   timestamp: 20171228114832
    waybackText: e-U Campus Virtual é uma iniciativa da
-
+   waybackTextXPath: //*[@id="ctrlCFIDestaquesHome_rptDestaques_ctl02_destaque"]/div[3]/p/text()[1]
 -  url: http://www.ligarportugal.pt/
    redirectPageText: O site www.ligarportugal.pt foi desativado.
-   waybackUrl: /wayback/20170628163113/http://www.ligarportugal.pt/
+   timestamp: 20170628163113
 -  url: http://www.ligarportugal.pt/figuras/figura8.html
    redirectPageText: O site www.ligarportugal.pt foi desativado.
-   waybackUrl: /wayback/20170806233220/http://www.ligarportugal.pt/figuras/figura8.html
-
--  url: http://jeremias.com.pt/
+   timestamp: 20170806233220
+-  url: http://jeremias.com.pt
    redirectPageText: O site jeremias.com.pt foi desativado.
-   waybackUrl: /wayback/20180504070838/http://jeremias.com.pt
+   timestamp: 20180504070838
    waybackText: FCCN - Fundação para a Computação Científica Nacional
+   waybackTextXPath: /html/body/div/table[2]/tbody/tr/td/div/font[2]/font[3]/text()
 -  url: http://jeremias.com.pt/As_Aventuras_de_Jeremias_outras.htm
    redirectPageText: O site jeremias.com.pt foi desativado.
-   waybackUrl: /wayback/20180504070928/http://jeremias.com.pt/As_Aventuras_de_Jeremias_outras.htm
+   timestamp: 20180504070928
    waybackText: Conjunto de pequenas histórias onde aparece
-
--  url: http://www.consultorioct.mctes.pt/
+   waybackTextXPath: /html/body/div/table[1]/tbody/tr[2]/td[2]/font/text()[2]
+-  url: http://www.consultorioct.mctes.pt
    redirectPageText: O site www.consultorioct.mctes.pt foi desativado.
-   waybackUrl: /wayback/20180504071337/http://www.consultorioct.mctes.pt
+   timestamp: 20180504071337
    waybackText: Durante a Semana da Ciência e da Tecnologia de 2001
-
--  url: http://cla.fccn.pt/
+   waybackTextXPath: /html/body/table[2]/tbody/tr/td[2]/table/tbody/tr/td/table/tbody/tr/td/p[1]/text()
+-  url: http://cla.fccn.pt
    redirectPageText: O site cla.fccn.pt foi desativado.
-   waybackUrl: /wayback/20180504071206/http://cla.fccn.pt
+   timestamp: 20180504071206
    waybackText: Ciência 2009 – Encontro com a Ciência em Portugal
+   waybackTextXPath: /html/body/div[1]/a/div/div[3]
 -  url: http://cla.fccn.pt/2008/
    redirectPageText: O site cla.fccn.pt foi desativado.
-   waybackUrl: /wayback/20180504071227/http://cla.fccn.pt/2008/
+   timestamp: 20180504071227
    waybackText: Ciência 2008 – Encontro com a Ciência em Portugal
-
+   waybackTextXPath: /html/body/div/div/div[3]
 -  url: http://www.cidadesdigitais.pt/
    redirectPageText: O site www.cidadesdigitais.pt foi desativado.
-   waybackUrl: /wayback/20180430171300/http://www.cidadesdigitais.pt/
+   timestamp: 20180430171300
    waybackText: Cisco - multinacional reconhecida pela oferta de soluções
-
+   waybackTextXPath: /html/body/table[2]/tbody/tr/td[3]/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr/td/div[1]/table[2]/tbody/tr[1]/td/p[2]/text()
 -  url: http://empregabilidadedigital.pt/
    redirectPageText: O site empregabilidadedigital.pt foi desativado
-   waybackUrl: /wayback/20180511135909/http://empregabilidadedigital.pt/
+   timestamp: 20180511135909
    waybackText: Portugal está entre os países com a menor proporção de trabalhadores nas áreas
-
+   waybackTextXPath: //*[@id="block-system-main"]/div/div/div/div/div[1]/div/div/div/div/div/div/div[1]/p/text()[1]
 -  url: http://visibilidade.net
    redirectPageText: O site visibilidade.net foi desativado
-   waybackUrl: /wayback/20180628131252/http://visibilidade.net/tutorial/index.html
-   waybackText: Este site contem informação relacionada com publicação e divulgação na web
+   timestamp: 20180628130711
+   waybackText: contem informação relacionada com publicação e divulgação na web
+   waybackTextXPath: /html/body/table[3]/tbody/tr/td[2]/table/tbody/tr[2]/td/p[1]/text()[2]
 -  url: http://visibilidade.net/tutorial/index.html
    redirectPageText: O site visibilidade.net foi desativado
-   waybackUrl: /wayback/20180628131252/http://visibilidade.net/tutorial/index.html
-   waybackText: Através de vários artigos acerca da visibilidade da informação publicada na web, este espaço pretende esclarecer os nossos leitores mais interessados
+   timestamp: 20180628131252
+   waybackText: Através de vários artigos acerca da visibilidade da informação publicada na web
+   waybackTextXPath: /html/body/table[3]/tbody/tr/td[2]/table/tbody/tr[2]/td/p[1]/text()[1]
+-  url: http://www.mundonaescola.pt/
+   redirectPageText: O Mundo na Escola foi um programa de divulgação científica criado pelo Ministério da Educação e Ciência
+      que funcionou entre abril de 2012 e novembro de 2015 com o objetivo de aproximar os profissionais das várias áreas do
+      saber da comunidade escolar.
+   timestamp: 20190315160356
+   waybackText: O programa O Mundo na Escola focou o tema da ciência
+   waybackTextXPath: //*[@id="post-10264"]/div/p/text()
+-  url: http://www.mundonaescola.pt/?page_id=129
+   redirectPageText: O Mundo na Escola foi um programa de divulgação científica criado pelo Ministério da Educação e Ciência
+      que funcionou entre abril de 2012 e novembro de 2015 com o objetivo de aproximar os profissionais das várias áreas do
+      saber da comunidade escolar.
+   timestamp: 20190315160428
+   waybackText: A Física no dia-a-dia
+   waybackTextXPath: //*[@id="post-10043"]/div/p/text()[1]

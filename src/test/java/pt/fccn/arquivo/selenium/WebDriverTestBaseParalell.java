@@ -18,13 +18,15 @@
 
 package pt.fccn.arquivo.selenium;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
@@ -34,16 +36,13 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Timeouts;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
@@ -84,7 +83,8 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 	 * succeeds or fails.
 	 */
 	@Rule
-	public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
+	public SauceOnDemandTestWatcher resultReportingTestWatcher = authentication.getUsername() != null
+			&& !authentication.getUsername().isEmpty() ? new SauceOnDemandTestWatcher(this, authentication) : null;
 
 	@Rule
 	public TestName name = new TestName() {
@@ -125,13 +125,13 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 	 */
 	protected String sessionId;
 
-	protected WebDriver driver;
+	protected RemoteWebDriver driver;
 	// protected static ArrayList<WebDriver> drivers;
 
-	protected static String screenResolution;
-	protected static String testURL;
-	protected static String browserVersion;
-	protected static String titleOfFirstResult;
+	protected String screenResolution;
+	protected String testURL;
+	protected String browserVersion;
+	protected String titleOfFirstResult;
 
 	@Deprecated
 	protected static String pre_prod = "preprod";
@@ -146,9 +146,10 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		this.browser = browser;
 		this.deviceName = deviceName;
 		this.deviceOrientation = deviceOrientation;
-		testURL = System.getProperty("test.url");
-		isPreProd = testURL.contains(pre_prod);
-		screenResolution = System.getProperty("test.resolution");
+		this.testURL = System.getProperty("test.url");
+		assertNotNull("test.url property is required", this.testURL);
+		this.isPreProd = this.testURL.contains(pre_prod);
+		this.screenResolution = System.getProperty("test.resolution");
 
 		System.out.println("OS: " + os);
 		System.out.println("Version: " + version);
@@ -165,33 +166,26 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 	@ConcurrentParameterized.Parameters
 	public static LinkedList<String[]> browsersStrings() {
 		String browsersJSON = System.getenv("SAUCE_ONDEMAND_BROWSERS");
+		System.out.println("SAUCE_ONDEMAND_BROWSERS: " + browsersJSON);
+
 		LinkedList<String[]> browsers = new LinkedList<String[]>();
-
-		System.out.println("JSON: " + browsersJSON);
-
-		JSONObject browsersJSONObject = new JSONObject("{browsers:" + browsersJSON + "}");
-
-		if (browsersJSON == null) {
-			System.out.println("You did not specify browsers, testing with latest firefox and chrome...");
+		if (browsersJSON == null || browsersJSON.isEmpty()) {
+			System.out.println("You did not specify browsers, testing with latest firefox and chrome on Windows...");
 			browsers.add(new String[] { "Windows 8.1", "latest", "chrome", null, null });
 			browsers.add(new String[] { "Windows 10", "latest", "firefox", null, null });
+//			browsers.add(new String[] { "Linux", null, "chrome", null, null });
+//			browsers.add(new String[] { "Linux", null, "firefox", null, null });
 		} else {
+			JSONObject browsersJSONObject = new JSONObject("{browsers:" + browsersJSON + "}");
 			JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");
 			for (int i = 0; i < browsersJSONArray.length(); i++) {
-				// TODO:: find names of extra properties for mobile Devices such as orientation
-				// and device name
 				JSONObject browserConfigs = browsersJSONArray.getJSONObject(i);
 				String browserOS = browserConfigs.getString("os");
 //				String browserPlatform = browserConfigs.getString("platform");
 				String browserName = browserConfigs.getString("browser");
-				String browserVersion = browserConfigs.getString("browser-version");
-				String device = null;
-				String deviceOrientation = null;
-				try {
-					device = browserConfigs.getString("device");
-					deviceOrientation = browserConfigs.getString("device-orientation");
-				} catch (JSONException e) {
-					/* Intentionally empty */}
+				String browserVersion = browserConfigs.optString("browser-version");
+				String device = browserConfigs.optString("device", null);
+				String deviceOrientation = browserConfigs.optString("device-orientation", null);
 				browsers.add(new String[] { browserOS, browserVersion, browserName, device, deviceOrientation });
 			}
 		}
@@ -236,7 +230,7 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		capabilities.setCapability("name", methodName);
 
 		System.out.println("Screen Resolution: " + screenResolution);
-		if (!screenResolution.equals("no")) {
+		if (screenResolution != null && !screenResolution.isEmpty()) {
 			capabilities.setCapability("screenResolution", screenResolution);
 		}
 		// Getting the build name.
@@ -249,16 +243,12 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 
 		SauceHelpers.addSauceConnectTunnelId(capabilities);
 
-		URL url = new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey()
-				+ /* seleniumURI */ "@127.0.0.1:" + port + "/wd/hub");
-		System.out.println(url);
-
-		this.driver = new RemoteWebDriver(url, capabilities);
+		this.driver = new RemoteWebDriver(buildUrl(), capabilities);
 		this.driver.get(testURL);
 
 		this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
-		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", this.sessionId, methodName);
+		String message = String.format("SessionID=%1$s job-name=%2$s", this.sessionId, methodName);
 		System.out.println(message);
 
 		Timeouts timeouts = driver.manage().timeouts();
@@ -270,6 +260,31 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		System.out.println(String.format("Start running test: %s\n", this.getClass().getSimpleName()));
 	}
 
+	private URL buildUrl() throws MalformedURLException {
+		String username = authentication.getUsername();
+		String accessKey = authentication.getAccessKey();
+
+		StringBuilder urlBuilder = new StringBuilder();
+		urlBuilder.append("http://");
+		if (username != null && !username.isEmpty()) {
+			urlBuilder.append(username);
+			urlBuilder.append(":");
+		}
+		if (accessKey != null && !accessKey.isEmpty()) {
+			urlBuilder.append(accessKey);
+			urlBuilder.append("@");
+		}
+		urlBuilder.append("127.0.0.1:");
+		urlBuilder.append(port);
+		urlBuilder.append("/wd/hub");
+
+		URL url = new URL(urlBuilder.toString());
+
+		System.out.println(url);
+
+		return url;
+	}
+
 	/**
 	 * Releases the resources used for the tests, i.e., It closes the WebDriver.
 	 */
@@ -277,82 +292,6 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 	public void tearDown() throws Exception {
 		driver.quit();
 		super.tearDown();
-	}
-
-	/**
-	 * Creates a Local WebDriver given a string with the web browser name.
-	 *
-	 * @param browser The browser name for the WebDriver initialization
-	 * @return The initialized Local WebDriver
-	 */
-	private static WebDriver selectLocalBrowser(String browser) throws java.net.MalformedURLException {
-		WebDriver driver = null;
-		if (browser.contains("firefox")) {
-			driver = new FirefoxDriver();
-		} else if (browser.contains("iexplorer")) {
-			driver = new InternetExplorerDriver();
-		} else if (browser.contains("chrome")) {
-			// DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-			// capabilities.setCapability("chrome.binary",
-			// "/usr/lib/chromium-browser/chromium-browser");
-			// driver = new ChromeDriver(capabilities);
-			driver = new ChromeDriver();
-		} else if (browser.contains("opera")) {
-			driver = new OperaDriver();
-		} else if (browser.contains("remote-chrome")) {
-			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
-		} else if (browser.contains("remote-firefox")) {
-			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
-			driver.get("http://www.google.com");
-		} else {
-			// OH NOEZ! I DOAN HAZ DAT BROWSR!
-			System.err.println("Cannot find suitable browser driver for [" + browser + "]");
-		}
-		return driver;
-	}
-
-	/**
-	 * Gets a suitable Platform object given a OS/Platform string..
-	 *
-	 * @param platformString The given string for the OS/Platform to use
-	 * @return The Platform object that represent the requested OS/Platform
-	 */
-	private static Platform selectPlatform(String platformString) {
-		Platform platform = null;
-
-		if (platformString.contains("Windows")) {
-			if (platformString.contains("2008")) {
-				platform = Platform.VISTA;
-			} else {
-				platform = Platform.XP;
-			}
-		} else if (platformString.toLowerCase().equals("linux")) {
-			platform = Platform.LINUX;
-		} else {
-			System.err.println("Cannot find a suitable platform/OS for [" + platformString + "]");
-		}
-		return platform;
-	}
-
-	/**
-	 * Miscellaneous cleaning for browser and browser's version strings.
-	 *
-	 * @param browser        The browser string to clean
-	 * @param browserVersion The browser version string to clean
-	 */
-	private static void parameterCleanupForRemote(String browser, String browserVersion) {
-		// Selenium1 likes to prepend a "*" to browser string.
-		if (browser.startsWith("*")) {
-			browser = browser.substring(1);
-		}
-
-		// SauceLabs doesn't use version numbering for Google Chrome due to
-		// the fast release schedule of that browser.
-		if (browser.contains("googlechrome")) {
-			browserVersion = "";
-		}
 	}
 
 	/**
@@ -393,6 +332,22 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		} catch (NoSuchElementException e) {
 			return false;
 		}
+	}
+
+	protected WebElement waitUntilElementIsVisibleAndGet(By by) {
+//		WebElement element = driver.findElement(by);
+//		driver.executeScript("arguments[0].click();", element);
+
+		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(by));
+		return driver.findElement(by);
+	}
+
+	public RemoteWebDriver getDriver() {
+		return driver;
+	}
+
+	public String getTestURL() {
+		return testURL;
 	}
 
 }

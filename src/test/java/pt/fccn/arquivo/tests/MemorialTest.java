@@ -11,7 +11,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -49,6 +50,8 @@ import pt.fccn.arquivo.tests.util.ReplayUtils;
  */
 public class MemorialTest extends WebDriverTestBaseParalell {
 
+	private static final String WAYBACK_PATH = "/wayback";
+
 	public MemorialTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
 	}
@@ -70,22 +73,26 @@ public class MemorialTest extends WebDriverTestBaseParalell {
 			// go to memorial site URL
 			driver.get(url);
 
-			appendError(() -> {
-				assertThat(
-						"Check some visible text on redirect page should contain some text to inform user before redirect to Arquivo.pt",
-						driver.findElement(By.xpath("/html")).getText(), containsString(config.getRedirectPageText()));
-			});
+			String redirectPageText = config.getRedirectPageText();
+			if (redirectPageText != null) {
+				appendError(() -> {
+					assertThat(
+							"Check some visible text on redirect page should contain some text to inform user before redirect to Arquivo.pt",
+							driver.findElement(By.xpath("/html")).getText(),
+							containsString(redirectPageText));
+				});
+			}
 
 			// click() didn't work consistently on every browser, so the solution was to use
 			// sendkeys method!
 			run("Click on button to redirect to Arquivo.pt",
 					() -> driver.findElement(By.id("redirectButton")).sendKeys(Keys.RETURN));
 
-			run("Check some text on wayback page",
-					() -> ReplayUtils.checkTextOnReplayPage(driver, config.getWaybackText()));
+			appendError("Check wayback page url",
+					() -> new WebDriverWait(driver, 120).until(ExpectedConditions.urlContains(config.getWaybackUrl())));
 
-			appendError(() -> assertThat("Check wayback page url", driver.getCurrentUrl(),
-					containsString(config.getWaybackUrl())));
+			run("Check some text on wayback page", () -> ReplayUtils.checkTextOnReplayPage(driver,
+					config.getWaybackTextXPath(), config.getWaybackText()));
 
 			System.out.println(String.format("End checking url: %s", url));
 
@@ -108,8 +115,9 @@ public class MemorialTest extends WebDriverTestBaseParalell {
 	public static class MemorialTestConfig {
 		private String url;
 		private String redirectPageText;
-		private String buttonXpath;
+		private String timestamp;
 		private String waybackUrl;
+		private String waybackTextXPath;
 		private String waybackText;
 
 		public String getUrl() {
@@ -128,21 +136,32 @@ public class MemorialTest extends WebDriverTestBaseParalell {
 			this.redirectPageText = redirectPageText;
 		}
 
-		public String getButtonXpath() {
-			// //a[contains(@class,'myButton')]
-			return buttonXpath != null ? buttonXpath : "//*[@id=\"redirectButton\"]";
+		public String getTimestamp() {
+			return timestamp;
 		}
 
-		public void setButtonXpath(String buttonXpath) {
-			this.buttonXpath = buttonXpath;
+		public void setTimestamp(String timestamp) {
+			this.timestamp = timestamp;
 		}
 
 		public String getWaybackUrl() {
-			return waybackUrl;
+			if (this.waybackUrl != null) {
+				return this.waybackUrl;
+			} else {
+				return WAYBACK_PATH + "/" + getTimestamp() + "/" + getUrl();
+			}
 		}
 
 		public void setWaybackUrl(String waybackUrl) {
 			this.waybackUrl = waybackUrl;
+		}
+
+		public String getWaybackTextXPath() {
+			return waybackTextXPath;
+		}
+
+		public void setWaybackTextXPath(String waybackTextXPath) {
+			this.waybackTextXPath = waybackTextXPath;
 		}
 
 		public String getWaybackText() {

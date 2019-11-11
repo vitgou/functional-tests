@@ -243,18 +243,6 @@ public class IndexPage {
     }
 
     /**
-     * Return the image source from sponsor
-     * @return the image
-     */
-    public boolean isSponsorGovImageCorrect(){
-
-        WebElement imagefccn = driver.findElement(By.xpath( "//*[@id=\"wp_editor_widget-10\"]/div/div[1]/a/img" ));
-        WebElement imageSponsor = driver.findElement(By.xpath("//*[@id=\"wp_editor_widget-10\"]/div/div[2]/a/img"));
-        String srcFccn 		= imagefccn.getAttribute("src");
-        String srcSponsor 	= imageSponsor.getAttribute("src");
-        return srcFccn.endsWith("logo-fccn.png") && srcSponsor.endsWith("10-Digital_PT_4C_H_FC_MCTES_cinza.png");
-    }
-    /**
      * Click the Highlights page
      * @throws Exception
      */

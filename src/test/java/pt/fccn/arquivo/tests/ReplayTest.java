@@ -98,9 +98,9 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 			appendError(() -> replayBarURLsOk(currentURL));
 			appendError(() -> screenshotOk(currentURL));
 			appendError(() -> printOk(currentURL));
-			appendError(() -> facebookOk(currentURL));
-			appendError(() -> twitterOk(currentURL));
-			appendError(() -> emailOk(currentURL));
+//			appendError(() -> facebookOk(currentURL));
+//			appendError(() -> twitterOk(currentURL));
+//			appendError(() -> emailOk(currentURL));
 			appendError(() -> tableOfVersionsOk(currentURL));
 			appendError(() -> logoOk(currentURL));
 			appendError(() -> checkLeftMenu(currentURL));
@@ -326,7 +326,7 @@ public class ReplayTest extends WebDriverTestBaseParalell {
 		String optionalExpectedanchorHref = serverName.substring(0, serverName.length() - 1) + "?l="
 				+ prop.getProperty("lang");
 		String expectedlogoAlt = "Arquivo.pt logo";
-		String expectedlogoSrc = serverName + "wayback/static/resources/img/arquivo100v.png";
+		String expectedlogoSrc = serverName + "wayback/static/img/arquivo100v.png";
 
 		appendError(() -> assertTrue("Check Logo Anchor href",
 				expectedanchorHref.equals(anchorHref) || optionalExpectedanchorHref.equals(anchorHref)));
