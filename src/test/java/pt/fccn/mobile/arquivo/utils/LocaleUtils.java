@@ -1,5 +1,8 @@
 package pt.fccn.mobile.arquivo.utils;
 
+import java.text.MessageFormat;
+import java.util.Locale;
+
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
 
 /**
@@ -9,16 +12,23 @@ import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
  */
 public class LocaleUtils {
 
-	private static final String EN = "en";
-	private static final String PT = "pt";
+	public static Locale ENGLISH = Locale.ENGLISH;
+	public static Locale PORTUGUESE = Locale.forLanguageTag("pt");
+
+	private static final String EN_LANGUAGE = "en";
+	private static final String PT_LANGUAGE = "pt";
+
+	public static void changeLanguageTo(WebDriverTestBaseParalell test, Locale locale) {
+		changeLanguageTo(test, locale.getLanguage());
+	}
 
 	public static void changeLanguageToPT(WebDriverTestBaseParalell test) {
-		String language = PT;
+		String language = PT_LANGUAGE;
 		changeLanguageTo(test, language);
 	}
 
 	public static void changeLanguageToEN(WebDriverTestBaseParalell test) {
-		String language = EN;
+		String language = EN_LANGUAGE;
 		changeLanguageTo(test, language);
 	}
 
@@ -27,10 +37,14 @@ public class LocaleUtils {
 	}
 
 	public static String languagePTUrlQueryParameter() {
-		return "l=" + PT;
+		return "l=" + PT_LANGUAGE;
 	}
 
 	public static String languageENUrlQueryParameter() {
-		return "l=" + EN;
+		return "l=" + EN_LANGUAGE;
+	}
+
+	public static String format(String template, Locale locale, Object... arguments) {
+		return new MessageFormat(template, locale).format(arguments, new StringBuffer(), null).toString();
 	}
 }
