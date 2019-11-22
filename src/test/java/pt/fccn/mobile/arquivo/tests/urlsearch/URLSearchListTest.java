@@ -102,7 +102,7 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 			monthHeaderWE.click();
 		});
 
-		appendError("Verify day", () -> {
+		appendError("Verify specific timetamp", () -> {
 			String timestamp = "19961013145650";
 			WebElement dayWE = waitUntilElementIsVisibleAndGet(By.id(timestamp));
 
