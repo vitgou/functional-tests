@@ -32,19 +32,17 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 	@Test
 	@Retry
 	public void urlSearchListTestPT() {
-		LocaleUtils.changeLanguageToPT(this);
-
 		urlSearchListTest("fccn.pt", LocaleUtils.PORTUGUESE);
 	}
 
 	@Test
 	@Retry
 	public void urlSearchListTestEN() {
-		LocaleUtils.changeLanguageToEN(this);
 		urlSearchListTest("fccn.pt", LocaleUtils.ENGLISH);
 	}
 
 	private void urlSearchListTest(String url, Locale locale) {
+		LocaleUtils.changeLanguageTo(this, locale);
 
 		run("Search fccn.pt url", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
