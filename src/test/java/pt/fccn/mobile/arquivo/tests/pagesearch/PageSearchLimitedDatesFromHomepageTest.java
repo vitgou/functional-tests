@@ -35,12 +35,12 @@ public class PageSearchLimitedDatesFromHomepageTest extends WebDriverTestBasePar
 			driver.findElement(By.id("txtSearch")).sendKeys("fccn");
 		});
 
-		run("Open from date picker", () -> driver.findElement(By.id("sliderCircleLeft")).click());
+		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleLeft")).click());
 		LocalDate fromDate = LocalDate.of(1996, 10, 12);
 		run("Insert " + fromDate.toString() + " on start date picker",
 				() -> IonicDatePicker.changeTo(driver, fromDate));
 
-		run("Open until date picker", () -> driver.findElement(By.id("sliderCircleRight")).click());
+		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleRight")).click());
 		LocalDate untilDate = LocalDate.of(1996, 10, 14);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
@@ -50,9 +50,9 @@ public class PageSearchLimitedDatesFromHomepageTest extends WebDriverTestBasePar
 		run("Wait until search results are shown", () -> waitUntilElementIsVisibleAndGet(By.id("resultados-lista")));
 
 		appendError("Check first result url", () -> {
-			WebElement we = driver.findElementByXPath("//*[@id=\"resultados-lista\"]/ul/li[1]//a[@class=\"url\"]");
+			WebElement we = driver.findElementByXPath("//*[@id=\"resultados-lista\"]//*[@class=\"url\"]");
 
-			assertEquals("Check first result url", "fccn.pt/", we.getText());
+			assertThat("Check first result url", we.getText(), containsString("fccn.pt"));
 
 			String href = we.getAttribute("href");
 			assertThat("Check link to wayback timestamp", href, containsString("/19961013145650/"));
