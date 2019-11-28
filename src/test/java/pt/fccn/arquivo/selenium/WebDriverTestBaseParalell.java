@@ -350,4 +350,11 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		return testURL;
 	}
 
+	protected boolean isPreprod() {
+		return this.isPreProd;
+	}
+
+	protected boolean isProduction() {
+		return this.testURL.contains("://arquivo.pt") || this.testURL.contains("://m.arquivo.pt");
+	}
 }
