@@ -31,7 +31,7 @@ public class PrintTest extends AppendableErrorsBaseTest {
 
 	@Test
 	@Retry
-	public void screenshotTest() {
+	public void printTest() {
 		String screenshotUrlStr = this.testURL + "/print/?url=" + this.testURL
 				+ "/noFrame/replay/19961013145650/http://www.fccn.pt/";
 
