@@ -4,8 +4,10 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -50,25 +52,26 @@ public class PageSearchLimitedDatesFromHomepageTest extends WebDriverTestBasePar
 		run("Wait until search results are shown", () -> waitUntilElementIsVisibleAndGet(By.id("resultados-lista")));
 
 		appendError("Check first result url", () -> {
-			WebElement we = driver.findElementByXPath("//*[@id=\"resultados-lista\"]//*[@class=\"url\"]");
+			List<WebElement> wes = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]//*[@class=\"url\"]");
+			assertTrue("Mininium of urls should be 1", wes.size() > 0);
 
+			WebElement we = wes.get(0);
 			assertThat("Check first result url", we.getText(), containsString("fccn.pt"));
 
+			wes = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]//*[@class=\"urlBlock\"]//a");
+			we = wes.get(0);
 			String href = we.getAttribute("href");
 			assertThat("Check link to wayback timestamp", href, containsString("/19961013145650/"));
 
-			assertThat("Check link to wayback url", href, endsWith("http://www.fccn.pt/"));
+			assertThat("Check link to wayback url", href, containsString("http://www.fccn.pt/"));
 		});
 
 		appendError("Check first result title", () -> {
-			WebElement we = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]/ul/li[1]//a").get(1);
+			List<WebElement> wes = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]//*[@class=\"urlBlock\"]//h2");
+			assertTrue("Mininium of title should be 1", wes.size() > 0);
 
+			WebElement we = wes.get(0);
 			assertEquals("Check first result title", "http://www.fccn.pt/", we.getText());
-
-			String href = we.getAttribute("href");
-			assertThat("Check link to wayback timestamp", href, containsString("/19961013145650/"));
-
-			assertThat("Check link to wayback url", href, endsWith("http://www.fccn.pt/"));
 		});
 
 		appendError("Check first result version", () -> {
