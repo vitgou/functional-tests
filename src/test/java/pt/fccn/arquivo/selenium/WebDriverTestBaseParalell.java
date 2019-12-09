@@ -210,6 +210,7 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 	 * @throws Exception if an error occurs during the creation of the
 	 *                   {@link RemoteWebDriver} instance.
 	 */
+	@SuppressWarnings("deprecation")
 	@Before
 	public void setUp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -350,4 +351,11 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		return testURL;
 	}
 
+	protected boolean isPreprod() {
+		return this.isPreProd;
+	}
+
+	protected boolean isProduction() {
+		return this.testURL.contains("://arquivo.pt") || this.testURL.contains("://m.arquivo.pt");
+	}
 }

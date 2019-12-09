@@ -30,7 +30,7 @@ public class MenuPagesNewSearchHomepageTest extends MenuTest {
 				() -> waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"pageOptions\"]/a/h4")).click());
 
 		appendError("Check if current url is the page search",
-				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/index.jsp")));
+				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/search.jsp")));
 	}
 
 }
