@@ -55,7 +55,7 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		});
 
 		run("Set size on advanced images form",
-				() -> new Select(driver.findElement(By.xpath("//select[@id=\"size\"]"))).selectByValue("sm"));
+				() -> new Select(driver.findElement(By.xpath("//ion-select[@id=\"size\"]"))).selectByValue("sm"));
 
 		run("Set type on advanced images form", () -> driver.findElement(By.id("type")).sendKeys("png"));
 
