@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import pt.fccn.arquivo.selenium.Retry;
-import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
+import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell; 
 
 /**
  *
@@ -28,19 +28,20 @@ public class PageSearchTest extends WebDriverTestBaseParalell {
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
 
+		
 		waitUntilElementIsVisibleAndGet(By.id("resultados-lista"));
+		
+		int anchorsCount = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]//*[@class=\"url\"][contains(text(),'fccn')]")
+				.size();
 
+		System.out.println("anchorsCount " + anchorsCount);
+		
 		long emsCount = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]//em") //
 				.stream() //
 				.filter(em -> em.getText().toLowerCase().contains("fccn")) //
 				.count();
 
 		System.out.println("emsCount " + emsCount);
-
-		int anchorsCount = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]//a[contains(text(),'fccn')]")
-				.size();
-
-		System.out.println("anchorsCount " + anchorsCount);
 
 		assertTrue("At least 80 percent of results should show something related to search criteria",
 				emsCount + anchorsCount >= 10);
