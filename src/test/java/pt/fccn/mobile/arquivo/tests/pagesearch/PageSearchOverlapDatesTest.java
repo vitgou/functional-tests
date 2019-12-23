@@ -23,6 +23,7 @@ public class PageSearchOverlapDatesTest extends WebDriverTestBaseParalell {
 			String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
 	}
+
 	@Test
 	@Retry
 	public void pageSearchOverlapDatesTest() throws Exception {
@@ -31,7 +32,7 @@ public class PageSearchOverlapDatesTest extends WebDriverTestBaseParalell {
 			driver.findElement(By.id("txtSearch")).sendKeys("fccn");
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
-		
+
 		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleLeft")).click());
 		LocalDate fromDate = LocalDate.of(1997, 5, 20);
 		run("Insert " + fromDate.toString() + " on start date picker",
@@ -39,7 +40,7 @@ public class PageSearchOverlapDatesTest extends WebDriverTestBaseParalell {
 
 		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleRight")).click());
 		LocalDate untilDate = LocalDate.of(1996, 8, 22);
-						
+
 		appendError(() -> {
 			assertTrue("Check if it is possible to do date overlap: ", checkDatePicker(untilDate));
 		});
@@ -47,10 +48,10 @@ public class PageSearchOverlapDatesTest extends WebDriverTestBaseParalell {
 	}
 
 	private boolean checkDatePicker(LocalDate untilDate) {
-		try{
+		try {
 			IonicDatePicker.changeTo(driver, untilDate);
 			return false;
-		} catch (Exception e){
+		} catch (Exception e) {
 			return true;
 		}
 	}
