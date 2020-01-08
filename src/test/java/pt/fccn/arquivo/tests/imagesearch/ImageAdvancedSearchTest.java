@@ -53,11 +53,12 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 			driver.findElement(By.xpath("//*[@id=\"dateEnd_top\"]/following-sibling::node()")).click();
 			selectDateFromJqueryDatepicker(driver.findElement(By.id("ui-datepicker-div")), 2012, 6, 1);
 		});
-
+		
 		run("Set size on advanced images form",
-				() -> new Select(driver.findElement(By.xpath("//ion-select[@id=\"size\"]"))).selectByValue("sm"));
-
-		run("Set type on advanced images form", () -> driver.findElement(By.id("type")).sendKeys("png"));
+				() -> new Select(driver.findElement(By.xpath("//*[@id=\"label-format-1\"]/*[@id=\"size\"]"))).selectByValue("sm"));
+		
+		run("Set type on advanced images form",
+				() -> new Select(driver.findElement(By.xpath("//*[@id=\"type\"]"))).selectByValue("png"));
 
 		run("Set site on advanced images form", () -> driver.findElement(By.id("site")).sendKeys("fccn.pt"));
 
