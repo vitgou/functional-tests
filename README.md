@@ -67,3 +67,16 @@ mvn clean verify -Dbrowsers=desktop-linux -Dit.test=pt.fccn.arquivo.tests.images
 
 More information on:
 https://github.com/SeleniumHQ/docker-selenium
+
+## Kill process
+
+In some cases when the test or tunnel is closed incorrectly a process is pending which makes it impossible to run the test again. So, use the following steps:
+
+```bash
+ps aux | grep sc
+```
+And a process will appear with a name similar to "/root/sc-4.4.12-linux/bin/sc -u ArquivoPT". Then,
+
+```bash
+kill process_ID
+```

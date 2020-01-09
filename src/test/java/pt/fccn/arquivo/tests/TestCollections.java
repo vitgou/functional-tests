@@ -565,6 +565,17 @@ public class TestCollections extends AppendableErrorsBaseTest {
 		test(new TestCollectionConfig().collectionId("FAWP28").timestamp("20170128032423").url("https://www.airbnb.co.ve/rooms/16908431"));
 	}
 
+	@Test
+	@Retry
+	public void testCollectionPATCHING2019() {
+		test(new TestCollectionConfig().collectionId("PATCHING2019").timestamp("20140527150350").url("http://i.telegraph.co.uk/telegraph/multimedia/archive/00779/manmohan-singh-460_779953c.jpg"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionCEGER() {
+		test(new TestCollectionConfig().collectionId("CEGER").timestamp("20061117092548").url("http://www.diadomar.mdn.gov.pt/"));
+	}
 
 	private void test(TestCollectionConfig config) {
 		for (String server : SERVERS) {
