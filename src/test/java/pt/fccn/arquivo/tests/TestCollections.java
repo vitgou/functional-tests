@@ -525,20 +525,22 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionEAWP20() {
-		test(new TestCollectionConfig().collectionId("EAWP20").timestamp("20181205181352")
-				.url("https://www.independent.co.uk/voices/michael-flynn-avoids-prison-sentence-mueller-investigation-russia-collusion-donald-trump-american-a8668351.html"));
+		test(new TestCollectionConfig().collectionId("EAWP20").timestamp("20181205181352").url(
+				"https://www.independent.co.uk/voices/michael-flynn-avoids-prison-sentence-mueller-investigation-russia-collusion-donald-trump-american-a8668351.html"));
 	}
 
 	@Test
 	@Retry
 	public void testCollectionEAWP21() {
-		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314163830").url("https://commons.wikimedia.org/wiki/Category:World_War_I"));
+		test(new TestCollectionConfig().collectionId("EAWP21").timestamp("20190314163830")
+				.url("https://commons.wikimedia.org/wiki/Category:World_War_I"));
 	}
 
 	@Test
 	@Retry
 	public void testCollectionFAWP27() {
-		test(new TestCollectionConfig().collectionId("FAWP27").timestamp("20161217054847").url("http://correiodafeira.pt/jornalcf/wp-content/uploads/2016/07/conceicao-alvim-e-miguel-ferraz6-150x150.jpg"));
+		test(new TestCollectionConfig().collectionId("FAWP27").timestamp("20161217054847").url(
+				"http://correiodafeira.pt/jornalcf/wp-content/uploads/2016/07/conceicao-alvim-e-miguel-ferraz6-150x150.jpg"));
 	}
 
 	@Test
@@ -556,25 +558,117 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionRAQ2019() {
-		test(new TestCollectionConfig().collectionId("RAQ2019").timestamp("20190315160356").url("http://www.mundonaescola.pt/"));
+		test(new TestCollectionConfig().collectionId("RAQ2019").timestamp("20190315160356")
+				.url("http://www.mundonaescola.pt/"));
 	}
 
 	@Test
 	@Retry
 	public void testCollectionFAWP28() {
-		test(new TestCollectionConfig().collectionId("FAWP28").timestamp("20170128032423").url("https://www.airbnb.co.ve/rooms/16908431"));
+		test(new TestCollectionConfig().collectionId("FAWP28").timestamp("20170128032423")
+				.url("https://www.airbnb.co.ve/rooms/16908431"));
 	}
 
 	@Test
 	@Retry
 	public void testCollectionPATCHING2019() {
-		test(new TestCollectionConfig().collectionId("PATCHING2019").timestamp("20140527150350").url("http://i.telegraph.co.uk/telegraph/multimedia/archive/00779/manmohan-singh-460_779953c.jpg"));
+		test(new TestCollectionConfig().collectionId("PATCHING2019").timestamp("20140527150350")
+				.url("http://i.telegraph.co.uk/telegraph/multimedia/archive/00779/manmohan-singh-460_779953c.jpg"));
 	}
 
 	@Test
 	@Retry
 	public void testCollectionCEGER() {
-		test(new TestCollectionConfig().collectionId("CEGER").timestamp("20061117092548").url("http://www.diadomar.mdn.gov.pt/"));
+		test(new TestCollectionConfig().collectionId("CEGER").timestamp("20061117092548")
+				.url("http://www.diadomar.mdn.gov.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionAWP26() {
+		test(new TestCollectionConfig().collectionId("AWP26").timestamp("20180415222152").url("https://www.fccn.pt"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionAWP27() {
+		test(new TestCollectionConfig().collectionId("AWP27").timestamp("20180720124453").url("https://www.fccn.pt"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionAWP28() {
+		test(new TestCollectionConfig().collectionId("AWP28").timestamp("20181015061643").url("https://www.fccn.pt"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionBlogsSapo2018() {
+		test(new TestCollectionConfig().collectionId("BlogsSapo2018").timestamp("20180421194025")
+				.url("https://abemdanacao.blogs.sapo.pt/2018/03"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionWeblog() {
+		test(new TestCollectionConfig().collectionId("Weblog").timestamp("20121231235959")
+				.url("http://www.www.lobito.web.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionBlocoEsquerda() {
+		test(new TestCollectionConfig().collectionId("BlocoEsquerda").timestamp("20121031235959")
+				.url("http://acores.bloco.org"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionDEMIST() {
+		test(new TestCollectionConfig().collectionId("DEM-IST").timestamp("20061102150547")
+				.url("http://www.dem.ist.utl.pt/1.2.cicloEstudosAERO.html"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionDinisAlves2018() {
+		test(new TestCollectionConfig().collectionId("DinisAlves2018").timestamp("20130215005900")
+				.url("http://www.portofigueiradafoz.pt/"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionFAWP32() {
+		test(new TestCollectionConfig().collectionId("FAWP32").timestamp("20180327035850")
+				.url("https://www.fccn.pt/wp-content/uploads/2018/03/noticia_tsf.jpg"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionFAWP33() {
+		test(new TestCollectionConfig().collectionId("FAWP32").timestamp("20180401232524")
+				.url("https://www.fccn.pt/wp-content/uploads/2018/02/candidaturas_premiosarquivo_3.jpg"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionFAWP34() {
+		test(new TestCollectionConfig().collectionId("FAWP34").timestamp("20180906204204")
+				.url("https://www.fccn.pt/wp-content/uploads/2018/09/image001-300x179.jpg"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionFAWP35() {
+		test(new TestCollectionConfig().collectionId("FAWP35").timestamp("20181218221034").url(
+				"https://www.fccn.pt/wp-content/uploads/2018/12/xRCAAP-2-768x512.jpg.pagespeed.ic.1fY2yHwHIs.jpg"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP19() {
+		test(new TestCollectionConfig().collectionId("EAWP19").timestamp("20181210071242")
+				.url("https://www.avatrade.pt/"));
 	}
 
 	private void test(TestCollectionConfig config) {
