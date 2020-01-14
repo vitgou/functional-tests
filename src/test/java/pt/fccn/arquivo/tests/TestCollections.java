@@ -586,26 +586,26 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionAWP26() {
-		test(new TestCollectionConfig().collectionId("AWP26").timestamp("20180415222152").url("https://www.fccn.pt"));
+		test(new TestCollectionConfig().collectionId("AWP26").timestamp("20180415222152").url("https://www.fccn.pt/"));
 	}
 
 	@Test
 	@Retry
 	public void testCollectionAWP27() {
-		test(new TestCollectionConfig().collectionId("AWP27").timestamp("20180720124453").url("https://www.fccn.pt"));
+		test(new TestCollectionConfig().collectionId("AWP27").timestamp("20180720124453").url("https://www.fccn.pt/"));
 	}
 
 	@Test
 	@Retry
 	public void testCollectionAWP28() {
-		test(new TestCollectionConfig().collectionId("AWP28").timestamp("20181015061643").url("https://www.fccn.pt"));
+		test(new TestCollectionConfig().collectionId("AWP28").timestamp("20181015061643").url("https://www.fccn.pt/"));
 	}
 
 	@Test
 	@Retry
 	public void testCollectionBlogsSapo2018() {
 		test(new TestCollectionConfig().collectionId("BlogsSapo2018").timestamp("20180421194025")
-				.url("https://abemdanacao.blogs.sapo.pt/2018/03"));
+				.url("https://abemdanacao.blogs.sapo.pt/2018/03/"));
 	}
 
 	@Test
@@ -619,7 +619,7 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Retry
 	public void testCollectionBlocoEsquerda() {
 		test(new TestCollectionConfig().collectionId("BlocoEsquerda").timestamp("20121031235959")
-				.url("http://acores.bloco.org"));
+				.url("http://acores.bloco.org/"));
 	}
 
 	@Test
@@ -676,8 +676,8 @@ public class TestCollections extends AppendableErrorsBaseTest {
 			String testUrl = config.getTestURL(server);
 			String collectionId = config.getCollectionId();
 
-			System.out.println(String.format("Begin checking url: %s with full configuration as: %s", testUrl,
-					ReflectionToStringBuilder.toString(config, ToStringStyle.MULTI_LINE_STYLE)));
+//			System.out.println(String.format("Begin checking url: %s with full configuration as: %s", testUrl,
+//					ReflectionToStringBuilder.toString(config, ToStringStyle.MULTI_LINE_STYLE)));
 
 			appendError(() -> assertTrue(
 					String.format("Check current wayback page url returns 200 - %s - %s", collectionId, testUrl),
