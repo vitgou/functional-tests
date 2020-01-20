@@ -49,7 +49,7 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 			driver.findElement(By.id("txtSearch")).sendKeys(url);
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
-
+		
 		run("Change to list mode if not in it", () -> {
 			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"layoutTV\"]/h4");
 
@@ -61,11 +61,13 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 		});
 
 		String versionLabel = new LocalizedString().pt("versão").en("version").apply(locale);
-
+		
+		waitUntilElementIsVisibleAndGet(By.id("years"));
+		
 		run("Verify year", () -> {
 			WebElement yearTableHeader = driver.findElementById("th_1996");
 			assertNotNull("Verify if year table header exist", yearTableHeader);
-
+			
 			appendError("Year 1995 shouldn't be visible", () -> new WebDriverWait(driver, 20)
 					.until(ExpectedConditions.invisibilityOfElementLocated(By.id("th_1995"))));
 
