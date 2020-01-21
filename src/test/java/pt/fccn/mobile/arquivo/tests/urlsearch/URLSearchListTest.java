@@ -1,5 +1,7 @@
 package pt.fccn.mobile.arquivo.tests.urlsearch;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -60,7 +62,7 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 			}
 		});
 
-		String versionLabel = new LocalizedString().pt("versão").en("version").apply(locale);
+		String versionLabel = new LocalizedString().pt("versões").en("versions").apply(locale);
 		
 		waitUntilElementIsVisibleAndGet(By.id("years"));
 		
@@ -74,21 +76,17 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 			WebElement yearWebElement = yearTableHeader.findElement(By.xpath(".//div[1]/h4"));
 			assertNotNull("Year web element not found", yearWebElement);
 			assertEquals("Verify year text is correct", "1996", yearWebElement.getText().trim());
+			
+			assertThat("Verify versions",
+					driver.findElement(By.xpath("//*[@id=\"th_1996\"]/div[2]/h4")).getText(), containsString("1 " + versionLabel));
 
-			yearTableHeader.findElement(By.xpath(".//div[2]/h4"));
-
-			WebElement numberOfVersionsWE = yearTableHeader.findElement(By.xpath(".//div[2]/h4"));
-			assertNotNull("Number of versions", numberOfVersionsWE);
-			assertEquals("Verify year number of versions", "1 " + versionLabel, numberOfVersionsWE.getText().trim());
-
-			numberOfVersionsWE.click();
+			driver.findElement(By.xpath("//*[@id=\"th_1996\"]/div[2]/h4")).click();
 		});
-
+		
 		run("Verify month", () -> {
-			WebElement numberOfMonthVersionsWE = waitUntilElementIsVisibleAndGet(By.id("month_1996_10"));
-			assertNotNull("Number of month versions should be not null", numberOfMonthVersionsWE);
-			assertEquals("Verify month number of versions", "1 " + versionLabel,
-					numberOfMonthVersionsWE.getText().trim());
+			waitUntilElementIsVisibleAndGet(By.id("month_1996_10"));
+			assertThat("Verify versions",
+					driver.findElement(By.xpath("//*[@id=\"month_1996_10\"]")).getText(), containsString("1"));
 		});
 
 		appendError("September shouldn't be visible", () -> new WebDriverWait(driver, 20)
