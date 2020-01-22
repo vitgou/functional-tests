@@ -1,5 +1,7 @@
 package pt.fccn.mobile.arquivo.tests.urlsearch;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -49,7 +51,7 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 			driver.findElement(By.id("txtSearch")).sendKeys(url);
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
-
+		
 		run("Change to list mode if not in it", () -> {
 			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"layoutTV\"]/h4");
 
@@ -60,33 +62,31 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 			}
 		});
 
-		String versionLabel = new LocalizedString().pt("versão").en("version").apply(locale);
-
+		String versionLabel = new LocalizedString().pt("versões").en("versions").apply(locale);
+		
+		waitUntilElementIsVisibleAndGet(By.id("years"));
+		
 		run("Verify year", () -> {
 			WebElement yearTableHeader = driver.findElementById("th_1996");
 			assertNotNull("Verify if year table header exist", yearTableHeader);
-
+			
 			appendError("Year 1995 shouldn't be visible", () -> new WebDriverWait(driver, 20)
 					.until(ExpectedConditions.invisibilityOfElementLocated(By.id("th_1995"))));
 
 			WebElement yearWebElement = yearTableHeader.findElement(By.xpath(".//div[1]/h4"));
 			assertNotNull("Year web element not found", yearWebElement);
 			assertEquals("Verify year text is correct", "1996", yearWebElement.getText().trim());
+			
+			assertThat("Verify versions",
+					driver.findElement(By.xpath("//*[@id=\"th_1996\"]/div[2]/h4")).getText(), containsString("1 " + versionLabel));
 
-			yearTableHeader.findElement(By.xpath(".//div[2]/h4"));
-
-			WebElement numberOfVersionsWE = yearTableHeader.findElement(By.xpath(".//div[2]/h4"));
-			assertNotNull("Number of versions", numberOfVersionsWE);
-			assertEquals("Verify year number of versions", "1 " + versionLabel, numberOfVersionsWE.getText().trim());
-
-			numberOfVersionsWE.click();
+			driver.findElement(By.xpath("//*[@id=\"th_1996\"]/div[2]/h4")).click();
 		});
-
+		
 		run("Verify month", () -> {
-			WebElement numberOfMonthVersionsWE = waitUntilElementIsVisibleAndGet(By.id("month_1996_10"));
-			assertNotNull("Number of month versions should be not null", numberOfMonthVersionsWE);
-			assertEquals("Verify month number of versions", "1 " + versionLabel,
-					numberOfMonthVersionsWE.getText().trim());
+			waitUntilElementIsVisibleAndGet(By.id("month_1996_10"));
+			assertThat("Verify versions",
+					driver.findElement(By.xpath("//*[@id=\"month_1996_10\"]")).getText(), containsString("1"));
 		});
 
 		appendError("September shouldn't be visible", () -> new WebDriverWait(driver, 20)
