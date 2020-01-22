@@ -671,6 +671,20 @@ public class TestCollections extends AppendableErrorsBaseTest {
 				.url("https://www.avatrade.pt/"));
 	}
 
+	@Test
+	@Retry
+	public void testCollectionTomba() {
+		test(new TestCollectionConfig().collectionId("Tomba").timestamp("20050724165221")
+				.url("http://www.arouca.biz/index.php?Itemid=39&date=2005-07-01&extid=20&extmode=view&option=com_extcalendar&recurdate=1118271622"));
+	}
+
+	@Test
+	@Retry
+	public void testCollectionEAWP27() {
+		test(new TestCollectionConfig().collectionId("EAWP27").timestamp("20191105154542")
+				.url("https://www.tau.ac.il/"));
+	}
+
 	private void test(TestCollectionConfig config) {
 		for (String server : SERVERS) {
 			String testUrl = config.getTestURL(server);
