@@ -646,7 +646,7 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionFAWP33() {
-		test(new TestCollectionConfig().collectionId("FAWP32").timestamp("20180401232524")
+		test(new TestCollectionConfig().collectionId("FAWP33").timestamp("20180401232524")
 				.url("https://www.fccn.pt/wp-content/uploads/2018/02/candidaturas_premiosarquivo_3.jpg"));
 	}
 
