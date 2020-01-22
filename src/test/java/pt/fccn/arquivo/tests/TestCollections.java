@@ -674,8 +674,8 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionTomba() {
-		test(new TestCollectionConfig().collectionId("Tomba").timestamp("20050724165221")
-				.url("http://www.arouca.biz/index.php?Itemid=39&date=2005-07-01&extid=20&extmode=view&option=com_extcalendar&recurdate=1118271622"));
+		test(new TestCollectionConfig().collectionId("Tomba").timestamp("20050724165221").url(
+				"http://www.arouca.biz/index.php?Itemid=39&date=2005-07-01&extid=20&extmode=view&option=com_extcalendar&recurdate=1118271622"));
 	}
 
 	@Test
