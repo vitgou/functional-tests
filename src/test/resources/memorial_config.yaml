@@ -112,3 +112,13 @@ configs:
    timestamp: 20190315160428
    waybackText: A Física no dia-a-dia
    waybackTextXPath: //*[@id="post-10043"]/div/p/text()[1]
+-  url: http://www.minema.di.fc.ul.pt/
+   redirectPageText: O site www.minema.di.fc.ul.pt foi desativado.
+   timestamp: 20191126170837
+   waybackText: Scientific Programme aiming to bring together European
+   waybackTextXPath: /html/body/table[5]/tbody/tr[1]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td[3]/p[3]/font/b/text()[2]
+-  url: http://www.minema.di.fc.ul.pt/mobility.html
+   redirectPageText: O site www.minema.di.fc.ul.pt foi desativado.
+   timestamp: 20191126171934
+   waybackText: This novel and promising mechanism fosters further collaboration among different research groups working
+   waybackTextXPath: /html/body/table[5]/tbody/tr[1]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td[3]/dt/font/dl[1]/text()
