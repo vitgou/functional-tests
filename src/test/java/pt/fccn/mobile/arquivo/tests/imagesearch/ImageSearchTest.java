@@ -39,54 +39,54 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 		run("Search images instead of text", () -> {
 			waitUntilElementIsVisibleAndGet(By.id("ImageButton")).click();
 		});
-
+		
 		run("Click/open one image on search results to open modal",
 				() -> waitUntilElementIsVisibleAndGet(By.id("imageResults0")).click());
 
 		appendError(() -> {
 			assertTrue("First image details should be shown after clicking on it",
-					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a"))
+					driver.findElement(By.xpath("//*[@id=\"card0\"]"))
 							.isDisplayed());
 		});
 
 		appendError(() -> {
 			assertEquals("Check image name on opened modal", "FCCN",
-					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[1]/h5/a"))
+					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[1]/a"))
 							.getText());
 		});
-
+		
 		appendError(() -> {
-			assertEquals("Check image original link on opened modal", "wiki.di.uminho.pt/twiki/pub...I/fccn.jpg", driver
-					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[2]/h5")).getText());
+			assertEquals("Check image original link on opened modal", "wiki.di.uminho.pt/twiki/pub/Mestrado/TPI/fccn.jpg", driver
+					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[2]")).getText());
 		});
-
+		
 		appendError(() -> {
 			assertEquals("Check image type and size on opened modal", "jpeg 319 x 69", driver
-					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[3]/h5")).getText());
+					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[3]")).getText());
 		});
 
 		appendError(() -> {
 			assertEquals("Check image date on opened modal", "7 Julho, 2007", driver
-					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[4]/h5")).getText());
+					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[4]")).getText());
 		});
 
 		appendError(() -> {
-			assertEquals("Check page attributes in image viewer", "Segundo Ciclo em Informática - Univer...",
-					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[2]/ion-list/ion-item[1]/a/h5"))
+			assertEquals("Check page attributes in image viewer", "Segundo Ciclo em Informática - Universidade do Minho - TWiki",
+					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[2]/ion-list/ion-item[1]/a"))
 							.getText());
 		});
-
+		
 		appendError(() -> {
 			assertEquals("Check page attributes in image viewer", "wiki.di.uminho.pt/twiki/bin/view/Mestrado/TPI",
-					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[2]/ion-list/ion-item[2]/h5"))
+					driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[2]/ion-list/ion-item[2]"))
 							.getText());
 		});
 
 		appendError(() -> {
 			assertEquals("Check page attributes in image viewer", "7 Julho, 2007", driver
-					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[2]/ion-list/ion-item[3]/h5")).getText());
+					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[2]/ion-list/ion-item[3]")).getText());
 		});
-
+		
 		appendError(() -> { // Click in Details button
 			driver.findElement(By.xpath("//*[@id=\"card0\"]/ion-row[1]/ion-col[2]/ion-button")).click();
 		});
