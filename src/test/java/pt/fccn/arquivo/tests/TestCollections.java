@@ -604,8 +604,8 @@ public class TestCollections extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void testCollectionBlogsSapo2018() {
-		test(new TestCollectionConfig().collectionId("BlogsSapo2018").timestamp("20180421194025")
-				.url("https://abemdanacao.blogs.sapo.pt/2018/03/"));
+		test(new TestCollectionConfig().collectionId("BlogsSapo2018").timestamp("20180815152431")
+				.url("https://abemdanacao.blogs.sapo.pt/via-crucis-o-caminhar-da-pessoa-1612858"));
 	}
 
 	@Test
