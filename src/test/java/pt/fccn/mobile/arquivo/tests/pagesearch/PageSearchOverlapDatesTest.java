@@ -33,12 +33,12 @@ public class PageSearchOverlapDatesTest extends WebDriverTestBaseParalell {
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
 
-		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleLeft")).click());
+		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleStart")).click());
 		LocalDate fromDate = LocalDate.of(1997, 5, 20);
 		run("Insert " + fromDate.toString() + " on start date picker",
 				() -> IonicDatePicker.changeTo(driver, fromDate));
 
-		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleRight")).click());
+		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleEnd")).click());
 		LocalDate untilDate = LocalDate.of(1996, 8, 22);
 
 		appendError(() -> {

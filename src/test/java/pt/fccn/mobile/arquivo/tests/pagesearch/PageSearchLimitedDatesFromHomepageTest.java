@@ -36,12 +36,12 @@ public class PageSearchLimitedDatesFromHomepageTest extends WebDriverTestBasePar
 			driver.findElement(By.id("txtSearch")).sendKeys("fccn");
 		});
 
-		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleLeft")).click());
+		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleStart")).click());
 		LocalDate fromDate = LocalDate.of(1996, 10, 12);
 		run("Insert " + fromDate.toString() + " on start date picker",
 				() -> IonicDatePicker.changeTo(driver, fromDate));
 
-		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleRight")).click());
+		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleEnd")).click());
 		LocalDate untilDate = LocalDate.of(1996, 10, 14);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
