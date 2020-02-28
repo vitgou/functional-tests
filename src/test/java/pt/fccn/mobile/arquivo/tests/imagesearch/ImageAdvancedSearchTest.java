@@ -47,35 +47,28 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 			assertEquals("Check if search words maintain fccn term", "fccn",
 					driver.findElement(By.id("adv_and")).getAttribute("value"));
 		});
-
+		
 		run("Close words box", () -> driver.findElement(By.xpath("//*[@id=\"words\"]/legend")).click());
-
-		run("Open dates box", () -> driver.findElement(By.xpath("//*[@id=\"date\"]/legend")).click());
 
 		run("Open start date picker", () -> driver.findElement(By.id("dateStart_top")).click());
 
 		run("Insert 31 may 2010 on start date picker", () -> {
 			IonicDatePicker.changeTo(driver, LocalDate.of(2010, 5, 31));
 		});
-
+		
 		run("Open end date picker", () -> driver.findElement(By.id("dateEnd_top")).click());
-
+		
 		run("Insert 1 jun 2012 on end date picker", () -> {
 			IonicDatePicker.changeTo(driver, LocalDate.of(2012, 6, 1));
 		});
 
 		run("Close dates box", () -> driver.findElement(By.xpath("//*[@id=\"date\"]/legend")).click());
 
-		run("Open images box", () -> driver
-				.findElement(
-						By.xpath("//*[@id=\"formatType\"]/ancestor::div[contains(@class, 'expandable-div')]/legend"))
-				.click());
-
 		appendError("Open select size", () -> driver.findElement(By.id("size")).click());
-
+		
 		appendError("Set size",
 				() -> waitUntilElementIsVisibleAndGet(By.xpath("//ion-action-sheet/div/div/div[1]/button[2]")).click());
-
+		
 		appendError("Open format type", () -> driver.findElement(By.id("formatType")).click());
 
 		appendError("Set format type",
@@ -85,9 +78,6 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 				.findElement(
 						By.xpath("//*[@id=\"formatType\"]/ancestor::div[contains(@class, 'expandable-div')]/legend"))
 				.click());
-
-		appendError("Open sites / domains box",
-				() -> driver.findElement(By.xpath("//*[@id=\"domains\"]/legend")).click());
 
 		appendError("Set site", () -> driver.findElement(By.id("site")).sendKeys("fccn.pt"));
 
@@ -113,25 +103,27 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 				"fccn site:fccn.pt type:png size:sm",
 				driver.findElement(By.id("txtSearch")).getAttribute("value").trim()));
 
+		System.out.println("Current url: " + driver.getCurrentUrl());
+
 		// start date - from
 		appendError(() -> assertEquals("After advanced search check day start date contains", "31",
-				driver.findElement(By.id("calendarDayLeft")).getText()));
+				driver.findElement(By.id("calendarDayStart")).getText()));
 
 		appendError(() -> assertEquals("After advanced search check month start date contains", "mai",
-				driver.findElement(By.id("calendarMonthLeft")).getText()));
+				driver.findElement(By.id("calendarMonthStart")).getText()));
 
 		appendError(() -> assertEquals("After advanced search check year start date contains", "2010",
-				driver.findElement(By.id("calendarYearLeft")).getText()));
+				driver.findElement(By.id("calendarYearStart")).getText()));
 
 		// until - end date
 		appendError(() -> assertEquals("After advanced search check day end date contains", "1",
-				driver.findElement(By.id("calendarDayRight")).getText()));
+				driver.findElement(By.id("calendarDayEnd")).getText()));
 
 		appendError(() -> assertEquals("After advanced search check month end date contains", "jun",
-				driver.findElement(By.id("calendarMonthRight")).getText()));
+				driver.findElement(By.id("calendarMonthEnd")).getText()));
 
 		appendError(() -> assertEquals("After advanced search check year end date contains", "2012",
-				driver.findElement(By.id("calendarYearRight")).getText()));
+				driver.findElement(By.id("calendarYearEnd")).getText()));
 	}
 
 }
