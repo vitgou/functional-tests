@@ -51,6 +51,9 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 			driver.findElement(By.id("txtSearch")).sendKeys(url);
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
+				
+		driver.switchTo().defaultContent(); // we are now outside both frames
+		driver.switchTo().frame("url_search_iframe");
 		
 		run("Change to list mode if not in it", () -> {
 			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"layoutTV\"]/h4");
@@ -65,6 +68,8 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 		String versionLabel = new LocalizedString().pt("versões").en("versions").apply(locale);
 		
 		waitUntilElementIsVisibleAndGet(By.id("years"));
+		
+		System.out.println("Current url: " + driver.getCurrentUrl());
 		
 		run("Verify year", () -> {
 			WebElement yearTableHeader = driver.findElementById("th_1996");

@@ -27,14 +27,14 @@ public class URLSearchTableTest extends WebDriverTestBaseParalell {
 	@Retry
 	public void urlSearchTableTestPT() {
 		LocaleUtils.changeLanguageToPT(this);
-		urlSearchTableTest("fccn.pt", "Tabela", "13 Out");
+		urlSearchTableTest("fccn.pt", " Tabela ", "13 out");
 	}
 
 	@Test
 	@Retry
 	public void urlSearchTableTestEN() {
 		LocaleUtils.changeLanguageToEN(this);
-		urlSearchTableTest("fccn.pt", "Tabela", "13 Oct");
+		urlSearchTableTest("fccn.pt", " Table ", "13 Oct");
 	}
 
 	private void urlSearchTableTest(String url, String tableText, String firstResultText) {
@@ -44,22 +44,27 @@ public class URLSearchTableTest extends WebDriverTestBaseParalell {
 			driver.findElement(By.id("txtSearch")).sendKeys(url);
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
-
+		
+		//We have a iframe inside the page. Thus, to find the elements we need to change the iframe
+		driver.switchTo().defaultContent(); // we are now outside both frames
+		driver.switchTo().frame("url_search_iframe");
+		
 		run("Change to Table mode if not in it", () -> {
-			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"layoutTV\"]/h4");
+			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"layoutTV\"]/button/h4");
 			if (!resultsGridCurrentType.getText().contains(tableText)) {
 				driver.findElementByXPath("//*[@id=\"layoutTV\"]/button").click();
 			}
 		});
-
+		
+		System.out.println("Current url: " + driver.getCurrentUrl());
+		
 		run("Check if first version match", () -> {
 			waitUntilElementIsVisibleAndGet(By.id("conteudo-versoes"));
 			List<WebElement> firstRow = driver.findElementsByXPath("//*[@id=\"1\" and @class=\"trTV\"]/td");
 			WebElement firstCell = firstRow.get(0);
 			WebElement anchor = firstCell.findElement(By.xpath(".//a"));
 			String visibleDate = anchor.getText();
-			assertEquals("Check if first version match", firstResultText, visibleDate);
+			assertEquals("Check if first version match", firstResultText, visibleDate);			
 		});
 	}
-
 }
