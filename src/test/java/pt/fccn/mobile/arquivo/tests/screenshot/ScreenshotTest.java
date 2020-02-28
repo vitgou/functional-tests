@@ -28,10 +28,11 @@ public class ScreenshotTest extends AppendableErrorsBaseTest {
 	public ScreenshotTest() {
 		this.testURL = System.getProperty("test.url");
 	}
-
+	
 	@Test
 	@Retry
 	public void screenshotTest() {
+		
 		String screenshotUrlStr = this.testURL + "/screenshot/?url=" + this.testURL
 				+ "/noFrame/replay/19961013145650/http://www.fccn.pt/&width=2560&height=1440";
 
@@ -39,8 +40,8 @@ public class ScreenshotTest extends AppendableErrorsBaseTest {
 
 		String imagemd5 = getMd5(imageBytes);
 
-		assertEquals("Verify screenshot md5sum", "8cd46ca5b1e2d1f899033e8335a41862", imagemd5);
-
+		assertEquals("Verify screenshot md5sum", "0dfbcc33819da0b220cd649a852a53c3", imagemd5);
+		
 	}
 
 	private byte[] takeScreenshot(String screenshotUrlStr) {
