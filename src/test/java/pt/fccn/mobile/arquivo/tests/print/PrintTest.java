@@ -32,14 +32,14 @@ public class PrintTest extends AppendableErrorsBaseTest {
 	@Test
 	@Retry
 	public void printTest() {
-		String screenshotUrlStr = this.testURL + "/print/?url=" + this.testURL
-				+ "/noFrame/replay/19961013145650/http://www.fccn.pt/";
+		String screenshotUrlStr = this.testURL + "/screenshot?url=" + this.testURL
+				+ "/noFrame/replay/19961013145650/http://www.fccn.pt/&download=false";
 
 		byte[] bytes = print(screenshotUrlStr);
 
 		String md5 = getMd5(bytes);
-
-		assertEquals("Verify print md5sum", "d034de355125a3a89470caf03b73ed97", md5);
+		
+		assertEquals("Verify print md5sum", "5eebe9f78862a65a2150606be3678deb", md5);
 	}
 
 	private byte[] print(String screenshotUrlStr) {
