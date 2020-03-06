@@ -35,12 +35,12 @@ public class WorkflowStateBetweenSeachImagesTest extends WebDriverTestBaseParale
 			driver.findElement(By.xpath("//*[@id=\"ImageButton\"]")).click();
 		});
 
-		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleLeft")).click());
+		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleStart")).click());
 		LocalDate fromDate = LocalDate.of(1997, 5, 20);
 		run("Insert " + fromDate.toString() + " on start date picker",
 				() -> IonicDatePicker.changeTo(driver, fromDate));
 
-		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleRight")).click());
+		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleEnd")).click());
 		LocalDate untilDate = LocalDate.of(2014, 8, 22);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
@@ -51,17 +51,19 @@ public class WorkflowStateBetweenSeachImagesTest extends WebDriverTestBaseParale
 
 		appendError("Check if fccn is in search box on second page",
 				() -> driver.findElement(By.xpath("//*[@value=\"fccn\"]")));
+		
+		System.out.println("Current url: " + driver.getCurrentUrl());
 
-		appendError("Check if sliderLeft is the same on second page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayLeft\"][contains(text(),'20')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthLeft\"][contains(text(),'mai')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarYearLeft\"][contains(text(),'1997')]"));
+		appendError("Check if sliderStart is the same on second page", () -> {
+			driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"][contains(text(),'20')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"][contains(text(),'mai')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"][contains(text(),'1997')]"));
 		});
 
-		appendError("Check if sliderRigth is the same on second page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayRight\"][contains(text(),'22')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthRight\"][contains(text(),'ago')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarYearRight\"][contains(text(),'2014')]"));
+		appendError("Check if sliderEnd is the same on second page", () -> {
+			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'22')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'ago')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"][contains(text(),'2014')]"));
 		});
 
 		run("Go to the preivous page", () -> {
@@ -71,16 +73,16 @@ public class WorkflowStateBetweenSeachImagesTest extends WebDriverTestBaseParale
 		appendError("Check if fccn is in search box on first page",
 				() -> driver.findElement(By.xpath("//*[@value=\"fccn\"]")));
 
-		appendError("Check if sliderLeft is the same on first page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayLeft\"][contains(text(),'20')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthLeft\"][contains(text(),'mai')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarYearLeft\"][contains(text(),'1997')]"));
+		appendError("Check if sliderStart is the same on first page", () -> {
+			driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"][contains(text(),'20')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"][contains(text(),'mai')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"][contains(text(),'1997')]"));
 		});
 
-		appendError("Check if sliderRigth is the same on first page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayRight\"][contains(text(),'22')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthRight\"][contains(text(),'ago')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarYearRight\"][contains(text(),'2014')]"));
+		appendError("Check if sliderEnd is the same on first page", () -> {
+			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'22')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'ago')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"][contains(text(),'2014')]"));
 		});
 
 	}
