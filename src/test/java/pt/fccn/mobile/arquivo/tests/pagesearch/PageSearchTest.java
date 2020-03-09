@@ -1,5 +1,6 @@
 package pt.fccn.mobile.arquivo.tests.pagesearch;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -30,6 +31,9 @@ public class PageSearchTest extends WebDriverTestBaseParalell {
 
 		
 		waitUntilElementIsVisibleAndGet(By.id("resultados-lista"));
+		
+		appendError(() -> assertEquals("Verify if the estimated results count message is displayed on page search", "548.022",
+				driver.findElement(By.id("estimated-results-value")).getText()));
 		
 		int anchorsCount = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]//*[@class=\"url\"][contains(text(),'fccn')]")
 				.size();
