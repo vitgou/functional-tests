@@ -80,13 +80,11 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 
 		System.out.println("Current url: " + driver.getCurrentUrl());
 		
-		run("Check mime of first result", () -> {
-			driver.findElementsByXPath("//*[@id=\"resultados-lista\"]/ul/li/div[1]/a/h2/span[contains(text(),'[PDF]')]");
-		});
+		appendError(() -> assertEquals("Check mime of first result", "[PDF]",
+				driver.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li/div[1]/a/h2/span")).getText()));
 		
-		run("Check url of first result", () -> {
-				driver.findElementsByXPath("//*[@id=\"resultados-lista\"]/ul/li/div[1]/p[contains(text(),'fccn.pt')]");
-		});
+		appendError(() -> assertEquals("Check url of first result", "→ fccn.pt/wp-content/uploads/2017/06/booklet_RCTS2017.pdf",
+				driver.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li/div[1]/p")).getText()));
 		
 		// start date - from
 		appendError(() -> assertEquals("After advanced search check day start date contains", "31",
