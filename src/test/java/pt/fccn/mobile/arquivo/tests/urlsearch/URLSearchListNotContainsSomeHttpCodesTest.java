@@ -54,6 +54,20 @@ public class URLSearchListNotContainsSomeHttpCodesTest extends WebDriverTestBase
 	public void urlSearchListNotContains503EN() {
 		test("record.pt", LocaleUtils.ENGLISH, Arrays.asList("19981202152653"), Arrays.asList("20171031183600"));
 	}
+	
+	//Verify if some redirect that is too close of a 200 isn't currently displayed on table/list of versions. Verify the missing of 302 but also verify if the corresponding 200 is displayed.
+	
+	@Test
+	@Retry
+	public void urlSearchListNotContains302PT() {
+		test("fccn.pt", LocaleUtils.PORTUGUESE, Arrays.asList("20161212184040"), Arrays.asList("20161213184117"));
+	}
+
+	@Test
+	@Retry
+	public void urlSearchListNotContains302EN() {
+		test("fccn.pt", LocaleUtils.ENGLISH, Arrays.asList("20161212184040"), Arrays.asList("20161213184117"));
+	}
 
 	private void test(String url, Locale locale, List<String> visibleVersions, List<String> invisibleVersions) {
 
@@ -86,7 +100,7 @@ public class URLSearchListNotContainsSomeHttpCodesTest extends WebDriverTestBase
 		});
 
 		run("Check specific timestamp should not exist", () -> {
-			visibleVersions.stream().forEach(version -> {
+			invisibleVersions.stream().forEach(version -> {
 				String msg = String.format("The timestamp %s for %s shoud not exist", version, url);
 
 				appendError(msg, () -> new WebDriverWait(driver, 20)
