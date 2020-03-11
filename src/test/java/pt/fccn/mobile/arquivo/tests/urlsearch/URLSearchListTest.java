@@ -114,6 +114,10 @@ public class URLSearchListTest extends WebDriverTestBaseParalell {
 					.format(locale, DateUtils.asDateFromTimestamp(timestamp));
 
 			assertEquals(expected, dayWE.getText());
+			
+			assertThat("Verify href",
+					driver.findElement(By.xpath("//*[@id=\"19961013145650\"]")).getAttribute("href"), containsString(System.getProperty("test.url")+"/wayback/19961013145650/http://www.fccn.pt/"));
+			
 		});
 
 	}
