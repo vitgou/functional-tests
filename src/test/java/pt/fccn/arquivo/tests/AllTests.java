@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import pt.fccn.arquivo.tests.API.PageSearchAPITest;
 import pt.fccn.arquivo.tests.imagesearch.ImageAdvancedSearchTest;
 import pt.fccn.arquivo.tests.imagesearch.ImageSearchDirectUrlTest;
 import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
@@ -54,7 +55,9 @@ import pt.fccn.arquivo.tests.imagesearch.ImageSearchTest;
 		//MemorialTest.class,
 
 		ContaMeHistoriasTest.class,
-
+		
+		PageSearchAPITest.class,
+	
 })
 //TODO refactoring TermsAndConditionsTest.class
 //TODO SearchMultipleTermsQueryServer.class
