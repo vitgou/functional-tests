@@ -1,5 +1,8 @@
 package pt.fccn.mobile.arquivo.tests.workflow;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import java.time.LocalDate;
 
 import org.junit.Test;
@@ -41,23 +44,35 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
 
+		run("Click Search Button", () -> {
+			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
+		});
+		
 		run("Go to the next page", () -> {
 			waitUntilElementIsVisibleAndGet(By.xpath("//*[@class=\"next\"]/a")).click();
 		});
-
+		
+		System.out.println("Current url: " + driver.getCurrentUrl());
+		
 		appendError("Check if fccn is in search box on second page",
 				() -> driver.findElement(By.xpath("//*[@value=\"fccn\"]")));
-
-		appendError("Check if sliderLeft is the same on second page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"][contains(text(),'20')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"][contains(text(),'mai')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"][contains(text(),'1997')]"));
+	
+		run("Verify calendarStart", () -> {
+			assertThat("Verify Start Day",
+					driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"]")).getText(), containsString("20"));
+			assertThat("Verify Start Month",
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"]")).getText(), containsString("mai"));
+			assertThat("Verify Start Year",
+					driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"]")).getText(), containsString("1997"));
 		});
-
-		appendError("Check if sliderRigth is the same on second page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'22')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'ago')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"][contains(text(),'2014')]"));
+		
+		run("Verify calendarEnd", () -> {
+			assertThat("Verify End Day",
+					driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"]")).getText(), containsString("22"));
+			assertThat("Verify End Month",
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("ago"));
+			assertThat("Verify End Year",
+					driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"]")).getText(), containsString("2014"));
 		});
 
 		run("Go to the preivous page", () -> {
@@ -67,16 +82,22 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 		appendError("Check if fccn is in search box on first page",
 				() -> driver.findElement(By.xpath("//*[@value=\"fccn\"]")));
 
-		appendError("Check if sliderLeft is the same on first page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"][contains(text(),'20')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"][contains(text(),'mai')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"][contains(text(),'1997')]"));
+		run("Verify calendarStart", () -> {
+			assertThat("Verify Start Day",
+					driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"]")).getText(), containsString("20"));
+			assertThat("Verify Start Month",
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"]")).getText(), containsString("mai"));
+			assertThat("Verify Start Year",
+					driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"]")).getText(), containsString("1997"));
 		});
-
-		appendError("Check if sliderRigth is the same on first page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'22')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'ago')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"][contains(text(),'2014')]"));
+		
+		run("Verify calendarEnd", () -> {
+			assertThat("Verify End Day",
+					driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"]")).getText(), containsString("22"));
+			assertThat("Verify End Month",
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("ago"));
+			assertThat("Verify End Year",
+					driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"]")).getText(), containsString("2014"));
 		});
 
 	}

@@ -44,11 +44,17 @@ public class WorkflowStateBetweenSeachImagesTest extends WebDriverTestBaseParale
 		LocalDate untilDate = LocalDate.of(2014, 8, 22);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
-
+		
+		run("Click Search Button", () -> {
+			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
+		});
+		
 		run("Go to the next page", () -> {
 			waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"nextImage\"]/a")).click();
 		});
-
+		
+		waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"photos\"]"));
+		
 		appendError("Check if fccn is in search box on second page",
 				() -> driver.findElement(By.xpath("//*[@value=\"fccn\"]")));
 		
