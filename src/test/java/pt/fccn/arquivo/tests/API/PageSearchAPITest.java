@@ -1,4 +1,4 @@
-package pt.fccn.arquivo.API;
+package pt.fccn.arquivo.tests.API;
 
 import static org.junit.Assert.assertEquals;
 
