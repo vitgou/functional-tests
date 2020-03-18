@@ -339,7 +339,7 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 //		WebElement element = driver.findElement(by);
 //		driver.executeScript("arguments[0].click();", element);
 
-		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(by));
+		new WebDriverWait(driver, 40).until(ExpectedConditions.visibilityOfElementLocated(by));
 		return driver.findElement(by);
 	}
 
