@@ -40,9 +40,12 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 			waitUntilElementIsVisibleAndGet(By.id("ImageButton")).click();
 		});
 		
+		//Get estimated-results-value
+		String element = driver.findElement(By.id("estimated-results-value")).getText();
+		Double number_of_display_results = Double.valueOf(element); 
 		
-		appendError(() -> assertEquals("Verify if the estimated results count message is displayed on page search", "2.220",
-				driver.findElement(By.id("estimated-results-value")).getText()));
+		assertTrue("Verify if the estimated results count message is displayed on image search is greater than 2.200",
+				number_of_display_results >= 2.200);
 		
 		run("Click/open one image on search results to open modal",
 				() -> waitUntilElementIsVisibleAndGet(By.id("imageResults0")).click());
