@@ -7,8 +7,6 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
 
 import pt.fccn.arquivo.selenium.Retry;
@@ -685,6 +683,13 @@ public class TestCollections extends AppendableErrorsBaseTest {
 				.url("https://www.tau.ac.il/"));
 	}
 
+	@Test
+	@Retry
+	public void testCollectionEAWP23() {
+		test(new TestCollectionConfig().collectionId("EAWP23").timestamp("20190522205517")
+				.url("https://www.fccn.pt/"));
+	}
+
 	private void test(TestCollectionConfig config) {
 		for (String server : SERVERS) {
 			String testUrl = config.getTestURL(server);
@@ -728,7 +733,6 @@ public class TestCollections extends AppendableErrorsBaseTest {
 		private String collectionId;
 		private String timestamp;
 		private String url;
-		private String waybackText;
 
 		public String getTestURL(String server) {
 			return PROTOCOL + "://" + server + ":" + PORT + "/" + WAYBACK_PATH + "/" + timestamp + "/" + url;
@@ -749,25 +753,8 @@ public class TestCollections extends AppendableErrorsBaseTest {
 			return this;
 		}
 
-		public TestCollectionConfig waybackText(String waybackText) {
-			this.waybackText = waybackText;
-			return this;
-		}
-
 		public String getCollectionId() {
 			return collectionId;
-		}
-
-		public String getTimestamp() {
-			return timestamp;
-		}
-
-		public String getUrl() {
-			return url;
-		}
-
-		public String getWaybackText() {
-			return waybackText;
 		}
 
 	}
