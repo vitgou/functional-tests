@@ -55,7 +55,7 @@ public class PageSearchNotArchivedFileTest extends WebDriverTestBaseParalell {
 		waitUntilElementIsVisibleAndGet(By.id("resultados-lista"));
 
 		run("click third position", () -> {
-			driver.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[3]/div[1]/a")).click();
+			driver.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[2]/div[1]/a")).click();
 		});
 
 		appendError("Check if page is not archived", () -> new WebDriverWait(driver, 20)
