@@ -56,7 +56,7 @@ public class PageAdvancedSearchNegationOptionTest extends WebDriverTestBaseParal
 				driver.findElement(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[3]/div[2]/span")).getText(), containsString("fccn"));
 		
 		appendError("Verify if any of the search results contains the visible text Fundação", () -> new WebDriverWait(driver, 20)
-				.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[1]/div[1]/a/h2[contains(text(),'Fundação')]"))));
+				.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"resultados-lista\"]/ul/li[3]/div[2]/span[contains(text(),'Fundação')]"))));
 	}
 
 }
