@@ -43,13 +43,13 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		
 		run("Close words box", () -> driver.findElement(By.xpath("//*[@id=\"words\"]/legend")).click());
 
-		run("Open start date picker", () -> driver.findElement(By.id("dateStart_top")).click());
+		run("Open start date picker", () -> driver.findElement(By.id("sliderCircleStart")).click());
 
 		run("Insert 31 may 2010 on start date picker", () -> {
 			IonicDatePicker.changeTo(driver, LocalDate.of(2006, 5, 31));
 		});
 		
-		run("Open end date picker", () -> driver.findElement(By.id("dateEnd_top")).click());
+		run("Open end date picker", () -> driver.findElement(By.id("sliderCircleEnd")).click());
 		
 		run("Insert 1 jun 2012 on end date picker", () -> {
 			IonicDatePicker.changeTo(driver, LocalDate.of(2018, 6, 1));
