@@ -42,7 +42,7 @@ public class PageSearchLimitedDatesFromHomepageTest extends WebDriverTestBasePar
 				() -> IonicDatePicker.changeTo(driver, fromDate));
 
 		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleEnd")).click());
-		LocalDate untilDate = LocalDate.of(1996, 10, 14);
+		LocalDate untilDate = LocalDate.of(1997, 1, 1);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
 

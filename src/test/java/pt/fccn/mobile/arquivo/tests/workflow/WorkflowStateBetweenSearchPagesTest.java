@@ -40,7 +40,7 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 				() -> IonicDatePicker.changeTo(driver, fromDate));
 
 		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleEnd")).click());
-		LocalDate untilDate = LocalDate.of(2014, 8, 22);
+		LocalDate untilDate = LocalDate.of(2014, 1, 1);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
 
@@ -68,9 +68,9 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 		
 		run("Verify calendarEnd", () -> {
 			assertThat("Verify End Day",
-					driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"]")).getText(), containsString("22"));
+					driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"]")).getText(), containsString("1"));
 			assertThat("Verify End Month",
-					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("ago"));
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("jan"));
 			assertThat("Verify End Year",
 					driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"]")).getText(), containsString("2014"));
 		});
@@ -93,9 +93,9 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 		
 		run("Verify calendarEnd", () -> {
 			assertThat("Verify End Day",
-					driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"]")).getText(), containsString("22"));
+					driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"]")).getText(), containsString("1"));
 			assertThat("Verify End Month",
-					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("ago"));
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("jan"));
 			assertThat("Verify End Year",
 					driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"]")).getText(), containsString("2014"));
 		});

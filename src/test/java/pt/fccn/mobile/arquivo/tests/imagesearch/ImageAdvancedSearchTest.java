@@ -58,8 +58,8 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		
 		run("Open end date picker", () -> driver.findElement(By.id("sliderCircleEnd")).click());
 		
-		run("Insert 1 jun 2012 on end date picker", () -> {
-			IonicDatePicker.changeTo(driver, LocalDate.of(2012, 6, 1));
+		run("Insert 1 jan 2012 on end date picker", () -> {
+			IonicDatePicker.changeTo(driver, LocalDate.of(2012, 1, 1));
 		});
 
 		run("Close dates box", () -> driver.findElement(By.xpath("//*[@id=\"date\"]/legend")).click());
@@ -92,7 +92,7 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 				driver.findElement(By.xpath("//*[@id=\"imageResults0\"]/p[1]")).getText(),
 				containsString("arquivo-web.fccn")));
 
-		appendError(() -> assertEquals("Check image date", "5 Agosto, 2010",
+		appendError(() -> assertEquals("Check image date", "5 Agosto às 17:54, 2010",
 				driver.findElement(By.xpath("//*[@id=\"date0\"]")).getText()));
 
 		appendError(() -> assertEquals("Check image thumbnail on base 64",
@@ -119,7 +119,7 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		appendError(() -> assertEquals("After advanced search check day end date contains", "1",
 				driver.findElement(By.id("calendarDayEnd")).getText()));
 
-		appendError(() -> assertEquals("After advanced search check month end date contains", "jun",
+		appendError(() -> assertEquals("After advanced search check month end date contains", "jan",
 				driver.findElement(By.id("calendarMonthEnd")).getText()));
 
 		appendError(() -> assertEquals("After advanced search check year end date contains", "2012",

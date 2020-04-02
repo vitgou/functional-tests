@@ -37,7 +37,7 @@ public class WorkflowStateBetweenSearchPageAndImageTest extends WebDriverTestBas
 				() -> IonicDatePicker.changeTo(driver, fromDate));
 
 		run("Open until date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleEnd")).click());
-		LocalDate untilDate = LocalDate.of(2014, 8, 22);
+		LocalDate untilDate = LocalDate.of(2014, 1, 1);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
 
@@ -55,8 +55,8 @@ public class WorkflowStateBetweenSearchPageAndImageTest extends WebDriverTestBas
 		});
 
 		appendError("Check if sliderRigth is the same on second page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'22')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'ago')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'1')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'jan')]"));
 			driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"][contains(text(),'2014')]"));
 		});
 
@@ -74,8 +74,8 @@ public class WorkflowStateBetweenSearchPageAndImageTest extends WebDriverTestBas
 		});
 
 		appendError("Check if sliderRigth is the same on first page", () -> {
-			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'22')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'ago')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'1')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'jan')]"));
 			driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"][contains(text(),'2014')]"));
 		});
 	}

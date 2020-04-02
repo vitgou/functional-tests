@@ -51,8 +51,8 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		
 		run("Open end date picker", () -> driver.findElement(By.id("sliderCircleEnd")).click());
 		
-		run("Insert 1 jun 2012 on end date picker", () -> {
-			IonicDatePicker.changeTo(driver, LocalDate.of(2018, 6, 1));
+		run("Insert 1 jan 2012 on end date picker", () -> {
+			IonicDatePicker.changeTo(driver, LocalDate.of(2018, 1, 1));
 		});
 
 		run("Close dates box", () -> driver.findElement(By.xpath("//*[@id=\"date\"]/legend")).click());
@@ -100,7 +100,7 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		appendError(() -> assertEquals("After advanced search check day end date contains", "1",
 				driver.findElement(By.id("calendarDayEnd")).getText()));
 
-		appendError(() -> assertEquals("After advanced search check month end date contains", "jun",
+		appendError(() -> assertEquals("After advanced search check month end date contains", "jan",
 				driver.findElement(By.id("calendarMonthEnd")).getText()));
 
 		appendError(() -> assertEquals("After advanced search check year end date contains", "2018",
