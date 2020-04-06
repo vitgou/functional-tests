@@ -61,7 +61,7 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 			assertThat("Verify Start Day",
 					driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"]")).getText(), containsString("20"));
 			assertThat("Verify Start Month",
-					driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"]")).getText(), containsString("mai"));
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"]")).getText(), containsString("Mai"));
 			assertThat("Verify Start Year",
 					driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"]")).getText(), containsString("1997"));
 		});
@@ -70,7 +70,7 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 			assertThat("Verify End Day",
 					driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"]")).getText(), containsString("1"));
 			assertThat("Verify End Month",
-					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("jan"));
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("Jan"));
 			assertThat("Verify End Year",
 					driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"]")).getText(), containsString("2014"));
 		});
@@ -86,7 +86,7 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 			assertThat("Verify Start Day",
 					driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"]")).getText(), containsString("20"));
 			assertThat("Verify Start Month",
-					driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"]")).getText(), containsString("mai"));
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"]")).getText(), containsString("Mai"));
 			assertThat("Verify Start Year",
 					driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"]")).getText(), containsString("1997"));
 		});
@@ -95,7 +95,7 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 			assertThat("Verify End Day",
 					driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"]")).getText(), containsString("1"));
 			assertThat("Verify End Month",
-					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("jan"));
+					driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"]")).getText(), containsString("Jan"));
 			assertThat("Verify End Year",
 					driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"]")).getText(), containsString("2014"));
 		});

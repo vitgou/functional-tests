@@ -62,13 +62,13 @@ public class WorkflowStateBetweenSeachImagesTest extends WebDriverTestBaseParale
 
 		appendError("Check if sliderStart is the same on second page", () -> {
 			driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"][contains(text(),'20')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"][contains(text(),'mai')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"][contains(text(),'Mai')]"));
 			driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"][contains(text(),'1997')]"));
 		});
 
 		appendError("Check if sliderEnd is the same on second page", () -> {
 			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'1')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'jan')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'Jan')]"));
 			driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"][contains(text(),'2014')]"));
 		});
 
@@ -81,13 +81,13 @@ public class WorkflowStateBetweenSeachImagesTest extends WebDriverTestBaseParale
 
 		appendError("Check if sliderStart is the same on first page", () -> {
 			driver.findElement(By.xpath("//*[@id=\"calendarDayStart\"][contains(text(),'20')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"][contains(text(),'mai')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthStart\"][contains(text(),'Mai')]"));
 			driver.findElement(By.xpath("//*[@id=\"calendarYearStart\"][contains(text(),'1997')]"));
 		});
 
 		appendError("Check if sliderEnd is the same on first page", () -> {
 			driver.findElement(By.xpath("//*[@id=\"calendarDayEnd\"][contains(text(),'1')]"));
-			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'jan')]"));
+			driver.findElement(By.xpath("//*[@id=\"calendarMonthEnd\"][contains(text(),'Jan')]"));
 			driver.findElement(By.xpath("//*[@id=\"calendarYearEnd\"][contains(text(),'2014')]"));
 		});
 

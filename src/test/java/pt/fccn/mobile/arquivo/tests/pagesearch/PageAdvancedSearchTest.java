@@ -90,7 +90,7 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		appendError(() -> assertEquals("After advanced search check day start date contains", "31",
 				driver.findElement(By.id("calendarDayStart")).getText()));
 
-		appendError(() -> assertEquals("After advanced search check month start date contains", "mai",
+		appendError(() -> assertEquals("After advanced search check month start date contains", "Mai",
 				driver.findElement(By.id("calendarMonthStart")).getText()));
 
 		appendError(() -> assertEquals("After advanced search check year start date contains", "2006",
@@ -100,7 +100,7 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		appendError(() -> assertEquals("After advanced search check day end date contains", "1",
 				driver.findElement(By.id("calendarDayEnd")).getText()));
 
-		appendError(() -> assertEquals("After advanced search check month end date contains", "jan",
+		appendError(() -> assertEquals("After advanced search check month end date contains", "Jan",
 				driver.findElement(By.id("calendarMonthEnd")).getText()));
 
 		appendError(() -> assertEquals("After advanced search check year end date contains", "2018",

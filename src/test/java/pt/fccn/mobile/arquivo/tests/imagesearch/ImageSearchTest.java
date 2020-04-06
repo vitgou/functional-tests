@@ -73,7 +73,7 @@ public class ImageSearchTest extends WebDriverTestBaseParalell {
 		});
 
 		appendError(() -> {
-			assertEquals("Check image date on opened modal", "7 Julho  às 20:16, 2007", driver
+			assertEquals("Check image date on opened modal", "7 Julho às 20:16, 2007", driver
 					.findElement(By.xpath("//*[@id=\"card0\"]/ion-card-content[1]/ion-list/ion-item[4]")).getText());
 		});
 

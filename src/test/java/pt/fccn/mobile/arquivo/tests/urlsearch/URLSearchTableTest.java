@@ -30,7 +30,7 @@ public class URLSearchTableTest extends WebDriverTestBaseParalell {
 	@Retry
 	public void urlSearchTableTestPT() {
 		LocaleUtils.changeLanguageToPT(this);
-		urlSearchTableTest("fccn.pt", " Tabela ", "13 out", LocaleUtils.PORTUGUESE);
+		urlSearchTableTest("fccn.pt", " Tabela ", "13 Out", LocaleUtils.PORTUGUESE);
 	}
 
 	@Test
