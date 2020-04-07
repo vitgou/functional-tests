@@ -42,7 +42,7 @@ public class MenuAboutWaybackTest extends MenuWaybackTest {
 		openMenu();
 
 		run("Click about button",
-				() -> waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"swiperWrapper\"]/div[1]/a[3]/h4")).click());
+				() -> waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"swiperWrapper\"]/div[1]/a[2]/h4")).click());
 
 		appendError("Check if current url is the about page",
 				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains(expectedUrl)));
