@@ -28,7 +28,7 @@ public class IonicDatePicker {
 	    String browserName = cap.getBrowserName().toLowerCase();
 	    String os = cap.getPlatform().toString();
 		
-	    if (browserName.equals("chrome") && os.equals("WINDOWS")){ 
+	    if (os.equals("WINDOWS")){ 
 	    	selectDateFromJqueryDatepicker(driver.findElement(By.id("ui-datepicker-div")), year, month, day);
 	    	driver.findElement(By.xpath("//*[@id=\"uglipop_popbox\"]/div[2]/button")).click();
 	    }else{
