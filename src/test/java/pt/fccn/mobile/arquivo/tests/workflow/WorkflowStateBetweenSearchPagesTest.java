@@ -19,22 +19,22 @@ import pt.fccn.mobile.arquivo.utils.IonicDatePicker;
  */
 
 public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParalell {
-
+	
 	public WorkflowStateBetweenSearchPagesTest(String os, String version, String browser, String deviceName,
 			String deviceOrientation) {
 		super(os, version, browser, deviceName, deviceOrientation);
 	}
-
+	
+	
 	@Test
 	@Retry
 	public void stateBetweenSearchPages() throws Exception {
 		run("Search FCCN term", () -> {
 			driver.findElement(By.id("txtSearch")).clear();
 			driver.findElement(By.id("txtSearch")).sendKeys("fccn");
-			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
-
-		run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleStart")).click());
+		
+    	run("Open from date picker", () -> waitUntilElementIsVisibleAndGet(By.id("sliderCircleStart")).click());
 		LocalDate fromDate = LocalDate.of(1997, 5, 20);
 		run("Insert " + fromDate.toString() + " on start date picker",
 				() -> IonicDatePicker.changeTo(driver, fromDate));
@@ -43,17 +43,15 @@ public class WorkflowStateBetweenSearchPagesTest extends WebDriverTestBaseParale
 		LocalDate untilDate = LocalDate.of(2014, 1, 1);
 		run("Insert " + untilDate.toString() + " on end date picker",
 				() -> IonicDatePicker.changeTo(driver, untilDate));
-
+		
 		run("Click Search Button", () -> {
 			driver.findElement(By.xpath("//*[@id=\"buttonSearch\"]/button")).click();
 		});
-		
+				
 		run("Go to the next page", () -> {
-			waitUntilElementIsVisibleAndGet(By.xpath("//*[@class=\"next\"]/a")).click();
+			waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"nextPageSearch\"]")).click();
 		});
-		
-		System.out.println("Current url: " + driver.getCurrentUrl());
-		
+				
 		appendError("Check if fccn is in search box on second page",
 				() -> driver.findElement(By.xpath("//*[@value=\"fccn\"]")));
 	
