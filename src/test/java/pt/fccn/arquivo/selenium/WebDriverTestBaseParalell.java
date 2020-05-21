@@ -171,10 +171,10 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 		LinkedList<String[]> browsers = new LinkedList<String[]>();
 		if (browsersJSON == null || browsersJSON.isEmpty()) {
 			System.out.println("You did not specify browsers, testing with latest firefox and chrome on Windows...");
-			browsers.add(new String[] { "Windows 8.1", "latest", "chrome", null, null });
-			browsers.add(new String[] { "Windows 10", "latest", "firefox", null, null });
+			//browsers.add(new String[] { "Windows 8.1", "latest", "chrome", null, null });
+			//browsers.add(new String[] { "Mac 10.14", "latest", "safari", null, null });
 //			browsers.add(new String[] { "Linux", null, "chrome", null, null });
-//			browsers.add(new String[] { "Linux", null, "firefox", null, null });
+			browsers.add(new String[] { "Linux", null, "firefox", null, null });
 		} else {
 			JSONObject browsersJSONObject = new JSONObject("{browsers:" + browsersJSON + "}");
 			JSONArray browsersJSONArray = browsersJSONObject.getJSONArray("browsers");
@@ -229,6 +229,10 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 
 		String methodName = name.getMethodName() + " " + browser + " " + version;
 		capabilities.setCapability("name", methodName);
+		
+		capabilities.setCapability("acceptSslCerts", true);
+		
+		capabilities.setCapability("acceptInsecureCerts", true);
 
 		System.out.println("Screen Resolution: " + screenResolution);
 		if (screenResolution != null && !screenResolution.isEmpty()) {
@@ -339,7 +343,7 @@ public class WebDriverTestBaseParalell extends AppendableErrorsBaseTest implemen
 //		WebElement element = driver.findElement(by);
 //		driver.executeScript("arguments[0].click();", element);
 
-		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(by));
+		new WebDriverWait(driver, 40).until(ExpectedConditions.visibilityOfElementLocated(by));
 		return driver.findElement(by);
 	}
 
