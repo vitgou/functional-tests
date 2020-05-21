@@ -114,8 +114,10 @@ public class AnalyzeURLs {
 	    boolean redirect = false;
 		try {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
+	    	
+	    	ignoreSSLCerts();
 
-	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
+	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -138,7 +140,7 @@ public class AnalyzeURLs {
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 
 	    		// open the new connection again
-				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
+				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 	    		con.setRequestProperty( "Cookie", cookies );
@@ -185,8 +187,10 @@ public class AnalyzeURLs {
 	    boolean redirect = false;
 		try {
 	    	System.out.println( "[linkExists] url[" + url + "]" );
+	    	
+	    	ignoreSSLCerts();
 
-	    	HttpURLConnection con = ( HttpURLConnection ) new URL( url ).openConnection( );
+	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( url ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -206,7 +210,7 @@ public class AnalyzeURLs {
 	    		System.out.println( "Redirect: true url["+url+"] newurl["+newUrl+"]" );
 
 	    		// open the new connection again
-				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
+				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
