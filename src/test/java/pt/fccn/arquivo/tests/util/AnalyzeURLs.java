@@ -245,10 +245,10 @@ public class AnalyzeURLs {
 	 * @return
 	 */
 	public static boolean checkRedirect( int status ){
-		if ( status != HttpURLConnection.HTTP_OK ) {
-    		if ( status == HttpURLConnection.HTTP_MOVED_TEMP
-    			|| status == HttpURLConnection.HTTP_MOVED_PERM
-    				|| status == HttpURLConnection.HTTP_SEE_OTHER )
+		if ( status != HttpsURLConnection.HTTP_OK ) {
+    		if ( status == HttpsURLConnection.HTTP_MOVED_TEMP
+    			|| status == HttpsURLConnection.HTTP_MOVED_PERM
+    				|| status == HttpsURLConnection.HTTP_SEE_OTHER )
     		return true;
     	}
 		return false;
