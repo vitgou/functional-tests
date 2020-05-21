@@ -6,6 +6,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 public class AnalyzeURLs {
 
 
@@ -20,7 +25,9 @@ public class AnalyzeURLs {
 		try {
 	    	System.out.println( "[linkExists] url[" + URLName + "]" );
 
-	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
+	    	ignoreSSLCerts();
+
+	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -42,7 +49,7 @@ public class AnalyzeURLs {
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 
 	    		// open the new connection again
-				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
+				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 				if (cookies != null && !cookies.isEmpty()) {
@@ -67,6 +74,33 @@ public class AnalyzeURLs {
 		} catch ( IOException e ) {
 			System.out.println( "IOException e = " + e.getMessage( ) );
 			return -1;
+		}
+
+	}
+
+	public static void ignoreSSLCerts() {
+		// Create a trust manager that does not validate certificate chains
+		TrustManager[] trustAllCerts = new TrustManager[]{
+		    new X509TrustManager() {
+		        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+		            return null;
+		        }
+		        public void checkClientTrusted(
+		            java.security.cert.X509Certificate[] certs, String authType) {
+		        }
+		        public void checkServerTrusted(
+		            java.security.cert.X509Certificate[] certs, String authType) {
+		        }
+		    }
+		};
+
+		// Install the all-trusting trust manager
+		try {
+		    SSLContext sc = SSLContext.getInstance("SSL");
+		    sc.init(null, trustAllCerts, new java.security.SecureRandom());
+		    HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 
 	}
