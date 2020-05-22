@@ -26,8 +26,11 @@ public class AnalyzeURLs {
 	    	System.out.println( "[linkExists] url[" + URLName + "]" );
 
 	    	ignoreSSLCerts();
+	    	
+	    	String replacedString = URLName.replace("http", "https");
 
-	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
+
+	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( replacedString ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -116,8 +119,10 @@ public class AnalyzeURLs {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
 	    	
 	    	ignoreSSLCerts();
+	    	
+	    	String replacedString = URLName.replace("http", "https");
 
-	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( URLName ).openConnection( );
+	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( replacedString ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -189,8 +194,10 @@ public class AnalyzeURLs {
 	    	System.out.println( "[linkExists] url[" + url + "]" );
 	    	
 	    	ignoreSSLCerts();
+	    	
+	    	String replacedString = url.replace("http", "https");
 
-	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( url ).openConnection( );
+	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( replacedString ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
