@@ -30,7 +30,7 @@ public class AnalyzeURLs {
 	    	String replacedString = URLName.replace("http", "https");
 
 
-	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( replacedString ).openConnection( );
+	    	HttpURLConnection con = ( HttpURLConnection ) new URL( replacedString ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -52,7 +52,7 @@ public class AnalyzeURLs {
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 
 	    		// open the new connection again
-				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
+				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 				if (cookies != null && !cookies.isEmpty()) {
@@ -119,10 +119,8 @@ public class AnalyzeURLs {
 	    	System.out.println( "[Footer] url[" + URLName + "]" );
 	    	
 	    	ignoreSSLCerts();
-	    	
-	    	String replacedString = URLName.replace("http", "https");
 
-	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( replacedString ).openConnection( );
+	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -145,7 +143,7 @@ public class AnalyzeURLs {
 	    		String cookies = con.getHeaderField( "Set-Cookie" );
 
 	    		// open the new connection again
-				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
+				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 	    		con.setRequestProperty( "Cookie", cookies );
@@ -164,7 +162,7 @@ public class AnalyzeURLs {
 
 	    	System.out.println( "Compare textTolink.get( "+text+" ) = " + textTolink.get( text ) + " URLName = " + URLName + " Status-code = " + status );
 
-	    	if( status == HttpsURLConnection.HTTP_OK && textTolink.get( text ).trim( ).equals( URLName.trim( ) ) )
+	    	if( status == HttpURLConnection.HTTP_OK && textTolink.get( text ).trim( ).equals( URLName.trim( ) ) )
 	    		return true;
 	    	else
 	    		return false;
@@ -194,10 +192,8 @@ public class AnalyzeURLs {
 	    	System.out.println( "[linkExists] url[" + url + "]" );
 	    	
 	    	ignoreSSLCerts();
-	    	
-	    	String replacedString = url.replace("http", "https");
 
-	    	HttpsURLConnection con = ( HttpsURLConnection ) new URL( replacedString ).openConnection( );
+	    	HttpURLConnection con = ( HttpURLConnection ) new URL( url ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -217,7 +213,7 @@ public class AnalyzeURLs {
 	    		System.out.println( "Redirect: true url["+url+"] newurl["+newUrl+"]" );
 
 	    		// open the new connection again
-				con = ( HttpsURLConnection ) new URL( newUrl ).openConnection( );
+				con = ( HttpURLConnection ) new URL( newUrl ).openConnection( );
 				con.setConnectTimeout( 5000 );
 				con.setRequestMethod( "HEAD" );
 	    		con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
@@ -252,10 +248,10 @@ public class AnalyzeURLs {
 	 * @return
 	 */
 	public static boolean checkRedirect( int status ){
-		if ( status != HttpsURLConnection.HTTP_OK ) {
-    		if ( status == HttpsURLConnection.HTTP_MOVED_TEMP
-    			|| status == HttpsURLConnection.HTTP_MOVED_PERM
-    				|| status == HttpsURLConnection.HTTP_SEE_OTHER )
+		if ( status != HttpURLConnection.HTTP_OK ) {
+    		if ( status == HttpURLConnection.HTTP_MOVED_TEMP
+    			|| status == HttpURLConnection.HTTP_MOVED_PERM
+    				|| status == HttpURLConnection.HTTP_SEE_OTHER )
     		return true;
     	}
 		return false;
