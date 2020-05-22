@@ -38,7 +38,6 @@ public class CommonQuestionsPage {
 	private boolean loadQuestions( String filename , String language ) {
 		try {
 			String line;
-
 			InputStreamReader isr = new InputStreamReader(ClassLoader.getSystemResourceAsStream(dir + File.separator + filename), Charset.forName("UTF-8"));
 		    BufferedReader br = new BufferedReader(isr);
 		    while ((line = br.readLine()) != null) {

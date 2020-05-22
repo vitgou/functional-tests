@@ -1,7 +1,9 @@
 1. What is it for?
-2. What motivated its creation?
-3. What is the difference between the Portuguese Web Archive and the Internet Archive?
-4. Do you have any published statistics regarding the Portuguese Web?
-5. Is it possible to access the data for research purposes?
-6. Can I help preserve the Web?
-7. Another question?
+2. When was Arquivo.pt born?
+3. What motivated its creation?
+4. How far in time does Arquivo.pt go?
+5. What is the difference between Arquivo.pt and the Internet Archive?
+6. Do you have any published statistics regarding the Portuguese Web?
+7. Is it possible to access the data for research purposes?
+8. Can I help preserve the Web?
+9. Others questions?
