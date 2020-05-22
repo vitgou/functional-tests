@@ -39,7 +39,8 @@ public class SearchPage {
 		System.out.println( "[checkSearch]" );
 		//String xpathResults = "//*[@id=\"search-4\"]/form/label/input"; //get search links
 		String xpathResults = "//*[@id=\"gsc-i-id1\"]";
-		String xpathButton = "//*[@id=\"wp_editor_widget-17\"]/div/div[2]/div/span/a";
+		//String xpathButton = "//*[@id=\"wp_editor_widget-17\"]/div/div[2]/div/span/a";
+		String xpathButton = "//*[@id=\"___gcse_0\"]/div/form/table/tbody/tr/td[2]/button";
 
 		try{
 
