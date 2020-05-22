@@ -38,10 +38,8 @@ public class NewsPage {
 
 		if( language.equals( "EN" ) ) {
 			idDiv = "post-2336";
-			idaRss = "post-2336";
 			switchLanguage( );
 		} else {
-			idaRss = "post-1857";
 			idDiv = "post-1857";
 		}
 
@@ -68,24 +66,6 @@ public class NewsPage {
     				return false;
     			}
     		}
-
-    		String xpathRss = "//*[@id=\"" + idaRss + "\"]/div/div/h4/a";
-
-    	    WebElement rssLink = ( new WebDriverWait( driver, timeout ) ) /* Wait Up to 50 seconds should throw RunTimeExcpetion*/
-	             .until( ExpectedConditions.
-	            		 presenceOfElementLocated(
-	             				By.xpath( xpathRss )
-	             				)
-	             		);
-
-    	    String urlRss = rssLink.getAttribute( "href" );
-    	    String text = rssLink.getText( );
-			Charset.forName( "UTF-8" ).encode( text );
-    	    int statusCode = AnalyzeURLs.linkExists( urlRss );
-    	    if( !AnalyzeURLs.checkOk( statusCode ) &&  urlRss.equals( "https://preprod.sobre.arquivo.pt/pt/feed/" )){ //TODO preprod configurations
-    	    	System.out.println( "Failed: text[" + text + "] link[" + urlRss + "] status-code[" + statusCode + "]" );
-    	    	return false;
-    	    }
 
 	    	return true;
     	} catch( NoSuchElementException e ){
