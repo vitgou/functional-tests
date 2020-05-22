@@ -26,11 +26,8 @@ public class AnalyzeURLs {
 	    	System.out.println( "[linkExists] url[" + URLName + "]" );
 
 	    	ignoreSSLCerts();
-	    	
-	    	String replacedString = URLName.replace("http", "https");
 
-
-	    	HttpURLConnection con = ( HttpURLConnection ) new URL( replacedString ).openConnection( );
+	    	HttpURLConnection con = ( HttpURLConnection ) new URL( URLName ).openConnection( );
 	    	con.setConnectTimeout( 5000 );
 	    	con.setRequestMethod( "HEAD" );
 	    	con.addRequestProperty( "Accept-Language", "en-US,en;q=0.8" );
