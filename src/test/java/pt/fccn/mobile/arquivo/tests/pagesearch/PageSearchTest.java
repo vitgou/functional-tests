@@ -32,9 +32,14 @@ public class PageSearchTest extends WebDriverTestBaseParalell {
 		
 		waitUntilElementIsVisibleAndGet(By.id("resultados-lista"));
 		
-		appendError(() -> assertEquals("Verify if the estimated results count message is displayed on page search", "548.022",
-				driver.findElement(By.id("estimated-results-value")).getText()));
-		
+		if (this.testURL.toLowerCase().contains("preprod.sobre.arquivo.pt")) {
+			//Last number was 548.022
+			appendError(() -> assertEquals("Verify if the estimated results count message is displayed on page search", "483.515",
+					driver.findElement(By.id("estimated-results-value")).getText()));
+		} else {
+			appendError(() -> assertEquals("Verify if the estimated results count message is displayed on page search", "2.960.097",
+					driver.findElement(By.id("estimated-results-value")).getText()));
+		}
 		int anchorsCount = driver.findElementsByXPath("//*[@id=\"resultados-lista\"]//*[@class=\"url\"][contains(text(),'fccn')]")
 				.size();
 
