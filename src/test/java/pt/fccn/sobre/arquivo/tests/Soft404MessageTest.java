@@ -1,9 +1,10 @@
 package pt.fccn.sobre.arquivo.tests;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,9 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
-import pt.fccn.mobile.arquivo.utils.LocaleUtils;
-import pt.fccn.mobile.arquivo.utils.LocalizedString;
-import pt.fccn.sobre.arquivo.pages.IndexSobrePage;
 
 
 /**
@@ -32,7 +30,7 @@ public class Soft404MessageTest extends WebDriverTestBaseParalell {
 		super(os, version, browser, deviceName, deviceOrientation);
 		
 	}
-	
+
 	@Test
 	@Retry
 	public void soft404MessageTest() {
@@ -44,8 +42,10 @@ public class Soft404MessageTest extends WebDriverTestBaseParalell {
 			waitUntilElementIsVisibleAndGet(By.id("post-9818"));
 			 
 			//The language of the page is not based on the "English or Portugues" button, but depends on the language of the search engine. 
-			appendError(() -> assertEquals("Verify text from Arquivo.pt link", "Browse a previous version of this page in 2017-02-28 on Arquivo.pt",
-					driver.findElement(By.id("onArquivo")).getText()));
+			
+			appendError(() -> assertThat("Verify text from Arquivo.pt link",
+					driver.findElement(By.id("onArquivo")).getText(),
+					containsString("Browse a previous version of this page in")));
 			
 			List<WebElement> wes = driver.findElementsByXPath("//*[@id=\"onArquivo\"]");
 			WebElement we = wes.get(0);
@@ -58,8 +58,7 @@ public class Soft404MessageTest extends WebDriverTestBaseParalell {
 			
 			appendError("Check if page is not archived", () -> new WebDriverWait(driver, 20)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.id("___gcse_2"))));
-
+	
 		}
 	}
-
 }
