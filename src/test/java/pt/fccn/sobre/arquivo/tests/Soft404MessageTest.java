@@ -45,20 +45,20 @@ public class Soft404MessageTest extends WebDriverTestBaseParalell {
 			
 			appendError(() -> assertThat("Verify text from Arquivo.pt link",
 					driver.findElement(By.id("onArquivo")).getText(),
-					containsString("Browse a previous version of this page in")));
-			
+					containsString("Visite uma versão anterior desta página em 28 Março, 2017")));
+
 			List<WebElement> wes = driver.findElementsByXPath("//*[@id=\"onArquivo\"]");
 			WebElement we = wes.get(0);
 			String href = we.getAttribute("href");
 			assertEquals("Check link to wayback", href, "https://arquivo.pt/wayback/20170227184149/https://sobre.arquivo.pt" + WAYBACK_404_PAGE_EXAMPLE);
 			
 			//Test search
-			appendError(() -> assertEquals("Verify text from search", "Maybe try searching?",
+			appendError(() -> assertEquals("Verify text from search", "Ou experimente pesquisar.",
 					driver.findElement(By.id("messageSearch")).getText()));
 			
 			appendError("Check if page is not archived", () -> new WebDriverWait(driver, 20)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.id("___gcse_2"))));
-	
+			
 		}
 	}
 }
