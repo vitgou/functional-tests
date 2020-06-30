@@ -122,3 +122,93 @@ configs:
    timestamp: 20191126171934
    waybackText: This novel and promising mechanism fosters further collaboration among different research groups working
    waybackTextXPath: /html/body/table[5]/tbody/tr[1]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td[3]/dt/font/dl[1]/text()
+-  url: http://www.ticsociedade.pt
+   redirectPageText: O site www.ticsociedade.pt foi desativado.
+   timestamp: 20181101074454
+   waybackText: Sabia que há 26% de portugueses que nunca usaram a Internet?
+   waybackTextXPath: //*[@id="page-section-2"]/div/div/div[1]/h2
+-  url: http://www.ticsociedade.pt/categorias-de-artigos/not%C3%ADcia
+   redirectPageText: O site www.ticsociedade.pt foi desativado.
+   timestamp: 20181014085709
+   waybackText: Cerimónia de Entrega dos Prémios Inclusão e Literacia Digital
+   waybackTextXPath: //*[@id="node-724"]/h2/a
+-  url: http://www.encontros.act.fct.pt
+   redirectPageText: O site www.encontros.act.fct.pt foi desativado.
+   timestamp: 20200403093603
+   waybackText: Prosseguindo a sua missão de valorização
+   waybackTextXPath: //*[@id="post-41"]/div/p[2]/text()[3]
+-  url: http://www.encontros.act.fct.pt/?page_id=73
+   redirectPageText: O site www.encontros.act.fct.pt foi desativado.
+   timestamp: 20200403093955
+   waybackText: Já se encontra disponível a
+   waybackTextXPath: //*[@id="post-73"]/div/p[1]/text()[1]
+-  url: http://gow.fct.pt
+   redirectPageText: O site gow.fct.pt foi desativado.
+   timestamp: 20200403093622
+   waybackText: toda a Europa está convidada a participar na campanha de melhoria das competências digitais
+   waybackTextXPath: /html/body/div[1]/section[2]/div/div/div[2]/div[1]/p[1]/text()[2]
+-  url: http://gow.fct.pt/actividades.html
+   redirectPageText: O site gow.fct.pt foi desativado.
+   timestamp: 20200404044023
+   waybackText: Confiança e Segurança
+   waybackTextXPath: /html/body/div/section[2]/div/section/div/div[2]/div/h5[1]
+-  url: http://eskills.fct.pt
+   redirectPageText: O site eskills.fct.pt foi desativado.
+   timestamp: 20200403093951
+   waybackText: A campanha eSkills for Jobs tem o objetivo de sensibilizar
+   waybackTextXPath: //*[@id="stat_img"]/div[1]/div/div/p[2]/text()
+-  url: http://eskills.fct.pt/embaixadores/
+   redirectPageText: O site eskills.fct.pt foi desativado.
+   timestamp: 20200403094656
+   waybackText: licenciada em Engenharia Agrónoma pela Faculdade de Ciências da Universidade do Porto
+   waybackTextXPath: //*[@id="post-2"]/div/div[1]/p[6]/text()
+-  url: http://curadoriadigital.fct.pt
+   redirectPageText: O site curadoriadigital.fct.pt foi desativado.
+   timestamp: 20200403094000
+   waybackText: Atas do Encontro Curadoria Digital
+   waybackTextXPath: //*[@id="post-275"]/div/p[1]/text()
+-  url: http://curadoriadigital.fct.pt/?page_id=22
+   redirectPageText: O site curadoriadigital.fct.pt foi desativado.
+   timestamp: 20200403094050
+   waybackText: Francisco Caramelo
+   waybackTextXPath: //*[@id="post-22"]/div/p[6]/text()
+-  url: http://arquivosuniversitarios.fct.pt
+   redirectPageText: O site arquivosuniversitarios.fct.pt foi desativado.
+   timestamp: 20200403094336
+   waybackText: As instituições de Ensino Superior nacionais dispõem de um património arquivístico único
+   waybackTextXPath: //*[@id="post-79"]/div/p[2]/text()
+-  url: http://arquivosuniversitarios.fct.pt/mapa-do-sitio-2/
+   redirectPageText: O site arquivosuniversitarios.fct.pt foi desativado.
+   timestamp: 20200403094620
+   waybackText: Resumos e conferencistas | 4 de julho
+   waybackTextXPath: //*[@id="post-252"]/div/ul[2]/li[1]/strong/a
+-  url: http://arquivosuniversitarios.fct.pt
+   redirectPageText: O site arquivosuniversitarios.fct.pt foi desativado.
+   timestamp: 20200403094336
+   waybackText: As instituições de Ensino Superior nacionais dispõem de um património arquivístico único
+   waybackTextXPath: //*[@id="post-79"]/div/p[2]/text()
+-  url: http://arquivosuniversitarios.fct.pt/mapa-do-sitio-2/
+   redirectPageText: O site arquivosuniversitarios.fct.pt foi desativado.
+   timestamp: 20200403094620
+   waybackText: Resumos e conferencistas | 4 de julho
+   waybackTextXPath: //*[@id="post-252"]/div/ul[2]/li[1]/strong/a
+-  url: http://arquivoscientificos.fct.pt
+   redirectPageText: O site arquivoscientificos.fct.pt foi desativado.
+   timestamp: 20200403093954
+   waybackText: Já se encontram disponíveis as comunicações cedidas pelos oradores
+   waybackTextXPath: //*[@id="post-8"]/div/ul/li/strong/text()
+-  url: http://arquivoscientificos.fct.pt/?page_id=158
+   redirectPageText: O site arquivoscientificos.fct.pt foi desativado.
+   timestamp: 20200403094020
+   waybackText: Nos dias 3 e 4 de julho de 2014
+   waybackTextXPath: //*[@id="post-158"]/div[2]/p[1]/text()[1]
+-  url: http://arquivosap.fct.pt
+   redirectPageText: O site arquivosap.fct.pt foi desativado.
+   timestamp: 20200403093850
+   waybackText: As Atas do Encontro Arquivos da Administração Pública
+   waybackTextXPath: //*[@id="post-387"]/div/p[1]/text()
+-  url: http://arquivosap.fct.pt/?page_id=42
+   redirectPageText: O site arquivosap.fct.pt foi desativado.
+   timestamp: 20200403094031
+   waybackText: Nos últimos anos, tem crescido nos meios científicos o interesse
+   waybackTextXPath: //*[@id="post-42"]/div/p[2]/text()
