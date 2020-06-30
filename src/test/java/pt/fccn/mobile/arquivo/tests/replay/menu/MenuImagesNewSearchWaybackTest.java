@@ -34,7 +34,7 @@ public class MenuImagesNewSearchWaybackTest extends MenuWaybackTest {
 				() -> waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"imageOptions\"]/a/h4")).click());
 
 		appendError("Check if current url is the image search",
-				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/images.jsp")));
+				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/image/search?")));
 	}
 
 }

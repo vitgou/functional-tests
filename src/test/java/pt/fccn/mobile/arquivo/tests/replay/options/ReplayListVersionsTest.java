@@ -36,8 +36,8 @@ public class ReplayListVersionsTest extends WebDriverTestBaseParalell {
 		WebElement anchor = run("Get list versions button",
 				() -> waitUntilElementIsVisibleAndGet(By.xpath("//*[@id=\"swiperWrapper\"]/div[3]/a[1]")));
 
-		String expectedUrlSuffix = "/search.jsp?l=pt&query=http%3A%2F%2Fwww.fccn.pt%2F";
-
+		String expectedUrlSuffix = "/page/search?l=pt&query=http%3A%2F%2Fwww.fccn.pt%2F";
+		
 		run("Check list version button to correct page",
 				() -> assertThat(anchor.getAttribute("href"), endsWith(expectedUrlSuffix)));
 

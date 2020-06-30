@@ -83,15 +83,15 @@ public class URLSearchListNotContainsSomeHttpCodesTest extends WebDriverTestBase
 		driver.switchTo().frame("url_search_iframe");
 		
 		run("Change to list mode if not in it", () -> {
-			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"layoutTV\"]/h4");
-
+			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"urlSearchContainer\"]/div[1]/button[3]");
+			
 			LocalizedString listText = new LocalizedString().pt("Lista").en("List");
 
 			if (!resultsGridCurrentType.getText().contains(listText.apply(locale))) {
 				driver.findElementByXPath("//*[@id=\"layoutTV\"]/button").click();
 			}
 		});
-
+		
 		run("Check specific timestamp should exist", () -> {
 			visibleVersions.stream().forEach(version -> {
 				WebElement e = driver.findElement(By.id(version));

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 
 import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
@@ -41,7 +42,6 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 					driver.findElement(By.id("adv_and")).getAttribute("value"));
 		});
 		
-		run("Close words box", () -> driver.findElement(By.xpath("//*[@id=\"words\"]/legend")).click());
 
 		run("Open start date picker", () -> driver.findElement(By.id("sliderCircleStart")).click());
 
@@ -54,18 +54,13 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		run("Insert 1 jan 2012 on end date picker", () -> {
 			IonicDatePicker.changeTo(driver, LocalDate.of(2018, 1, 1));
 		});
-
-		run("Close dates box", () -> driver.findElement(By.xpath("//*[@id=\"date\"]/legend")).click());
 		
-		appendError("Open format type", () -> driver.findElement(By.id("formatType")).click());
-
+        appendError("Open format type", () -> driver.findElement(By.id("formatType")).click());
+		
+		Select dropdown_type = new Select(driver.findElement(By.id("formatType")));
+		
 		appendError("Set format type",
-				() -> driver.findElement(By.xpath("//ion-action-sheet/div/div/div[1]/button[2]")).click());
-		
-		run("Close format box", () -> driver
-				.findElement(
-						By.xpath("//*[@id=\"formatType\"]/ancestor::div[contains(@class, 'expandable-div')]"))
-				.click());
+				() -> dropdown_type.selectByValue("png"));
 
 		appendError("Set site", () -> driver.findElement(By.id("site")).sendKeys("fccn.pt"));
 		

@@ -34,7 +34,7 @@ public class MenuPagesNewAvancedSearchWaybackTest extends MenuWaybackTest {
 				() -> driver.findElement(By.xpath("//*[@id=\"pageOptions\"]/a[2]/h4")).click());
 
 		appendError("Check if current url is the advanced search",
-				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/advanced.jsp")));
+				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/page/advanced/search?")));
 	}
 
 }

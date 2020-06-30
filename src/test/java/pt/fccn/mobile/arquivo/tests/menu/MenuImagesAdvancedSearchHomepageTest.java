@@ -29,7 +29,7 @@ public class MenuImagesAdvancedSearchHomepageTest extends MenuTest {
 		run("Click new search button", () -> waitUntilElementIsVisibleAndGet(By.id("advancedImages")).click());
 
 		appendError("Check if current url is the image search",
-				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/advancedImages.jsp")));
+				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/image/advanced/search?")));
 	}
 
 }

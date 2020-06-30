@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 
 import pt.fccn.arquivo.selenium.Retry;
 import pt.fccn.arquivo.selenium.WebDriverTestBaseParalell;
@@ -42,9 +43,11 @@ public class PageAdvancedSearchMimeTypeTest extends WebDriverTestBaseParalell {
 		
 		appendError("Open format type", () -> driver.findElement(By.id("formatType")).click());
 
-		appendError("Set format type",
-				() -> driver.findElement(By.xpath("//ion-action-sheet/div/div/div[1]/button[2]")).click());
+		Select dropdown = new Select(driver.findElement(By.id("formatType")));
 		
+		appendError("Set format type",
+				() -> dropdown.selectByValue("pdf"));
+
 		run("Close format box", () -> driver
 				.findElement(
 						By.xpath("//*[@id=\"formatType\"]/ancestor::div[contains(@class, 'expandable-div')]"))

@@ -30,14 +30,14 @@ public class URLSearchTableTest extends WebDriverTestBaseParalell {
 	@Retry
 	public void urlSearchTableTestPT() {
 		LocaleUtils.changeLanguageToPT(this);
-		urlSearchTableTest("fccn.pt", " Tabela ", "13 Out", LocaleUtils.PORTUGUESE);
+		urlSearchTableTest("fccn.pt", "Tabela", "13 Out", LocaleUtils.PORTUGUESE);
 	}
 
 	@Test
 	@Retry
 	public void urlSearchTableTestEN() {
 		LocaleUtils.changeLanguageToEN(this);
-		urlSearchTableTest("fccn.pt", " Table ", "13 Oct", LocaleUtils.ENGLISH);
+		urlSearchTableTest("fccn.pt", "Table", "13 Oct", LocaleUtils.ENGLISH);
 	}
 
 	private void urlSearchTableTest(String url, String tableText, String firstResultText, Locale locale) {
@@ -53,16 +53,16 @@ public class URLSearchTableTest extends WebDriverTestBaseParalell {
 		driver.switchTo().frame("url_search_iframe");
 		
 		run("Change to Table mode if not in it", () -> {
-			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"layoutTV\"]/button/h4");
+			WebElement resultsGridCurrentType = driver.findElementByXPath("//*[@id=\"urlSearchContainer\"]/div[1]/button[3]");
 			if (!resultsGridCurrentType.getText().contains(tableText)) {
-				driver.findElementByXPath("//*[@id=\"layoutTV\"]/button").click();
+				driver.findElementByXPath("//*[@id=\"urlSearchContainer\"]/div[1]/button[2]").click();
 			}
 		});
 		
 		System.out.println("Current url: " + driver.getCurrentUrl());
 		
 		run("Check if first version match", () -> {
-			waitUntilElementIsVisibleAndGet(By.id("conteudo-versoes"));
+			waitUntilElementIsVisibleAndGet(By.id("urlSearchContainer"));
 			List<WebElement> firstRow = driver.findElementsByXPath("//*[@id=\"1\" and @class=\"trTV\"]/td");
 			WebElement firstCell = firstRow.get(0);
 			WebElement anchor = firstCell.findElement(By.xpath(".//a"));

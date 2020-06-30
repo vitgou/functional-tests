@@ -30,7 +30,7 @@ public class MenuPagesNewAvancedSearchHomepageTest extends MenuTest {
 				() -> driver.findElement(By.xpath("//*[@id=\"advancedSearch\"]/h4")).click());
 
 		appendError("Check if current url is the advanced search",
-				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/advanced.jsp")));
+				() -> new WebDriverWait(driver, 20).until(ExpectedConditions.urlContains("/page/advanced/search?")));
 	}
 
 }
