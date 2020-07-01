@@ -77,9 +77,6 @@ public class ImageAdvancedSearchTest extends WebDriverTestBaseParalell {
 
 		appendError("Set site", () -> driver.findElement(By.id("site")).sendKeys("fccn.pt"));
 
-		appendError("Open sites / domains box",
-				() -> driver.findElement(By.xpath("//*[@id=\"domains\"]/legend")).click());
-
 		appendError("Click on search on arquivo.pt button", () -> driver.findElement(By.id("btnSubmitBottom")).click());
 
 		System.out.println("Current url: " + driver.getCurrentUrl());
