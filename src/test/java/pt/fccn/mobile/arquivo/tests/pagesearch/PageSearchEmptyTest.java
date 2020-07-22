@@ -53,16 +53,17 @@ public class PageSearchEmptyTest extends WebDriverTestBaseParalell {
 			assertEquals("Check result count should be zero", 0, count);
 		});
 
-		By emptyResultMessageBy = By.id("conteudo-pesquisa-erro");
+		//By emptyResultMessageBy = By.id("conteudo-pesquisa-erro");
+		By emptyResultMessageBy = By.id("conteudo-resultado");
 
 		appendError("Empty result message should be visible",
 				() -> ExpectedConditions.visibilityOfElementLocated(emptyResultMessageBy));
-
+		
 		appendError(() -> assertThat("Empty result message should contains specific text",
-				driver.findElement(By.id("conteudo-pesquisa-erro")).getText(), containsString(noResultsMessage)));
-
+				driver.findElement(By.xpath("//*[@id=\"conteudo-resultado\"]/div[3]")).getText(), containsString(noResultsMessage)));
+		
 		appendError(() -> assertThat("Empty result message should show search criteria",
-				driver.findElement(By.id("conteudo-pesquisa-erro")).getText(), containsString(QUERY)));
+				driver.findElement(By.xpath("//*[@id=\"conteudo-resultado\"]/div[3]")).getText(), containsString(QUERY)));
 	}
 
 }
