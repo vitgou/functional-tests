@@ -39,7 +39,7 @@ public class PrintTest extends AppendableErrorsBaseTest {
 
 		String md5 = getMd5(bytes);
 		
-		assertEquals("Verify print md5sum", "5eebe9f78862a65a2150606be3678deb", md5);
+		assertEquals("Verify print md5sum", "b1871abd5bb8934a56cc4023547f354d", md5);
 	}
 
 	private byte[] print(String screenshotUrlStr) {

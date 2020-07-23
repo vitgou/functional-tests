@@ -60,7 +60,7 @@ public class PageAdvancedSearchTest extends WebDriverTestBaseParalell {
 		Select dropdown_type = new Select(driver.findElement(By.id("formatType")));
 		
 		appendError("Set format type",
-				() -> dropdown_type.selectByValue("png"));
+				() -> dropdown_type.selectByValue("pdf"));
 
 		appendError("Set site", () -> driver.findElement(By.id("site")).sendKeys("fccn.pt"));
 		
