@@ -45,7 +45,8 @@ public class ReplayUtils {
 
 	public static void checkTextOnReplayPage(WebDriver driver, String waybackTextXPath, String textOnReplayPageCheck) {
 
-		new WebDriverWait(driver, 180).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("replay_iframe"));
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("replay_iframe"));
 
 //		assertThat("Replay page source contains specific text", driver.getPageSource(),
 //				containsString(textOnReplayPageCheck));
@@ -53,7 +54,7 @@ public class ReplayUtils {
 		String xpath = waybackTextXPath != null ? waybackTextXPath : "/html";
 
 		if (textOnReplayPageCheck != null) {
-			ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), textOnReplayPageCheck);
+			wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), textOnReplayPageCheck));
 		}
 
 		driver.switchTo().defaultContent();
