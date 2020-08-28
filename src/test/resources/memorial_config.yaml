@@ -232,3 +232,73 @@ configs:
    timestamp: 20160211012347
    waybackText: GALP QUER TRIPLICAR OS VALORES DA PARCERIA COM A PDVSA
    waybackTextXPath: //*[@id="ContentMiddle"]/div[4]/h1
+-  url: http://www.religare.gov.pt/
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20191204111700
+   waybackText: Página inicial
+   waybackTextXPath: /html/body/table/tbody/tr[2]/td[1]/div/span
+-  url: http://www.religare.gov.pt/religioes.htm
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20191204111700
+   waybackText: Princípios doutrinários
+   waybackTextXPath: /html/body/table/tbody/tr[5]/td/p[1]/span[1]
+-  url: http://www.disaster-recovery.gov.pt/
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424165203
+   waybackText: Projecto Disaster Recovery
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl1"]
+-  url: http://www.disaster-recovery.gov.pt/drecovery/pt/projecto/noticias/index.html
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190704102529
+   waybackText: 07.06.2010
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl2"]/p[1]/strong[1]
+-  url: http://www.knetworks.gov.pt/
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424165218
+   waybackText: Página inicial
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl1"]
+-  url: http://www.knetworks.gov.pt/knetworks/pt/projecto/index.html
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424165429
+   waybackText: O Centro de Gestão da Rede Informática do Governo
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl2"]
+-  url: http://www.redesdoconhecimento.gov.pt/
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424170738
+   waybackText: Seminário «Redes do Conhecimento e Conhecimento em Rede»
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl1"]
+-  url: http://www.redesdoconhecimento.gov.pt/rc/pt/seminario/index.html
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424171127
+   waybackText: O Seminário terá lugar no
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl2"]/p
+-  url: http://www.natolisboa2010.gov.pt/
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424172251
+   waybackText: MENSAGEM DO PRESIDENTE DA REPÚBLICA
+   waybackTextXPath: /html/body/div[3]/div[4]/div[1]/h5[1]/b
+-  url: http://www.natolisboa2010.gov.pt/pt/inicio/index-2.html
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424172405
+   waybackText: Nação atlântica de vocação universal e membro fundador da NATO
+   waybackTextXPath: /html/body/div[3]/div[4]/div[1]
+-  url: http://www.natomedicalconference2009.gov.pt/
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424165218
+   waybackText: Welcome to NATO Medical Conference 2009 & 8th NATO Blood Conference website!
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl1"]/h3
+-  url: http://www.natomedicalconference2009.gov.pt/jmc/en/submissao/index.html
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424165659
+   waybackText: Topics of interest for the NATO Medical Conference 2009 & 8th NATO Blood Conference
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl1"]/h2
+-  url: http://www.pepal.gov.pt/
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424163439
+   waybackText: Nota de abertura
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl1"]/span[2]/font/u/span/font
+-  url: http://www.pepal.gov.pt/pepal/legislacao.html
+   redirectPageText: Esta página encontra-se preservada digitalmente pelo Arquivo.pt, ao abrigo de um protocolo de colaboração com o Centro de Gestão da Rede Informática do Governo.
+   timestamp: 20190424163552
+   waybackText: Decreto-Lei N.º 326/99
+   waybackTextXPath: //*[@id="RadEditorPlaceHolderControl1"]/p[3]/font[1]/a/font/strong
