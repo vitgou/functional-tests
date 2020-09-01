@@ -2,7 +2,7 @@ configs:
 -  url: http://www.umic.pt/
    timestamp: 20170831104506
    waybackTextXPath: //*[@id="maincontent"]/div/div[1]/div/div/h3/strong/a
-   waybackText: 5ª Reunião do Grupo de Trabalho da CSTD da ONU
+   waybackText: Grupo de Trabalho da CSTD da ONU
 -  url: http://www.umic.pt/index.php?option=com_content&task=section&id=37&Itemid=511
    redirectPageText: UMIC
    timestamp: 20170831105224
