@@ -54,6 +54,8 @@ public class ReplayUtils {
 		String xpath = waybackTextXPath != null ? waybackTextXPath : "/html";
 
 		if (textOnReplayPageCheck != null) {
+			// Issues with Chrome after version 48. 
+			// Web elements not available after switching to Iframe.
 			wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), textOnReplayPageCheck));
 		}
 
